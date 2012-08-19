@@ -5,7 +5,9 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
 gem 'mysql2'
 
 
@@ -29,11 +31,14 @@ gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use thin as the app server
+gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'refinerycms', '~> 2.0.0'
+gem 'refinerycms-blog', '~> 2.0.0'
