@@ -52,8 +52,9 @@ module Refinery
       # First try to match against a "menu match" value, if available.
       return true if page.try(:menu_match).present? && path =~ Regexp.new(page.menu_match)
 
-      # Ignore selecting if menu_match is set to "skip"
-      if page.try(:menu_match).nil? || (page.try(:menu_match).present? && page.menu_match != "skip")
+      # Ignore selecting if menu item is a forward
+      link_url = Page.find(page.original_id).link_url
+      if link_url.nil? || link_url == ""
         # Find the first url that is a string.
         url = [page.url]
         url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
