@@ -41,4 +41,5 @@ gem 'thin'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'refinerycms', '~> 2.0.0'
+gem 'refinerycms-core', '~> 2.0.0', :path => 'vendor/engines'
 gem 'refinerycms-blog', '~> 2.0.0'
