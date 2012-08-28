@@ -57,7 +57,7 @@ body {
 }
 #header {
   font-family: Arial, sans-serif;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
   position: relative;
 }
 #logo {
@@ -110,6 +110,7 @@ body {
       position: absolute;
       top: 48px;
       width: 200px;
+      z-index: 500;
 
       li {
         color: #FFF;
@@ -125,6 +126,32 @@ body {
           color: #f4db87;
         }
       }
+    }
+  }
+}
+.member_menu {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+
+  li {
+    background-color: #fff;
+    @include box-shadow(-2px -2px 5px 0 rgba(0,0,0,0.2));
+    color: #000;
+    display: inline-block;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+
+    span {
+      color: #02642d;
+    }
+    a {
+      border: 1px solid #f7e0a4;
+      color: inherit;
+      display: block;
+      margin: 4px 4px 0;
+      padding: 10px 6px;
+      text-decoration: none;
     }
   }
 }

@@ -8,3 +8,18 @@
              :dom_id => 'menu',
              :css => 'menu'
            }) %>
+<% if refinery_user? %>
+  <ul class="member_menu">
+    <li><a href="/akouo">
+      <span>Akouo</span> Business Plan
+    </a></li>
+  
+    <li><a href="/journeyboard">
+      <span>Journey</span>Board
+    </a></li>
+  
+    <li><a href="/journeypartners">
+      <span>Journey</span> Partners
+    </a></li>
+  </ul>
+<% end %>
