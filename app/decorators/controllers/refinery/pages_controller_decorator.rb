@@ -3,7 +3,7 @@ Refinery::PagesController.class_eval do
 
   def initialize_edge
     if page.view_template == "edge"
-      if refinery_user? && current_refinery_user.has_role?(:edge)
+      if refinery_user? && current_refinery_user.has_role?(:member)
         @stuff = "edge, yo"
       else
         @stuff = "You gotta buy this"

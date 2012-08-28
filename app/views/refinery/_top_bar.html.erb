@@ -1,0 +1,16 @@
+<div class="top_bar">
+  <div class="container">
+    <%= link_to "Home", refinery.root_path %>
+  
+    <div class="secondary">
+      <% if refinery_user? %>
+        <%= link_to "My Account", "" %>
+        <%= link_to "Sign Out", refinery.destroy_refinery_user_session_path %>
+      <% else %>
+        <%= link_to "Member Login", refinery.new_refinery_user_session_path %>
+      <% end %>
+  
+      <span class="telephone"><%= ::Refinery::Setting.find_or_set(:phone_number, "1-888-000-0000") %></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<section id="content">
+  <section id="summary">
+    <h1 id="body_content_title"><%= page_title %></h1>
+
+    <% if !@page.content_for(:summary).nil? && @page.content_for(:summary) != "" %>
+      <%= content_tag :div, (raw @page.content_for(:summary)) %>
+    <% end %>
+  </section>
+  <section id="body">
+    <%=raw @page.content_for(:body) %>
+  </section>
+</section>
+
+<%= render "/refinery/sidebar" %>
