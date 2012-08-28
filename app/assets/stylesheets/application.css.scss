@@ -9,9 +9,12 @@ html {
   background: #fff url("background.png");
 }
 body {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 14px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
   line-height: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Times New Roman", Times, serif;
 }
 #page_container,
 .container {
@@ -187,5 +190,6 @@ body {
 #footer {
   background-color: #212121;
   color: #fff;
+  font-size: 12px;
   padding: 10px 20px;
 }
