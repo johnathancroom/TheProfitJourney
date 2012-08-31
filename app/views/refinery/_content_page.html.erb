@@ -1,13 +1,24 @@
+<% 
+body_content_title = page_title if (body_content_title = yield :body_content_title).blank?
+body_content = @page.content_for(:body).html_safe if (body_content = yield :body).blank?
+%>
+
 <section id="content">
   <section id="summary">
-    <h1 id="body_content_title"><%= page_title %></h1>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :aside, msg, :class => "flash_#{name}" %>
+    <% end %>
+
+    <h1 id="body_content_title">
+      <%= body_content_title %>
+    </h1>
 
     <% if !@page.content_for(:summary).nil? && @page.content_for(:summary) != "" %>
       <%= content_tag :div, (raw @page.content_for(:summary)) %>
     <% end %>
   </section>
   <section id="body">
-    <%=raw @page.content_for(:body) %>
+    <%= body_content %>
   </section>
 </section>
 
