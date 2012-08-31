@@ -11,7 +11,580 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120819004133) do
+ActiveRecord::Schema.define(:version => 20120828192616) do
+
+  create_table "ap", :primary_key => "APID", :force => true do |t|
+    t.integer "PCID"
+    t.decimal "APM",    :precision => 19, :scale => 4
+    t.decimal "APLDN",  :precision => 19, :scale => 4
+    t.decimal "APNP1",  :precision => 19, :scale => 4
+    t.decimal "APNP2",  :precision => 19, :scale => 4
+    t.decimal "APNP3",  :precision => 19, :scale => 4
+    t.decimal "APNI",   :precision => 19, :scale => 4
+    t.decimal "APP",    :precision => 19, :scale => 4
+    t.decimal "APVPMM", :precision => 19, :scale => 4
+    t.decimal "APLM1",  :precision => 19, :scale => 4
+    t.decimal "APLM2",  :precision => 19, :scale => 4
+    t.decimal "APLM3",  :precision => 19, :scale => 4
+    t.decimal "APLM4",  :precision => 19, :scale => 4
+    t.decimal "APLM5",  :precision => 19, :scale => 4
+    t.decimal "APLCTV", :precision => 19, :scale => 4
+    t.decimal "APNTV",  :precision => 19, :scale => 4
+    t.decimal "APR",    :precision => 19, :scale => 4
+    t.decimal "APTR1",  :precision => 19, :scale => 4
+    t.decimal "APTR2",  :precision => 19, :scale => 4
+    t.decimal "APCV1",  :precision => 19, :scale => 4
+    t.decimal "APCV2",  :precision => 19, :scale => 4
+    t.decimal "APCV3",  :precision => 19, :scale => 4
+    t.decimal "APCV4",  :precision => 19, :scale => 4
+    t.decimal "APDMQN", :precision => 19, :scale => 4
+    t.decimal "APDMSC", :precision => 19, :scale => 4
+    t.decimal "APDM1",  :precision => 19, :scale => 4
+    t.decimal "APDM2",  :precision => 19, :scale => 4
+    t.decimal "APDM3",  :precision => 19, :scale => 4
+    t.decimal "APDM4",  :precision => 19, :scale => 4
+    t.decimal "APECQN", :precision => 19, :scale => 4
+    t.decimal "APECSC", :precision => 19, :scale => 4
+    t.decimal "APECAP", :precision => 19, :scale => 4
+    t.decimal "APECRC", :precision => 19, :scale => 4
+    t.decimal "APECRL", :precision => 19, :scale => 4
+    t.decimal "APECC",  :precision => 19, :scale => 4
+    t.decimal "APECTY", :precision => 19, :scale => 4
+    t.decimal "APNMD",  :precision => 19, :scale => 4
+    t.decimal "APNMN",  :precision => 19, :scale => 4
+    t.decimal "APNMY",  :precision => 19, :scale => 4
+    t.decimal "APNM1",  :precision => 19, :scale => 4
+    t.decimal "APNM2",  :precision => 19, :scale => 4
+    t.decimal "APNM3",  :precision => 19, :scale => 4
+    t.decimal "APNM4",  :precision => 19, :scale => 4
+    t.decimal "APBSR",  :precision => 19, :scale => 4
+    t.decimal "APCRB",  :precision => 19, :scale => 4
+    t.decimal "APE",    :precision => 19, :scale => 4
+    t.decimal "APFRB",  :precision => 19, :scale => 4
+    t.decimal "APBRR",  :precision => 19, :scale => 4
+    t.decimal "APSFB",  :precision => 19, :scale => 4
+    t.decimal "APAGS",  :precision => 19, :scale => 4
+    t.decimal "APBA",   :precision => 19, :scale => 4
+    t.decimal "APLBD",  :precision => 19, :scale => 4
+    t.decimal "APPLA",  :precision => 19, :scale => 4
+    t.decimal "APGA",   :precision => 19, :scale => 4
+    t.decimal "APSE",   :precision => 19, :scale => 4
+    t.decimal "APSL",   :precision => 19, :scale => 4
+    t.decimal "APFM",   :precision => 19, :scale => 4
+    t.decimal "APHM1",  :precision => 19, :scale => 4
+    t.decimal "APHM2",  :precision => 19, :scale => 4
+    t.decimal "APRP",   :precision => 19, :scale => 4
+    t.decimal "APALA",  :precision => 19, :scale => 4
+    t.decimal "APMAP",  :precision => 19, :scale => 4
+    t.decimal "APCBD",  :precision => 19, :scale => 4
+    t.decimal "APB",    :precision => 19, :scale => 4
+    t.decimal "APVW",   :precision => 19, :scale => 4
+    t.decimal "APMA",   :precision => 19, :scale => 4
+    t.decimal "APPE",   :precision => 19, :scale => 4
+    t.decimal "APBC",   :precision => 19, :scale => 4
+    t.decimal "APS",    :precision => 19, :scale => 4
+    t.decimal "APO1",   :precision => 19, :scale => 4
+    t.decimal "APO2",   :precision => 19, :scale => 4
+    t.decimal "APO3",   :precision => 19, :scale => 4
+    t.decimal "APIPC",  :precision => 19, :scale => 4
+    t.decimal "APAL",   :precision => 19, :scale => 4
+    t.decimal "APSM",   :precision => 19, :scale => 4
+    t.decimal "APOYP",  :precision => 19, :scale => 4
+    t.decimal "API1",   :precision => 19, :scale => 4
+    t.decimal "APYP",   :precision => 19, :scale => 4
+    t.decimal "APYP1",  :precision => 19, :scale => 4
+    t.decimal "APYP2",  :precision => 19, :scale => 4
+    t.decimal "APYP3",  :precision => 19, :scale => 4
+    t.decimal "APYP4",  :precision => 19, :scale => 4
+  end
+
+  add_index "ap", ["APID"], :name => "APID"
+  add_index "ap", ["PCID"], :name => "PCID"
+
+  create_table "cust", :force => true do |t|
+    t.string   "cdba",       :limit => 50
+    t.datetime "CIDate"
+    t.string   "CFN",        :limit => 50
+    t.string   "CLN",        :limit => 50
+    t.datetime "CCSD"
+    t.datetime "CCED"
+    t.datetime "CCPD"
+    t.integer  "CAH"
+    t.text     "CPG",        :limit => 2147483647
+    t.text     "CCG",        :limit => 2147483647
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "de", :primary_key => "DEID", :force => true do |t|
+    t.integer  "CID"
+    t.string   "DEM"
+    t.datetime "DED"
+    t.integer  "DENWD"
+    t.decimal  "DEC",      :precision => 19, :scale => 4
+    t.decimal  "DECA1",    :precision => 19, :scale => 4
+    t.decimal  "DECA2",    :precision => 19, :scale => 4
+    t.decimal  "DECA3",    :precision => 19, :scale => 4
+    t.decimal  "DEAR",     :precision => 19, :scale => 4
+    t.decimal  "DEMMA",    :precision => 19, :scale => 4
+    t.decimal  "DESTI",    :precision => 19, :scale => 4
+    t.decimal  "DEADA",    :precision => 19, :scale => 4
+    t.decimal  "DEER",     :precision => 19, :scale => 4
+    t.decimal  "DENRC",    :precision => 19, :scale => 4
+    t.decimal  "DEI",      :precision => 19, :scale => 4
+    t.decimal  "DEPE",     :precision => 19, :scale => 4
+    t.decimal  "DEUF",     :precision => 19, :scale => 4
+    t.decimal  "DEFAVT",   :precision => 19, :scale => 4
+    t.decimal  "DEFAADVT", :precision => 19, :scale => 4
+    t.decimal  "DEFAOV",   :precision => 19, :scale => 4
+    t.decimal  "DEFAADOV", :precision => 19, :scale => 4
+    t.decimal  "DEFAEO",   :precision => 19, :scale => 4
+    t.decimal  "DEFAADE",  :precision => 19, :scale => 4
+    t.decimal  "DEFAFE",   :precision => 19, :scale => 4
+    t.decimal  "DEFAADFE", :precision => 19, :scale => 4
+    t.decimal  "DEFAL",    :precision => 19, :scale => 4
+    t.decimal  "DEFAB",    :precision => 19, :scale => 4
+    t.decimal  "DEFAADB",  :precision => 19, :scale => 4
+    t.decimal  "DEFALI",   :precision => 19, :scale => 4
+    t.decimal  "DEFAADFI", :precision => 19, :scale => 4
+    t.decimal  "DEOANRLT", :precision => 19, :scale => 4
+    t.decimal  "DEOAS",    :precision => 19, :scale => 4
+    t.decimal  "DEOAA1",   :precision => 19, :scale => 4
+    t.decimal  "DEOAA2",   :precision => 19, :scale => 4
+    t.decimal  "DEOAA3",   :precision => 19, :scale => 4
+    t.decimal  "DEOAAN1",  :precision => 19, :scale => 4
+    t.decimal  "DEOAAN2",  :precision => 19, :scale => 4
+    t.decimal  "DEOAAN3",  :precision => 19, :scale => 4
+    t.decimal  "DEOAOIA",  :precision => 19, :scale => 4
+    t.decimal  "DEOAAAOI", :precision => 19, :scale => 4
+    t.decimal  "DEOAOC",   :precision => 19, :scale => 4
+    t.decimal  "DEOAAAOC", :precision => 19, :scale => 4
+    t.decimal  "DEOAD",    :precision => 19, :scale => 4
+    t.decimal  "DEOALTI",  :precision => 19, :scale => 4
+    t.decimal  "DEOAOA",   :precision => 19, :scale => 4
+    t.decimal  "DEAP",     :precision => 19, :scale => 4
+    t.decimal  "DECC1",    :precision => 19, :scale => 4
+    t.decimal  "DECC2",    :precision => 19, :scale => 4
+    t.decimal  "DECC3",    :precision => 19, :scale => 4
+    t.decimal  "DEALP",    :precision => 19, :scale => 4
+    t.decimal  "DEALC",    :precision => 19, :scale => 4
+    t.decimal  "DEALPT",   :precision => 19, :scale => 4
+    t.decimal  "DEFICA",   :precision => 19, :scale => 4
+    t.decimal  "DECLM",    :precision => 19, :scale => 4
+    t.decimal  "DECLW",    :precision => 19, :scale => 4
+    t.decimal  "DEWC",     :precision => 19, :scale => 4
+    t.decimal  "DEST",     :precision => 19, :scale => 4
+    t.decimal  "DEPT",     :precision => 19, :scale => 4
+    t.decimal  "DEOT",     :precision => 19, :scale => 4
+    t.decimal  "DEALI",    :precision => 19, :scale => 4
+    t.decimal  "DEDR",     :precision => 19, :scale => 4
+    t.decimal  "DECPLT",   :precision => 19, :scale => 4
+    t.decimal  "DEOL",     :precision => 19, :scale => 4
+    t.decimal  "DENP1",    :precision => 19, :scale => 4
+    t.decimal  "DENP2",    :precision => 19, :scale => 4
+    t.decimal  "DENP3",    :precision => 19, :scale => 4
+    t.decimal  "DENP4",    :precision => 19, :scale => 4
+    t.decimal  "DENP5",    :precision => 19, :scale => 4
+    t.decimal  "DELCP",    :precision => 19, :scale => 4
+    t.decimal  "DESL",     :precision => 19, :scale => 4
+    t.decimal  "DEECS",    :precision => 19, :scale => 4
+    t.decimal  "DEEOE",    :precision => 19, :scale => 4
+    t.decimal  "DEEPC",    :precision => 19, :scale => 4
+    t.decimal  "DEEDP",    :precision => 19, :scale => 4
+    t.decimal  "DEEOW",    :precision => 19, :scale => 4
+    t.decimal  "DEERE",    :precision => 19, :scale => 4
+  end
+
+  add_index "de", ["CID"], :name => "CID"
+  add_index "de", ["DEID"], :name => "DEID"
+
+  create_table "ly", :primary_key => "LYID", :force => true do |t|
+    t.integer "CID"
+    t.decimal "LYCoH",      :precision => 19, :scale => 4
+    t.decimal "LYCkOne",    :precision => 19, :scale => 4
+    t.decimal "LYCkTwo",    :precision => 19, :scale => 4
+    t.decimal "LYCkThree",  :precision => 19, :scale => 4
+    t.decimal "LYAR",       :precision => 19, :scale => 4
+    t.decimal "LYMMA",      :precision => 19, :scale => 4
+    t.decimal "LYSTI",      :precision => 19, :scale => 4
+    t.decimal "LYADA",      :precision => 19, :scale => 4
+    t.decimal "LYER",       :precision => 19, :scale => 4
+    t.decimal "LYNRC",      :precision => 19, :scale => 4
+    t.decimal "LYI",        :precision => 19, :scale => 4
+    t.decimal "LYPPE",      :precision => 19, :scale => 4
+    t.decimal "LYUF",       :precision => 19, :scale => 4
+    t.decimal "LYFAVT",     :precision => 19, :scale => 4
+    t.decimal "LYFADVT",    :precision => 19, :scale => 4
+    t.decimal "LYFAOV",     :precision => 19, :scale => 4
+    t.decimal "LYFADOV",    :precision => 19, :scale => 4
+    t.decimal "LYFAEO",     :precision => 19, :scale => 4
+    t.decimal "LYFADEO",    :precision => 19, :scale => 4
+    t.decimal "LYFAFE",     :precision => 19, :scale => 4
+    t.decimal "LYFADFE",    :precision => 19, :scale => 4
+    t.decimal "LYFAL",      :precision => 19, :scale => 4
+    t.decimal "LYFAB",      :precision => 19, :scale => 4
+    t.decimal "LYFADB",     :precision => 19, :scale => 4
+    t.decimal "LYFALI",     :precision => 19, :scale => 4
+    t.decimal "LYFADLI",    :precision => 19, :scale => 4
+    t.decimal "LYNRLT",     :precision => 19, :scale => 4
+    t.decimal "LYS",        :precision => 19, :scale => 4
+    t.decimal "LYFRAone",   :precision => 19, :scale => 4
+    t.decimal "LYFRAtwo",   :precision => 19, :scale => 4
+    t.decimal "LYFRAthree", :precision => 19, :scale => 4
+    t.decimal "LYAAAone",   :precision => 19, :scale => 4
+    t.decimal "LYAAAtwo",   :precision => 19, :scale => 4
+    t.decimal "LYAAAthree", :precision => 19, :scale => 4
+    t.decimal "LYOIA",      :precision => 19, :scale => 4
+    t.decimal "LYAAOI",     :precision => 19, :scale => 4
+    t.decimal "LYOC",       :precision => 19, :scale => 4
+    t.decimal "LYAAOC",     :precision => 19, :scale => 4
+    t.decimal "LYD",        :precision => 19, :scale => 4
+    t.decimal "LYLTI",      :precision => 19, :scale => 4
+    t.decimal "LYOA",       :precision => 19, :scale => 4
+    t.decimal "LYAP",       :precision => 19, :scale => 4
+    t.decimal "LYCCone",    :precision => 19, :scale => 4
+    t.decimal "LYCCtwo",    :precision => 19, :scale => 4
+    t.decimal "LYCCthree",  :precision => 19, :scale => 4
+    t.decimal "LYALP",      :precision => 19, :scale => 4
+    t.decimal "LYALC",      :precision => 19, :scale => 4
+    t.decimal "LYALPT",     :precision => 19, :scale => 4
+    t.decimal "LYFICA",     :precision => 19, :scale => 4
+    t.decimal "LYM",        :precision => 19, :scale => 4
+    t.decimal "LYW",        :precision => 19, :scale => 4
+    t.decimal "LYALWC",     :precision => 19, :scale => 4
+    t.decimal "LYALST",     :precision => 19, :scale => 4
+    t.decimal "LYALPRT",    :precision => 19, :scale => 4
+    t.decimal "LYALOT",     :precision => 19, :scale => 4
+    t.decimal "LYALI",      :precision => 19, :scale => 4
+    t.decimal "LYALDR",     :precision => 19, :scale => 4
+    t.decimal "LYCPLT",     :precision => 19, :scale => 4
+    t.decimal "LYOL",       :precision => 19, :scale => 4
+    t.decimal "LYLTLone",   :precision => 19, :scale => 4
+    t.decimal "LYLTLtwo",   :precision => 19, :scale => 4
+    t.decimal "LYLTLthree", :precision => 19, :scale => 4
+    t.decimal "LYLTLfour",  :precision => 19, :scale => 4
+    t.decimal "LYLTLfive",  :precision => 19, :scale => 4
+    t.decimal "LYLCP",      :precision => 19, :scale => 4
+    t.decimal "LYSHL",      :precision => 19, :scale => 4
+    t.decimal "LYECS",      :precision => 19, :scale => 4
+    t.decimal "LYEOE",      :precision => 19, :scale => 4
+    t.decimal "LYEPC",      :precision => 19, :scale => 4
+    t.decimal "LYEDP",      :precision => 19, :scale => 4
+    t.decimal "LYEOW",      :precision => 19, :scale => 4
+    t.decimal "LYERE",      :precision => 19, :scale => 4
+    t.decimal "LYFESO",     :precision => 19, :scale => 4
+    t.decimal "LYFESM",     :precision => 19, :scale => 4
+    t.decimal "LYFESA",     :precision => 19, :scale => 4
+    t.decimal "LYFESOP",    :precision => 19, :scale => 4
+    t.decimal "LYFESS",     :precision => 19, :scale => 4
+    t.decimal "LYFEST",     :precision => 19, :scale => 4
+    t.decimal "LYFEB",      :precision => 19, :scale => 4
+    t.decimal "LYFEPT",     :precision => 19, :scale => 4
+    t.decimal "LYFEWCI",    :precision => 19, :scale => 4
+    t.decimal "LYFEEB",     :precision => 19, :scale => 4
+    t.decimal "LYFEHVP",    :precision => 19, :scale => 4
+    t.decimal "LYFET",      :precision => 19, :scale => 4
+    t.decimal "LYFETH",     :precision => 19, :scale => 4
+    t.decimal "LYFER",      :precision => 19, :scale => 4
+    t.decimal "LYFEU",      :precision => 19, :scale => 4
+    t.decimal "LYFEBRM",    :precision => 19, :scale => 4
+    t.decimal "LYFETL",     :precision => 19, :scale => 4
+    t.decimal "LYFETO",     :precision => 19, :scale => 4
+    t.decimal "LYFECP",     :precision => 19, :scale => 4
+    t.decimal "LYFELI",     :precision => 19, :scale => 4
+    t.decimal "LYFECCSF",   :precision => 19, :scale => 4
+    t.decimal "LYFEAB",     :precision => 19, :scale => 4
+    t.decimal "LYFEPR",     :precision => 19, :scale => 4
+    t.decimal "LYFECV",     :precision => 19, :scale => 4
+    t.decimal "LYFEDV",     :precision => 19, :scale => 4
+    t.decimal "LYFEDM",     :precision => 19, :scale => 4
+    t.decimal "LYFENM",     :precision => 19, :scale => 4
+    t.decimal "LYFEEC",     :precision => 19, :scale => 4
+    t.decimal "LYFEHMS",    :precision => 19, :scale => 4
+    t.decimal "LYFEO",      :precision => 19, :scale => 4
+    t.decimal "LYFEISS",    :precision => 19, :scale => 4
+    t.decimal "LYFESRV",    :precision => 19, :scale => 4
+    t.decimal "LYFEYS",     :precision => 19, :scale => 4
+    t.decimal "LYFEYPPO",   :precision => 19, :scale => 4
+    t.decimal "LYFERR",     :precision => 19, :scale => 4
+    t.decimal "LYFEOS",     :precision => 19, :scale => 4
+    t.decimal "LYFEP",      :precision => 19, :scale => 4
+    t.decimal "LYFEPOS",    :precision => 19, :scale => 4
+    t.decimal "LYFEOEL",    :precision => 19, :scale => 4
+    t.decimal "LYFEFEL",    :precision => 19, :scale => 4
+    t.decimal "LYFEOERM",   :precision => 19, :scale => 4
+    t.decimal "LYFESD",     :precision => 19, :scale => 4
+    t.decimal "LYFEULR",    :precision => 19, :scale => 4
+    t.decimal "LYFEVL",     :precision => 19, :scale => 4
+    t.decimal "LYFEVRM",    :precision => 19, :scale => 4
+    t.decimal "LYFEVI",     :precision => 19, :scale => 4
+    t.decimal "LYFEVF",     :precision => 19, :scale => 4
+    t.decimal "LYFEL",      :precision => 19, :scale => 4
+    t.decimal "LYFEAF",     :precision => 19, :scale => 4
+    t.decimal "LYFELF",     :precision => 19, :scale => 4
+    t.decimal "LYFEEER",    :precision => 19, :scale => 4
+    t.decimal "LYFEOSER",   :precision => 19, :scale => 4
+    t.decimal "LYFECE",     :precision => 19, :scale => 4
+    t.decimal "LYFEBSC",    :precision => 19, :scale => 4
+    t.decimal "LYFEDS",     :precision => 19, :scale => 4
+    t.decimal "LYFEC",      :precision => 19, :scale => 4
+    t.decimal "LYFEBD",     :precision => 19, :scale => 4
+    t.decimal "LYFECT",     :precision => 19, :scale => 4
+    t.decimal "LYFEME",     :precision => 19, :scale => 4
+    t.decimal "LYFEM",      :precision => 19, :scale => 4
+    t.decimal "LYFEII",     :precision => 19, :scale => 4
+    t.decimal "LYFEDTV",    :precision => 19, :scale => 4
+    t.decimal "LYFEIE",     :precision => 19, :scale => 4
+    t.decimal "LYFED",      :precision => 19, :scale => 4
+    t.decimal "LYFEA",      :precision => 19, :scale => 4
+    t.decimal "LYFEOE",     :precision => 19, :scale => 4
+    t.decimal "LYFEIT",     :precision => 19, :scale => 4
+    t.decimal "LYFENone",   :precision => 19, :scale => 4
+    t.decimal "LYFENtwo",   :precision => 19, :scale => 4
+  end
+
+  add_index "ly", ["CID"], :name => "CID"
+  add_index "ly", ["LYID"], :name => "LYID"
+
+  create_table "ny", :primary_key => "NYID", :force => true do |t|
+    t.integer "CID"
+    t.decimal "NYCoH",      :precision => 19, :scale => 4
+    t.decimal "NYCkOne",    :precision => 19, :scale => 4
+    t.decimal "NYCkTwo",    :precision => 19, :scale => 4
+    t.decimal "NYCkThree",  :precision => 19, :scale => 4
+    t.decimal "NYAR",       :precision => 19, :scale => 4
+    t.decimal "NYMMA",      :precision => 19, :scale => 4
+    t.decimal "NYSTI",      :precision => 19, :scale => 4
+    t.decimal "NYADA",      :precision => 19, :scale => 4
+    t.decimal "NYER",       :precision => 19, :scale => 4
+    t.decimal "NYNRC",      :precision => 19, :scale => 4
+    t.decimal "NYI",        :precision => 19, :scale => 4
+    t.decimal "NYPPE",      :precision => 19, :scale => 4
+    t.decimal "NYUF",       :precision => 19, :scale => 4
+    t.decimal "NYFAVT",     :precision => 19, :scale => 4
+    t.decimal "NYFADVT",    :precision => 19, :scale => 4
+    t.decimal "NYFAOV",     :precision => 19, :scale => 4
+    t.decimal "NYFADOV",    :precision => 19, :scale => 4
+    t.decimal "NYFAEO",     :precision => 19, :scale => 4
+    t.decimal "NYFADEO",    :precision => 19, :scale => 4
+    t.decimal "NYFAFE",     :precision => 19, :scale => 4
+    t.decimal "NYFADFE",    :precision => 19, :scale => 4
+    t.decimal "NYFAL",      :precision => 19, :scale => 4
+    t.decimal "NYFAB",      :precision => 19, :scale => 4
+    t.decimal "NYFADB",     :precision => 19, :scale => 4
+    t.decimal "NYFALI",     :precision => 19, :scale => 4
+    t.decimal "NYFADLI",    :precision => 19, :scale => 4
+    t.decimal "NYNRLT",     :precision => 19, :scale => 4
+    t.decimal "NYS",        :precision => 19, :scale => 4
+    t.decimal "NYFRAone",   :precision => 19, :scale => 4
+    t.decimal "NYFRAtwo",   :precision => 19, :scale => 4
+    t.decimal "NYFRAthree", :precision => 19, :scale => 4
+    t.decimal "NYAAAone",   :precision => 19, :scale => 4
+    t.decimal "NYAAAtwo",   :precision => 19, :scale => 4
+    t.decimal "NYAAAthree", :precision => 19, :scale => 4
+    t.decimal "NYOIA",      :precision => 19, :scale => 4
+    t.decimal "NYAAOI",     :precision => 19, :scale => 4
+    t.decimal "NYOC",       :precision => 19, :scale => 4
+    t.decimal "NYAAOC",     :precision => 19, :scale => 4
+    t.decimal "NYD",        :precision => 19, :scale => 4
+    t.decimal "NYLTI",      :precision => 19, :scale => 4
+    t.decimal "NYOA",       :precision => 19, :scale => 4
+    t.decimal "NYAP",       :precision => 19, :scale => 4
+    t.decimal "NYCCone",    :precision => 19, :scale => 4
+    t.decimal "NYCCtwo",    :precision => 19, :scale => 4
+    t.decimal "NYCCthree",  :precision => 19, :scale => 4
+    t.decimal "NYALP",      :precision => 19, :scale => 4
+    t.decimal "NYALC",      :precision => 19, :scale => 4
+    t.decimal "NYALPT",     :precision => 19, :scale => 4
+    t.decimal "NYFICA",     :precision => 19, :scale => 4
+    t.decimal "NYM",        :precision => 19, :scale => 4
+    t.decimal "NYW",        :precision => 19, :scale => 4
+    t.decimal "NYALWC",     :precision => 19, :scale => 4
+    t.decimal "NYALST",     :precision => 19, :scale => 4
+    t.decimal "NYALPRT",    :precision => 19, :scale => 4
+    t.decimal "NYALOT",     :precision => 19, :scale => 4
+    t.decimal "NYALI",      :precision => 19, :scale => 4
+    t.decimal "NYALDR",     :precision => 19, :scale => 4
+    t.decimal "NYCPLT",     :precision => 19, :scale => 4
+    t.decimal "NYOL",       :precision => 19, :scale => 4
+    t.decimal "NYLTLone",   :precision => 19, :scale => 4
+    t.decimal "NYLTLtwo",   :precision => 19, :scale => 4
+    t.decimal "NYLTLthree", :precision => 19, :scale => 4
+    t.decimal "NYLTLfour",  :precision => 19, :scale => 4
+    t.decimal "NYLTLfive",  :precision => 19, :scale => 4
+    t.decimal "NYLCP",      :precision => 19, :scale => 4
+    t.decimal "NYSHL",      :precision => 19, :scale => 4
+    t.decimal "NYECS",      :precision => 19, :scale => 4
+    t.decimal "NYEOE",      :precision => 19, :scale => 4
+    t.decimal "NYEPC",      :precision => 19, :scale => 4
+    t.decimal "NYEDP",      :precision => 19, :scale => 4
+    t.decimal "NYEOW",      :precision => 19, :scale => 4
+    t.decimal "NYERE",      :precision => 19, :scale => 4
+    t.decimal "NYFESO",     :precision => 19, :scale => 4
+    t.decimal "NYFESM",     :precision => 19, :scale => 4
+    t.decimal "NYFESA",     :precision => 19, :scale => 4
+    t.decimal "NYFESOP",    :precision => 19, :scale => 4
+    t.decimal "NYFESS",     :precision => 19, :scale => 4
+    t.decimal "NYFEST",     :precision => 19, :scale => 4
+    t.decimal "NYFEB",      :precision => 19, :scale => 4
+    t.decimal "NYFEEB",     :precision => 19, :scale => 4
+    t.decimal "NYFEHVP",    :precision => 19, :scale => 4
+    t.decimal "NYFET",      :precision => 19, :scale => 4
+    t.decimal "NYFETH",     :precision => 19, :scale => 4
+    t.decimal "NYFER",      :precision => 19, :scale => 4
+    t.decimal "NYFEU",      :precision => 19, :scale => 4
+    t.decimal "NYFEBRM",    :precision => 19, :scale => 4
+    t.decimal "NYFETL",     :precision => 19, :scale => 4
+    t.decimal "NYFETO",     :precision => 19, :scale => 4
+    t.decimal "NYFECP",     :precision => 19, :scale => 4
+    t.decimal "NYFELI",     :precision => 19, :scale => 4
+    t.decimal "NYFECCSF",   :precision => 19, :scale => 4
+    t.decimal "NYFERR",     :precision => 19, :scale => 4
+    t.decimal "NYFEOS",     :precision => 19, :scale => 4
+    t.decimal "NYFEP",      :precision => 19, :scale => 4
+    t.decimal "NYFEPOS",    :precision => 19, :scale => 4
+    t.decimal "NYFEOEL",    :precision => 19, :scale => 4
+    t.decimal "NYFEFEL",    :precision => 19, :scale => 4
+    t.decimal "NYFEOERM",   :precision => 19, :scale => 4
+    t.decimal "NYFESD",     :precision => 19, :scale => 4
+    t.decimal "NYFEULR",    :precision => 19, :scale => 4
+    t.decimal "NYFEVL",     :precision => 19, :scale => 4
+    t.decimal "NYFEVRM",    :precision => 19, :scale => 4
+    t.decimal "NYFEVI",     :precision => 19, :scale => 4
+    t.decimal "NYFEVF",     :precision => 19, :scale => 4
+    t.decimal "NYFEL",      :precision => 19, :scale => 4
+    t.decimal "NYFEAF",     :precision => 19, :scale => 4
+    t.decimal "NYFELF",     :precision => 19, :scale => 4
+    t.decimal "NYFEEER",    :precision => 19, :scale => 4
+    t.decimal "NYFEOSER",   :precision => 19, :scale => 4
+    t.decimal "NYFECE",     :precision => 19, :scale => 4
+    t.decimal "NYFEBSC",    :precision => 19, :scale => 4
+    t.decimal "NYFEDS",     :precision => 19, :scale => 4
+    t.decimal "NYFEC",      :precision => 19, :scale => 4
+    t.decimal "NYFEBD",     :precision => 19, :scale => 4
+    t.decimal "NYFECT",     :precision => 19, :scale => 4
+    t.decimal "NYFEME",     :precision => 19, :scale => 4
+    t.decimal "NYFEM",      :precision => 19, :scale => 4
+    t.decimal "NYFEII",     :precision => 19, :scale => 4
+    t.decimal "NYFEDTV",    :precision => 19, :scale => 4
+    t.decimal "NYFEIE",     :precision => 19, :scale => 4
+    t.decimal "NYFED",      :precision => 19, :scale => 4
+    t.decimal "NYFEA",      :precision => 19, :scale => 4
+    t.decimal "NYFEOE",     :precision => 19, :scale => 4
+    t.decimal "NYFEIT",     :precision => 19, :scale => 4
+    t.decimal "NYFENone",   :precision => 19, :scale => 4
+    t.decimal "NYFENtwo",   :precision => 19, :scale => 4
+    t.float   "NYEPT"
+    t.float   "NYEWC"
+    t.float   "NYFWC"
+  end
+
+  add_index "ny", ["CID"], :name => "CID"
+  add_index "ny", ["NYID"], :name => "NYID"
+
+  create_table "oc", :primary_key => "OCID", :force => true do |t|
+    t.integer "CID",  :null => false
+    t.integer "PCID"
+    t.string  "OCP"
+    t.string  "OCN"
+    t.string  "OCC"
+    t.float   "OCPG"
+  end
+
+  add_index "oc", ["CID"], :name => "CID"
+  add_index "oc", ["OCID"], :name => "OCID"
+  add_index "oc", ["PCID"], :name => "PCID"
+
+  create_table "pc", :primary_key => "PCID", :force => true do |t|
+    t.integer "CID"
+    t.string  "PCN", :limit => 100
+  end
+
+  add_index "pc", ["CID"], :name => "CID"
+  add_index "pc", ["PCID"], :name => "PCID"
+
+  create_table "pcdt", :primary_key => "DTID", :force => true do |t|
+    t.integer "PCID"
+    t.decimal "DTJ",  :precision => 19, :scale => 4
+    t.decimal "DTF",  :precision => 19, :scale => 4
+    t.decimal "DTM",  :precision => 19, :scale => 4
+    t.decimal "DTA",  :precision => 19, :scale => 4
+    t.decimal "DTMY", :precision => 19, :scale => 4
+    t.decimal "DTJN", :precision => 19, :scale => 4
+    t.decimal "DTJL", :precision => 19, :scale => 4
+    t.decimal "DTAG", :precision => 19, :scale => 4
+    t.decimal "DTS",  :precision => 19, :scale => 4
+    t.decimal "DTO",  :precision => 19, :scale => 4
+    t.decimal "DTN",  :precision => 19, :scale => 4
+    t.decimal "DTD",  :precision => 19, :scale => 4
+  end
+
+  add_index "pcdt", ["DTID"], :name => "DTID"
+  add_index "pcdt", ["PCID"], :name => "PCID"
+
+  create_table "pcly", :primary_key => "PCLYID", :force => true do |t|
+    t.integer "PCID"
+    t.decimal "PCLYRS",   :precision => 19, :scale => 4
+    t.decimal "PCLYRAO",  :precision => 19, :scale => 4
+    t.decimal "PCLYRSA",  :precision => 19, :scale => 4
+    t.decimal "PCLYRR",   :precision => 19, :scale => 4
+    t.decimal "PCLYRRA",  :precision => 19, :scale => 4
+    t.decimal "PCLYCS",   :precision => 19, :scale => 4
+    t.decimal "PCLYCAO",  :precision => 19, :scale => 4
+    t.decimal "PCLYCSA",  :precision => 19, :scale => 4
+    t.decimal "PCLYCR",   :precision => 19, :scale => 4
+    t.decimal "PCLYCRA",  :precision => 19, :scale => 4
+    t.decimal "PCLYM",    :precision => 19, :scale => 4
+    t.decimal "PCLYLTL",  :precision => 19, :scale => 4
+    t.decimal "PCLYLTC",  :precision => 19, :scale => 4
+    t.decimal "PCLYLPTF", :precision => 19, :scale => 4
+    t.decimal "PCLYLWCI", :precision => 19, :scale => 4
+    t.decimal "PCLYLTB",  :precision => 19, :scale => 4
+    t.decimal "PCLYSC",   :precision => 19, :scale => 4
+    t.decimal "PCLYP",    :precision => 19, :scale => 4
+    t.decimal "PCLYW",    :precision => 19, :scale => 4
+    t.decimal "PCLYSCT",  :precision => 19, :scale => 4
+    t.decimal "PCLYVF",   :precision => 19, :scale => 4
+    t.decimal "PCLYVMR",  :precision => 19, :scale => 4
+    t.decimal "PCLYT",    :precision => 19, :scale => 4
+    t.decimal "PCLYFSF",  :precision => 19, :scale => 4
+    t.decimal "PCLYFNAD", :precision => 19, :scale => 4
+    t.decimal "PCLYPD",   :precision => 19, :scale => 4
+  end
+
+  add_index "pcly", ["PCID"], :name => "PCID"
+  add_index "pcly", ["PCLYID"], :name => "PCLYID"
+
+  create_table "pcny", :primary_key => "PCNYID", :force => true do |t|
+    t.integer "PCID"
+    t.decimal "PCNYTS",     :precision => 19, :scale => 4
+    t.float   "PCNYAO"
+    t.float   "PCNYSA"
+    t.float   "PCNYR"
+    t.float   "PCNYRA"
+    t.float   "PCNYCS"
+    t.float   "PCNYCAO"
+    t.float   "PCNYCSA"
+    t.float   "PCNYCR"
+    t.float   "PCNYCRA"
+    t.float   "PCNYVEM"
+    t.float   "PCNYVETL"
+    t.float   "PCNYVETC"
+    t.float   "PCNYVETB"
+    t.float   "PCNYVESC"
+    t.float   "PCNYVEP"
+    t.float   "PCNYVEW"
+    t.float   "PCNYVES"
+    t.float   "PCNYVEVF"
+    t.float   "PCNYVEVMR"
+    t.float   "PVNYVET"
+    t.float   "PCNYVEFSF"
+    t.float   "PCNYVEFNAF"
+    t.float   "PCNYVEPD"
+  end
+
+  add_index "pcny", ["PCID"], :name => "PCID"
+  add_index "pcny", ["PCNYID"], :name => "PCNYID"
 
   create_table "refinery_blog_categories", :force => true do |t|
     t.string   "title"
@@ -230,5 +803,22 @@ ActiveRecord::Schema.define(:version => 20120819004133) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "task", :primary_key => "TID", :force => true do |t|
+    t.integer  "CID"
+    t.text     "Task",  :limit => 2147483647
+    t.datetime "TDate"
+  end
+
+  add_index "task", ["CID"], :name => "CID"
+  add_index "task", ["TID"], :name => "TID"
+
+  create_table "user", :primary_key => "UserID", :force => true do |t|
+    t.integer "CID"
+    t.string  "UserType",  :limit => 50
+    t.string  "UserPsswd", :limit => 10
+  end
+
+  add_index "user", ["CID"], :name => "CID"
 
 end
