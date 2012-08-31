@@ -1,0 +1,15 @@
+<% content_for :body_content_title do %>
+  <%= @customer.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Id</h1>
+    <p>
+      <%=raw @customer.id %>
+    </p>
+    <%= link_to "Edit", refinery.edit_akouo_customer_path %>
+  </section>
+<% end %>
+
+<%= render '/refinery/content_page' %>

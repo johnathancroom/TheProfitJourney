@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120828192616) do
     t.text     "CCG",        :limit => 2147483647
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.integer  "user_id"
   end
 
   create_table "de", :primary_key => "DEID", :force => true do |t|

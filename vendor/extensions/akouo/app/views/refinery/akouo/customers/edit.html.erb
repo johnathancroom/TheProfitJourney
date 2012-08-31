@@ -1,0 +1,14 @@
+<% content_for :body_content_title do %>
+  <%= @customer.title %>
+<% end %>
+
+<% content_for :body do %>
+  <%= form_for @customer, :url => refinery.akouo_customer_path, :method => "PUT" do |f| %>
+    <%= f.label :id, "ID" %>
+    <%= f.text_field :id %>
+
+    <div><%= f.submit "Save changes" %></div>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

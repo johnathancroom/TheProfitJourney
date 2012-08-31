@@ -11,3 +11,6 @@ Refinery::Pages::Engine.load_seed
 
 # Added by Refinery CMS Blog engine
 Refinery::Blog::Engine.load_seed
+
+# Added by Refinery CMS Akouos extension
+Refinery::Akouo::Engine.load_seed

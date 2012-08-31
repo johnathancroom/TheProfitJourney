@@ -1,0 +1,27 @@
+nb:
+  refinery:
+    plugins:
+      akouos:
+        title: Akouos
+    akouo:
+      admin:
+        akouos:
+          actions:
+            create_new: Lag en ny Akouo
+            reorder: Endre rekkefølgen på Akouos
+            reorder_done: Ferdig å endre rekkefølgen Akouos
+          records:
+            title: Akouos
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Akouos enda. Klikk på "Lag en ny Akouo" for å legge til din første akouo.
+          akouo:
+            view_live_html: Vis hvordan denne akouo ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne akouo
+            delete: Fjern denne akouo permanent
+      akouos:
+        show:
+          other: Andre Akouos
+  activerecord:
+    attributes:
+      'refinery/akouo/akouo':
+        id: Id

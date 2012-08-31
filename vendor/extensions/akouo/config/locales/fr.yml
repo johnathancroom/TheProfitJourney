@@ -1,0 +1,27 @@
+fr:
+  refinery:
+    plugins:
+      akouos:
+        title: Akouos
+    akouo:
+      admin:
+        akouos:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Akouo
+            reorder: Réordonner les Akouos
+            reorder_done: Fin de réordonnancement des Akouos
+          records:
+            title: Akouos
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Akouo. Cliquer sur "Créer un(e) nouve(au/l/lle) Akouo" pour créer votre premi(er/ère) akouo.'
+          akouo:
+            view_live_html: Voir ce(t/tte) akouo <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) akouo
+            delete: Supprimer définitivement ce(t/tte) akouo
+      akouos:
+        show:
+          other: Autres Akouos
+  activerecord:
+    attributes:
+      'refinery/akouo/akouo':
+        id: Id

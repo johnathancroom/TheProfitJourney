@@ -1,0 +1,27 @@
+en:
+  refinery:
+    plugins:
+      akouos:
+        title: Akouos
+    akouo:
+      admin:
+        akouos:
+          actions:
+            create_new: Add New Akouo
+            reorder: Reorder Akouos
+            reorder_done: Done Reordering Akouos
+          records:
+            title: Akouos
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Akouos yet. Click "Add New Akouo" to add your first akouo.
+          akouo:
+            view_live_html: View this akouo live <br/><em>(opens in a new window)</em>
+            edit: Edit this akouo
+            delete: Remove this akouo forever
+      akouos:
+        show:
+          other: Other Akouos
+  activerecord:
+    attributes:
+      'refinery/akouo/akouo':
+        id: Id
