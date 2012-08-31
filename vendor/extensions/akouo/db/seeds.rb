@@ -10,16 +10,24 @@
     end
   end
 
-  url = "/akouo/customer"
-  if defined?(Refinery::Page) && Refinery::Page.where(:link_url => url).empty?
-    page = Refinery::Page.create(
-      :title => 'Akouos',
-      :link_url => url,
-      :deletable => false,
-      :menu_match => "^#{url}(\/|\/.+?|)$"
-    )
-    Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
-      page.parts.create(:title => default_page_part, :body => nil, :position => index)
+  pages = [
+    ["/akouo", "Akouo"],
+    ["/akouo/customer", "Customer"]
+  ]
+
+  pages.each do |this|
+    if defined?(Refinery::Page) && Refinery::Page.where(:link_url => this[0]).empty?
+      page = Refinery::Page.create(
+        :title => this[1],
+        :link_url => this[0],
+        :deletable => false,
+        :parent_id => (page.id if (page = ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
+        :show_in_menu => false,
+        :menu_match => "^#{this[0]}(\/|\/.+?|)$"
+      )
+      Refinery::Pages.default_parts.each_with_index do |default_page_part, index|
+        page.parts.create(:title => default_page_part, :body => nil, :position => index)
+      end
     end
   end
 end

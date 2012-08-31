@@ -2,6 +2,7 @@ Refinery::Core::Engine.routes.append do
 
   # Frontend routes
   namespace :akouo do
+    resources :home, :path => "", :only => [:index]
     resource :customer, :only => [:show, :edit, :update]
   end
 
