@@ -1,7 +1,7 @@
 module Refinery
   module Akouo
     module Admin
-      class AkouosController < ::Refinery::AdminController
+      class HomeController < ::Refinery::AdminController
       end
     end
   end

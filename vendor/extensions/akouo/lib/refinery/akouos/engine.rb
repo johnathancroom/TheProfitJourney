@@ -9,12 +9,12 @@ module Refinery
       initializer "register refinerycms_akouos plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.name = "akouos"
-          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.akouo_admin_akouos_path }
+          plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.akouo_admin_home_index_path }
           plugin.pathname = root
           plugin.activity = {
-            :class_name => :'refinery/akouo/akouo'
+            :class_name => :'refinery/akouo'
           }
-          plugin.menu_match = %r{refinery/akouo/akouos(/.*)?$}
+          plugin.menu_match = %r{refinery/akouo(/.*)?$}
         end
       end
 

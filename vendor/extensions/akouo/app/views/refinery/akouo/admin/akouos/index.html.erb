@@ -1,7 +1,0 @@
-<section id='records'>
-  <%= render 'records' %>
-</section>
-<aside id='actions'>
-  <%= render 'actions' %>
-</aside>
-<%= render '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Akouo::Admin::AkouosController.sortable? and ::Refinery::Akouo::Akouo.count > 1 %>

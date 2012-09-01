@@ -9,7 +9,9 @@ Refinery::Core::Engine.routes.append do
   # Admin routes
   namespace :akouo, :path => '' do
     namespace :admin, :path => 'refinery/akouo' do
-      resources :akouos, :except => :show do
+      resources :home, :path => "", :only => [:index]
+
+      resources :customers, :except => :show do
         collection do
           post :update_positions
         end
