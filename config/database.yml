@@ -1,11 +1,11 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: theprofitjourney
+  database: <%= ENV["DB_NAME"] || "theprofitjourney" %>
   pool: 5
-  username: root
-  password: root
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  username: <%= ENV["DB_USER"] || "root" %>
+  password: <%= ENV["DB_PASS"] || "root" %>
+  socket: <%= ENV["DB_SOCKET"] || "/Applications/MAMP/tmp/mysql/mysql.sock" %>
 # test:
 #   adapter: sqlite3
 #   database: db/test.sqlite3
