@@ -4,7 +4,7 @@ module Refinery
   autoload :AkouoGenerator, 'generators/refinery/akouo_generator'
 
   module Akouos
-    require 'refinery/akouos/engine'
+    require 'refinery/akouo/engine'
 
     class << self
       attr_writer :root

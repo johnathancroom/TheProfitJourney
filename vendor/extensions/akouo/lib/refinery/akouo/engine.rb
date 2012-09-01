@@ -6,9 +6,9 @@ module Refinery
 
       engine_name :refinery_akouo
 
-      initializer "register refinerycms_akouos plugin" do
+      initializer "register refinerycms_akouo plugin" do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "akouos"
+          plugin.name = "akouo"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.akouo_admin_home_index_path }
           plugin.pathname = root
           plugin.activity = {

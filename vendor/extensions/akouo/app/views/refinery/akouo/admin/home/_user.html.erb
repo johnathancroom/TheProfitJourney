@@ -1,0 +1,9 @@
+<li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= user.username %></strong>
+    <span class="preview"></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('application_edit.png'), "", :title => "View Business Plan" %>
+  </span>
+</li>

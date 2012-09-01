@@ -1,1 +1,1 @@
-require 'refinery/akouos'
+require 'refinery/akouo'
