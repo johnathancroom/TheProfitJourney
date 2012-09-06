@@ -3,7 +3,7 @@ Refinery::AdminController.class_eval do
 
   # Redirect back if you don't have admin permissions
   def check_admin_permissions
-    if !current_refinery_user.has_role?(:superuser)
+    if !current_refinery_user.has_role?(:refinery)
       redirect_to root_path
     end
   end
