@@ -6,17 +6,14 @@ module Refinery
       before_filter :find_page
 
       def index
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @workshop in the line below:
-        present(@page)
       end
 
       def show
         @workshop = Workshop.find(params[:id])
+      end
 
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @workshop in the line below:
-        present(@page)
+      def signup
+        @workshop = Workshop.find(params[:id])
       end
 
     protected

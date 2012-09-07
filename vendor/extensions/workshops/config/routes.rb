@@ -4,6 +4,7 @@ Refinery::Core::Engine.routes.append do
   namespace :workshops do
     match "calendar" => "workshops#index", :as => "workshops"
     match "calendar/:id" => "workshops#show", :as => "workshop"
+    match "calendar/:id/signup" => "workshops#signup", :as => "workshop_signup"
     #resources :workshops, :only => [:index, :show]
   end
 
