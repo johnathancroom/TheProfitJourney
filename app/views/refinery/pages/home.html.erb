@@ -1,1 +1,23 @@
-Home page
+<div class="slideshow">
+
+</div>
+
+<div class="top_images">
+  <%= raw @page.content_for(:top_images) %>
+</div>
+
+<section id="page">
+  <section id="content" class="home">
+    <section class="left">
+      <%= raw @page.content_for(:left) %>
+    </section>
+    <section class="middle">
+      <%= raw @page.content_for(:middle) %>
+    </section>
+    <section class="bottom">
+      <%= raw @page.content_for(:bottom) %>
+    </section>
+  </section>
+
+  <%= render "/refinery/sidebar" %>
+</section>
