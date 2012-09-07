@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:pretty] = lambda { |time| time.strftime "%B #{time.day.ordinalize}, %Y %l:%M%p %Z" }

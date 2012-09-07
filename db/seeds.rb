@@ -14,3 +14,6 @@ Refinery::Blog::Engine.load_seed
 
 # Added by Refinery CMS Akouos extension
 Refinery::Akouo::Engine.load_seed
+
+# Added by Refinery CMS Workshops extension
+Refinery::Workshops::Engine.load_seed

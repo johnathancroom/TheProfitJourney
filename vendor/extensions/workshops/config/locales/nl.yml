@@ -1,0 +1,31 @@
+nl:
+  refinery:
+    plugins:
+      workshops:
+        title: Workshops
+    workshops:
+      admin:
+        workshops:
+          actions:
+            create_new: Maak een nieuwe Workshop
+            reorder: Wijzig de volgorde van de Workshops
+            reorder_done: Klaar met het wijzingen van de volgorde van de Workshops
+          records:
+            title: Workshops
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Workshops. Druk op 'Maak een nieuwe Workshop' om de eerste aan te maken.
+          workshop:
+            view_live_html: Bekijk deze workshop op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze workshop
+            delete: Verwijder deze workshop voor eeuwig
+      workshops:
+        show:
+          other: Andere Workshops
+  activerecord:
+    attributes:
+      'refinery/workshops/workshop':
+        title: Title
+        description: Description
+        location: Location
+        date: Date
+        seats: Seats

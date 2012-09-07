@@ -227,6 +227,9 @@ a {
     border: 1px solid #f1dba0;
     padding: 14px;
 
+    h1 {
+      margin: 0;
+    }
     div {
       margin-top: 10px;
     }
@@ -290,6 +293,23 @@ a {
   float: left;
   margin-right: 10px;
   width: 283px;
+}
+.workshop-meta {
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+
+  thead {
+    font-weight: bold;
+  }
+  th,
+  td {
+    padding-right: 15px;
+  }
+  td {
+    padding-bottom: 10px;
+  }
 }
 #footer {
   background-color: #212121;

@@ -19,6 +19,8 @@ PATH
   specs:
     refinerycms-akouo (1.0)
       refinerycms-core (~> 2.0.8)
+    refinerycms-workshops (1.0)
+      refinerycms-core (~> 2.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -220,6 +222,7 @@ DEPENDENCIES
   refinerycms-akouo!
   refinerycms-blog (~> 2.0.0)
   refinerycms-core (~> 2.0.0)!
+  refinerycms-workshops!
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer

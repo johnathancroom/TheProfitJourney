@@ -55,5 +55,8 @@ module TheProfitJourney
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Set the time zone
+    config.time_zone = "Mountain Time (US & Canada)"
   end
 end

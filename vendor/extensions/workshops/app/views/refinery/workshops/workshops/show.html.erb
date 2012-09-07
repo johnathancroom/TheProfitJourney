@@ -1,0 +1,33 @@
+<% content_for :body_content_title do %>
+  <%= @workshop.title %>
+<% end %>
+<% content_for :title do %>
+  <%= @workshop.title %>
+<% end %>
+
+<% content_for :body do %>
+  <table class="workshop-meta">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Seats Available</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @workshop.location %></td>
+        <td><%= "12/#{@workshop.seats}" %></td>
+        <td><%= @workshop.date.to_formatted_s(:pretty) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <%=raw @workshop.description %>
+  </p>
+
+  <a href="#">Sign up!</a>
+<% end %>
+
+<%= render '/refinery/content_page' %>
