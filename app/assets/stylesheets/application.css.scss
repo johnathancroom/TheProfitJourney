@@ -17,6 +17,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
 }
+a {
+  color: #055119;
+  text-decoration: underline;
+}
+.strong {
+  font-weight: bold;
+}
 #page_container,
 .container {
   margin: 0 auto;
@@ -176,6 +183,41 @@ h1, h2, h3, h4, h5, h6 {
 #sidebar {
   float: right;
   width: 30%;
+}
+#sidebar .workshop {
+  background-color: #d1e0d4;
+  border: 1px solid #02642d;
+
+  h1 {
+    background-color: #02642d;
+    color: #FFF;
+    font-size: 17px;
+    padding: 6px 12px;
+  }
+  .body {
+    line-height: 1.1;
+    padding: 0 12px 6px;
+  }
+  ol > li {
+    border-bottom: 1px dotted #889089;
+    padding: 14px 0;
+  }
+  a {
+    color: #232323;
+    text-decoration: none;
+  }
+  .anchor,
+  .view_all {
+    color: #055119;
+    text-decoration: underline;
+  }
+  .view_all {
+    background-color: #d1e0d4;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    width: 100%;
+  }
 }
 #content {
   float: left;
