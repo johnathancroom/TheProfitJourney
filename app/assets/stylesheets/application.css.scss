@@ -24,6 +24,9 @@ a {
 .strong {
   font-weight: bold;
 }
+.text-right {
+  text-align: right;
+}
 #page_container,
 .container {
   margin: 0 auto;
@@ -310,6 +313,14 @@ a {
   td {
     padding-bottom: 10px;
   }
+}
+.signup {
+  background-color: #02642d;
+  color: #fff;
+  padding: 6px 8px;
+  position: relative;
+  text-decoration: none;
+  top: 10px;
 }
 #footer {
   background-color: #212121;

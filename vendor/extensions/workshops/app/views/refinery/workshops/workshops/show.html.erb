@@ -12,6 +12,7 @@
         <th>Location</th>
         <th>Seats Available</th>
         <th>Date</th>
+        <th class="text-right"><a href="#" class="signup">Sign up!</a></th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td><%= @workshop.location %></td>
         <td><%= "12/#{@workshop.seats}" %></td>
         <td><%= @workshop.date.to_formatted_s(:pretty) %></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -26,8 +28,6 @@
   <p>
     <%=raw @workshop.description %>
   </p>
-
-  <a href="#">Sign up!</a>
 <% end %>
 
 <%= render '/refinery/content_page' %>
