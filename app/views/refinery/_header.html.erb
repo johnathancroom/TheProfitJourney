@@ -8,7 +8,7 @@
              :dom_id => 'menu',
              :css => 'menu'
            }) %>
-<% if refinery_user? %>
+<% if refinery_user? && current_refinery_user.has_role?(:member) %>
   <div class="member_menu_space"></div>
 
   <ul class="member_menu">
