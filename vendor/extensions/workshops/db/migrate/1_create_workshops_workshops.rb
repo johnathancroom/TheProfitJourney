@@ -20,7 +20,7 @@ class CreateWorkshopsWorkshops < ActiveRecord::Migration
     end
 
     if defined?(::Refinery::Page)
-      ::Refinery::Page.delete_all({:link_url => "/workshops/workshops"})
+      #::Refinery::Page.delete_all({:link_url => "/workshops/calendar"})
     end
 
     drop_table :refinery_workshops

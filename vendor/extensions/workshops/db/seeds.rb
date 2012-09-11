@@ -10,10 +10,10 @@
     end
   end
 
-  url = "/workshops"
+  url = "/workshops/calendar"
   if defined?(Refinery::Page) && Refinery::Page.where(:link_url => url).empty?
     page = Refinery::Page.create(
-      :title => 'Workshops',
+      :title => "Workshop Calendar",
       :link_url => url,
       :deletable => false,
       :menu_match => "^#{url}(\/|\/.+?|)$"
