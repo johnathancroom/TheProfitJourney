@@ -2,9 +2,11 @@ Refinery::Core::Engine.routes.append do
 
   # Frontend routes
   namespace :workshops do
-    match "calendar" => "workshops#index", :as => "workshops"
-    match "calendar/:id" => "workshops#show", :as => "workshop"
-    match "calendar/:id/signup" => "workshops#signup", :as => "workshop_signup"
+    resources :workshops, :path => "calendar", :only => [:index, :show] do
+      member do
+        get "signup"
+      end
+    end
     #resources :workshops, :only => [:index, :show]
   end
 
