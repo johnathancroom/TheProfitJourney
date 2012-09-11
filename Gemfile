@@ -41,6 +41,10 @@ gem 'thin'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+# Authorize.net payments
+gem 'authorize-net'
+
+# Refinery
 gem 'refinerycms', '~> 2.0.0'
 gem 'refinerycms-core', '~> 2.0.0', :path => 'vendor/engines'
 gem 'refinerycms-blog', '~> 2.0.0'

@@ -29,6 +29,24 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
 
+    <hr>
+
+    <% if !@transaction_error.nil? %>
+      <div id="error_explanation">
+        <h2>1 error needs to be corrected before continuing:</h2>
+        <ul>
+          <%= content_tag :li, @transaction_error %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= label_tag :card_number %>
+    <%= text_field_tag :card_number, "4222222222222" %>
+
+    <%= label_tag :card_expiration %>
+    <%= select_tag :card_expiry_month, options_for_select(@months, 11) %>
+    <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
+
     <%= f.submit "Sign up!", :class => "signup" %>
   <% end %>
 <% end %>
