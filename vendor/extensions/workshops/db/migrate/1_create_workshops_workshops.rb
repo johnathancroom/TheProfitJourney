@@ -8,6 +8,7 @@ class CreateWorkshopsWorkshops < ActiveRecord::Migration
       t.datetime :date
       t.integer :seats
       t.integer :position
+      t.decimal :price, :precision => 19, :scale => 2
 
       t.timestamps
     end

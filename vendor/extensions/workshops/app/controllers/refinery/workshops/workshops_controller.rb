@@ -29,7 +29,7 @@ module Refinery
               :email => params[:user][:email]
             })
           credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
-          auth_response = auth_transaction.authorize("6.00", credit_card)
+          auth_response = auth_transaction.authorize(@workshop.price, credit_card)
 
           if auth_response.success?
             # Capture transaction
