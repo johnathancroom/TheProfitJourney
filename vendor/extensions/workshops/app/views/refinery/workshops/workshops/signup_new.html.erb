@@ -1,0 +1,36 @@
+<% content_for :body_content_title do %>
+  <%= "Sign up for #{@workshop.title}" %>
+<% end %>
+<% content_for :title do %>
+  <%= "Sign up for #{@workshop.title}" %>
+<% end %>
+
+<% content_for :body do %>
+  <%= form_for @user, :url => refinery.signup_workshops_workshop_path, :html => { :method => "PUT", :class => "workshop_signup" } do |f| %>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> need to be corrected before continuing:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Sign up!", :class => "signup" %>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

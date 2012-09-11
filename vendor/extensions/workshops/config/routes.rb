@@ -4,7 +4,8 @@ Refinery::Core::Engine.routes.append do
   namespace :workshops do
     resources :workshops, :path => "calendar", :only => [:index, :show] do
       member do
-        get "signup"
+        get "signup" => "workshops#signup_new"
+        put "signup" => "workshops#signup_create"
       end
     end
     #resources :workshops, :only => [:index, :show]

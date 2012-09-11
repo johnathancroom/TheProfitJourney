@@ -27,6 +27,23 @@ a {
 .text-right {
   text-align: right;
 }
+#error_explanation {
+  background-color: #FFBEBE;
+  border-top: 3px solid #F27F7F;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  ul {
+    list-style: disc;
+    margin-left: 20px;
+  }
+}
+#error_explanation,
+#error_explanation *,
+.fieldWithErrors,
+.fieldWithErrors * {
+  color: #9C2626;
+}
 #page_container,
 .container {
   margin: 0 auto;
@@ -315,12 +332,24 @@ a {
   }
 }
 .signup {
+  -webkit-appearance: none;
   background-color: #02642d;
+  border: none;
   color: #fff;
+  cursor: pointer;
   padding: 6px 8px;
   position: relative;
   text-decoration: none;
   top: 10px;
+}
+.workshop_signup {
+  label,
+  input {
+    display: block;
+  }
+  input {
+    margin-bottom: 10px;
+  }
 }
 #footer {
   background-color: #212121;
