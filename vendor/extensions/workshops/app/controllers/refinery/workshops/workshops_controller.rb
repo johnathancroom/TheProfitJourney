@@ -22,27 +22,30 @@ module Refinery
         @user = ::Refinery::User.new(params[:user])
         @user.add_role(:refinery) # Add refinery role to user
 
-        # Authorize transaction
-        auth_transaction = create_transaction
-        auth_transaction.set_fields({
-            :email => params[:user][:email]
-          })
-        credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
-        auth_response = auth_transaction.authorize("6.00", credit_card)
+        if @user.save
+          # Authorize transaction
+          auth_transaction = create_transaction
+          auth_transaction.set_fields({
+              :email => params[:user][:email]
+            })
+          credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
+          auth_response = auth_transaction.authorize("6.00", credit_card)
 
-        if @user.save and auth_response.success?
-          # Capture transaction
-          capture_transaction = create_transaction
-          capture_response = capture_transaction.prior_auth_capture(auth_response.transaction_id)
+          if auth_response.success?
+            # Capture transaction
+            capture_transaction = create_transaction
+            capture_response = capture_transaction.prior_auth_capture(auth_response.transaction_id)
 
-          render :text => "Success!"
+            render :text => "Success!"
+          else
+            # Destroy created user
+            @user.destroy
+
+            @transaction_error = auth_response.response_reason_text
+
+            render :signup_new
+          end
         else
-          # Void transaction if it was created
-          void_transaction = create_transaction
-          void_response = void_transaction.void(auth_response.transaction_id)
-
-          @transaction_error = auth_response.response_reason_text if !auth_response.response_reason_text.nil?
-
           render :signup_new
         end
       end
