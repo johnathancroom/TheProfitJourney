@@ -24,9 +24,6 @@ a {
 .strong {
   font-weight: bold;
 }
-.text-right {
-  text-align: right;
-}
 #error_explanation {
   background-color: #FFBEBE;
   border-top: 3px solid #F27F7F;
@@ -199,6 +196,14 @@ a {
 }
 #body_content_title {
   font-size: 20px;
+  position: relative;
+
+  .signup {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: -6px;
+  }
 }
 #sidebar {
   float: right;
@@ -337,6 +342,8 @@ a {
   border: none;
   color: #fff;
   cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
   font-weight: normal;
   padding: 6px 8px;
   position: relative;

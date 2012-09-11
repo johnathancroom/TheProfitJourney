@@ -6,8 +6,9 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= form_for @user, :url => refinery.signup_workshops_workshop_path, :html => { :method => "PUT", :class => "workshop_signup" } do |f| %>
+  <%= render 'details' %>
 
+  <%= form_for @user, :url => refinery.signup_workshops_workshop_path, :html => { :method => "PUT", :class => "workshop_signup" } do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, "error") %> need to be corrected before continuing:</h2>
