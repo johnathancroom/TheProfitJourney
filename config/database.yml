@@ -1,17 +1,17 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV["DB_NAME"] || "theprofitjourney" %>
+  database: <%= ENV["DB_NAME"] %>
   pool: 5
-  username: <%= ENV["DB_USER"] || "root" %>
-  password: <%= ENV["DB_PASS"] || "root" %>
-  socket: <%= ENV["DB_SOCKET"] || "/Applications/MAMP/tmp/mysql/mysql.sock" %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  socket: <%= ENV["DB_SOCKET"] %>
 # test:
 #   adapter: sqlite3
 #   database: db/test.sqlite3
 #   pool: 5
 #   timeout: 5000
-# 
+#
 # production:
 #   adapter: sqlite3
 #   database: db/production.sqlite3

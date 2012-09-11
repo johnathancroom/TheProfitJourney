@@ -39,3 +39,7 @@ index/**/*
 *.tmproj
 *.autobackupbyrefinery.*
 refinerycms-*.gem
+
+# Development
+.env
+Procfile
