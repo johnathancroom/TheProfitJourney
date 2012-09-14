@@ -15,6 +15,9 @@ Refinery::Core::Engine.routes.append do
   namespace :workshops, :path => '' do
     namespace :admin, :path => 'refinery' do
       resources :workshops, :except => :show do
+        member do
+          get :users
+        end
         collection do
           post :update_positions
         end

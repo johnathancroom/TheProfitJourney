@@ -1,0 +1,34 @@
+<section id='records'>
+  <h2><%= "#{@workshop.title} Attendees" %></h2>
+
+  <% if @users.any? %>
+    <ul id='sortable_list'>
+      <% @users.each do |user| %>
+        <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(user) -%>">
+          <span class='title'>
+            <strong><%= user.username %></strong>
+            <span class="preview">
+              <%= "(#{user.email})" %>
+            </span>
+          </span>
+          <span class='actions'>
+            <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_admin_user_path(user),
+                :title => "Edit User" %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>
+      <%= t('no_results', :scope => 'refinery.admin.search') %>
+    </p>
+  <% end %>
+</section>
+<section id="actions">
+  <ul>
+    <li>
+      <%= link_to "Back to Workshops", refinery.workshops_admin_workshops_path,
+          :class => "back_icon" %>
+    </li>
+  </ul>
+</section>

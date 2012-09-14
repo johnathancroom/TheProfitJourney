@@ -16,6 +16,7 @@ en:
             no_items_yet: There are no Workshops yet. Click "Add New Workshop" to add your first workshop.
           workshop:
             view_live_html: View this workshop live <br/><em>(opens in a new window)</em>
+            users: View attendees
             edit: Edit this workshop
             delete: Remove this workshop forever
       workshops:

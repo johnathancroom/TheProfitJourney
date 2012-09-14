@@ -5,6 +5,11 @@ module Refinery
 
         crudify :'refinery/workshops/workshop', :xhr_paging => true
 
+        def users
+          @workshop = Workshop.find(params[:id])
+          @users = Refinery::User.where("workshop_id = ?", params[:id])
+        end
+
       end
     end
   end
