@@ -1,11 +1,17 @@
 <% content_for :body do %>
-  <ul id="workshops">
+  <ol class="workshops">
     <% @workshops.each do |workshop| %>
       <li>
-        <%= link_to workshop.title, refinery.workshops_workshop_path(workshop) %>
+        <a href="<%= refinery.workshops_workshop_path(workshop) %>">
+          <ul>
+            <li><h2><%= workshop.title %> <span><%= "(#{workshop.location})" %></span></h2></li>
+            <li><%= workshop.date.to_formatted_s(:pretty) %></li>
+            <li class="anchor">Learn more&hellip;</li>
+          </ul>
+        </a>
       </li>
     <% end %>
-  </ul>
+  </ol>
 <% end %>
 
 <%= render '/refinery/content_page' %>

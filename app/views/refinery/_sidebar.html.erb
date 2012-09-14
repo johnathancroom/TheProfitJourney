@@ -1,5 +1,5 @@
 <section id="sidebar">
-  <div class="workshop">
+  <div class="workshops">
     <h1>Workshop Calendar</h1>
     <div class="body">
       <ol>
@@ -10,7 +10,7 @@
                 <li class="strong"><%= workshop.title %></li>
                 <li class="strong"><%= workshop.location %></li>
                 <li><%= workshop.date.to_formatted_s(:pretty) %></li>
-                <li class="anchor">Learn more...</li>
+                <li class="anchor">Learn more&hellip;</li>
               </ul>
             </a></li>
           <% end %>
