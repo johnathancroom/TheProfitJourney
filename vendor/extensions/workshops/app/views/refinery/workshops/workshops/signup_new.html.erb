@@ -21,14 +21,21 @@
       </div>
     <% end %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <h1>User Information</h1>
+    <div>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
 
     <hr>
 
@@ -41,14 +48,20 @@
       </div>
     <% end %>
 
-    <%= label_tag :card_number %>
-    <%= text_field_tag :card_number, "4222222222222" %>
+    <h1>Payment Information</h1>
+    <div>
+      <%= label_tag :card_number %>
+      <%= text_field_tag :card_number, "4222222222222", :autocomplete => "off", :size => 30 %>
+    </div>
 
-    <%= label_tag :card_expiration %>
-    <%= select_tag :card_expiry_month, options_for_select(@months, 11) %>
-    <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
+    <div>
+      <%= label_tag :card_expiration %>
+      <%= select_tag :card_expiry_month, options_for_select(@months, 11) %>
+      <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
+    </div>
 
-    <%= f.submit "Sign up!", :class => "signup" %>
+    <%= f.submit "Sign Up & Submit Payment", :class => "signup" %>
+    <%= content_tag :span, "Submitting will charge your credit card #{number_to_currency @workshop.price} immediately.", :class => "payment_notice" %>
   <% end %>
 <% end %>
 
