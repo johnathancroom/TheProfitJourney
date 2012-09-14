@@ -24,7 +24,8 @@ a {
 .strong {
   font-weight: bold;
 }
-#error_explanation {
+#error_explanation,
+.flash_error {
   background-color: #FFBEBE;
   border-top: 3px solid #F27F7F;
   margin-bottom: 10px;
@@ -37,9 +38,17 @@ a {
 }
 #error_explanation,
 #error_explanation *,
+.flash_error,
+.flash_error *,
 .fieldWithErrors,
 .fieldWithErrors * {
   color: #9C2626;
+}
+.flash_notice {
+  background-color: #8beb86;
+  border-top: 3px solid #37d607;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 #page_container,
 .container {

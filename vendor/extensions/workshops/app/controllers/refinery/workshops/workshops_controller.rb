@@ -36,7 +36,9 @@ module Refinery
             capture_transaction = create_transaction
             capture_response = capture_transaction.prior_auth_capture(auth_response.transaction_id)
 
-            render :text => "Success!"
+            # Send reciept
+
+            redirect_to refinery.workshops_workshop_path, :notice => "Sign up successful. You will receieve a confirmation email with further instructions."
           else
             # Destroy created user
             @user.destroy

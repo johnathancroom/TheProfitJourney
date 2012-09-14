@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911204820) do
+ActiveRecord::Schema.define(:version => 20120914013833) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -771,6 +771,7 @@ ActiveRecord::Schema.define(:version => 20120911204820) do
     t.datetime "reset_password_sent_at"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.integer  "workshop_id"
   end
 
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"

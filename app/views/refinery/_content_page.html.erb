@@ -6,10 +6,6 @@ body_content = @page.content_for(:body).html_safe if (body_content = yield :body
 <section id="page">
   <section id="content">
     <section id="summary">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :aside, msg, :class => "flash_#{name}" %>
-      <% end %>
-
       <h1 id="body_content_title">
         <%= body_content_title %>
       </h1>
@@ -19,6 +15,10 @@ body_content = @page.content_for(:body).html_safe if (body_content = yield :body
       <% end %>
     </section>
     <section id="body">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :aside, msg, :class => "flash_#{name}" %>
+      <% end %>
+
       <%= body_content %>
     </section>
   </section>
