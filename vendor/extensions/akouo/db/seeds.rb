@@ -13,7 +13,8 @@
   pages = [
     ["/akouo", "Akouo"],
     ["/akouo/start", "Start"],
-    ["/akouo/vision", "Vision"]
+    ["/akouo/vision", "Vision"],
+    ["/akouo/last_year", "Last Year"]
   ]
 
   pages.each do |this|

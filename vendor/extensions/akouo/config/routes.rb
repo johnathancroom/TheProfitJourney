@@ -11,6 +11,10 @@ Refinery::Core::Engine.routes.append do
     get "vision" => "sheet#vision/show"
     get "vision/edit" => "sheet#vision/edit"
     put "vision" => "sheet#start_update"
+
+    get "last_year" => "sheet#last_year/show"
+    get "last_year/edit" => "sheet#last_year/edit"
+    put "last_year" => "sheet#last_year_update"
   end
 
   # Admin routes
