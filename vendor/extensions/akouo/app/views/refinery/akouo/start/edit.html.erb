@@ -1,0 +1,29 @@
+<% content_for :body_content_title do %>
+  Start
+<% end %>
+
+<% content_for :body do %>
+  <%= form_for @customer, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+    <%= f.label :cdba, "Doing Business As" %>
+    <%= f.text_field :cdba %>
+
+    <%= f.label :cfn, "Franchisee First Name" %>
+    <%= f.text_field :cfn %>
+
+    <%= f.label :cln, "Last Name (Used as a reference)" %>
+    <%= f.text_field :cln %>
+
+    <%= f.label :cidate, "Date Assembled" %>
+    <%= f.date_select :cidate, :start_year => 1980 %>
+
+    <%= f.label :ccsd, "History Financial Comparison Start Date" %>
+    <%= f.date_select :ccsd, :start_year => 1980 %>
+
+    <%= f.label :cced, "History Financial Comparison End Date" %>
+    <%= f.date_select :cced, :start_year => 1980 %>
+
+    <%= f.submit "Save changes", :class => "button" %>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

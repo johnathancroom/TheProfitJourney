@@ -239,7 +239,7 @@ textarea {
   font-size: 20px;
   position: relative;
 
-  .signup {
+  .button {
     float: right;
     position: absolute;
     right: 0;
@@ -382,7 +382,7 @@ textarea {
     padding-bottom: 10px;
   }
 }
-.signup {
+.button {
   -webkit-appearance: none;
   background-color: #02642d;
   border: none;
@@ -395,6 +395,12 @@ textarea {
   position: relative;
   text-decoration: none;
   top: 10px;
+}
+.form {
+  label,
+  input {
+    display: block;
+  }
 }
 .workshop_signup {
   label {

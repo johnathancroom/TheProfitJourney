@@ -1,6 +1,6 @@
 module Refinery
   module Akouo
-    class CustomersController < ::ApplicationController
+    class StartController < ::ApplicationController
 
       before_filter :find_customer
       before_filter :find_page
@@ -13,6 +13,14 @@ module Refinery
         present(@page)
       end
 
+      def update
+        if @customer.update_attributes(params[:customer])
+          redirect_to refinery.akouo_start_path, :notice => "Successfully saved!"
+        else
+          render :edit
+        end
+      end
+
     protected
 
       def find_customer
@@ -20,7 +28,7 @@ module Refinery
       end
 
       def find_page
-        @page = ::Refinery::Page.where(:link_url => "/akouo/customer").first
+        @page = ::Refinery::Page.where(:link_url => "/akouo/start").first
       end
 
     end

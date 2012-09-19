@@ -60,7 +60,7 @@
       <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
     </div>
 
-    <%= f.submit "Sign Up & Submit Payment", :class => "signup" %>
+    <%= f.submit "Sign Up & Submit Payment", :class => "button" %>
     <%= content_tag :span, "Submitting will charge your credit card #{number_to_currency @workshop.price} immediately.", :class => "payment_notice" %>
   <% end %>
 <% end %>
