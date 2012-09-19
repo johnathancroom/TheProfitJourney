@@ -103,13 +103,13 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
 
   create_table "cust", :force => true do |t|
     t.string   "cdba",       :limit => 50
-    t.datetime "CIDate"
-    t.string   "CFN",        :limit => 50
-    t.string   "CLN",        :limit => 50
-    t.datetime "CCSD"
-    t.datetime "CCED"
-    t.datetime "CCPD"
-    t.integer  "CAH"
+    t.datetime "cidate"
+    t.string   "cfn",        :limit => 50
+    t.string   "cln",        :limit => 50
+    t.datetime "ccsd"
+    t.datetime "cced"
+    t.datetime "ccpd"
+    t.integer  "cah"
     t.text     "CPG",        :limit => 2147483647
     t.text     "CCG",        :limit => 2147483647
     t.datetime "created_at",                       :null => false
@@ -199,8 +199,7 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
   add_index "de", ["CID"], :name => "CID"
   add_index "de", ["DEID"], :name => "DEID"
 
-  create_table "ly", :primary_key => "LYID", :force => true do |t|
-    t.integer "CID"
+  create_table "ly", :force => true do |t|
     t.decimal "LYCoH",      :precision => 19, :scale => 4
     t.decimal "LYCkOne",    :precision => 19, :scale => 4
     t.decimal "LYCkTwo",    :precision => 19, :scale => 4
@@ -342,10 +341,8 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
     t.decimal "LYFEIT",     :precision => 19, :scale => 4
     t.decimal "LYFENone",   :precision => 19, :scale => 4
     t.decimal "LYFENtwo",   :precision => 19, :scale => 4
+    t.integer "user_id"
   end
-
-  add_index "ly", ["CID"], :name => "CID"
-  add_index "ly", ["LYID"], :name => "LYID"
 
   create_table "ny", :primary_key => "NYID", :force => true do |t|
     t.integer "CID"
