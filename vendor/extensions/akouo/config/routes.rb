@@ -3,7 +3,14 @@ Refinery::Core::Engine.routes.append do
   # Frontend routes
   namespace :akouo do
     resources :home, :path => "", :only => [:index]
-    resource :start, :controller => "start", :only => [:show, :edit, :update]
+
+    get "start" => "sheet#start/show"
+    get "start/edit" => "sheet#start/edit"
+    put "start" => "sheet#start_update"
+
+    get "vision" => "sheet#vision/show"
+    get "vision/edit" => "sheet#vision/edit"
+    put "vision" => "sheet#start_update"
   end
 
   # Admin routes

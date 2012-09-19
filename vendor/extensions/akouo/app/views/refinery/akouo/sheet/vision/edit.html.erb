@@ -1,0 +1,8 @@
+<% content_for :body do %>
+  <%= form_for @customer, :url => refinery.akouo_vision_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+
+    <%= f.submit "Save changes", :class => "button" %>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -22,6 +22,12 @@
     <%= f.label :cced, "History Financial Comparison End Date" %>
     <%= f.date_select :cced, :start_year => 1980 %>
 
+    <%= f.label :ccpd, "Projection Start Date" %>
+    <%= f.date_select :ccpd, :start_year => 1980 %>
+
+    <%= f.label :cah, "Average Number of Holidays & Vacations Yearly – Field Personnel" %>
+    <%= f.number_field :cah %>
+
     <%= f.submit "Save changes", :class => "button" %>
   <% end %>
 <% end %>

@@ -1,19 +1,12 @@
 module Refinery
   module Akouo
-    class StartController < ::ApplicationController
+    class SheetController < ::ApplicationController
 
       before_filter :find_customer
-      before_filter :find_page
+      before_filter :find_page_start, :only => [:"start/show", :"start/edit"]
+      before_filter :find_page_vision, :only => [:"vision/show", :"vision/edit"]
 
-      def show
-        present(@page)
-      end
-
-      def edit
-        present(@page)
-      end
-
-      def update
+      def start_update
         if @customer.update_attributes(params[:customer])
           redirect_to refinery.akouo_start_path, :notice => "Successfully saved!"
         else
@@ -27,8 +20,11 @@ module Refinery
         @customer = current_refinery_user.customer
       end
 
-      def find_page
+      def find_page_start
         @page = ::Refinery::Page.where(:link_url => "/akouo/start").first
+      end
+      def find_page_vision
+        @page = ::Refinery::Page.where(:link_url => "/akouo/vision").first
       end
 
     end

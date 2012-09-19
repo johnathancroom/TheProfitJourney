@@ -12,7 +12,8 @@
 
   pages = [
     ["/akouo", "Akouo"],
-    ["/akouo/customer", "Customer"]
+    ["/akouo/start", "Start"],
+    ["/akouo/vision", "Vision"]
   ]
 
   pages.each do |this|

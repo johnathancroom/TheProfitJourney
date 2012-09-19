@@ -1,6 +1,6 @@
 <% content_for :body_content_title do %>
   Start
-  <%= link_to "Edit", refinery.edit_akouo_start_path, :class => "button" %>
+  <%= link_to "Edit", refinery.akouo_start_edit_path, :class => "button" %>
 <% end %>
 
 <% content_for :body do %>
@@ -22,6 +22,12 @@
 
     <h1>History Financial Comparison End Date</h1>
     <%=raw @customer.cced.to_formatted_s(:date) %>
+
+    <h1>Projection Start Date</h1>
+    <%= raw @customer.ccpd.to_formatted_s(:date) %>
+
+    <h1>Average Number of Holidays &amp; Vacations Yearly &ndash; Field Personnel</h1>
+    <%= raw @customer.cah %>
   </section>
 <% end %>
 
