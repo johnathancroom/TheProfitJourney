@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <%= form_for @customer, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+  <%= form_for @last_year, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |f| %>
 
     <%= f.submit "Save changes", :class => "button" %>
   <% end %>

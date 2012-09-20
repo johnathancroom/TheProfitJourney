@@ -33,7 +33,8 @@ a {
   color: #055119;
   text-decoration: underline;
 }
-.strong {
+.strong,
+strong {
   font-weight: bold;
 }
 table {
@@ -260,6 +261,11 @@ textarea {
   line-height: 1.1;
 }
 .workshops {
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+  }
   h1 {
     background-color: #02642d;
     color: #FFF;
