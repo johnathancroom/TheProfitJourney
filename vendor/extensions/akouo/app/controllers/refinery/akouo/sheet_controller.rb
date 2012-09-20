@@ -18,7 +18,7 @@ module Refinery
       end
 
       def last_year_update
-        if @last_year.update_attributes(params[:customer])
+        if @last_year.update_attributes(params[:last_year])
           redirect_to refinery.akouo_last_year_path, :notice => SAVED_MESSAGE
         else
           render :"last_year/edit"

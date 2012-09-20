@@ -3,7 +3,10 @@
     <li>
       Bank
       <ul>
-        <li>Cash on Hand</li>
+        <li>
+          <%= f.label :lycoh, "Cash on Hand" %>
+          <%= f.number_field :lycoh, :step => 0.01 %>
+        </li>
         <li>
           Cash in Banks
           <ul>
