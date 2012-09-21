@@ -213,19 +213,19 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
     t.decimal "lyi",        :precision => 19, :scale => 4
     t.decimal "lyppe",      :precision => 19, :scale => 4
     t.decimal "lyuf",       :precision => 19, :scale => 4
-    t.decimal "LYFAVT",     :precision => 19, :scale => 4
-    t.decimal "LYFADVT",    :precision => 19, :scale => 4
-    t.decimal "LYFAOV",     :precision => 19, :scale => 4
-    t.decimal "LYFADOV",    :precision => 19, :scale => 4
-    t.decimal "LYFAEO",     :precision => 19, :scale => 4
-    t.decimal "LYFADEO",    :precision => 19, :scale => 4
-    t.decimal "LYFAFE",     :precision => 19, :scale => 4
-    t.decimal "LYFADFE",    :precision => 19, :scale => 4
-    t.decimal "LYFAL",      :precision => 19, :scale => 4
-    t.decimal "LYFAB",      :precision => 19, :scale => 4
-    t.decimal "LYFADB",     :precision => 19, :scale => 4
-    t.decimal "LYFALI",     :precision => 19, :scale => 4
-    t.decimal "LYFADLI",    :precision => 19, :scale => 4
+    t.decimal "lyfavt",     :precision => 19, :scale => 4
+    t.decimal "lyfadvt",    :precision => 19, :scale => 4
+    t.decimal "lyfaov",     :precision => 19, :scale => 4
+    t.decimal "lyfadov",    :precision => 19, :scale => 4
+    t.decimal "lyfaeo",     :precision => 19, :scale => 4
+    t.decimal "lyfadeo",    :precision => 19, :scale => 4
+    t.decimal "lyfafe",     :precision => 19, :scale => 4
+    t.decimal "lyfadfe",    :precision => 19, :scale => 4
+    t.decimal "lyfal",      :precision => 19, :scale => 4
+    t.decimal "lyfab",      :precision => 19, :scale => 4
+    t.decimal "lyfadb",     :precision => 19, :scale => 4
+    t.decimal "lyfali",     :precision => 19, :scale => 4
+    t.decimal "lyfadli",    :precision => 19, :scale => 4
     t.decimal "LYNRLT",     :precision => 19, :scale => 4
     t.decimal "LYS",        :precision => 19, :scale => 4
     t.decimal "LYFRAone",   :precision => 19, :scale => 4

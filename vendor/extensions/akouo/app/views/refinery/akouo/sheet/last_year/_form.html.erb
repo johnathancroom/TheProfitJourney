@@ -56,7 +56,7 @@
           <%= f.number_field :lyer, :step => 0.01 %>
         </li>
         <li>
-          <%= f.label :lynrc, "Notes Receivable &ndash; Current" %>
+          <%= f.label :lynrc, "Notes Receivable – Current" %>
           <%= f.number_field :lynrc, :step => 0.01 %>
         </li>
         <li>
@@ -82,27 +82,70 @@
     <li>
       <h1>Fixed Asset</h1>
       <ul>
-        <li>Vans &amp; Trucks</li>
-        <li>Accum Depree &ndash; Vans &amp; Trucks</li>
-        <li>Other Vehicles</li>
-        <li>Accum Depree &ndash; Other Vehicles</li>
-        <li>Equipment &ndash; Operations</li>
-        <li>Accum Depree &ndash; Equipment</li>
-        <li>Furniture &amp; Equipment &ndash; Office</li>
-        <li>Accum Depree &ndash; Furniture &amp; Equipment</li>
-        <li>Land</li>
-        <li>Buildings</li>
-        <li>Accum Depree &ndash; Buildings</li>
-        <li>Leasehold Improvements</li>
-        <li>Accum Depree &ndash; Leasehold Improvements</li>
-        <li><strong>Total Fixed Asset</strong></li>
+        <li>
+          <%= f.label :lyfavt, "Vans & Trucks" %>
+          <%= f.number_field :lyfavt, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadvt, "Accum Depree – Vans & Trucks" %>
+          <%= f.number_field :lyfadvt, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfaov, "Other Vehicles" %>
+          <%= f.number_field :lyfaov, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadov, "Accum Depree – Other Vehicles" %>
+          <%= f.number_field :lyfadov, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfaeo, "Equipment – Operations" %>
+          <%= f.number_field :lyfaeo, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadeo, "Accum Depree – Equipment" %>
+          <%= f.number_field :lyfadeo, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfafe, "Furniture & Equipment – Office" %>
+          <%= f.number_field :lyfafe, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadfe, "Accum Depree – Furniture & Equipment" %>
+          <%= f.number_field :lyfadfe, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfal, "Land" %>
+          <%= f.number_field :lyfal, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfab, "Buildings" %>
+          <%= f.number_field :lyfab, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadb, "Accum Depree – Buildings" %>
+          <%= f.number_field :lyfadb, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfali, "Leasehold Improvements" %>
+          <%= f.number_field :lyfali, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyfadli, "Accum Depree – Leasehold Improvements" %>
+          <%= f.number_field :lyfadli, :step => 0.01 %>
+        </li>
+        <li>
+          <strong><%= f.label :forumla, "Total Fixed Asset" %></strong>
+          <% formula = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
+          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
+        </li>
       </ul>
     </li>
 
     <li>
       <h1>Other Asset</h1>
       <ul>
-        <li>Notes Receivable &ndash; Long Term</li>
+        <li>Notes Receivable – Long Term</li>
         <li>Suspense</li>
         <li>
           Franchise Rights
@@ -113,7 +156,7 @@
           </ul>
         </li>
         <li>
-          Accum Amortiz &ndash; Franchise
+          Accum Amortiz – Franchise
           <ul>
             <li>Area No. 1</li>
             <li>Area No. 2</li>
@@ -121,9 +164,9 @@
           </ul>
         </li>
         <li>Other Intangible Assets</li>
-        <li>Accum Amortiz &ndash; Other Intagible Assets</li>
+        <li>Accum Amortiz – Other Intagible Assets</li>
         <li>Organization Costs</li>
-        <li>Accum Amortiz &ndash; Organization Costs</li>
+        <li>Accum Amortiz – Organization Costs</li>
         <li>Deposits</li>
         <li>Long Term Investments</li>
         <li>Other Assets</li>
@@ -154,18 +197,18 @@
     <li>
       <h1>Other Current Liability</h1>
       <ul>
-        <li>Accr Liabilities &ndash; Payroll</li>
-        <li>Accr Liabilities &ndash; Commissions</li>
-        <li>Accr Liabilities &ndash; Payroll Tax</li>
+        <li>Accr Liabilities – Payroll</li>
+        <li>Accr Liabilities – Commissions</li>
+        <li>Accr Liabilities – Payroll Tax</li>
         <li>FICA</li>
         <li>Medicare</li>
         <li>Withholding</li>
-        <li>Accr Liabilities &ndash; Workers Comp</li>
-        <li>Accr Liabilities &ndash; Sales Tax</li>
-        <li>Accr Liabilities &ndash; Property Tax</li>
-        <li>Accr Liabilities &ndash; Other Taxes</li>
-        <li>Accr Liabilities &ndash; Interest</li>
-        <li>Accr Liabilities &ndash; Other</li>
+        <li>Accr Liabilities – Workers Comp</li>
+        <li>Accr Liabilities – Sales Tax</li>
+        <li>Accr Liabilities – Property Tax</li>
+        <li>Accr Liabilities – Other Taxes</li>
+        <li>Accr Liabilities – Interest</li>
+        <li>Accr Liabilities – Other</li>
         <li>Deferred Revenue</li>
         <li>Current Portion Long Term</li>
         <li>Other Liabilities</li>
@@ -208,16 +251,16 @@
       </ul>
     </li>
 
-    <li><strong>Total Liabilities &amp; Equity</strong></li>
+    <li><strong>Total Liabilities & Equity</strong></li>
   </ul>
 
-  <h1>Income &amp; Expense Statement</h1>
+  <h1>Income & Expense Statement</h1>
   <ul>
     <li>
       <h1>Income</h1>
       <ul>
         <li>
-          Total Sales &ndash; Residential
+          Total Sales – Residential
           <ul>
             <li>Sales</li>
             <li>Add-on</li>
@@ -227,7 +270,7 @@
           </ul>
         </li>
         <li>
-          Total Sales &ndash; Commercial
+          Total Sales – Commercial
           <ul>
             <li>Sales</li>
             <li>Add-on</li>
@@ -249,7 +292,7 @@
           <ul>
             <li>Technician Labor</li>
             <li>Technician Commissions</li>
-            <li>Payroll Taxes &ndash; Field</li>
+            <li>Payroll Taxes – Field</li>
             <li>Workers Compensation Insurance</li>
             <li>Technician Benefits</li>
           </ul>
@@ -262,13 +305,13 @@
           Other
           <ul>
             <li>Vehicle Fuel</li>
-            <li>Vehicle Maintenance &amp; Repair</li>
+            <li>Vehicle Maintenance & Repair</li>
             <li>Tools</li>
           </ul>
         </li>
         <li>Franchise Service Fees</li>
         <li>Franchise National Ad Fees</li>
-        <li>Promotions &ndash; Discounts</li>
+        <li>Promotions – Discounts</li>
         <li><strong>Total Cost of Service</strong></li>
         <li></li>
         <li>Gross Margin</li>
@@ -293,14 +336,14 @@
         <li>Payroll Taxes</li>
         <li>Workers Compensation Insurance</li>
         <li>Employee Benefits</li>
-        <li>Holdiay &amp; Vacation Pay</li>
+        <li>Holdiay & Vacation Pay</li>
         <li>Training</li>
         <li>Temporary Help</li>
         <li>Rent</li>
         <li>Utilities</li>
-        <li>Building Repair &amp; Maintenance</li>
+        <li>Building Repair & Maintenance</li>
         <li>Taxes and Licenses</li>
-        <li>Telephone &amp; Office</li>
+        <li>Telephone & Office</li>
         <li>Cell Phones</li>
         <li>Liability Insurance</li>
         <li>Credit Card Service Fees</li>
@@ -319,23 +362,23 @@
             <li>Internet-SEO/SEM</li>
             <li>Show Room Visits</li>
             <li>Yard Signs</li>
-            <li>Yellow Pages Print &amp; Online</li>
+            <li>Yellow Pages Print & Online</li>
           </ul>
         </li>
-        <li>Recruiting &amp; Relocation</li>
+        <li>Recruiting & Relocation</li>
         <li>Office Supplies</li>
         <li>Printing</li>
         <li>Postage</li>
         <li>Office Equipment Leases</li>
         <li>Field Equipment Leases</li>
-        <li>Office Equipment Repair &amp; Maintenance</li>
-        <li>Shipping &amp; Delivery</li>
-        <li>Uniform Laundry &amp; Rental</li>
+        <li>Office Equipment Repair & Maintenance</li>
+        <li>Shipping & Delivery</li>
+        <li>Uniform Laundry & Rental</li>
         <li>
           Vehicle
           <ul>
             <li>Leases</li>
-            <li>Repair &amp; Maintenance</li>
+            <li>Repair & Maintenance</li>
             <li>Insurance</li>
             <li>Fuel (Non-revenue Generating)</li>
             <li>Licensing</li>
@@ -343,18 +386,18 @@
         </li>
         <li>Accounting Fees</li>
         <li>Legal Fees</li>
-        <li>Employee Education &amp; Relations</li>
+        <li>Employee Education & Relations</li>
         <li>Outside Services</li>
         <li>Computer Expenses</li>
         <li>Bank Service Charges</li>
-        <li>Dues &amp; Subscriptions</li>
+        <li>Dues & Subscriptions</li>
         <li>Contributions</li>
         <li>Bad Debts</li>
-        <li>Conferences &amp; Travel</li>
-        <li>Meals &amp; Entertainment</li>
+        <li>Conferences & Travel</li>
+        <li>Meals & Entertainment</li>
         <li>Miscellaneous</li>
         <li>Interest Income</li>
-        <li>Discounts Taken &ndash; Vendor</li>
+        <li>Discounts Taken – Vendor</li>
         <li>Interest Expense</li>
         <li>Depreciation</li>
         <li>Amoritization</li>
