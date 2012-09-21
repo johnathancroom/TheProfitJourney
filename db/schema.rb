@@ -259,19 +259,19 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
     t.decimal "lyaldr",     :precision => 19, :scale => 4
     t.decimal "lycplt",     :precision => 19, :scale => 4
     t.decimal "lyol",       :precision => 19, :scale => 4
-    t.decimal "LYLTLone",   :precision => 19, :scale => 4
-    t.decimal "LYLTLtwo",   :precision => 19, :scale => 4
-    t.decimal "LYLTLthree", :precision => 19, :scale => 4
-    t.decimal "LYLTLfour",  :precision => 19, :scale => 4
-    t.decimal "LYLTLfive",  :precision => 19, :scale => 4
-    t.decimal "LYLCP",      :precision => 19, :scale => 4
-    t.decimal "LYSHL",      :precision => 19, :scale => 4
-    t.decimal "LYECS",      :precision => 19, :scale => 4
-    t.decimal "LYEOE",      :precision => 19, :scale => 4
-    t.decimal "LYEPC",      :precision => 19, :scale => 4
-    t.decimal "LYEDP",      :precision => 19, :scale => 4
-    t.decimal "LYEOW",      :precision => 19, :scale => 4
-    t.decimal "LYERE",      :precision => 19, :scale => 4
+    t.decimal "lyltlone",   :precision => 19, :scale => 4
+    t.decimal "lyltltwo",   :precision => 19, :scale => 4
+    t.decimal "lyltlthree", :precision => 19, :scale => 4
+    t.decimal "lyltlfour",  :precision => 19, :scale => 4
+    t.decimal "lyltlfive",  :precision => 19, :scale => 4
+    t.decimal "lylcp",      :precision => 19, :scale => 4
+    t.decimal "lyshl",      :precision => 19, :scale => 4
+    t.decimal "lyecs",      :precision => 19, :scale => 4
+    t.decimal "lyeoe",      :precision => 19, :scale => 4
+    t.decimal "lyepc",      :precision => 19, :scale => 4
+    t.decimal "lyedp",      :precision => 19, :scale => 4
+    t.decimal "lyeow",      :precision => 19, :scale => 4
+    t.decimal "lyere",      :precision => 19, :scale => 4
     t.decimal "LYFESO",     :precision => 19, :scale => 4
     t.decimal "LYFESM",     :precision => 19, :scale => 4
     t.decimal "LYFESA",     :precision => 19, :scale => 4

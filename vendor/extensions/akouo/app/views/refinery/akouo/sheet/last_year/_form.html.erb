@@ -344,38 +344,94 @@
       <h1>Long Term Liability</h1>
       <ul>
         <li>
-          Notes Payable Long Term
+          <%= f.label :formula, "Notes Payable Long Term" %>
+          <% formula["nplt"] = @last_year.lyltlone+@last_year.lyltltwo+@last_year.lyltlthree+@last_year.lyltlfour+@last_year.lyltlfive %>
+          <%= f.money_field :formula, :value => formula["nplt"], :disabled => "" %>
           <ul>
-            <li>Note Payable No. 1</li>
-            <li>Note Payable No. 2</li>
-            <li>Note Payable No. 3</li>
-            <li>Note Payable No. 4</li>
-            <li>Note Payable No. 5</li>
+            <li>
+              <%= f.label :lyltlone, "Note Payable No. 1" %>
+              <%= f.money_field :lyltlone %></li>
+            <li>
+              <%= f.label :lyltltwo, "Note Payable No. 2" %>
+              <%= f.money_field :lyltltwo %>
+            </li>
+            <li>
+              <%= f.label :lyltlthree, "Note Payable No. 3" %>
+              <%= f.money_field :lyltlthree %>
+            </li>
+            <li>
+              <%= f.label :lyltlfour, "Note Payable No. 4" %>
+              <%= f.money_field :lyltlfour %>
+            </li>
+            <li>
+              <%= f.label :lyltlfive, "Note Payable No. 5" %>
+              <%= f.money_field :lyltlfive %>
+            </li>
           </ul>
         </li>
-        <li>Less Current Portion</li>
-        <li>Shareholder Loans</li>
-        <li><strong>Total Long Term Liability</strong>
+        <li>
+          <%= f.label :lylcp, "Less Current Portion" %>
+          <%= f.money_field :lylcp %>
+        </li>
+        <li>
+          <%= f.label :lyshl, "Shareholder Loans" %>
+          <%= f.money_field :lyshl %>
+        </li>
+        <li>
+          <strong><%= f.label :formula, "Total Long Term Liability" %></strong>
+          <% formula["tltl"] = formula["nplt"]+@last_year.lylcp+@last_year.lyshl %>
+          <%= f.money_field :formula, :value => formula["tltl"], :disabled => "" %>
+        </li>
       </ul>
     </li>
 
-    <li><strong>Total Liabilities</strong></li>
+    <li>
+      <strong><%= f.label :formula, "Total Liabilities" %></strong>
+      <% formula["tl"] = @last_year.lyap+@last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree+formula["tocl"]+formula["tltl"] %>
+      <%= f.money_field :formula, :value => formula["tl"], :disabled => "" %>
+    </li>
 
     <li>
       <h1>Equity</h1>
       <ul>
-        <li>Common Stock</li>
-        <li>Owners Equity</li>
-        <li>Paid in Capital</li>
-        <li>Dividends Paid</li>
-        <li>Owners Withdrawals</li>
-        <li>Retained Earnings</li>
-        <li>Opening Bal Equity</li>
-        <li><strong>Total Equity</strong></li>
+        <li>
+          <%= f.label :lyecs, "Common Stock" %>
+          <%= f.money_field :lyecs %>
+        </li>
+        <li>
+          <%= f.label :lyeoe, "Owners Equity" %>
+          <%= f.money_field :lyeoe %>
+        </li>
+        <li>
+          <%= f.label :lyepc, "Paid in Capital" %>
+          <%= f.money_field :lyepc %>
+        </li>
+        <li>
+          <%= f.label :lyedp, "Dividends Paid" %>
+          <%= f.money_field :lyedp %>
+        </li>
+        <li>
+          <%= f.label :lyeow, "Owners Withdrawals" %>
+          <%= f.money_field :lyeow %>
+        </li>
+        <li>
+          <%= f.label :lyere, "Retained Earnings" %>
+          <%= f.money_field :lyere %>
+        </li>
+        <li style="color: red;">Opening Bal Equity</li>
+        <li>
+          <strong style="color: red;"><%= f.label :formula, "Total Equity" %></strong>
+          <% formula["te"] = @last_year.lyecs+@last_year.lyeoe+@last_year.lyepc+@last_year.lyedp+@last_year.lyeow+@last_year.lyere %>
+          <%= f.money_field :formula, :value => formula["te"], :disabled => "" %>
+        </li>
       </ul>
     </li>
 
-    <li><strong>Total Liabilities & Equity</strong></li>
+    <li>
+      <strong><%= f.label :formula, "Total Liabilities & Equity" %></strong>
+      <% formula["tle"] = formula["tl"]+formula["te"] %>
+      <%= f.money_field :formula, :value => formula["tle"], :disabled => "" %>
+    </li>
   </ul>
 
   <h1>Income & Expense Statement</h1>
