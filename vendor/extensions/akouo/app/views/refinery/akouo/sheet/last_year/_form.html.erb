@@ -5,33 +5,33 @@
       <ul>
         <li>
           <%= f.label :lycoh, "Cash on Hand" %>
-          <%= f.number_field :lycoh, :step => 0.01 %>
+          <%= f.money_field :lycoh %>
         </li>
         <li>
           <%= f.label :forumla, "Cash in Banks" %>
-          <%= f.number_field :formula, :value => (@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :step => 0.01, :disabled => "" %>
+          <%= f.money_field :formula, :value => (@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyckone, "Checking Account No. 1" %>
-              <%= f.number_field :lyckone, :step => 0.01 %>
+              <%= f.money_field :lyckone %>
             </li>
             <li>
               <%= f.label :lycktwo, "Checking Account No. 2" %>
-              <%= f.number_field :lycktwo, :step => 0.01 %>
+              <%= f.money_field :lycktwo %>
             </li>
             <li>
               <%= f.label :lyckthree, "Checking Account No. 3" %>
-              <%= f.number_field :lyckthree, :step => 0.01 %>
+              <%= f.money_field :lyckthree %>
             </li>
           </ul>
         </li>
         <li>
           <strong><%= f.label :formula, "Total Bank" %></strong>
-          <%= f.number_field :formula, :value => (@last_year.lycoh+@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :step => 0.01, :disabled => "" %>
+          <%= f.money_field :formula, :value => (@last_year.lycoh+@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :disabled => "" %>
         </li>
         <li>
           <%= f.label :lyar, "Amounts Receivable" %>
-          <%= f.number_field :lyar, :step => 0.01 %>
+          <%= f.money_field :lyar %>
         </li>
       </ul>
     </li>
@@ -41,40 +41,40 @@
       <ul>
         <li>
           <%= f.label :lymma, "Money Market Account" %>
-          <%= f.number_field :lymma, :step => 0.01 %>
+          <%= f.money_field :lymma %>
         </li>
         <li>
           <%= f.label :lysti, "Short Term Investments" %>
-          <%= f.number_field :lysti, :step => 0.01 %>
+          <%= f.money_field :lysti %>
         </li>
         <li>
           <%= f.label :lyada, "Allowance for Doubtful Accounts" %>
-          <%= f.number_field :lyada, :step => 0.01 %>
+          <%= f.money_field :lyada %>
         </li>
         <li>
           <%= f.label :lyer, "Employee Receivables" %>
-          <%= f.number_field :lyer, :step => 0.01 %>
+          <%= f.money_field :lyer %>
         </li>
         <li>
           <%= f.label :lynrc, "Notes Receivable – Current" %>
-          <%= f.number_field :lynrc, :step => 0.01 %>
+          <%= f.money_field :lynrc %>
         </li>
         <li>
           <%= f.label :lyi, "Inventory" %>
-          <%= f.number_field :lyi, :step => 0.01 %>
+          <%= f.money_field :lyi %>
         </li>
         <li>
           <%= f.label :lyppe, "Prepaid Expenses" %>
-          <%= f.number_field :lyppe, :step => 0.01 %>
+          <%= f.money_field :lyppe %>
         </li>
         <li>
           <%= f.label :lyuf, "Undeposited Funds" %>
-          <%= f.number_field :lyuf, :step => 0.01 %>
+          <%= f.money_field :lyuf %>
         </li>
         <li>
           <strong><%= f.label :forumla, "Total Other Asset" %></strong>
           <% formula = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
-          <%= f.number_field :forumla, :value => formula, :step => 0.01, :disabled => "" %>
+          <%= f.money_field :forumla, :value => formula, :disabled => "" %>
         </li>
       </ul>
     </li>
@@ -84,60 +84,60 @@
       <ul>
         <li>
           <%= f.label :lyfavt, "Vans & Trucks" %>
-          <%= f.number_field :lyfavt, :step => 0.01 %>
+          <%= f.money_field :lyfavt %>
         </li>
         <li>
           <%= f.label :lyfadvt, "Accum Depree – Vans & Trucks" %>
-          <%= f.number_field :lyfadvt, :step => 0.01 %>
+          <%= f.money_field :lyfadvt %>
         </li>
         <li>
           <%= f.label :lyfaov, "Other Vehicles" %>
-          <%= f.number_field :lyfaov, :step => 0.01 %>
+          <%= f.money_field :lyfaov %>
         </li>
         <li>
           <%= f.label :lyfadov, "Accum Depree – Other Vehicles" %>
-          <%= f.number_field :lyfadov, :step => 0.01 %>
+          <%= f.money_field :lyfadov %>
         </li>
         <li>
           <%= f.label :lyfaeo, "Equipment – Operations" %>
-          <%= f.number_field :lyfaeo, :step => 0.01 %>
+          <%= f.money_field :lyfaeo %>
         </li>
         <li>
           <%= f.label :lyfadeo, "Accum Depree – Equipment" %>
-          <%= f.number_field :lyfadeo, :step => 0.01 %>
+          <%= f.money_field :lyfadeo %>
         </li>
         <li>
           <%= f.label :lyfafe, "Furniture & Equipment – Office" %>
-          <%= f.number_field :lyfafe, :step => 0.01 %>
+          <%= f.money_field :lyfafe %>
         </li>
         <li>
           <%= f.label :lyfadfe, "Accum Depree – Furniture & Equipment" %>
-          <%= f.number_field :lyfadfe, :step => 0.01 %>
+          <%= f.money_field :lyfadfe %>
         </li>
         <li>
           <%= f.label :lyfal, "Land" %>
-          <%= f.number_field :lyfal, :step => 0.01 %>
+          <%= f.money_field :lyfal %>
         </li>
         <li>
           <%= f.label :lyfab, "Buildings" %>
-          <%= f.number_field :lyfab, :step => 0.01 %>
+          <%= f.money_field :lyfab %>
         </li>
         <li>
           <%= f.label :lyfadb, "Accum Depree – Buildings" %>
-          <%= f.number_field :lyfadb, :step => 0.01 %>
+          <%= f.money_field :lyfadb %>
         </li>
         <li>
           <%= f.label :lyfali, "Leasehold Improvements" %>
-          <%= f.number_field :lyfali, :step => 0.01 %>
+          <%= f.money_field :lyfali %>
         </li>
         <li>
           <%= f.label :lyfadli, "Accum Depree – Leasehold Improvements" %>
-          <%= f.number_field :lyfadli, :step => 0.01 %>
+          <%= f.money_field :lyfadli %>
         </li>
         <li>
           <strong><%= f.label :forumla, "Total Fixed Asset" %></strong>
           <% formula = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
-          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
+          <%= f.money_field :formula, :value => formula, :disabled => "" %>
         </li>
       </ul>
     </li>
@@ -147,53 +147,53 @@
       <ul>
         <li>
           <%= f.label :lynrlt, "Notes Receivable – Long Term" %>
-          <%= f.number_field :lynrlt, :step => 0.01 %>
+          <%= f.money_field :lynrlt %>
         </li>
         <li>
           <%= f.label :lys, "Suspense" %>
-          <%= f.number_field :lys, :step => 0.01 %>
+          <%= f.money_field :lys %>
         </li>
         <li>
           <%= f.label :formula, "Franchise Rights" %>
           <% formula = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
-          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
+          <%= f.money_field :formula, :value => formula, :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyfraone, "Area No. 1" %>
-              <%= f.number_field :lyfraone, :step => 0.01 %>
+              <%= f.money_field :lyfraone %>
             </li>
             <li>
               <%= f.label :lyfratwo, "Area No. 2" %>
-              <%= f.number_field :lyfratwo, :step => 0.01 %>
+              <%= f.money_field :lyfratwo %>
             </li>
             <li>
               <%= f.label :lyfrathree, "Area No. 3" %>
-              <%= f.number_field :lyfrathree, :step => 0.01 %>
+              <%= f.money_field :lyfrathree %>
             </li>
           </ul>
         </li>
         <li>
           <%= f.label :formula, "Accum Amortiz – Franchise" %>
           <% formula = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
-          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
+          <%= f.money_field :formula, :value => formula, :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyaaaone, "Area No. 1" %>
-              <%= f.number_field :lyaaaone, :step => 0.01 %>
+              <%= f.money_field :lyaaaone %>
             </li>
             <li>
               <%= f.label :lyaaatwo, "Area No. 2" %>
-              <%= f.number_field :lyaaatwo, :step => 0.01 %>
+              <%= f.money_field :lyaaatwo %>
             </li>
             <li>
               <%= f.label :lyaaathree, "Area No. 3" %>
-              <%= f.number_field :lyaaathree, :step => 0.01 %>
+              <%= f.money_field :lyaaathree %>
             </li>
           </ul>
         </li>
         <li>
           <%= f.label :lyoia, "Other Intangible Assets" %>
-          <%= f.number_field :lyoia, :step => 0.01 %>
+          <%= f.money_field :lyoia %>
         </li>
         <li>Accum Amortiz – Other Intagible Assets</li>
         <li>Organization Costs</li>
