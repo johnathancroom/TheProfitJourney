@@ -239,18 +239,38 @@
     <li>
       <h1>Accounts Payable</h1>
       <ul>
-        <li>Accounts Payable</li>
-        <li><strong>Total Accounts Payable</strong></li>
+        <li>
+          <%= f.label :lyap, "Accounts Payable" %>
+          <%= f.money_field :lyap %>
+        </li>
+        <li>
+          <strong><%= f.label :formula, "Total Accounts Payable" %></strong>
+          <% formula["tap"] = @last_year.lyap %>
+          <%= f.money_field :formula, :value => formula["tap"], :disabled => "" %>
+        </li>
       </ul>
     </li>
 
     <li>
       <h1>Credit Card</h1>
       <ul>
-        <li>Credit Card No. 1</li>
-        <li>Credit Card No. 2</li>
-        <li>Credit Card No. 3</li>
-        <li><strong>Total Credit Card</strong></li>
+        <li>
+          <%= f.label :lyccone, "Credit Card No. 1" %>
+          <%= f.money_field :lyccone %>
+        </li>
+        <li>
+          <%= f.label :lycctwo, "Credit Card No. 2" %>
+          <%= f.money_field :lycctwo %>
+        </li>
+        <li>
+          <%= f.label :lyccthree, "Credit Card No. 3" %>
+          <%= f.money_field :lyccthree %>
+        </li>
+        <li>
+          <strong><%= f.label :formula, "Total Credit Card" %></strong>
+          <% formula["tcc"] = @last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree %>
+          <%= f.money_field :formula, :value => formula["tcc"], :disabled => "" %>
+        </li>
       </ul>
     </li>
 
