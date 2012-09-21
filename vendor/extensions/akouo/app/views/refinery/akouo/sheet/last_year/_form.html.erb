@@ -1,4 +1,5 @@
 <%= form_for @last_year, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+  <% formula = Hash.new %>
   <ul>
     <li>
       <h1>Bank</h1>
@@ -8,8 +9,9 @@
           <%= f.money_field :lycoh %>
         </li>
         <li>
-          <%= f.label :forumla, "Cash in Banks" %>
-          <%= f.money_field :formula, :value => (@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :disabled => "" %>
+          <%= f.label :formula, "Cash in Banks" %>
+          <% formula["cb"] = @last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree %>
+          <%= f.money_field :formula, :value => formula["cb"], :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyckone, "Checking Account No. 1" %>
@@ -27,7 +29,8 @@
         </li>
         <li>
           <strong><%= f.label :formula, "Total Bank" %></strong>
-          <%= f.money_field :formula, :value => (@last_year.lycoh+@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :disabled => "" %>
+          <% formula["tb"] = @last_year.lycoh+formula["cb"] %>
+          <%= f.money_field :formula, :value => formula["tb"], :disabled => "" %>
         </li>
         <li>
           <%= f.label :lyar, "Amounts Receivable" %>
@@ -72,9 +75,9 @@
           <%= f.money_field :lyuf %>
         </li>
         <li>
-          <strong><%= f.label :forumla, "Total Other Asset" %></strong>
-          <% formula = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
-          <%= f.money_field :forumla, :value => formula, :disabled => "" %>
+          <strong><%= f.label :formula, "Total Other Asset" %></strong>
+          <% formula["toa"] = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
+          <%= f.money_field :formula, :value => formula["toa"], :disabled => "" %>
         </li>
       </ul>
     </li>
@@ -135,9 +138,9 @@
           <%= f.money_field :lyfadli %>
         </li>
         <li>
-          <strong><%= f.label :forumla, "Total Fixed Asset" %></strong>
-          <% formula = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
-          <%= f.money_field :formula, :value => formula, :disabled => "" %>
+          <strong><%= f.label :formula, "Total Fixed Asset" %></strong>
+          <% formula["tfa"] = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
+          <%= f.money_field :formula, :value => formula["tfa"], :disabled => "" %>
         </li>
       </ul>
     </li>
@@ -155,8 +158,8 @@
         </li>
         <li>
           <%= f.label :formula, "Franchise Rights" %>
-          <% formula = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
-          <%= f.money_field :formula, :value => formula, :disabled => "" %>
+          <% formula["fr"] = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
+          <%= f.money_field :formula, :value => formula["fr"], :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyfraone, "Area No. 1" %>
@@ -174,8 +177,8 @@
         </li>
         <li>
           <%= f.label :formula, "Accum Amortiz – Franchise" %>
-          <% formula = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
-          <%= f.money_field :formula, :value => formula, :disabled => "" %>
+          <% formula["aaf"] = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
+          <%= f.money_field :formula, :value => formula["aaf"], :disabled => "" %>
           <ul>
             <li>
               <%= f.label :lyaaaone, "Area No. 1" %>
@@ -221,13 +224,17 @@
         </li>
         <li>
           <strong><%= f.label :formula, "Total Other Asset" %></strong>
-          <% formula = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa %>
-          <%= f.money_field :formula, :value => formula, :disabled => "" %>
+          <% formula["toa2"] = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa %>
+          <%= f.money_field :formula, :value => formula["toa2"], :disabled => "" %>
         </li>
       </ul>
     </li>
 
-    <li><strong>Total Assets</strong></li>
+    <li>
+      <strong><%= f.label :formula, "Total Assets" %></strong>
+      <% formula["ta"] = formula["tb"]+@last_year.lyar+formula["toa"]+formula["tfa"]+formula["toa2"] %>
+      <%= f.money_field :formula, :value => formula["ta"], :disabled => "" %>
+    </li>
 
     <li>
       <h1>Accounts Payable</h1>
