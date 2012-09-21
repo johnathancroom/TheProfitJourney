@@ -277,22 +277,66 @@
     <li>
       <h1>Other Current Liability</h1>
       <ul>
-        <li>Accr Liabilities – Payroll</li>
-        <li>Accr Liabilities – Commissions</li>
-        <li>Accr Liabilities – Payroll Tax</li>
-        <li>FICA</li>
-        <li>Medicare</li>
-        <li>Withholding</li>
-        <li>Accr Liabilities – Workers Comp</li>
-        <li>Accr Liabilities – Sales Tax</li>
-        <li>Accr Liabilities – Property Tax</li>
-        <li>Accr Liabilities – Other Taxes</li>
-        <li>Accr Liabilities – Interest</li>
-        <li>Accr Liabilities – Other</li>
-        <li>Deferred Revenue</li>
-        <li>Current Portion Long Term</li>
-        <li>Other Liabilities</li>
-        <li><strong>Total Other Current Liability</strong></li>
+        <li>
+          <%= f.label :lyalp, "Accr Liabilities – Payroll" %>
+          <%= f.money_field :lyalp %>
+        </li>
+        <li>
+          <%= f.label :lyalc, "Accr Liabilities – Commissions" %>
+          <%= f.money_field :lyalc %>
+        </li>
+        <li>
+          <%= f.label :lyalpt, "Accr Liabilities – Payroll Tax" %>
+          <%= f.money_field :lyalpt %>
+        </li>
+        <li>
+          <%= f.label :lyfica, "FICA" %>
+          <%= f.money_field :lyfica %>
+        </li>
+        <li>
+          <%= f.label :lym, "Medicare" %>
+          <%= f.money_field :lym %>
+        </li>
+        <li>
+          <%= f.label :lyw, "Withholding" %>
+          <%= f.money_field :lyw %>
+        </li>
+        <li>
+          <%= f.label :lyalwc, "Accr Liabilities – Workers Comp" %>
+          <%= f.money_field :lyalwc %>
+        </li>
+        <li>
+          <%= f.label :lyalst, "Accr Liabilities – Sales Tax" %>
+          <%= f.money_field :lyalst %>
+        </li>
+        <li>
+          <%= f.label :lyalprt, "Accr Liabilities – Property Tax" %>
+          <%= f.money_field :lyalprt %>
+        </li>
+        <li>
+          <%= f.label :lyalot, "Accr Liabilities – Other Taxes" %>
+          <%= f.money_field :lyalot %>
+        </li>
+        <li>
+          <%= f.label :lyali, "Accr Liabilities – Interest" %>
+          <%= f.money_field :lyali %>
+        </li>
+        <li>
+          <%= f.label :lyaldr, "Deferred Revenue" %>
+          <%= f.money_field :lyaldr %>
+        </li>
+        <li>
+          <%= f.label :lycplt, "Current Portion Long Term" %>
+          <%= f.money_field :lycplt %>
+        </li>
+        <li>
+          <%= f.label :lyol, "Other Liabilities" %>
+          <%= f.money_field :lyol %>
+        </li>
+        <li>
+          <strong><%= f.label :formula, "Total Other Current Liability" %></strong>
+          <% formula["tocl"] = @last_year.lyalp+@last_year.lyalc+@last_year.lyalpt+@last_year.lyfica+@last_year.lym+@last_year.lyw+@last_year.lyalwc+@last_year.lyalst+@last_year.lyalprt+@last_year.lyalot+@last_year.lyali+@last_year.lyaldr+@last_year.lycplt+@last_year.lyol %>
+          <%= f.money_field :formula, :value => formula["tocl"], :disabled => "" %></li>
       </ul>
     </li>
 

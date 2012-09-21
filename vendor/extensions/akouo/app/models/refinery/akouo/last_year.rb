@@ -11,7 +11,8 @@ module Refinery
         :lyfavt, :lyfadvt, :lyfaov, :lyfadov, :lyfaeo, :lyfadeo, :lyfafe, :lyfadfe, :lyfal, :lyfab, :lyfadb, :lyfali, :lyfadli,
         :lynrlt, :lys, :lyfraone, :lyfratwo, :lyfrathree, :lyaaaone, :lyaaatwo, :lyaaathree, :lyoia, :lyaaoi, :lyoc, :lyaaoc, :lyd, :lylti, :lyoa,
         :lyap,
-        :lyccone, :lycctwo, :lyccthree
+        :lyccone, :lycctwo, :lyccthree,
+        :lyalp, :lyalc, :lyalpt, :lyfica, :lym, :lyw, :lyalwc, :lyalst, :lyalprt, :lyalot, :lyali, :lyaldr, :lycplt, :lyol
       )
 
       belongs_to :user, :class_name => 'Refinery::User'

@@ -245,20 +245,20 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
     t.decimal "lyccone",    :precision => 19, :scale => 4
     t.decimal "lycctwo",    :precision => 19, :scale => 4
     t.decimal "lyccthree",  :precision => 19, :scale => 4
-    t.decimal "LYALP",      :precision => 19, :scale => 4
-    t.decimal "LYALC",      :precision => 19, :scale => 4
-    t.decimal "LYALPT",     :precision => 19, :scale => 4
-    t.decimal "LYFICA",     :precision => 19, :scale => 4
-    t.decimal "LYM",        :precision => 19, :scale => 4
-    t.decimal "LYW",        :precision => 19, :scale => 4
-    t.decimal "LYALWC",     :precision => 19, :scale => 4
-    t.decimal "LYALST",     :precision => 19, :scale => 4
-    t.decimal "LYALPRT",    :precision => 19, :scale => 4
-    t.decimal "LYALOT",     :precision => 19, :scale => 4
-    t.decimal "LYALI",      :precision => 19, :scale => 4
-    t.decimal "LYALDR",     :precision => 19, :scale => 4
-    t.decimal "LYCPLT",     :precision => 19, :scale => 4
-    t.decimal "LYOL",       :precision => 19, :scale => 4
+    t.decimal "lyalp",      :precision => 19, :scale => 4
+    t.decimal "lyalc",      :precision => 19, :scale => 4
+    t.decimal "lyalpt",     :precision => 19, :scale => 4
+    t.decimal "lyfica",     :precision => 19, :scale => 4
+    t.decimal "lym",        :precision => 19, :scale => 4
+    t.decimal "lyw",        :precision => 19, :scale => 4
+    t.decimal "lyalwc",     :precision => 19, :scale => 4
+    t.decimal "lyalst",     :precision => 19, :scale => 4
+    t.decimal "lyalprt",    :precision => 19, :scale => 4
+    t.decimal "lyalot",     :precision => 19, :scale => 4
+    t.decimal "lyali",      :precision => 19, :scale => 4
+    t.decimal "lyaldr",     :precision => 19, :scale => 4
+    t.decimal "lycplt",     :precision => 19, :scale => 4
+    t.decimal "lyol",       :precision => 19, :scale => 4
     t.decimal "LYLTLone",   :precision => 19, :scale => 4
     t.decimal "LYLTLtwo",   :precision => 19, :scale => 4
     t.decimal "LYLTLthree", :precision => 19, :scale => 4
