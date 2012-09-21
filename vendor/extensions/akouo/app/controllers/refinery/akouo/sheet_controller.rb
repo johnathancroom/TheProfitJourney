@@ -10,7 +10,7 @@ module Refinery
       before_filter :only => [:"last_year/show", :"last_year/edit"] { |c| c.find_page("/akouo/last_year") }
 
       def start_update
-        if @customer.update_attributes(params[:customer])
+        if @user.update_attributes(params[:user])
           redirect_to refinery.akouo_start_path, :notice => SAVED_MESSAGE
         else
           render :"start/edit"
@@ -18,7 +18,7 @@ module Refinery
       end
 
       def last_year_update
-        if @last_year.update_attributes(params[:last_year])
+        if @user.update_attributes(params[:user])
           redirect_to refinery.akouo_last_year_path, :notice => SAVED_MESSAGE
         else
           render :"last_year/edit"
@@ -28,8 +28,9 @@ module Refinery
     protected
 
       def find_models
-        @customer = current_refinery_user.customer
-        @last_year = current_refinery_user.last_year
+        @user = current_refinery_user
+        @customer = @user.customer
+        @last_year = @user.last_year
       end
 
       def find_page(link_url)

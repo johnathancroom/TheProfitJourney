@@ -1,595 +1,598 @@
-<%= form_for @last_year, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |f| %>
-  <% formula = Hash.new %>
-  <ul>
-    <li>
-      <h1>Bank</h1>
-      <ul>
-        <li>
-          <%= f.label :lycoh, "Cash on Hand" %>
-          <%= f.money_field :lycoh %>
-        </li>
-        <li>
-          <%= f.label :formula, "Cash in Banks" %>
-          <% formula["cb"] = @last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree %>
-          <%= f.money_field :formula, :value => formula["cb"], :disabled => "" %>
-          <ul>
-            <li>
-              <%= f.label :lyckone, "Checking Account No. 1" %>
-              <%= f.money_field :lyckone %>
-            </li>
-            <li>
-              <%= f.label :lycktwo, "Checking Account No. 2" %>
-              <%= f.money_field :lycktwo %>
-            </li>
-            <li>
-              <%= f.label :lyckthree, "Checking Account No. 3" %>
-              <%= f.money_field :lyckthree %>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Bank" %></strong>
-          <% formula["tb"] = @last_year.lycoh+formula["cb"] %>
-          <%= f.money_field :formula, :value => formula["tb"], :disabled => "" %>
-        </li>
-        <li>
-          <%= f.label :lyar, "Amounts Receivable" %>
-          <%= f.money_field :lyar %>
-        </li>
-      </ul>
-    </li>
+<% formula = Hash.new %>
 
-    <li>
-      <h1>Other Current Asset</h1>
-      <ul>
-        <li>
-          <%= f.label :lymma, "Money Market Account" %>
-          <%= f.money_field :lymma %>
-        </li>
-        <li>
-          <%= f.label :lysti, "Short Term Investments" %>
-          <%= f.money_field :lysti %>
-        </li>
-        <li>
-          <%= f.label :lyada, "Allowance for Doubtful Accounts" %>
-          <%= f.money_field :lyada %>
-        </li>
-        <li>
-          <%= f.label :lyer, "Employee Receivables" %>
-          <%= f.money_field :lyer %>
-        </li>
-        <li>
-          <%= f.label :lynrc, "Notes Receivable – Current" %>
-          <%= f.money_field :lynrc %>
-        </li>
-        <li>
-          <%= f.label :lyi, "Inventory" %>
-          <%= f.money_field :lyi %>
-        </li>
-        <li>
-          <%= f.label :lyppe, "Prepaid Expenses" %>
-          <%= f.money_field :lyppe %>
-        </li>
-        <li>
-          <%= f.label :lyuf, "Undeposited Funds" %>
-          <%= f.money_field :lyuf %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Other Asset" %></strong>
-          <% formula["toa"] = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
-          <%= f.money_field :formula, :value => formula["toa"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+<%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |user| %>
+  <%= user.fields_for :last_year do |f| %>
+    <ul>
+      <li>
+        <h1>Bank</h1>
+        <ul>
+          <li>
+            <%= f.label :lycoh, "Cash on Hand" %>
+            <%= f.money_field :lycoh %>
+          </li>
+          <li>
+            <%= f.label :formula, "Cash in Banks" %>
+            <% formula["cb"] = @last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree %>
+            <%= f.money_field :formula, :value => formula["cb"], :disabled => "" %>
+            <ul>
+              <li>
+                <%= f.label :lyckone, "Checking Account No. 1" %>
+                <%= f.money_field :lyckone %>
+              </li>
+              <li>
+                <%= f.label :lycktwo, "Checking Account No. 2" %>
+                <%= f.money_field :lycktwo %>
+              </li>
+              <li>
+                <%= f.label :lyckthree, "Checking Account No. 3" %>
+                <%= f.money_field :lyckthree %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Bank" %></strong>
+            <% formula["tb"] = @last_year.lycoh+formula["cb"] %>
+            <%= f.money_field :formula, :value => formula["tb"], :disabled => "" %>
+          </li>
+          <li>
+            <%= f.label :lyar, "Amounts Receivable" %>
+            <%= f.money_field :lyar %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Fixed Asset</h1>
-      <ul>
-        <li>
-          <%= f.label :lyfavt, "Vans & Trucks" %>
-          <%= f.money_field :lyfavt %>
-        </li>
-        <li>
-          <%= f.label :lyfadvt, "Accum Depree – Vans & Trucks" %>
-          <%= f.money_field :lyfadvt %>
-        </li>
-        <li>
-          <%= f.label :lyfaov, "Other Vehicles" %>
-          <%= f.money_field :lyfaov %>
-        </li>
-        <li>
-          <%= f.label :lyfadov, "Accum Depree – Other Vehicles" %>
-          <%= f.money_field :lyfadov %>
-        </li>
-        <li>
-          <%= f.label :lyfaeo, "Equipment – Operations" %>
-          <%= f.money_field :lyfaeo %>
-        </li>
-        <li>
-          <%= f.label :lyfadeo, "Accum Depree – Equipment" %>
-          <%= f.money_field :lyfadeo %>
-        </li>
-        <li>
-          <%= f.label :lyfafe, "Furniture & Equipment – Office" %>
-          <%= f.money_field :lyfafe %>
-        </li>
-        <li>
-          <%= f.label :lyfadfe, "Accum Depree – Furniture & Equipment" %>
-          <%= f.money_field :lyfadfe %>
-        </li>
-        <li>
-          <%= f.label :lyfal, "Land" %>
-          <%= f.money_field :lyfal %>
-        </li>
-        <li>
-          <%= f.label :lyfab, "Buildings" %>
-          <%= f.money_field :lyfab %>
-        </li>
-        <li>
-          <%= f.label :lyfadb, "Accum Depree – Buildings" %>
-          <%= f.money_field :lyfadb %>
-        </li>
-        <li>
-          <%= f.label :lyfali, "Leasehold Improvements" %>
-          <%= f.money_field :lyfali %>
-        </li>
-        <li>
-          <%= f.label :lyfadli, "Accum Depree – Leasehold Improvements" %>
-          <%= f.money_field :lyfadli %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Fixed Asset" %></strong>
-          <% formula["tfa"] = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
-          <%= f.money_field :formula, :value => formula["tfa"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <h1>Other Current Asset</h1>
+        <ul>
+          <li>
+            <%= f.label :lymma, "Money Market Account" %>
+            <%= f.money_field :lymma %>
+          </li>
+          <li>
+            <%= f.label :lysti, "Short Term Investments" %>
+            <%= f.money_field :lysti %>
+          </li>
+          <li>
+            <%= f.label :lyada, "Allowance for Doubtful Accounts" %>
+            <%= f.money_field :lyada %>
+          </li>
+          <li>
+            <%= f.label :lyer, "Employee Receivables" %>
+            <%= f.money_field :lyer %>
+          </li>
+          <li>
+            <%= f.label :lynrc, "Notes Receivable – Current" %>
+            <%= f.money_field :lynrc %>
+          </li>
+          <li>
+            <%= f.label :lyi, "Inventory" %>
+            <%= f.money_field :lyi %>
+          </li>
+          <li>
+            <%= f.label :lyppe, "Prepaid Expenses" %>
+            <%= f.money_field :lyppe %>
+          </li>
+          <li>
+            <%= f.label :lyuf, "Undeposited Funds" %>
+            <%= f.money_field :lyuf %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Other Asset" %></strong>
+            <% formula["toa"] = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
+            <%= f.money_field :formula, :value => formula["toa"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Other Asset</h1>
-      <ul>
-        <li>
-          <%= f.label :lynrlt, "Notes Receivable – Long Term" %>
-          <%= f.money_field :lynrlt %>
-        </li>
-        <li>
-          <%= f.label :lys, "Suspense" %>
-          <%= f.money_field :lys %>
-        </li>
-        <li>
-          <%= f.label :formula, "Franchise Rights" %>
-          <% formula["fr"] = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
-          <%= f.money_field :formula, :value => formula["fr"], :disabled => "" %>
-          <ul>
-            <li>
-              <%= f.label :lyfraone, "Area No. 1" %>
-              <%= f.money_field :lyfraone %>
-            </li>
-            <li>
-              <%= f.label :lyfratwo, "Area No. 2" %>
-              <%= f.money_field :lyfratwo %>
-            </li>
-            <li>
-              <%= f.label :lyfrathree, "Area No. 3" %>
-              <%= f.money_field :lyfrathree %>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <%= f.label :formula, "Accum Amortiz – Franchise" %>
-          <% formula["aaf"] = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
-          <%= f.money_field :formula, :value => formula["aaf"], :disabled => "" %>
-          <ul>
-            <li>
-              <%= f.label :lyaaaone, "Area No. 1" %>
-              <%= f.money_field :lyaaaone %>
-            </li>
-            <li>
-              <%= f.label :lyaaatwo, "Area No. 2" %>
-              <%= f.money_field :lyaaatwo %>
-            </li>
-            <li>
-              <%= f.label :lyaaathree, "Area No. 3" %>
-              <%= f.money_field :lyaaathree %>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <%= f.label :lyoia, "Other Intangible Assets" %>
-          <%= f.money_field :lyoia %>
-        </li>
-        <li>
-          <%= f.label :lyaaoi, "Accum Amortiz – Other Intagible Assets" %>
-          <%= f.money_field :lyaaoi %>
-        </li>
-        <li>
-          <%= f.label :lyoc, "Organization Costs" %>
-          <%= f.money_field :lyoc %>
-        </li>
-        <li>
-          <%= f.label :lyaaoc, "Accum Amortiz – Organization Costs" %>
-          <%= f.money_field :lyaaoc %>
-        </li>
-        <li>
-          <%= f.label :lyd, "Deposits" %>
-          <%= f.money_field :lyd %>
-        </li>
-        <li>
-          <%= f.label :lylti, "Long Term Investments" %>
-          <%= f.money_field :lylti %>
-        </li>
-        <li>
-          <%= f.label :lyoa, "Other Assets" %>
-          <%= f.money_field :lyoa %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Other Asset" %></strong>
-          <% formula["toa2"] = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa %>
-          <%= f.money_field :formula, :value => formula["toa2"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <h1>Fixed Asset</h1>
+        <ul>
+          <li>
+            <%= f.label :lyfavt, "Vans & Trucks" %>
+            <%= f.money_field :lyfavt %>
+          </li>
+          <li>
+            <%= f.label :lyfadvt, "Accum Depree – Vans & Trucks" %>
+            <%= f.money_field :lyfadvt %>
+          </li>
+          <li>
+            <%= f.label :lyfaov, "Other Vehicles" %>
+            <%= f.money_field :lyfaov %>
+          </li>
+          <li>
+            <%= f.label :lyfadov, "Accum Depree – Other Vehicles" %>
+            <%= f.money_field :lyfadov %>
+          </li>
+          <li>
+            <%= f.label :lyfaeo, "Equipment – Operations" %>
+            <%= f.money_field :lyfaeo %>
+          </li>
+          <li>
+            <%= f.label :lyfadeo, "Accum Depree – Equipment" %>
+            <%= f.money_field :lyfadeo %>
+          </li>
+          <li>
+            <%= f.label :lyfafe, "Furniture & Equipment – Office" %>
+            <%= f.money_field :lyfafe %>
+          </li>
+          <li>
+            <%= f.label :lyfadfe, "Accum Depree – Furniture & Equipment" %>
+            <%= f.money_field :lyfadfe %>
+          </li>
+          <li>
+            <%= f.label :lyfal, "Land" %>
+            <%= f.money_field :lyfal %>
+          </li>
+          <li>
+            <%= f.label :lyfab, "Buildings" %>
+            <%= f.money_field :lyfab %>
+          </li>
+          <li>
+            <%= f.label :lyfadb, "Accum Depree – Buildings" %>
+            <%= f.money_field :lyfadb %>
+          </li>
+          <li>
+            <%= f.label :lyfali, "Leasehold Improvements" %>
+            <%= f.money_field :lyfali %>
+          </li>
+          <li>
+            <%= f.label :lyfadli, "Accum Depree – Leasehold Improvements" %>
+            <%= f.money_field :lyfadli %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Fixed Asset" %></strong>
+            <% formula["tfa"] = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli %>
+            <%= f.money_field :formula, :value => formula["tfa"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <strong><%= f.label :formula, "Total Assets" %></strong>
-      <% formula["ta"] = formula["tb"]+@last_year.lyar+formula["toa"]+formula["tfa"]+formula["toa2"] %>
-      <%= f.money_field :formula, :value => formula["ta"], :disabled => "" %>
-    </li>
+      <li>
+        <h1>Other Asset</h1>
+        <ul>
+          <li>
+            <%= f.label :lynrlt, "Notes Receivable – Long Term" %>
+            <%= f.money_field :lynrlt %>
+          </li>
+          <li>
+            <%= f.label :lys, "Suspense" %>
+            <%= f.money_field :lys %>
+          </li>
+          <li>
+            <%= f.label :formula, "Franchise Rights" %>
+            <% formula["fr"] = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
+            <%= f.money_field :formula, :value => formula["fr"], :disabled => "" %>
+            <ul>
+              <li>
+                <%= f.label :lyfraone, "Area No. 1" %>
+                <%= f.money_field :lyfraone %>
+              </li>
+              <li>
+                <%= f.label :lyfratwo, "Area No. 2" %>
+                <%= f.money_field :lyfratwo %>
+              </li>
+              <li>
+                <%= f.label :lyfrathree, "Area No. 3" %>
+                <%= f.money_field :lyfrathree %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= f.label :formula, "Accum Amortiz – Franchise" %>
+            <% formula["aaf"] = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
+            <%= f.money_field :formula, :value => formula["aaf"], :disabled => "" %>
+            <ul>
+              <li>
+                <%= f.label :lyaaaone, "Area No. 1" %>
+                <%= f.money_field :lyaaaone %>
+              </li>
+              <li>
+                <%= f.label :lyaaatwo, "Area No. 2" %>
+                <%= f.money_field :lyaaatwo %>
+              </li>
+              <li>
+                <%= f.label :lyaaathree, "Area No. 3" %>
+                <%= f.money_field :lyaaathree %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= f.label :lyoia, "Other Intangible Assets" %>
+            <%= f.money_field :lyoia %>
+          </li>
+          <li>
+            <%= f.label :lyaaoi, "Accum Amortiz – Other Intagible Assets" %>
+            <%= f.money_field :lyaaoi %>
+          </li>
+          <li>
+            <%= f.label :lyoc, "Organization Costs" %>
+            <%= f.money_field :lyoc %>
+          </li>
+          <li>
+            <%= f.label :lyaaoc, "Accum Amortiz – Organization Costs" %>
+            <%= f.money_field :lyaaoc %>
+          </li>
+          <li>
+            <%= f.label :lyd, "Deposits" %>
+            <%= f.money_field :lyd %>
+          </li>
+          <li>
+            <%= f.label :lylti, "Long Term Investments" %>
+            <%= f.money_field :lylti %>
+          </li>
+          <li>
+            <%= f.label :lyoa, "Other Assets" %>
+            <%= f.money_field :lyoa %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Other Asset" %></strong>
+            <% formula["toa2"] = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa %>
+            <%= f.money_field :formula, :value => formula["toa2"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Accounts Payable</h1>
-      <ul>
-        <li>
-          <%= f.label :lyap, "Accounts Payable" %>
-          <%= f.money_field :lyap %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Accounts Payable" %></strong>
-          <% formula["tap"] = @last_year.lyap %>
-          <%= f.money_field :formula, :value => formula["tap"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <strong><%= f.label :formula, "Total Assets" %></strong>
+        <% formula["ta"] = formula["tb"]+@last_year.lyar+formula["toa"]+formula["tfa"]+formula["toa2"] %>
+        <%= f.money_field :formula, :value => formula["ta"], :disabled => "" %>
+      </li>
 
-    <li>
-      <h1>Credit Card</h1>
-      <ul>
-        <li>
-          <%= f.label :lyccone, "Credit Card No. 1" %>
-          <%= f.money_field :lyccone %>
-        </li>
-        <li>
-          <%= f.label :lycctwo, "Credit Card No. 2" %>
-          <%= f.money_field :lycctwo %>
-        </li>
-        <li>
-          <%= f.label :lyccthree, "Credit Card No. 3" %>
-          <%= f.money_field :lyccthree %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Credit Card" %></strong>
-          <% formula["tcc"] = @last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree %>
-          <%= f.money_field :formula, :value => formula["tcc"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <h1>Accounts Payable</h1>
+        <ul>
+          <li>
+            <%= f.label :lyap, "Accounts Payable" %>
+            <%= f.money_field :lyap %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Accounts Payable" %></strong>
+            <% formula["tap"] = @last_year.lyap %>
+            <%= f.money_field :formula, :value => formula["tap"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Other Current Liability</h1>
-      <ul>
-        <li>
-          <%= f.label :lyalp, "Accr Liabilities – Payroll" %>
-          <%= f.money_field :lyalp %>
-        </li>
-        <li>
-          <%= f.label :lyalc, "Accr Liabilities – Commissions" %>
-          <%= f.money_field :lyalc %>
-        </li>
-        <li>
-          <%= f.label :lyalpt, "Accr Liabilities – Payroll Tax" %>
-          <%= f.money_field :lyalpt %>
-        </li>
-        <li>
-          <%= f.label :lyfica, "FICA" %>
-          <%= f.money_field :lyfica %>
-        </li>
-        <li>
-          <%= f.label :lym, "Medicare" %>
-          <%= f.money_field :lym %>
-        </li>
-        <li>
-          <%= f.label :lyw, "Withholding" %>
-          <%= f.money_field :lyw %>
-        </li>
-        <li>
-          <%= f.label :lyalwc, "Accr Liabilities – Workers Comp" %>
-          <%= f.money_field :lyalwc %>
-        </li>
-        <li>
-          <%= f.label :lyalst, "Accr Liabilities – Sales Tax" %>
-          <%= f.money_field :lyalst %>
-        </li>
-        <li>
-          <%= f.label :lyalprt, "Accr Liabilities – Property Tax" %>
-          <%= f.money_field :lyalprt %>
-        </li>
-        <li>
-          <%= f.label :lyalot, "Accr Liabilities – Other Taxes" %>
-          <%= f.money_field :lyalot %>
-        </li>
-        <li>
-          <%= f.label :lyali, "Accr Liabilities – Interest" %>
-          <%= f.money_field :lyali %>
-        </li>
-        <li>
-          <%= f.label :lyaldr, "Deferred Revenue" %>
-          <%= f.money_field :lyaldr %>
-        </li>
-        <li>
-          <%= f.label :lycplt, "Current Portion Long Term" %>
-          <%= f.money_field :lycplt %>
-        </li>
-        <li>
-          <%= f.label :lyol, "Other Liabilities" %>
-          <%= f.money_field :lyol %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Other Current Liability" %></strong>
-          <% formula["tocl"] = @last_year.lyalp+@last_year.lyalc+@last_year.lyalpt+@last_year.lyfica+@last_year.lym+@last_year.lyw+@last_year.lyalwc+@last_year.lyalst+@last_year.lyalprt+@last_year.lyalot+@last_year.lyali+@last_year.lyaldr+@last_year.lycplt+@last_year.lyol %>
-          <%= f.money_field :formula, :value => formula["tocl"], :disabled => "" %></li>
-      </ul>
-    </li>
+      <li>
+        <h1>Credit Card</h1>
+        <ul>
+          <li>
+            <%= f.label :lyccone, "Credit Card No. 1" %>
+            <%= f.money_field :lyccone %>
+          </li>
+          <li>
+            <%= f.label :lycctwo, "Credit Card No. 2" %>
+            <%= f.money_field :lycctwo %>
+          </li>
+          <li>
+            <%= f.label :lyccthree, "Credit Card No. 3" %>
+            <%= f.money_field :lyccthree %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Credit Card" %></strong>
+            <% formula["tcc"] = @last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree %>
+            <%= f.money_field :formula, :value => formula["tcc"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Long Term Liability</h1>
-      <ul>
-        <li>
-          <%= f.label :formula, "Notes Payable Long Term" %>
-          <% formula["nplt"] = @last_year.lyltlone+@last_year.lyltltwo+@last_year.lyltlthree+@last_year.lyltlfour+@last_year.lyltlfive %>
-          <%= f.money_field :formula, :value => formula["nplt"], :disabled => "" %>
-          <ul>
-            <li>
-              <%= f.label :lyltlone, "Note Payable No. 1" %>
-              <%= f.money_field :lyltlone %></li>
-            <li>
-              <%= f.label :lyltltwo, "Note Payable No. 2" %>
-              <%= f.money_field :lyltltwo %>
-            </li>
-            <li>
-              <%= f.label :lyltlthree, "Note Payable No. 3" %>
-              <%= f.money_field :lyltlthree %>
-            </li>
-            <li>
-              <%= f.label :lyltlfour, "Note Payable No. 4" %>
-              <%= f.money_field :lyltlfour %>
-            </li>
-            <li>
-              <%= f.label :lyltlfive, "Note Payable No. 5" %>
-              <%= f.money_field :lyltlfive %>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <%= f.label :lylcp, "Less Current Portion" %>
-          <%= f.money_field :lylcp %>
-        </li>
-        <li>
-          <%= f.label :lyshl, "Shareholder Loans" %>
-          <%= f.money_field :lyshl %>
-        </li>
-        <li>
-          <strong><%= f.label :formula, "Total Long Term Liability" %></strong>
-          <% formula["tltl"] = formula["nplt"]+@last_year.lylcp+@last_year.lyshl %>
-          <%= f.money_field :formula, :value => formula["tltl"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <h1>Other Current Liability</h1>
+        <ul>
+          <li>
+            <%= f.label :lyalp, "Accr Liabilities – Payroll" %>
+            <%= f.money_field :lyalp %>
+          </li>
+          <li>
+            <%= f.label :lyalc, "Accr Liabilities – Commissions" %>
+            <%= f.money_field :lyalc %>
+          </li>
+          <li>
+            <%= f.label :lyalpt, "Accr Liabilities – Payroll Tax" %>
+            <%= f.money_field :lyalpt %>
+          </li>
+          <li>
+            <%= f.label :lyfica, "FICA" %>
+            <%= f.money_field :lyfica %>
+          </li>
+          <li>
+            <%= f.label :lym, "Medicare" %>
+            <%= f.money_field :lym %>
+          </li>
+          <li>
+            <%= f.label :lyw, "Withholding" %>
+            <%= f.money_field :lyw %>
+          </li>
+          <li>
+            <%= f.label :lyalwc, "Accr Liabilities – Workers Comp" %>
+            <%= f.money_field :lyalwc %>
+          </li>
+          <li>
+            <%= f.label :lyalst, "Accr Liabilities – Sales Tax" %>
+            <%= f.money_field :lyalst %>
+          </li>
+          <li>
+            <%= f.label :lyalprt, "Accr Liabilities – Property Tax" %>
+            <%= f.money_field :lyalprt %>
+          </li>
+          <li>
+            <%= f.label :lyalot, "Accr Liabilities – Other Taxes" %>
+            <%= f.money_field :lyalot %>
+          </li>
+          <li>
+            <%= f.label :lyali, "Accr Liabilities – Interest" %>
+            <%= f.money_field :lyali %>
+          </li>
+          <li>
+            <%= f.label :lyaldr, "Deferred Revenue" %>
+            <%= f.money_field :lyaldr %>
+          </li>
+          <li>
+            <%= f.label :lycplt, "Current Portion Long Term" %>
+            <%= f.money_field :lycplt %>
+          </li>
+          <li>
+            <%= f.label :lyol, "Other Liabilities" %>
+            <%= f.money_field :lyol %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Other Current Liability" %></strong>
+            <% formula["tocl"] = @last_year.lyalp+@last_year.lyalc+@last_year.lyalpt+@last_year.lyfica+@last_year.lym+@last_year.lyw+@last_year.lyalwc+@last_year.lyalst+@last_year.lyalprt+@last_year.lyalot+@last_year.lyali+@last_year.lyaldr+@last_year.lycplt+@last_year.lyol %>
+            <%= f.money_field :formula, :value => formula["tocl"], :disabled => "" %></li>
+        </ul>
+      </li>
 
-    <li>
-      <strong><%= f.label :formula, "Total Liabilities" %></strong>
-      <% formula["tl"] = @last_year.lyap+@last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree+formula["tocl"]+formula["tltl"] %>
-      <%= f.money_field :formula, :value => formula["tl"], :disabled => "" %>
-    </li>
+      <li>
+        <h1>Long Term Liability</h1>
+        <ul>
+          <li>
+            <%= f.label :formula, "Notes Payable Long Term" %>
+            <% formula["nplt"] = @last_year.lyltlone+@last_year.lyltltwo+@last_year.lyltlthree+@last_year.lyltlfour+@last_year.lyltlfive %>
+            <%= f.money_field :formula, :value => formula["nplt"], :disabled => "" %>
+            <ul>
+              <li>
+                <%= f.label :lyltlone, "Note Payable No. 1" %>
+                <%= f.money_field :lyltlone %></li>
+              <li>
+                <%= f.label :lyltltwo, "Note Payable No. 2" %>
+                <%= f.money_field :lyltltwo %>
+              </li>
+              <li>
+                <%= f.label :lyltlthree, "Note Payable No. 3" %>
+                <%= f.money_field :lyltlthree %>
+              </li>
+              <li>
+                <%= f.label :lyltlfour, "Note Payable No. 4" %>
+                <%= f.money_field :lyltlfour %>
+              </li>
+              <li>
+                <%= f.label :lyltlfive, "Note Payable No. 5" %>
+                <%= f.money_field :lyltlfive %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= f.label :lylcp, "Less Current Portion" %>
+            <%= f.money_field :lylcp %>
+          </li>
+          <li>
+            <%= f.label :lyshl, "Shareholder Loans" %>
+            <%= f.money_field :lyshl %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Long Term Liability" %></strong>
+            <% formula["tltl"] = formula["nplt"]+@last_year.lylcp+@last_year.lyshl %>
+            <%= f.money_field :formula, :value => formula["tltl"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Equity</h1>
-      <ul>
-        <li>
-          <%= f.label :lyecs, "Common Stock" %>
-          <%= f.money_field :lyecs %>
-        </li>
-        <li>
-          <%= f.label :lyeoe, "Owners Equity" %>
-          <%= f.money_field :lyeoe %>
-        </li>
-        <li>
-          <%= f.label :lyepc, "Paid in Capital" %>
-          <%= f.money_field :lyepc %>
-        </li>
-        <li>
-          <%= f.label :lyedp, "Dividends Paid" %>
-          <%= f.money_field :lyedp %>
-        </li>
-        <li>
-          <%= f.label :lyeow, "Owners Withdrawals" %>
-          <%= f.money_field :lyeow %>
-        </li>
-        <li>
-          <%= f.label :lyere, "Retained Earnings" %>
-          <%= f.money_field :lyere %>
-        </li>
-        <li style="color: red;">Opening Bal Equity</li>
-        <li>
-          <strong style="color: red;"><%= f.label :formula, "Total Equity" %></strong>
-          <% formula["te"] = @last_year.lyecs+@last_year.lyeoe+@last_year.lyepc+@last_year.lyedp+@last_year.lyeow+@last_year.lyere %>
-          <%= f.money_field :formula, :value => formula["te"], :disabled => "" %>
-        </li>
-      </ul>
-    </li>
+      <li>
+        <strong><%= f.label :formula, "Total Liabilities" %></strong>
+        <% formula["tl"] = @last_year.lyap+@last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree+formula["tocl"]+formula["tltl"] %>
+        <%= f.money_field :formula, :value => formula["tl"], :disabled => "" %>
+      </li>
 
-    <li>
-      <strong><%= f.label :formula, "Total Liabilities & Equity" %></strong>
-      <% formula["tle"] = formula["tl"]+formula["te"] %>
-      <%= f.money_field :formula, :value => formula["tle"], :disabled => "" %>
-    </li>
-  </ul>
+      <li>
+        <h1>Equity</h1>
+        <ul>
+          <li>
+            <%= f.label :lyecs, "Common Stock" %>
+            <%= f.money_field :lyecs %>
+          </li>
+          <li>
+            <%= f.label :lyeoe, "Owners Equity" %>
+            <%= f.money_field :lyeoe %>
+          </li>
+          <li>
+            <%= f.label :lyepc, "Paid in Capital" %>
+            <%= f.money_field :lyepc %>
+          </li>
+          <li>
+            <%= f.label :lyedp, "Dividends Paid" %>
+            <%= f.money_field :lyedp %>
+          </li>
+          <li>
+            <%= f.label :lyeow, "Owners Withdrawals" %>
+            <%= f.money_field :lyeow %>
+          </li>
+          <li>
+            <%= f.label :lyere, "Retained Earnings" %>
+            <%= f.money_field :lyere %>
+          </li>
+          <li style="color: red;">Opening Bal Equity</li>
+          <li>
+            <strong style="color: red;"><%= f.label :formula, "Total Equity" %></strong>
+            <% formula["te"] = @last_year.lyecs+@last_year.lyeoe+@last_year.lyepc+@last_year.lyedp+@last_year.lyeow+@last_year.lyere %>
+            <%= f.money_field :formula, :value => formula["te"], :disabled => "" %>
+          </li>
+        </ul>
+      </li>
 
-  <h1>Income & Expense Statement</h1>
-  <ul>
-    <li>
-      <h1>Income</h1>
-      <ul>
-        <li>
-          Total Sales – Residential
-          <ul>
-            <li>Sales</li>
-            <li>Add-on</li>
-            <li>Service Agreements</li>
-            <li>Repair</li>
-            <li>Refunds and Allowances</li>
-          </ul>
-        </li>
-        <li>
-          Total Sales – Commercial
-          <ul>
-            <li>Sales</li>
-            <li>Add-on</li>
-            <li>Service Agreements</li>
-            <li>Repair</li>
-            <li>Refunds and Allowances</li>
-          </ul>
-        </li>
-        <li><strong>Total Sales</strong></li>
-      </ul>
-    </li>
+      <li>
+        <strong><%= f.label :formula, "Total Liabilities & Equity" %></strong>
+        <% formula["tle"] = formula["tl"]+formula["te"] %>
+        <%= f.money_field :formula, :value => formula["tle"], :disabled => "" %>
+      </li>
+    </ul>
 
-    <li>
-      <h1>Variable Expenses</h1>
-      <ul>
-        <li>Materials</li>
-        <li>
-          Labor
-          <ul>
-            <li>Technician Labor</li>
-            <li>Technician Commissions</li>
-            <li>Payroll Taxes – Field</li>
-            <li>Workers Compensation Insurance</li>
-            <li>Technician Benefits</li>
-          </ul>
-        </li>
-        <li>Sales Commisions</li>
-        <li>Permits</li>
-        <li>Warranty</li>
-        <li>Subcontractors</li>
-        <li>
-          Other
-          <ul>
-            <li>Vehicle Fuel</li>
-            <li>Vehicle Maintenance & Repair</li>
-            <li>Tools</li>
-          </ul>
-        </li>
-        <li>Franchise Service Fees</li>
-        <li>Franchise National Ad Fees</li>
-        <li>Promotions – Discounts</li>
-        <li><strong>Total Cost of Service</strong></li>
-        <li></li>
-        <li>Gross Margin</li>
-      </ul>
-    </li>
+    <h1>Income & Expense Statement</h1>
+    <ul>
+      <li>
+        <h1>Income</h1>
+        <ul>
+          <li>
+            Total Sales – Residential
+            <ul>
+              <li>Sales</li>
+              <li>Add-on</li>
+              <li>Service Agreements</li>
+              <li>Repair</li>
+              <li>Refunds and Allowances</li>
+            </ul>
+          </li>
+          <li>
+            Total Sales – Commercial
+            <ul>
+              <li>Sales</li>
+              <li>Add-on</li>
+              <li>Service Agreements</li>
+              <li>Repair</li>
+              <li>Refunds and Allowances</li>
+            </ul>
+          </li>
+          <li><strong>Total Sales</strong></li>
+        </ul>
+      </li>
 
-    <li>
-      <h1>Fixed Expenses</h1>
-      <ul>
-        <li>
-          Salaries
-          <ul>
-            <li>Officers</li>
-            <li>Management</li>
-            <li>Administrative</li>
-            <li>Operations</li>
-            <li>Sales</li>
-            <li>Training</li>
-          </ul>
-        </li>
-        <li>Bonuses</li>
-        <li>Payroll Taxes</li>
-        <li>Workers Compensation Insurance</li>
-        <li>Employee Benefits</li>
-        <li>Holdiay & Vacation Pay</li>
-        <li>Training</li>
-        <li>Temporary Help</li>
-        <li>Rent</li>
-        <li>Utilities</li>
-        <li>Building Repair & Maintenance</li>
-        <li>Taxes and Licenses</li>
-        <li>Telephone & Office</li>
-        <li>Cell Phones</li>
-        <li>Liability Insurance</li>
-        <li>Credit Card Service Fees</li>
-        <li>
-          Advertising
-          <ul>
-            <li>Branding</li>
-            <li>Public Relations (PR)</li>
-            <li>Commercial Visits</li>
-            <li>Decaled Vehicle</li>
-            <li>Direct Mail</li>
-            <li>Neighborhood Marketing</li>
-            <li>Exisiting Customer (Retention)</li>
-            <li>Home/Mall Shows</li>
-            <li>Other</li>
-            <li>Internet-SEO/SEM</li>
-            <li>Show Room Visits</li>
-            <li>Yard Signs</li>
-            <li>Yellow Pages Print & Online</li>
-          </ul>
-        </li>
-        <li>Recruiting & Relocation</li>
-        <li>Office Supplies</li>
-        <li>Printing</li>
-        <li>Postage</li>
-        <li>Office Equipment Leases</li>
-        <li>Field Equipment Leases</li>
-        <li>Office Equipment Repair & Maintenance</li>
-        <li>Shipping & Delivery</li>
-        <li>Uniform Laundry & Rental</li>
-        <li>
-          Vehicle
-          <ul>
-            <li>Leases</li>
-            <li>Repair & Maintenance</li>
-            <li>Insurance</li>
-            <li>Fuel (Non-revenue Generating)</li>
-            <li>Licensing</li>
-          </ul>
-        </li>
-        <li>Accounting Fees</li>
-        <li>Legal Fees</li>
-        <li>Employee Education & Relations</li>
-        <li>Outside Services</li>
-        <li>Computer Expenses</li>
-        <li>Bank Service Charges</li>
-        <li>Dues & Subscriptions</li>
-        <li>Contributions</li>
-        <li>Bad Debts</li>
-        <li>Conferences & Travel</li>
-        <li>Meals & Entertainment</li>
-        <li>Miscellaneous</li>
-        <li>Interest Income</li>
-        <li>Discounts Taken – Vendor</li>
-        <li>Interest Expense</li>
-        <li>Depreciation</li>
-        <li>Amoritization</li>
-        <li>Other Expenses</li>
-        <li>Income Taxes</li>
-        <li><strong>Total Expenses</strong></li>
-        <li><strong>Net Profit Before Taxes</strong></li>
-        <li>Note 1</li>
-        <li>Note 2</li>
-        <li><strong>Net After Note Payments</strong></li>
-      </ul>
-    </li>
-  </ul>
-  <%= f.submit "Save changes", :class => "button" %>
+      <li>
+        <h1>Variable Expenses</h1>
+        <ul>
+          <li>Materials</li>
+          <li>
+            Labor
+            <ul>
+              <li>Technician Labor</li>
+              <li>Technician Commissions</li>
+              <li>Payroll Taxes – Field</li>
+              <li>Workers Compensation Insurance</li>
+              <li>Technician Benefits</li>
+            </ul>
+          </li>
+          <li>Sales Commisions</li>
+          <li>Permits</li>
+          <li>Warranty</li>
+          <li>Subcontractors</li>
+          <li>
+            Other
+            <ul>
+              <li>Vehicle Fuel</li>
+              <li>Vehicle Maintenance & Repair</li>
+              <li>Tools</li>
+            </ul>
+          </li>
+          <li>Franchise Service Fees</li>
+          <li>Franchise National Ad Fees</li>
+          <li>Promotions – Discounts</li>
+          <li><strong>Total Cost of Service</strong></li>
+          <li></li>
+          <li>Gross Margin</li>
+        </ul>
+      </li>
+
+      <li>
+        <h1>Fixed Expenses</h1>
+        <ul>
+          <li>
+            Salaries
+            <ul>
+              <li>Officers</li>
+              <li>Management</li>
+              <li>Administrative</li>
+              <li>Operations</li>
+              <li>Sales</li>
+              <li>Training</li>
+            </ul>
+          </li>
+          <li>Bonuses</li>
+          <li>Payroll Taxes</li>
+          <li>Workers Compensation Insurance</li>
+          <li>Employee Benefits</li>
+          <li>Holdiay & Vacation Pay</li>
+          <li>Training</li>
+          <li>Temporary Help</li>
+          <li>Rent</li>
+          <li>Utilities</li>
+          <li>Building Repair & Maintenance</li>
+          <li>Taxes and Licenses</li>
+          <li>Telephone & Office</li>
+          <li>Cell Phones</li>
+          <li>Liability Insurance</li>
+          <li>Credit Card Service Fees</li>
+          <li>
+            Advertising
+            <ul>
+              <li>Branding</li>
+              <li>Public Relations (PR)</li>
+              <li>Commercial Visits</li>
+              <li>Decaled Vehicle</li>
+              <li>Direct Mail</li>
+              <li>Neighborhood Marketing</li>
+              <li>Exisiting Customer (Retention)</li>
+              <li>Home/Mall Shows</li>
+              <li>Other</li>
+              <li>Internet-SEO/SEM</li>
+              <li>Show Room Visits</li>
+              <li>Yard Signs</li>
+              <li>Yellow Pages Print & Online</li>
+            </ul>
+          </li>
+          <li>Recruiting & Relocation</li>
+          <li>Office Supplies</li>
+          <li>Printing</li>
+          <li>Postage</li>
+          <li>Office Equipment Leases</li>
+          <li>Field Equipment Leases</li>
+          <li>Office Equipment Repair & Maintenance</li>
+          <li>Shipping & Delivery</li>
+          <li>Uniform Laundry & Rental</li>
+          <li>
+            Vehicle
+            <ul>
+              <li>Leases</li>
+              <li>Repair & Maintenance</li>
+              <li>Insurance</li>
+              <li>Fuel (Non-revenue Generating)</li>
+              <li>Licensing</li>
+            </ul>
+          </li>
+          <li>Accounting Fees</li>
+          <li>Legal Fees</li>
+          <li>Employee Education & Relations</li>
+          <li>Outside Services</li>
+          <li>Computer Expenses</li>
+          <li>Bank Service Charges</li>
+          <li>Dues & Subscriptions</li>
+          <li>Contributions</li>
+          <li>Bad Debts</li>
+          <li>Conferences & Travel</li>
+          <li>Meals & Entertainment</li>
+          <li>Miscellaneous</li>
+          <li>Interest Income</li>
+          <li>Discounts Taken – Vendor</li>
+          <li>Interest Expense</li>
+          <li>Depreciation</li>
+          <li>Amoritization</li>
+          <li>Other Expenses</li>
+          <li>Income Taxes</li>
+          <li><strong>Total Expenses</strong></li>
+          <li><strong>Net Profit Before Taxes</strong></li>
+          <li>Note 1</li>
+          <li>Note 2</li>
+          <li><strong>Net After Note Payments</strong></li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+  <%= user.submit "Save changes", :class => "button" %>
 <% end %>

@@ -1,7 +1,7 @@
 <% content_for :body do %>
-  <%= form_for @customer, :url => refinery.akouo_vision_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+  <%= form_for @user, :url => refinery.akouo_vision_path, :html => { :method => "PUT", :class => "form" } do |user| %>
 
-    <%= f.submit "Save changes", :class => "button" %>
+    <%= user.submit "Save changes", :class => "button" %>
   <% end %>
 <% end %>
 
