@@ -435,33 +435,73 @@
         <%= f.money_field :formula, :value => formula["tle"], :disabled => "" %>
       </li>
     </ul>
+  <% end # fields_for :last_year %>
 
+  <%= user.fields_for :profit_comparison_last_year do |f| %>
     <h1>Income & Expense Statement</h1>
     <ul>
       <li>
         <h1>Income</h1>
         <ul>
           <li>
-            Total Sales – Residential
+            <%= f.label :formula, "Total Sales – Residential" %>
+            <% formula["tsr"] = @pcly.pclyrs+@pcly.pclyrao+@pcly.pclyrsa+@pcly.pclyrr+@pcly.pclyrra %>
+            <%= f.money_field :formula, :value => formula["tsr"], :disabled => "" %>
             <ul>
-              <li>Sales</li>
-              <li>Add-on</li>
-              <li>Service Agreements</li>
-              <li>Repair</li>
-              <li>Refunds and Allowances</li>
+              <li>
+                <%= f.label :pclyrs, "Sales" %>
+                <%= f.money_field :pclyrs %>
+              </li>
+              <li>
+                <%= f.label :pclyrao, "Add-on" %>
+                <%= f.money_field :pclyrao %>
+              </li>
+              <li>
+                <%= f.label :pclyrsa, "Service Agreements" %>
+                <%= f.money_field :pclyrsa %>
+              </li>
+              <li>
+                <%= f.label :pclyrr, "Repair" %>
+                <%= f.money_field :pclyrr %>
+              </li>
+              <li>
+                <%= f.label :pclyrra, "Refunds and Allowances" %>
+                <%= f.money_field :pclyrra %>
+              </li>
             </ul>
           </li>
           <li>
-            Total Sales – Commercial
+            <%= f.label :formula, "Total Sales – Commercial" %>
+            <% formula["tsc"] = @pcly.pclycs+@pcly.pclycao+@pcly.pclycsa+@pcly.pclycr+@pcly.pclycra %>
+            <%= f.money_field :formula, :value => formula["tsc"], :disabled => "" %>
             <ul>
-              <li>Sales</li>
-              <li>Add-on</li>
-              <li>Service Agreements</li>
-              <li>Repair</li>
-              <li>Refunds and Allowances</li>
+              <li>
+                <%= f.label :pclycs, "Sales" %>
+                <%= f.money_field :pclycs %>
+              </li>
+              <li>
+                <%= f.label :pclycao, "Add-on" %>
+                <%= f.money_field :pclycao %>
+              </li>
+              <li>
+                <%= f.label :pclycsa, "Service Agreements" %>
+                <%= f.money_field :pclycsa %>
+              </li>
+              <li>
+                <%= f.label :pclycr, "Repair" %>
+                <%= f.money_field :pclycr %>
+              </li>
+              <li>
+                <%= f.label :pclycra, "Refunds and Allowances" %>
+                <%= f.money_field :pclycra %>
+              </li>
             </ul>
           </li>
-          <li><strong>Total Sales</strong></li>
+          <li>
+            <strong><%= f.label :formula, "Total Sales" %></strong>
+            <% formula["ts"] = formula["tsr"]+formula["tsc"] %>
+            <%= f.money_field :formula, :value => formula["ts"], :disabled => "" %>
+          </li>
         </ul>
       </li>
 

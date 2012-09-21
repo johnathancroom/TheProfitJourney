@@ -31,6 +31,7 @@ module Refinery
         @user = current_refinery_user
         @customer = @user.customer
         @last_year = @user.last_year
+        @pcly = @user.profit_comparison_last_year
       end
 
       def find_page(link_url)
