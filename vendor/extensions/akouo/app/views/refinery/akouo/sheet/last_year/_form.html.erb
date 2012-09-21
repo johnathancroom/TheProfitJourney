@@ -39,15 +39,43 @@
     <li>
       <h1>Other Current Asset</h1>
       <ul>
-        <li>Money Market Account</li>
-        <li>Short Term Investments</li>
-        <li>Allowance for Doubtful Accounts</li>
-        <li>Employee Receivables</li>
-        <li>Notes Receivable &ndash; Current</li>
-        <li>Inventory</li>
-        <li>Prepaid Expenses</li>
-        <li>Undeposited Funds</li>
-        <li><strong>Total Other Asset</strong></li>
+        <li>
+          <%= f.label :lymma, "Money Market Account" %>
+          <%= f.number_field :lymma, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lysti, "Short Term Investments" %>
+          <%= f.number_field :lysti, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyada, "Allowance for Doubtful Accounts" %>
+          <%= f.number_field :lyada, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyer, "Employee Receivables" %>
+          <%= f.number_field :lyer, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lynrc, "Notes Receivable &ndash; Current" %>
+          <%= f.number_field :lynrc, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyi, "Inventory" %>
+          <%= f.number_field :lyi, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyppe, "Prepaid Expenses" %>
+          <%= f.number_field :lyppe, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lyuf, "Undeposited Funds" %>
+          <%= f.number_field :lyuf, :step => 0.01 %>
+        </li>
+        <li>
+          <strong><%= f.label :forumla, "Total Other Asset" %></strong>
+          <% formula = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf %>
+          <%= f.number_field :forumla, :value => formula, :step => 0.01, :disabled => "" %>
+        </li>
       </ul>
     </li>
 
