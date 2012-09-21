@@ -508,38 +508,100 @@
       <li>
         <h1>Variable Expenses</h1>
         <ul>
-          <li>Materials</li>
           <li>
-            Labor
+            <%= f.label :pclym, "Materials" %>
+            <%= f.money_field :pclym %>
+          </li>
+          <li>
+            <%= f.label :formula, "Labor" %>
+            <% formula["l"] = @pcly.pclyltl+@pcly.pclyltc+@pcly.pclylptf+@pcly.pclylwci+@pcly.pclyltb %>
+            <%= f.money_field :formula, :value => formula["l"], :disabled => "" %>
             <ul>
-              <li>Technician Labor</li>
-              <li>Technician Commissions</li>
-              <li>Payroll Taxes – Field</li>
-              <li>Workers Compensation Insurance</li>
-              <li>Technician Benefits</li>
+              <li>
+                <%= f.label :pclyltl, "Technician Labor" %>
+                <%= f.money_field :pclyltl %>
+              </li>
+              <li>
+                <%= f.label :pclyltc, "Technician Commissions" %>
+                <%= f.money_field :pclyltc %>
+              </li>
+              <li>
+                <%= f.label :pclylptf, "Payroll Taxes – Field" %>
+                <%= f.money_field :pclylptf %>
+              </li>
+              <li>
+                <%= f.label :pclylwci, "Workers Compensation Insurance" %>
+                <%= f.money_field :pclylwci %>
+              </li>
+              <li>
+                <%= f.label :pclyltb, "Technician Benefits" %>
+                <%= f.money_field :pclyltb %>
+              </li>
             </ul>
           </li>
-          <li>Sales Commisions</li>
-          <li>Permits</li>
-          <li>Warranty</li>
-          <li>Subcontractors</li>
           <li>
-            Other
+            <%= f.label :pclysc, "Sales Commisions" %>
+            <%= f.money_field :pclysc %>
+          </li>
+          <li>
+            <%= f.label :pclyp, "Permits" %>
+            <%= f.money_field :pclyp %>
+          </li>
+          <li>
+            <%= f.label :pclyw, "Warranty" %>
+            <%= f.money_field :pclyw %>
+          </li>
+          <li>
+            <%= f.label :pclysct, "Subcontractors" %>
+            <%= f.money_field :pclysct %>
+          </li>
+          <li>
+            <%= f.label :formula, "Other" %>
+            <% formula["o"] = @pcly.pclyvf+@pcly.pclyvmr+@pcly.pclyt %>
+            <%= f.money_field :formula, :value => formula["o"], :disabled => "" %>
             <ul>
-              <li>Vehicle Fuel</li>
-              <li>Vehicle Maintenance & Repair</li>
-              <li>Tools</li>
+              <li>
+                <%= f.label :pclyvf, "Vehicle Fuel" %>
+                <%= f.money_field :pclyvf %>
+              </li>
+              <li>
+                <%= f.label :pclyvmr, "Vehicle Maintenance & Repair" %>
+                <%= f.money_field :pclyvmr %>
+              </li>
+              <li>
+                <%= f.label :pclyt, "Tools" %>
+                <%= f.money_field :pclyt %>
+              </li>
             </ul>
           </li>
-          <li>Franchise Service Fees</li>
-          <li>Franchise National Ad Fees</li>
-          <li>Promotions – Discounts</li>
-          <li><strong>Total Cost of Service</strong></li>
-          <li></li>
-          <li>Gross Margin</li>
+          <li>
+            <%= f.label :pclyfsf, "Franchise Service Fees" %>
+            <%= f.money_field :pclyfsf %>
+          </li>
+          <li>
+            <%= f.label :pclyfnad, "Franchise National Ad Fees" %>
+            <%= f.money_field :pclyfnad %>
+          </li>
+          <li>
+            <%= f.label :pclypd, "Promotions – Discounts" %>
+            <%= f.money_field :pclypd %>
+          </li>
+          <li>
+            <strong><%= f.label :formula, "Total Cost of Service" %></strong>
+            <% formula["tcs"] = @pcly.pclym+formula["l"]+@pcly.pclysc+@pcly.pclyp+@pcly.pclyw+@pcly.pclysct+formula["o"]+@pcly.pclyfsf+@pcly.pclyfnad+@pcly.pclypd %>
+            <%= f.money_field :formula, :value => formula["tcs"], :disabled => "" %>
+          </li>
+          <li>
+          <li>
+            <strong><%= f.label :formula, "Gross Margin" %></strong>
+            <% formula["gm"] = formula["ts"]-formula["tcs"] %>
+            <%= f.money_field :formula, :value => formula["gm"], :disabled => "" %>
+          </li>
         </ul>
       </li>
+    <% end # fields_for :profit_comparison_last_year %>
 
+    <%= user.fields_for :last_year do |f| %>
       <li>
         <h1>Fixed Expenses</h1>
         <ul>

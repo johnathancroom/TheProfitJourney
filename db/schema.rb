@@ -520,38 +520,35 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
   add_index "pcdt", ["DTID"], :name => "DTID"
   add_index "pcdt", ["PCID"], :name => "PCID"
 
-  create_table "pcly", :primary_key => "PCLYID", :force => true do |t|
-    t.integer "PCID"
-    t.decimal "PCLYRS",   :precision => 19, :scale => 4
-    t.decimal "PCLYRAO",  :precision => 19, :scale => 4
-    t.decimal "PCLYRSA",  :precision => 19, :scale => 4
-    t.decimal "PCLYRR",   :precision => 19, :scale => 4
-    t.decimal "PCLYRRA",  :precision => 19, :scale => 4
-    t.decimal "PCLYCS",   :precision => 19, :scale => 4
-    t.decimal "PCLYCAO",  :precision => 19, :scale => 4
-    t.decimal "PCLYCSA",  :precision => 19, :scale => 4
-    t.decimal "PCLYCR",   :precision => 19, :scale => 4
-    t.decimal "PCLYCRA",  :precision => 19, :scale => 4
-    t.decimal "PCLYM",    :precision => 19, :scale => 4
-    t.decimal "PCLYLTL",  :precision => 19, :scale => 4
-    t.decimal "PCLYLTC",  :precision => 19, :scale => 4
-    t.decimal "PCLYLPTF", :precision => 19, :scale => 4
-    t.decimal "PCLYLWCI", :precision => 19, :scale => 4
-    t.decimal "PCLYLTB",  :precision => 19, :scale => 4
-    t.decimal "PCLYSC",   :precision => 19, :scale => 4
-    t.decimal "PCLYP",    :precision => 19, :scale => 4
-    t.decimal "PCLYW",    :precision => 19, :scale => 4
-    t.decimal "PCLYSCT",  :precision => 19, :scale => 4
-    t.decimal "PCLYVF",   :precision => 19, :scale => 4
-    t.decimal "PCLYVMR",  :precision => 19, :scale => 4
-    t.decimal "PCLYT",    :precision => 19, :scale => 4
-    t.decimal "PCLYFSF",  :precision => 19, :scale => 4
-    t.decimal "PCLYFNAD", :precision => 19, :scale => 4
-    t.decimal "PCLYPD",   :precision => 19, :scale => 4
+  create_table "pcly", :force => true do |t|
+    t.decimal "pclyrs",   :precision => 19, :scale => 4
+    t.decimal "pclyrao",  :precision => 19, :scale => 4
+    t.decimal "pclyrsa",  :precision => 19, :scale => 4
+    t.decimal "pclyrr",   :precision => 19, :scale => 4
+    t.decimal "pclyrra",  :precision => 19, :scale => 4
+    t.decimal "pclycs",   :precision => 19, :scale => 4
+    t.decimal "pclycao",  :precision => 19, :scale => 4
+    t.decimal "pclycsa",  :precision => 19, :scale => 4
+    t.decimal "pclycr",   :precision => 19, :scale => 4
+    t.decimal "pclycra",  :precision => 19, :scale => 4
+    t.decimal "pclym",    :precision => 19, :scale => 4
+    t.decimal "pclyltl",  :precision => 19, :scale => 4
+    t.decimal "pclyltc",  :precision => 19, :scale => 4
+    t.decimal "pclylptf", :precision => 19, :scale => 4
+    t.decimal "pclylwci", :precision => 19, :scale => 4
+    t.decimal "pclyltb",  :precision => 19, :scale => 4
+    t.decimal "pclysc",   :precision => 19, :scale => 4
+    t.decimal "pclyp",    :precision => 19, :scale => 4
+    t.decimal "pclyw",    :precision => 19, :scale => 4
+    t.decimal "pclysct",  :precision => 19, :scale => 4
+    t.decimal "pclyvf",   :precision => 19, :scale => 4
+    t.decimal "pclyvmr",  :precision => 19, :scale => 4
+    t.decimal "pclyt",    :precision => 19, :scale => 4
+    t.decimal "pclyfsf",  :precision => 19, :scale => 4
+    t.decimal "pclyfnad", :precision => 19, :scale => 4
+    t.decimal "pclypd",   :precision => 19, :scale => 4
+    t.integer "user_id"
   end
-
-  add_index "pcly", ["PCID"], :name => "PCID"
-  add_index "pcly", ["PCLYID"], :name => "PCLYID"
 
   create_table "pcny", :primary_key => "PCNYID", :force => true do |t|
     t.integer "PCID"
