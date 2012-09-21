@@ -195,13 +195,35 @@
           <%= f.label :lyoia, "Other Intangible Assets" %>
           <%= f.money_field :lyoia %>
         </li>
-        <li>Accum Amortiz – Other Intagible Assets</li>
-        <li>Organization Costs</li>
-        <li>Accum Amortiz – Organization Costs</li>
-        <li>Deposits</li>
-        <li>Long Term Investments</li>
-        <li>Other Assets</li>
-        <li><strong>Total Other Asset</strong></li>
+        <li>
+          <%= f.label :lyaaoi, "Accum Amortiz – Other Intagible Assets" %>
+          <%= f.money_field :lyaaoi %>
+        </li>
+        <li>
+          <%= f.label :lyoc, "Organization Costs" %>
+          <%= f.money_field :lyoc %>
+        </li>
+        <li>
+          <%= f.label :lyaaoc, "Accum Amortiz – Organization Costs" %>
+          <%= f.money_field :lyaaoc %>
+        </li>
+        <li>
+          <%= f.label :lyd, "Deposits" %>
+          <%= f.money_field :lyd %>
+        </li>
+        <li>
+          <%= f.label :lylti, "Long Term Investments" %>
+          <%= f.money_field :lylti %>
+        </li>
+        <li>
+          <%= f.label :lyoa, "Other Assets" %>
+          <%= f.money_field :lyoa %>
+        </li>
+        <li>
+          <strong><%= f.label :formula, "Total Other Asset" %></strong>
+          <% formula = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa %>
+          <%= f.money_field :formula, :value => formula, :disabled => "" %>
+        </li>
       </ul>
     </li>
 

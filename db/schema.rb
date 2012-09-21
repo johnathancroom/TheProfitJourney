@@ -235,12 +235,12 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
     t.decimal "lyaaatwo",   :precision => 19, :scale => 4
     t.decimal "lyaaathree", :precision => 19, :scale => 4
     t.decimal "lyoia",      :precision => 19, :scale => 4
-    t.decimal "LYAAOI",     :precision => 19, :scale => 4
-    t.decimal "LYOC",       :precision => 19, :scale => 4
-    t.decimal "LYAAOC",     :precision => 19, :scale => 4
-    t.decimal "LYD",        :precision => 19, :scale => 4
-    t.decimal "LYLTI",      :precision => 19, :scale => 4
-    t.decimal "LYOA",       :precision => 19, :scale => 4
+    t.decimal "lyaaoi",     :precision => 19, :scale => 4
+    t.decimal "lyoc",       :precision => 19, :scale => 4
+    t.decimal "lyaaoc",     :precision => 19, :scale => 4
+    t.decimal "lyd",        :precision => 19, :scale => 4
+    t.decimal "lylti",      :precision => 19, :scale => 4
+    t.decimal "lyoa",       :precision => 19, :scale => 4
     t.decimal "LYAP",       :precision => 19, :scale => 4
     t.decimal "LYCCone",    :precision => 19, :scale => 4
     t.decimal "LYCCtwo",    :precision => 19, :scale => 4
