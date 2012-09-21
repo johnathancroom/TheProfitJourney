@@ -8,11 +8,21 @@
           <%= f.number_field :lycoh, :step => 0.01 %>
         </li>
         <li>
-          Cash in Banks
+          <%= f.label :forumla, "Cash in Banks" %>
+          <%= f.number_field :formula, :value => (@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :step => 0.01, :disabled => "" %>
           <ul>
-            <li>Checking Account No. 1</li>
-            <li>Checking Account No. 2</li>
-            <li>Checking Account No. 3</li>
+            <li>
+              <%= f.label :lyckone, "Checking Account No. 1" %>
+              <%= f.number_field :lyckone, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lycktwo, "Checking Account No. 2" %>
+              <%= f.number_field :lycktwo, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lyckthree, "Checking Account No. 3" %>
+              <%= f.number_field :lyckthree, :step => 0.01 %>
+            </li>
           </ul>
         </li>
         <li>Amounts Receivable</li>

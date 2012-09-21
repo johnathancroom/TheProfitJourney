@@ -200,10 +200,10 @@ ActiveRecord::Schema.define(:version => 20120914013833) do
   add_index "de", ["DEID"], :name => "DEID"
 
   create_table "ly", :force => true do |t|
-    t.decimal "LYCoH",      :precision => 19, :scale => 4
-    t.decimal "LYCkOne",    :precision => 19, :scale => 4
-    t.decimal "LYCkTwo",    :precision => 19, :scale => 4
-    t.decimal "LYCkThree",  :precision => 19, :scale => 4
+    t.decimal "lycoh",      :precision => 19, :scale => 4
+    t.decimal "lyckone",    :precision => 19, :scale => 4
+    t.decimal "lycktwo",    :precision => 19, :scale => 4
+    t.decimal "lyckthree",  :precision => 19, :scale => 4
     t.decimal "LYAR",       :precision => 19, :scale => 4
     t.decimal "LYMMA",      :precision => 19, :scale => 4
     t.decimal "LYSTI",      :precision => 19, :scale => 4
