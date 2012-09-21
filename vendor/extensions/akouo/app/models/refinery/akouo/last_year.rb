@@ -8,7 +8,8 @@ module Refinery
         :lyckone, :lycktwo, :lyckthree,
         :lyar,
         :lymma, :lysti, :lyada, :lyer, :lynrc, :lyi, :lyppe, :lyuf,
-        :lyfavt, :lyfadvt, :lyfaov, :lyfadov, :lyfaeo, :lyfadeo, :lyfafe, :lyfadfe, :lyfal, :lyfab, :lyfadb, :lyfali, :lyfadli
+        :lyfavt, :lyfadvt, :lyfaov, :lyfadov, :lyfaeo, :lyfadeo, :lyfafe, :lyfadfe, :lyfal, :lyfab, :lyfadb, :lyfali, :lyfadli,
+        :lynrlt, :lys, :lyfraone, :lyfratwo, :lyfrathree, :lyaaaone, :lyaaatwo, :lyaaathree, :lyoia
       )
 
       belongs_to :user, :class_name => 'Refinery::User'

@@ -145,25 +145,56 @@
     <li>
       <h1>Other Asset</h1>
       <ul>
-        <li>Notes Receivable – Long Term</li>
-        <li>Suspense</li>
         <li>
-          Franchise Rights
+          <%= f.label :lynrlt, "Notes Receivable – Long Term" %>
+          <%= f.number_field :lynrlt, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :lys, "Suspense" %>
+          <%= f.number_field :lys, :step => 0.01 %>
+        </li>
+        <li>
+          <%= f.label :formula, "Franchise Rights" %>
+          <% formula = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree %>
+          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
           <ul>
-            <li>Area No. 1</li>
-            <li>Area No. 2</li>
-            <li>Area No. 3</li>
+            <li>
+              <%= f.label :lyfraone, "Area No. 1" %>
+              <%= f.number_field :lyfraone, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lyfratwo, "Area No. 2" %>
+              <%= f.number_field :lyfratwo, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lyfrathree, "Area No. 3" %>
+              <%= f.number_field :lyfrathree, :step => 0.01 %>
+            </li>
           </ul>
         </li>
         <li>
-          Accum Amortiz – Franchise
+          <%= f.label :formula, "Accum Amortiz – Franchise" %>
+          <% formula = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree %>
+          <%= f.number_field :formula, :value => formula, :step => 0.01, :disabled => "" %>
           <ul>
-            <li>Area No. 1</li>
-            <li>Area No. 2</li>
-            <li>Area No. 3</li>
+            <li>
+              <%= f.label :lyaaaone, "Area No. 1" %>
+              <%= f.number_field :lyaaaone, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lyaaatwo, "Area No. 2" %>
+              <%= f.number_field :lyaaatwo, :step => 0.01 %>
+            </li>
+            <li>
+              <%= f.label :lyaaathree, "Area No. 3" %>
+              <%= f.number_field :lyaaathree, :step => 0.01 %>
+            </li>
           </ul>
         </li>
-        <li>Other Intangible Assets</li>
+        <li>
+          <%= f.label :lyoia, "Other Intangible Assets" %>
+          <%= f.number_field :lyoia, :step => 0.01 %>
+        </li>
         <li>Accum Amortiz – Other Intagible Assets</li>
         <li>Organization Costs</li>
         <li>Accum Amortiz – Organization Costs</li>
