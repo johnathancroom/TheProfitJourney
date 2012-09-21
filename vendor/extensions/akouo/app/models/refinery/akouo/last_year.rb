@@ -5,7 +5,8 @@ module Refinery
 
       attr_accessible(
         :lycoh,
-        :lyckone, :lycktwo, :lyckthree
+        :lyckone, :lycktwo, :lyckthree,
+        :lyar
       )
 
       belongs_to :user, :class_name => 'Refinery::User'

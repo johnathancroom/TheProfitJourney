@@ -1,7 +1,7 @@
 <%= form_for @last_year, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |f| %>
   <ul>
     <li>
-      Bank
+      <h1>Bank</h1>
       <ul>
         <li>
           <%= f.label :lycoh, "Cash on Hand" %>
@@ -25,13 +25,19 @@
             </li>
           </ul>
         </li>
-        <li>Amounts Receivable</li>
-        <li><strong>Total Bank</strong></li>
+        <li>
+          <strong><%= f.label :formula, "Total Bank" %></strong>
+          <%= f.number_field :formula, :value => (@last_year.lycoh+@last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree), :step => 0.01, :disabled => "" %>
+        </li>
+        <li>
+          <%= f.label :lyar, "Amounts Receivable" %>
+          <%= f.number_field :lyar, :step => 0.01 %>
+        </li>
       </ul>
     </li>
 
     <li>
-      Other Current Asset
+      <h1>Other Current Asset</h1>
       <ul>
         <li>Money Market Account</li>
         <li>Short Term Investments</li>
@@ -46,7 +52,7 @@
     </li>
 
     <li>
-      Fixed Asset
+      <h1>Fixed Asset</h1>
       <ul>
         <li>Vans &amp; Trucks</li>
         <li>Accum Depree &ndash; Vans &amp; Trucks</li>
@@ -66,7 +72,7 @@
     </li>
 
     <li>
-      Other Asset
+      <h1>Other Asset</h1>
       <ul>
         <li>Notes Receivable &ndash; Long Term</li>
         <li>Suspense</li>
@@ -100,7 +106,7 @@
     <li><strong>Total Assets</strong></li>
 
     <li>
-      Accounts Payable
+      <h1>Accounts Payable</h1>
       <ul>
         <li>Accounts Payable</li>
         <li><strong>Total Accounts Payable</strong></li>
@@ -108,7 +114,7 @@
     </li>
 
     <li>
-      Credit Card
+      <h1>Credit Card</h1>
       <ul>
         <li>Credit Card No. 1</li>
         <li>Credit Card No. 2</li>
@@ -118,7 +124,7 @@
     </li>
 
     <li>
-      Other Current Liability
+      <h1>Other Current Liability</h1>
       <ul>
         <li>Accr Liabilities &ndash; Payroll</li>
         <li>Accr Liabilities &ndash; Commissions</li>
@@ -140,7 +146,7 @@
     </li>
 
     <li>
-      Long Term Liability
+      <h1>Long Term Liability</h1>
       <ul>
         <li>
           Notes Payable Long Term
@@ -161,7 +167,7 @@
     <li><strong>Total Liabilities</strong></li>
 
     <li>
-      Equity
+      <h1>Equity</h1>
       <ul>
         <li>Common Stock</li>
         <li>Owners Equity</li>
@@ -180,7 +186,7 @@
   <h1>Income &amp; Expense Statement</h1>
   <ul>
     <li>
-      Income
+      <h1>Income</h1>
       <ul>
         <li>
           Total Sales &ndash; Residential
@@ -207,7 +213,7 @@
     </li>
 
     <li>
-      Variable Expenses
+      <h1>Variable Expenses</h1>
       <ul>
         <li>Materials</li>
         <li>
@@ -242,7 +248,7 @@
     </li>
 
     <li>
-      Fixed Expenses
+      <h1>Fixed Expenses</h1>
       <ul>
         <li>
           Salaries
