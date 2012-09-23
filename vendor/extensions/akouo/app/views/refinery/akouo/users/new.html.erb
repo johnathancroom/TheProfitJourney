@@ -1,0 +1,44 @@
+<% content_for :body do %>
+  <%= form_for @user, :url => refinery.akouo_register_path, :html => { :method => "PUT", :class => "styled_form" } do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> need to be corrected before continuing:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <%= f.submit "Sign Up", :class => "button" %>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

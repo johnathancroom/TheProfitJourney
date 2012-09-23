@@ -17,6 +17,18 @@ Refinery::Core::Engine.routes.append do
     put "last_year" => "sheet#last_year_update"
   end
 
+  namespace :akouo, :path => "" do
+    get "register" => "users#new"
+    put "register" => "users#create"
+  end
+
+  devise_scope :refinery_user do
+    namespace :akouo, :path => "" do
+      get "login" => "sessions#new"
+      post "login" => "sessions#create"
+    end
+  end
+
   # Admin routes
   namespace :akouo, :path => '' do
     namespace :admin, :path => 'refinery/akouo' do

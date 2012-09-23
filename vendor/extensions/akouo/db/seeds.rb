@@ -14,7 +14,10 @@
     ["/akouo", "Akouo"],
     ["/akouo/start", "Start"],
     ["/akouo/vision", "Vision"],
-    ["/akouo/last_year", "Last Year"]
+    ["/akouo/last_year", "Last Year"],
+
+    ["/register", "Register"],
+    ["/login", "Login"]
   ]
 
   pages.each do |this|
@@ -23,7 +26,7 @@
         :title => this[1],
         :link_url => this[0],
         :deletable => false,
-        :parent_id => (page.id if (page = ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
+        :parent_id => (page.id if (page == ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
         :show_in_menu => false,
         :menu_match => "^#{this[0]}(\/|\/.+?|)$"
       )

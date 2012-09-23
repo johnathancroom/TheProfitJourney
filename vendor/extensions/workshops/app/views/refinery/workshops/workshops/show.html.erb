@@ -1,13 +1,30 @@
 <% content_for :body_content_title do %>
   <%= @workshop.title %>
-  <%= link_to "Sign up!", refinery.signup_workshops_workshop_path, :class => "button" %>
+  <%#= link_to "Sign up!", refinery.signup_workshops_workshop_path, :class => "button" %>
 <% end %>
 <% content_for :title do %>
   <%= @workshop.title %>
 <% end %>
 
 <% content_for :body do %>
-  <%= render 'details' %>
+  <table class="workshop-meta">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Seats Available</th>
+        <th>Price</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @workshop.location %></td>
+        <td><%= "#{@workshop.seats-@workshop.users.count}/#{@workshop.seats}" %></td>
+        <td><%= number_to_currency @workshop.price %></td>
+        <td><%= @workshop.date.to_formatted_s(:pretty) %></td>
+      </tr>
+    </tbody>
+  </table>
 
   <p>
     <%=raw @workshop.description %>

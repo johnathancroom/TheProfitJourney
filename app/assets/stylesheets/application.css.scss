@@ -62,7 +62,8 @@ textarea {
   border-color: #9C2626;
 }
 #error_explanation,
-.flash_error {
+.flash_error,
+.flash_alert {
   background-color: #FFBEBE;
   border-top: 3px solid #F27F7F;
   margin-bottom: 10px;
@@ -77,6 +78,8 @@ textarea {
 #error_explanation *,
 .flash_error,
 .flash_error *,
+.flash_alert,
+.flash_alert *,
 .fieldWithErrors,
 .fieldWithErrors * {
   color: #9C2626;
@@ -413,7 +416,7 @@ textarea {
     display: block;
   }
 }
-.workshop_signup {
+.styled_form {
   label {
     display: inline-block;
     width: 140px;
