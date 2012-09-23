@@ -23,27 +23,35 @@ module Refinery
         @user.add_role(:refinery) # Add refinery role to user
 
         if @user.save
-          # Authorize transaction
-          auth_transaction = create_transaction
-          auth_transaction.set_fields({
-              :email => params[:user][:email]
-            })
+          # Setup recurring payments
+          transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => :sandbox)
           credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
-          auth_response = auth_transaction.authorize(@workshop.price, credit_card)
+          billing_address = AuthorizeNet::Address.new(
+            :first_name => @user.first_name,
+            :last_name => @user.last_name
+          )
+          subscription = AuthorizeNet::ARB::Subscription.new(
+            :length => 1,
+            :unit => :month,
+            :start_date => Date.today,
+            :trial_occurrences => nil,
+            :total_occurrences => 9999,
+            :amount => @workshop.price,
+            :credit_card => credit_card,
+            :billing_address => billing_address
+          )
+          response = transaction.create(subscription)
 
-          if auth_response.success?
-            # Capture transaction
-            capture_transaction = create_transaction
-            capture_response = capture_transaction.prior_auth_capture(auth_response.transaction_id)
-
+          if response.success?
             # Send reciept
+            # Todo
 
             redirect_to refinery.workshops_workshop_path, :notice => "Sign up successful. You will receieve a confirmation email with further instructions."
           else
             # Destroy created user
             @user.destroy
 
-            @transaction_error = auth_response.response_reason_text
+            @transaction_error = response.response_reason_text
 
             render :signup_new
           end
@@ -75,10 +83,6 @@ module Refinery
         for x in 0..10 do
           @years.push([Time.now.year+x, Time.now.year+x])
         end
-      end
-
-      def create_transaction
-        AuthorizeNet::AIM::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => :sandbox)
       end
 
     end
