@@ -18,7 +18,8 @@
 
     ["/register", "Register"],
     ["/login", "Login"],
-    ["/account", "My Account"]
+    ["/account", "My Account"],
+    ["/user/password/new", "Reset Password"]
   ]
 
   pages.each do |this|

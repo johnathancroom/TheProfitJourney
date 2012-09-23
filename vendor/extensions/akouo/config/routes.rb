@@ -28,6 +28,9 @@ Refinery::Core::Engine.routes.append do
     namespace :akouo, :path => "" do
       get "login" => "sessions#new"
       post "login" => "sessions#create"
+
+      get "user/password/new" => "passwords#new"
+      post "user/password/new" => "passwords#create"
     end
   end
 

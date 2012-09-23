@@ -1,0 +1,17 @@
+<% content_for :body do %>
+  <%= form_for resource, :as => resource_name, :url => refinery.akouo_user_password_new_path, :html => { :method => :post, :class => "styled_form" } do |f| %>
+
+    <div>
+      <%= f.label :email, "Email Address" %>
+      <%= f.text_field :email %>
+    </div>
+
+    <%= render '/refinery/admin/form_actions', :f => f,
+               :continue_editing => false,
+               :submit_button_text => "Reset Password",
+               :cancel_url => refinery.akouo_login_path,
+               :cancel_title => nil %>
+  <% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>
