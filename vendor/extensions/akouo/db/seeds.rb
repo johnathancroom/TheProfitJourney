@@ -17,7 +17,8 @@
     ["/akouo/last_year", "Last Year"],
 
     ["/register", "Register"],
-    ["/login", "Login"]
+    ["/login", "Login"],
+    ["/account", "My Account"]
   ]
 
   pages.each do |this|

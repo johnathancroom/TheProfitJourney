@@ -4,7 +4,7 @@
 
     <div class="secondary">
       <% if refinery_user? %>
-        <%= link_to "My Account", "" %>
+        <%= link_to "My Account", refinery.akouo_account_path %>
         <%= link_to "Sign Out", refinery.destroy_refinery_user_session_path %>
       <% else %>
         <%= link_to "Member Login", refinery.akouo_login_path %>

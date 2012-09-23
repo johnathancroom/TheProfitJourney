@@ -20,6 +20,8 @@ Refinery::Core::Engine.routes.append do
   namespace :akouo, :path => "" do
     get "register" => "users#new"
     put "register" => "users#create"
+
+    get "account" => "users#show"
   end
 
   devise_scope :refinery_user do

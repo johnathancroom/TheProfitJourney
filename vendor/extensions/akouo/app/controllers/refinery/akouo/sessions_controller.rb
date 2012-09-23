@@ -4,11 +4,6 @@ module Refinery
 
       before_filter :find_page
 
-      def create
-        # Create new user
-        super
-      end
-
     protected
 
       def find_page
