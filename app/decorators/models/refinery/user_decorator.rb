@@ -11,4 +11,6 @@ Refinery::User.class_eval do
   )
 
   accepts_nested_attributes_for :customer, :last_year, :profit_comparison_last_year
+
+  validates_presence_of :first_name, :last_name
 end
