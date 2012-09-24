@@ -1,16 +1,32 @@
 <% content_for :body do %>
   <%= form_tag refinery.akouo_account_plans_path, :method => "PUT", :class => "styled_form" do %>
 
-    <%= @subscription_status %>
+    <h1>Select a Plan</h1>
+    <% @plans.each_with_index do |plan, index| %>
+      <div class="radio">
+        <%= radio_button_tag "plan", index, (true if index == current_refinery_user.get_plan) %>
+        <%= label_tag "plan_#{index}", plan[0] %>
+      </div>
+    <% end %>
 
-    <% if current_refinery_user.subscription_id.nil? %>
-      <% if !@transaction_error.nil? %>
-        <div class="flash_error">
-          <%= @transaction_error %>
-        </div>
-      <% end %>
+    <hr>
 
-      <h1>Payment Information</h1>
+    <% if !@transaction_error.nil? %>
+      <div class="flash_error">
+        <%= @transaction_error %>
+      </div>
+    <% end %>
+
+    <h1>Payment Information</h1>
+
+    <% if current_refinery_user.get_plan != 0 %>
+      <select id="js_card_selection" name="card_selection">
+        <option value="0">Use Previous Credit Card (<%= current_refinery_user.plan_last_4 %>)</option>
+        <option value="1">Use New Credit Card</option>
+      </select>
+    <% end %>
+
+    <div id="card_form"<%= " class='hidden'" if current_refinery_user.get_plan != 0 %>>
       <div>
         <%= label_tag :card_number %>
         <%= text_field_tag :card_number, "4242424242424242", :autocomplete => "off", :size => 30 %>
@@ -21,14 +37,29 @@
         <%= select_tag :card_expiry_month, options_for_select(@months, 11) %>
         <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
       </div>
-    <% else %>
-      <div>Already subscribed, edit instead</div>
-    <% end %>
+    </div>
 
-    <%= submit_tag "Submit", :class => "button" %>
-    <%= link_to "Cancel", refinery.akouo_account_path, :class => "button" %>
-    <%= content_tag :span, "Submitting will charge your credit card if your plan has changed.", :class => "payment_notice" %>
+    <div>
+      <%= submit_tag "Submit", :class => "button" %>
+      <%= link_to "Back to Account", refinery.akouo_account_path, :class => "button" %>
+      <%= content_tag :span, "By submitting, you agree to charge your credit card as selected.", :class => "payment_notice" %>
+    </div>
   <% end %>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+      $("#js_card_selection").on("change", function(e) {
+        if($(this).val() == "1")
+        {
+          $("#card_form").removeClass("hidden")
+        }
+        else
+        {
+          $("#card_form").addClass("hidden")
+        }
+      })
+    </script>
 <% end %>
 
 <%= render '/refinery/content_page' %>

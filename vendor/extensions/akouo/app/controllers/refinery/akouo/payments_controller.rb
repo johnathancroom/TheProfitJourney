@@ -7,35 +7,59 @@ module Refinery
       before_filter :expiry_select
 
       def create
-        # Setup recurring payments
-        credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
-        billing_address = AuthorizeNet::Address.new(
-          :first_name => current_refinery_user.first_name,
-          :last_name => current_refinery_user.last_name
-        )
-        subscription = AuthorizeNet::ARB::Subscription.new(
-          :length => 1, # from plan
-          :unit => :month, # from plan
-          :start_date => Date.today,
-          :trial_occurrences => nil,
-          :total_occurrences => 9999,
-          :amount => 25.00, # from plan
-          :credit_card => credit_card,
-          :billing_address => billing_address
-        )
-        response = transaction.create(subscription)
-
-        if response.success?
-          # Send reciept
-          # Todo
-
-          # Save user's subscription_id
-          current_refinery_user.subscription_id = response.subscription_id
-          current_refinery_user.save
-
-          flash.now[:notice] = "Plan updated successfully."
+        # Bronze was selected
+        if params[:plan] == "0"
+          # Remove user plan
+          cancel_plan
         else
-          @transaction_error = response.response_reason_text
+          # Setup transaction instance
+          transaction = new_transaction
+
+          # Use previous credit card (if it exists)
+          if params[:card_selection] != "1" and current_refinery_user.get_plan != 0
+            subscription = AuthorizeNet::ARB::Subscription.new(
+              :subscription_id => current_refinery_user.subscription_id,
+              #:length => @plans[params[:plan].to_i][2],
+              :amount => @plans[params[:plan].to_i][1]
+            )
+            response = transaction.update(subscription)
+          # Use new credit card
+          else
+            # Cancel current plan if it exists
+            cancel_plan
+
+            credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
+            billing_address = AuthorizeNet::Address.new(
+              :first_name => current_refinery_user.first_name,
+              :last_name => current_refinery_user.last_name
+            )
+            subscription = AuthorizeNet::ARB::Subscription.new(
+              :length => @plans[params[:plan].to_i][2], # from plan
+              :unit => :month,
+              :start_date => Date.today,
+              :trial_occurrences => nil,
+              :total_occurrences => 9999,
+              :amount => @plans[params[:plan].to_i][1], # from plan
+              :credit_card => credit_card,
+              :billing_address => billing_address
+            )
+            response = transaction.create(subscription)
+          end
+
+          if response.success?
+            # Send reciept
+            # Todo
+
+            # Save user data
+            current_refinery_user.plan_last_4 = params[:card_number][-4,4] if params[:card_selection] == "1" # Last 4 digits of credit card
+            current_refinery_user.subscription_id = response.instance_variable_get(:@transaction).fields[:subscription_id] || response.subscription_id
+            current_refinery_user.plan_id = params[:plan]
+            current_refinery_user.save
+
+            flash.now[:notice] = "Plan updated successfully."
+          else
+            @transaction_error = response.response_reason_text
+          end
         end
 
         render :new
@@ -46,14 +70,13 @@ module Refinery
       def page_specifics
         @page = ::Refinery::Page.where(:link_url => "/account/plans").first
 
-        transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => :sandbox)
-
-        if current_refinery_user.subscription_id.nil?
-          @subscription_status = -1
-        else
-          response = transaction.get_status(current_refinery_user.subscription_id)
-          @subscription_status = response.subscription_status
-        end
+        @plans = [
+          # Name, amount, frequency (by month)
+          ["Bronze (Free)", 0, 0],
+          ["Silver ($39.99/month)", 39.99, 1],
+          ["Gold ($149.99/month)", 149.99, 1],
+          ["Platinum ($249.99/month)", 249.99, 1]
+        ]
       end
 
       def expiry_select
@@ -65,6 +88,21 @@ module Refinery
         for x in 0..10 do
           @years.push([Time.now.year+x, Time.now.year+x])
         end
+      end
+
+      def new_transaction
+        AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => :sandbox)
+      end
+
+      def cancel_plan
+        cancel_transaction = new_transaction
+        cancel_transaction.cancel(current_refinery_user.subscription_id)
+
+        # Remove user plan
+        current_refinery_user.subscription_id = nil
+        current_refinery_user.plan_id = 0
+        current_refinery_user.plan_last_4 = nil
+        current_refinery_user.save
       end
 
     end
