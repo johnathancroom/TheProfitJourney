@@ -94,7 +94,6 @@ module Refinery
         # Remove user plan
         current_refinery_user.subscription_id = nil
         current_refinery_user.plan_id = 0
-        current_refinery_user.plan_last_4 = nil
         current_refinery_user.save
       end
 
