@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924203528) do
+ActiveRecord::Schema.define(:version => 20120924213120) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(:version => 20120924203528) do
     t.datetime "cced"
     t.datetime "ccpd"
     t.integer  "cah"
-    t.text     "CPG",        :limit => 2147483647
-    t.text     "CCG",        :limit => 2147483647
+    t.text     "cpg",        :limit => 2147483647
+    t.text     "ccg",        :limit => 2147483647
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
@@ -272,75 +272,75 @@ ActiveRecord::Schema.define(:version => 20120924203528) do
     t.decimal "lyedp",      :precision => 19, :scale => 4
     t.decimal "lyeow",      :precision => 19, :scale => 4
     t.decimal "lyere",      :precision => 19, :scale => 4
-    t.decimal "LYFESO",     :precision => 19, :scale => 4
-    t.decimal "LYFESM",     :precision => 19, :scale => 4
-    t.decimal "LYFESA",     :precision => 19, :scale => 4
-    t.decimal "LYFESOP",    :precision => 19, :scale => 4
-    t.decimal "LYFESS",     :precision => 19, :scale => 4
-    t.decimal "LYFEST",     :precision => 19, :scale => 4
-    t.decimal "LYFEB",      :precision => 19, :scale => 4
-    t.decimal "LYFEPT",     :precision => 19, :scale => 4
-    t.decimal "LYFEWCI",    :precision => 19, :scale => 4
-    t.decimal "LYFEEB",     :precision => 19, :scale => 4
-    t.decimal "LYFEHVP",    :precision => 19, :scale => 4
-    t.decimal "LYFET",      :precision => 19, :scale => 4
-    t.decimal "LYFETH",     :precision => 19, :scale => 4
-    t.decimal "LYFER",      :precision => 19, :scale => 4
-    t.decimal "LYFEU",      :precision => 19, :scale => 4
-    t.decimal "LYFEBRM",    :precision => 19, :scale => 4
-    t.decimal "LYFETL",     :precision => 19, :scale => 4
-    t.decimal "LYFETO",     :precision => 19, :scale => 4
-    t.decimal "LYFECP",     :precision => 19, :scale => 4
-    t.decimal "LYFELI",     :precision => 19, :scale => 4
-    t.decimal "LYFECCSF",   :precision => 19, :scale => 4
-    t.decimal "LYFEAB",     :precision => 19, :scale => 4
-    t.decimal "LYFEPR",     :precision => 19, :scale => 4
-    t.decimal "LYFECV",     :precision => 19, :scale => 4
-    t.decimal "LYFEDV",     :precision => 19, :scale => 4
-    t.decimal "LYFEDM",     :precision => 19, :scale => 4
-    t.decimal "LYFENM",     :precision => 19, :scale => 4
-    t.decimal "LYFEEC",     :precision => 19, :scale => 4
-    t.decimal "LYFEHMS",    :precision => 19, :scale => 4
-    t.decimal "LYFEO",      :precision => 19, :scale => 4
-    t.decimal "LYFEISS",    :precision => 19, :scale => 4
-    t.decimal "LYFESRV",    :precision => 19, :scale => 4
-    t.decimal "LYFEYS",     :precision => 19, :scale => 4
-    t.decimal "LYFEYPPO",   :precision => 19, :scale => 4
-    t.decimal "LYFERR",     :precision => 19, :scale => 4
-    t.decimal "LYFEOS",     :precision => 19, :scale => 4
-    t.decimal "LYFEP",      :precision => 19, :scale => 4
-    t.decimal "LYFEPOS",    :precision => 19, :scale => 4
-    t.decimal "LYFEOEL",    :precision => 19, :scale => 4
-    t.decimal "LYFEFEL",    :precision => 19, :scale => 4
-    t.decimal "LYFEOERM",   :precision => 19, :scale => 4
-    t.decimal "LYFESD",     :precision => 19, :scale => 4
-    t.decimal "LYFEULR",    :precision => 19, :scale => 4
-    t.decimal "LYFEVL",     :precision => 19, :scale => 4
-    t.decimal "LYFEVRM",    :precision => 19, :scale => 4
-    t.decimal "LYFEVI",     :precision => 19, :scale => 4
-    t.decimal "LYFEVF",     :precision => 19, :scale => 4
-    t.decimal "LYFEL",      :precision => 19, :scale => 4
-    t.decimal "LYFEAF",     :precision => 19, :scale => 4
-    t.decimal "LYFELF",     :precision => 19, :scale => 4
-    t.decimal "LYFEEER",    :precision => 19, :scale => 4
-    t.decimal "LYFEOSER",   :precision => 19, :scale => 4
-    t.decimal "LYFECE",     :precision => 19, :scale => 4
-    t.decimal "LYFEBSC",    :precision => 19, :scale => 4
-    t.decimal "LYFEDS",     :precision => 19, :scale => 4
-    t.decimal "LYFEC",      :precision => 19, :scale => 4
-    t.decimal "LYFEBD",     :precision => 19, :scale => 4
-    t.decimal "LYFECT",     :precision => 19, :scale => 4
-    t.decimal "LYFEME",     :precision => 19, :scale => 4
-    t.decimal "LYFEM",      :precision => 19, :scale => 4
-    t.decimal "LYFEII",     :precision => 19, :scale => 4
-    t.decimal "LYFEDTV",    :precision => 19, :scale => 4
-    t.decimal "LYFEIE",     :precision => 19, :scale => 4
-    t.decimal "LYFED",      :precision => 19, :scale => 4
-    t.decimal "LYFEA",      :precision => 19, :scale => 4
-    t.decimal "LYFEOE",     :precision => 19, :scale => 4
-    t.decimal "LYFEIT",     :precision => 19, :scale => 4
-    t.decimal "LYFENone",   :precision => 19, :scale => 4
-    t.decimal "LYFENtwo",   :precision => 19, :scale => 4
+    t.decimal "lyfeso",     :precision => 19, :scale => 4
+    t.decimal "lyfesm",     :precision => 19, :scale => 4
+    t.decimal "lyfesa",     :precision => 19, :scale => 4
+    t.decimal "lyfesop",    :precision => 19, :scale => 4
+    t.decimal "lyfess",     :precision => 19, :scale => 4
+    t.decimal "lyfest",     :precision => 19, :scale => 4
+    t.decimal "lyfeb",      :precision => 19, :scale => 4
+    t.decimal "lyfept",     :precision => 19, :scale => 4
+    t.decimal "lyfewci",    :precision => 19, :scale => 4
+    t.decimal "lyfeeb",     :precision => 19, :scale => 4
+    t.decimal "lyfehvp",    :precision => 19, :scale => 4
+    t.decimal "lyfet",      :precision => 19, :scale => 4
+    t.decimal "lyfeth",     :precision => 19, :scale => 4
+    t.decimal "lyfer",      :precision => 19, :scale => 4
+    t.decimal "lyfeu",      :precision => 19, :scale => 4
+    t.decimal "lyfebrm",    :precision => 19, :scale => 4
+    t.decimal "lyfetl",     :precision => 19, :scale => 4
+    t.decimal "lyfeto",     :precision => 19, :scale => 4
+    t.decimal "lyfecp",     :precision => 19, :scale => 4
+    t.decimal "lyfeli",     :precision => 19, :scale => 4
+    t.decimal "lyfeccsf",   :precision => 19, :scale => 4
+    t.decimal "lyfeab",     :precision => 19, :scale => 4
+    t.decimal "lyfepr",     :precision => 19, :scale => 4
+    t.decimal "lyfecv",     :precision => 19, :scale => 4
+    t.decimal "lyfedv",     :precision => 19, :scale => 4
+    t.decimal "lyfedm",     :precision => 19, :scale => 4
+    t.decimal "lyfenm",     :precision => 19, :scale => 4
+    t.decimal "lyfeec",     :precision => 19, :scale => 4
+    t.decimal "lyfehms",    :precision => 19, :scale => 4
+    t.decimal "lyfeo",      :precision => 19, :scale => 4
+    t.decimal "lyfeiss",    :precision => 19, :scale => 4
+    t.decimal "lyfesrv",    :precision => 19, :scale => 4
+    t.decimal "lyfeys",     :precision => 19, :scale => 4
+    t.decimal "lyfeyppo",   :precision => 19, :scale => 4
+    t.decimal "lyferr",     :precision => 19, :scale => 4
+    t.decimal "lyfeos",     :precision => 19, :scale => 4
+    t.decimal "lyfep",      :precision => 19, :scale => 4
+    t.decimal "lyfepos",    :precision => 19, :scale => 4
+    t.decimal "lyfeoel",    :precision => 19, :scale => 4
+    t.decimal "lyfefel",    :precision => 19, :scale => 4
+    t.decimal "lyfeoerm",   :precision => 19, :scale => 4
+    t.decimal "lyfesd",     :precision => 19, :scale => 4
+    t.decimal "lyfeulr",    :precision => 19, :scale => 4
+    t.decimal "lyfevl",     :precision => 19, :scale => 4
+    t.decimal "lyfevrm",    :precision => 19, :scale => 4
+    t.decimal "lyfevi",     :precision => 19, :scale => 4
+    t.decimal "lyfevf",     :precision => 19, :scale => 4
+    t.decimal "lyfel",      :precision => 19, :scale => 4
+    t.decimal "lyfeaf",     :precision => 19, :scale => 4
+    t.decimal "lyfelf",     :precision => 19, :scale => 4
+    t.decimal "lyfeeer",    :precision => 19, :scale => 4
+    t.decimal "lyfeoser",   :precision => 19, :scale => 4
+    t.decimal "lyfece",     :precision => 19, :scale => 4
+    t.decimal "lyfebsc",    :precision => 19, :scale => 4
+    t.decimal "lyfeds",     :precision => 19, :scale => 4
+    t.decimal "lyfec",      :precision => 19, :scale => 4
+    t.decimal "lyfebd",     :precision => 19, :scale => 4
+    t.decimal "lyfect",     :precision => 19, :scale => 4
+    t.decimal "lyfeme",     :precision => 19, :scale => 4
+    t.decimal "lyfem",      :precision => 19, :scale => 4
+    t.decimal "lyfeii",     :precision => 19, :scale => 4
+    t.decimal "lyfedtv",    :precision => 19, :scale => 4
+    t.decimal "lyfeie",     :precision => 19, :scale => 4
+    t.decimal "lyfed",      :precision => 19, :scale => 4
+    t.decimal "lyfea",      :precision => 19, :scale => 4
+    t.decimal "lyfeoe",     :precision => 19, :scale => 4
+    t.decimal "lyfeit",     :precision => 19, :scale => 4
+    t.decimal "lyfenone",   :precision => 19, :scale => 4
+    t.decimal "lyfentwo",   :precision => 19, :scale => 4
     t.integer "user_id"
   end
 
