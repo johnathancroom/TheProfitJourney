@@ -4,6 +4,8 @@ module Refinery
 
       SAVED_MESSAGE = "Successfully saved!"
 
+      before_filter :redirect?
+
       before_filter :find_models
       before_filter :only => [:"start/show", :"start/edit"] { |c| c.find_page("/akouo/start") }
       before_filter :only => [:"vision/show", :"vision/edit"] { |c| c.find_page("/akouo/vision") }

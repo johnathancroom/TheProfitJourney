@@ -2,6 +2,8 @@ module Refinery
   module Akouo
     class UsersController < ::ApplicationController
 
+      before_filter :redirect?, :only => [:show]
+
       def new
         if refinery_user?
           # Redirect to account if already logged in

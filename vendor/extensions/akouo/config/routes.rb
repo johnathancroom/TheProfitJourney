@@ -22,6 +22,8 @@ Refinery::Core::Engine.routes.append do
     put "register" => "users#create"
 
     get "account" => "users#show"
+    get "account/plans" => "payments#new"
+    put "account/plans" => "payments#create"
   end
 
   devise_scope :refinery_user do

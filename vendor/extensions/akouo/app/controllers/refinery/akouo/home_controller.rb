@@ -2,6 +2,7 @@ module Refinery
   module Akouo
     class HomeController < ::ApplicationController
 
+      before_filter :redirect?
       before_filter :find_page
 
     protected

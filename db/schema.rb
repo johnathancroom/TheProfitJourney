@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923011632) do
+ActiveRecord::Schema.define(:version => 20120924144948) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -768,6 +768,7 @@ ActiveRecord::Schema.define(:version => 20120923011632) do
     t.integer  "workshop_id"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "subscription_id"
   end
 
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"

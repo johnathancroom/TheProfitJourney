@@ -19,6 +19,7 @@
     ["/register", "Register"],
     ["/login", "Login"],
     ["/account", "My Account"],
+    ["/account/plans", "Account Plans"],
     ["/user/password/new", "Reset Password"]
   ]
 
@@ -28,7 +29,7 @@
         :title => this[1],
         :link_url => this[0],
         :deletable => false,
-        :parent_id => (page.id if (page == ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
+        :parent_id => (page.id if (page = ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
         :show_in_menu => false,
         :menu_match => "^#{this[0]}(\/|\/.+?|)$"
       )
