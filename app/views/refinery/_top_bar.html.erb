@@ -8,6 +8,7 @@
         <%= link_to "Sign Out", refinery.destroy_refinery_user_session_path %>
       <% else %>
         <%= link_to "Member Login", refinery.akouo_login_path %>
+        <%= link_to "Register", refinery.akouo_register_path %>
       <% end %>
 
       <span class="telephone"><%= ::Refinery::Setting.find_or_set(:phone_number, "1-888-000-0000") %></span>
