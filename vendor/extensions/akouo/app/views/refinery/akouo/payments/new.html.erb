@@ -3,10 +3,16 @@
 
     <h1>Select a Plan</h1>
     <% @plans.each_with_index do |plan, index| %>
-      <div class="radio">
-        <%= radio_button_tag "plan", index, (true if index == current_refinery_user.get_plan) %>
+      <% if index % 2 == 0 %>
+        <div class="radio">
+      <% end %>
+
+        <%= radio_button_tag "plan", index, (true if index == current_refinery_user.get_plan) if plan[0] != "" %>
         <%= label_tag "plan_#{index}", plan[0] %>
-      </div>
+
+      <% if index % 2 > 0 %>
+        </div>
+      <% end %>
     <% end %>
 
     <hr>
@@ -18,25 +24,15 @@
     <% end %>
 
     <h1>Payment Information</h1>
+    <div>
+      <%= label_tag :card_number %>
+      <%= text_field_tag :card_number, "", :autocomplete => "off", :size => 30 %>
+    </div>
 
-    <% if current_refinery_user.get_plan != 0 %>
-      <select id="js_card_selection" name="card_selection">
-        <option value="0">Use Previous Credit Card (<%= current_refinery_user.plan_last_4 %>)</option>
-        <option value="1">Use New Credit Card</option>
-      </select>
-    <% end %>
-
-    <div id="card_form"<%= " class='hidden'" if current_refinery_user.get_plan != 0 %>>
-      <div>
-        <%= label_tag :card_number %>
-        <%= text_field_tag :card_number, "4242424242424242", :autocomplete => "off", :size => 30 %>
-      </div>
-
-      <div>
-        <%= label_tag :card_expiration %>
-        <%= select_tag :card_expiry_month, options_for_select(@months, 11) %>
-        <%= select_tag :card_expiry_year, options_for_select(@years, 2014) %>
-      </div>
+    <div>
+      <%= label_tag :card_expiration %>
+      <%= select_tag :card_expiry_month, options_for_select(@months) %>
+      <%= select_tag :card_expiry_year, options_for_select(@years) %>
     </div>
 
     <div>
@@ -45,21 +41,6 @@
       <%= content_tag :span, "By submitting, you agree to charge your credit card as selected.", :class => "payment_notice" %>
     </div>
   <% end %>
-<% end %>
-
-<% content_for :javascripts do %>
-  <script type="text/javascript">
-      $("#js_card_selection").on("change", function(e) {
-        if($(this).val() == "1")
-        {
-          $("#card_form").removeClass("hidden")
-        }
-        else
-        {
-          $("#card_form").addClass("hidden")
-        }
-      })
-    </script>
 <% end %>
 
 <%= render '/refinery/content_page' %>

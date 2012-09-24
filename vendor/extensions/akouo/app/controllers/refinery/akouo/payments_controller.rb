@@ -15,36 +15,25 @@ module Refinery
           # Setup transaction instance
           transaction = new_transaction
 
-          # Use previous credit card (if it exists)
-          if params[:card_selection] != "1" and current_refinery_user.get_plan != 0
-            subscription = AuthorizeNet::ARB::Subscription.new(
-              :subscription_id => current_refinery_user.subscription_id,
-              #:length => @plans[params[:plan].to_i][2],
-              :amount => @plans[params[:plan].to_i][1]
-            )
-            response = transaction.update(subscription)
-          # Use new credit card
-          else
-            # Cancel current plan if it exists
-            cancel_plan
+          # Cancel current plan if it exists
+          cancel_plan
 
-            credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
-            billing_address = AuthorizeNet::Address.new(
-              :first_name => current_refinery_user.first_name,
-              :last_name => current_refinery_user.last_name
-            )
-            subscription = AuthorizeNet::ARB::Subscription.new(
-              :length => @plans[params[:plan].to_i][2], # from plan
-              :unit => :month,
-              :start_date => Date.today,
-              :trial_occurrences => nil,
-              :total_occurrences => 9999,
-              :amount => @plans[params[:plan].to_i][1], # from plan
-              :credit_card => credit_card,
-              :billing_address => billing_address
-            )
-            response = transaction.create(subscription)
-          end
+          credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
+          billing_address = AuthorizeNet::Address.new(
+            :first_name => current_refinery_user.first_name,
+            :last_name => current_refinery_user.last_name
+          )
+          subscription = AuthorizeNet::ARB::Subscription.new(
+            :length => @plans[params[:plan].to_i][2], # from plan
+            :unit => :month,
+            :start_date => Date.today,
+            :trial_occurrences => nil,
+            :total_occurrences => 9999,
+            :amount => @plans[params[:plan].to_i][1], # from plan
+            :credit_card => credit_card,
+            :billing_address => billing_address
+          )
+          response = transaction.create(subscription)
 
           if response.success?
             # Send reciept
@@ -73,9 +62,13 @@ module Refinery
         @plans = [
           # Name, amount, frequency (by month)
           ["Bronze (Free)", 0, 0],
+          ["", 0, 0],
           ["Silver ($39.99/month)", 39.99, 1],
+          ["Silver ($450/year)", 450, 12],
           ["Gold ($149.99/month)", 149.99, 1],
-          ["Platinum ($249.99/month)", 249.99, 1]
+          ["Gold ($1600/year)", 1600, 12],
+          ["Platinum ($249.99/month)", 249.99, 1],
+          ["Platinum ($2700/year)", 2700, 12]
         ]
       end
 
