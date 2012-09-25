@@ -1,6 +1,6 @@
 module Refinery
   module Akouo
-    class UsersController < ::ApplicationController
+    class UsersController < ::Refinery::Akouo::AkouoController
 
       before_filter :redirect?, :only => [:show, :update]
       before_filter :find_user, :only => [:show, :update]

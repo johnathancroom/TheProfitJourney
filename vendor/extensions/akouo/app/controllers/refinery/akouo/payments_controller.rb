@@ -1,9 +1,9 @@
 module Refinery
   module Akouo
-    class PaymentsController < ::ApplicationController
+    class PaymentsController < ::Refinery::Akouo::AkouoController
 
       before_filter :redirect?
-      before_filter :page_specifics
+      before_filter :get_page
       before_filter :expiry_select
 
       def create
@@ -59,20 +59,8 @@ module Refinery
 
     protected
 
-      def page_specifics
+      def get_page
         @page = ::Refinery::Page.where(:link_url => "/account/plans").first
-
-        @plans = [
-          # Name, amount, frequency (by month)
-          ["Bronze (Free)", 0, 0],
-          ["", 0, 0],
-          ["Silver ($39.99/month)", 39.99, 1],
-          ["Silver ($450/year)", 450, 12],
-          ["Gold ($149.99/month)", 149.99, 1],
-          ["Gold ($1600/year)", 1600, 12],
-          ["Platinum ($249.99/month)", 249.99, 1],
-          ["Platinum ($2700/year)", 2700, 12]
-        ]
       end
 
       def expiry_select

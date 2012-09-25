@@ -37,12 +37,18 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
-    <h1>Plan</h1>
+    <h1>Your Plan</h1>
+    <%= @plans[@user.plan_id][0] %>
     <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
 
     <hr>
 
     <h1>Workshop</h1>
+    <!--
+      show workshops
+        or
+      show what's needed to sign up (+form if you're not platinum)
+    -->
 
     <%= f.submit "Save Changes", :class => "button" %>
   <% end %>
