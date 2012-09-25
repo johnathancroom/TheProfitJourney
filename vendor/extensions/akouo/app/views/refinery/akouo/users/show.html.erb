@@ -37,6 +37,8 @@
       <%= f.password_field :password_confirmation %>
     </div>
 
+    <hr>
+
     <h1>Your Plan</h1>
     <%= @plans[@user.get_plan][0] %>
     <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
