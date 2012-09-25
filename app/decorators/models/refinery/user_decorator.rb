@@ -14,6 +14,8 @@ Refinery::User.class_eval do
 
   validates_presence_of :first_name, :last_name
 
+  validate :workshop_requires_platinum_plan
+
   def get_plan
     if self.subscription_id.nil?
       0
@@ -24,6 +26,20 @@ Refinery::User.class_eval do
         self.plan_id
       else
         0
+      end
+    end
+  end
+
+  def can_attend_workshop?
+    [6, 7].include?(get_plan)
+  end
+
+  def workshop_requires_platinum_plan
+    # Attempting to set workshop
+    if workshop_id != nil
+      # Not platinum member
+      unless can_attend_workshop?
+        errors.add :workshop_id, "can't be selected because your plan doesn't include workshop attendance"
       end
     end
   end

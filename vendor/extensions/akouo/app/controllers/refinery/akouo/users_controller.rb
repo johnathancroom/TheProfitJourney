@@ -3,8 +3,7 @@ module Refinery
     class UsersController < ::Refinery::Akouo::AkouoController
 
       before_filter :redirect?, :only => [:show, :update]
-      before_filter :find_user, :only => [:show, :update]
-      before_filter :find_page, :only => [:show, :update]
+      before_filter :account_page_specifics, :only => [:show, :update]
 
       def new
         if refinery_user?
@@ -32,6 +31,16 @@ module Refinery
       end
 
       def update
+        # Ignore blank password
+        if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+          params[:user].except!(:password, :password_confirmation)
+        end
+
+        # Set workshop to nil
+        if params[:user][:workshop_id] == "-1"
+          params[:user][:workshop_id] = nil
+        end
+
         if @user.update_attributes(params[:user])
           flash.now[:notice] = "Changes have been saved."
           render :show
@@ -42,12 +51,10 @@ module Refinery
 
     protected
 
-      def find_user
+      def account_page_specifics
         @user = current_refinery_user
-      end
-
-      def find_page
         @page = ::Refinery::Page.where(:link_url => "/account").first
+        @workshops = ::Refinery::Workshops::Workshop.where("date > ?", Time.now.beginning_of_day).order('date ASC')
       end
 
     end

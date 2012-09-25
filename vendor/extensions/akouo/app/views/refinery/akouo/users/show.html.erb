@@ -38,17 +38,26 @@
     </div>
 
     <h1>Your Plan</h1>
-    <%= @plans[@user.plan_id][0] %>
+    <%= @plans[@user.get_plan][0] %>
     <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
 
     <hr>
 
     <h1>Workshop</h1>
-    <!--
-      show workshops
-        or
-      show what's needed to sign up (+form if you're not platinum)
-    -->
+    <p>Workshop attendance is included with a Platinum Plan. If you would like to attend without a Platinum Plan, you can <%= link_to "sign up for a workshop", "" %> for an extra fee.
+    <ul class="account_workshops">
+      <li>
+        <%= f.radio_button :workshop_id, "-1", :checked => (true if @user.workshop == nil) || false %>
+        <%= f.label :workshop_id, "No Workshop", :value => "-1" %>
+      </li>
+
+      <% @workshops.each do |workshop| %>
+        <li>
+          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) || false, :disabled => (true if !@user.can_attend_workshop?) %>
+          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date.to_formatted_s(:pretty)}", :value => workshop.id %>
+        </li>
+      <% end %>
+    </ul>
 
     <%= f.submit "Save Changes", :class => "button" %>
   <% end %>

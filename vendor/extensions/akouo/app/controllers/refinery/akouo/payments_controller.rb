@@ -50,7 +50,7 @@ module Refinery
 
             redirect_to refinery.akouo_account_path, :notice => "Plan updated successfully."
           else
-            flash.now[:error] = response.message_text
+            flash.now[:error] = response.response_reason_text
 
             render :new
           end

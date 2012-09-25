@@ -446,6 +446,14 @@ textarea {
     top: 9px;
   }
 }
+.account_workshops {
+  list-style: none;
+  margin-left: 0;
+
+  label {
+    width: auto;
+  }
+}
 #footer {
   background-color: #212121;
   color: #fff;
