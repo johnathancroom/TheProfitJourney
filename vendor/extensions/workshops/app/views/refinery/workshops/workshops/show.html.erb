@@ -12,7 +12,6 @@
       <tr>
         <th>Location</th>
         <th>Seats Available</th>
-        <th>Price</th>
         <th>Date</th>
       </tr>
     </thead>
@@ -20,7 +19,6 @@
       <tr>
         <td><%= @workshop.location %></td>
         <td><%= "#{@workshop.seats-@workshop.users.count}/#{@workshop.seats}" %></td>
-        <td><%= number_to_currency @workshop.price %></td>
         <td><%= @workshop.date.to_formatted_s(:pretty) %></td>
       </tr>
     </tbody>
