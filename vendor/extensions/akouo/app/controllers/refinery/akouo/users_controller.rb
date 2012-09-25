@@ -2,7 +2,9 @@ module Refinery
   module Akouo
     class UsersController < ::ApplicationController
 
-      before_filter :redirect?, :only => [:show]
+      before_filter :redirect?, :only => [:show, :update]
+      before_filter :find_user, :only => [:show, :update]
+      before_filter :find_page, :only => [:show, :update]
 
       def new
         if refinery_user?
@@ -29,7 +31,22 @@ module Refinery
         end
       end
 
-      def show
+      def update
+        if @user.update_attributes(params[:user])
+          flash.now[:notice] = "Changes have been saved."
+          render :show
+        else
+          render :show
+        end
+      end
+
+    protected
+
+      def find_user
+        @user = current_refinery_user
+      end
+
+      def find_page
         @page = ::Refinery::Page.where(:link_url => "/account").first
       end
 

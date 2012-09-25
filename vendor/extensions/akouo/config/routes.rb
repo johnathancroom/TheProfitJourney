@@ -22,6 +22,7 @@ Refinery::Core::Engine.routes.append do
     put "register" => "users#create"
 
     get "account" => "users#show"
+    put "account" => "users#update"
     get "account/plans" => "payments#new"
     put "account/plans" => "payments#create"
   end

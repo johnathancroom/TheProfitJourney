@@ -1,5 +1,51 @@
 <% content_for :body do %>
-  <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
+  <%= form_for @user, :url => refinery.akouo_account_path, :html => { :method => "PUT", :class => "styled_form" } do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> need to be corrected before continuing:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h1>User Details</h1>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <hr>
+
+    <h1>Change Password</h1>
+    <p>Leaving password fields blank will keep your current password the same.</p>
+    <div>
+      <%= f.label :password, "New Password" %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <h1>Plan</h1>
+    <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
+
+    <hr>
+
+    <h1>Workshop</h1>
+
+    <%= f.submit "Save Changes", :class => "button" %>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>
