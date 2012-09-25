@@ -17,13 +17,17 @@
 
     <hr>
 
-    <% if !@transaction_error.nil? %>
-      <div class="flash_error">
-        <%= @transaction_error %>
-      </div>
-    <% end %>
-
     <h1>Payment Information</h1>
+    <div>
+      <%= label_tag :first_name, "First Name (on card)" %>
+      <%= text_field_tag :first_name, current_refinery_user.first_name, :size => 30 %>
+    </div>
+
+    <div>
+      <%= label_tag :last_name, "Last Name (on card)" %>
+      <%= text_field_tag :last_name, current_refinery_user.last_name, :size => 30 %>
+    </div>
+
     <div>
       <%= label_tag :card_number %>
       <%= text_field_tag :card_number, "", :autocomplete => "off", :size => 30 %>

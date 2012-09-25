@@ -11,6 +11,8 @@ module Refinery
         if params[:plan] == "0"
           # Remove user plan
           cancel_plan
+
+          redirect_to refinery.akouo_account_path, :notice => "Plan updated successfully."
         else
           # Setup transaction instance
           transaction = new_transaction
@@ -20,8 +22,8 @@ module Refinery
 
           credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
           billing_address = AuthorizeNet::Address.new(
-            :first_name => current_refinery_user.first_name,
-            :last_name => current_refinery_user.last_name
+            :first_name => params[:first_name],
+            :last_name => params[:last_name]
           )
           subscription = AuthorizeNet::ARB::Subscription.new(
             :length => @plans[params[:plan].to_i][2], # from plan
@@ -45,13 +47,13 @@ module Refinery
             current_refinery_user.plan_id = params[:plan]
             current_refinery_user.save
 
-            flash.now[:notice] = "Plan updated successfully."
+            redirect_to refinery.akouo_account_path, :notice => "Plan updated successfully."
           else
-            @transaction_error = response.response_reason_text
+            flash.now[:error] = response.message_text
+
+            render :new
           end
         end
-
-        render :new
       end
 
     protected
