@@ -7,6 +7,7 @@
 body,
 html {
   background: #fff url("background.png");
+  background-attachment: fixed;
 }
 body {
   font-family: Arial, sans-serif;
@@ -458,5 +459,6 @@ textarea {
   background-color: #212121;
   color: #fff;
   font-size: 12px;
+  margin-bottom: 40px;
   padding: 10px 20px;
 }
