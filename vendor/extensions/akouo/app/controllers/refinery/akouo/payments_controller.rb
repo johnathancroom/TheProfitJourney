@@ -26,6 +26,7 @@ module Refinery
             :last_name => params[:last_name]
           )
           subscription = AuthorizeNet::ARB::Subscription.new(
+            :name => @plans[params[:plan].to_i][0],
             :length => @plans[params[:plan].to_i][2], # from plan
             :unit => :month,
             :start_date => Date.today,
