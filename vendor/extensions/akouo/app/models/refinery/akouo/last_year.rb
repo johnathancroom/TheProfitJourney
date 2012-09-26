@@ -14,7 +14,13 @@ module Refinery
         :lyccone, :lycctwo, :lyccthree,
         :lyalp, :lyalc, :lyalpt, :lyfica, :lym, :lyw, :lyalwc, :lyalst, :lyalprt, :lyalot, :lyali, :lyaldr, :lycplt, :lyol,
         :lyltlone, :lyltltwo, :lyltlthree, :lyltlfour, :lyltlfive, :lylcp, :lyshl,
-        :lyecs, :lyeoe, :lyepc, :lyedp, :lyeow, :lyere
+        :lyecs, :lyeoe, :lyepc, :lyedp, :lyeow, :lyere,
+        :lyfeso, :lyfesm, :lyfesa, :lyfesop, :lyfess, :lyfest,
+        :lyfeb, :lyfept, :lyfewci, :lyfeeb, :lyfehvp, :lyfet, :lyfeth, :lyfer, :lyfeu, :lyfebrm, :lyfetl, :lyfeto, :lyfecp, :lyfeli, :lyfeccsf,
+        :lyfeab, :lyfepr, :lyfecv, :lyfedv, :lyfedm, :lyfenm, :lyfeec, :lyfehms, :lyfeo, :lyfeiss, :lyfesrv, :lyfeys, :lyfeyppo,
+        :lyferr, :lyfeos, :lyfep, :lyfepos, :lyfeoel, :lyfefel, :lyfeoerm, :lyfesd, :lyfeulr, :lyfevl, :lyfevrm, :lyfevi, :lyfevf, :lyfel,
+        :lyfeaf, :lyfelf, :lyfeeer, :lyfeoser, :lyfece, :lyfebsc, :lyfeds, :lyfec, :lyfebd, :lyfect, :lyfeme, :lyfem, :lyfeii, :lyfedtv, :lyfeie, :lyfed, :lyfea, :lyfeoe, :lyfeit,
+        :lyfenone, :lyfentwo
       )
 
       belongs_to :user, :class_name => 'Refinery::User'
