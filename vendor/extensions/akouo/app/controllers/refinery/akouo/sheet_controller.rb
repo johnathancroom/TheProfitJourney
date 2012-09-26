@@ -1,6 +1,6 @@
 module Refinery
   module Akouo
-    class SheetController < ::ApplicationController
+    class SheetController < ::Refinery::Akouo::AkouoController
 
       SAVED_MESSAGE = "Successfully saved!"
 

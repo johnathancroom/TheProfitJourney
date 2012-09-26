@@ -1,6 +1,6 @@
 module Refinery
   module Akouo
-    class HomeController < ::ApplicationController
+    class HomeController < ::Refinery::Akouo::AkouoController
 
       before_filter :redirect?
       before_filter :find_page

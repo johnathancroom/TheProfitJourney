@@ -7,7 +7,7 @@
         <div class="radio">
       <% end %>
 
-        <%= radio_button_tag "plan", index, (true if index == current_refinery_user.get_plan) if plan[0] != "" %>
+        <%= radio_button_tag "plan", index, (true if index == @user.get_plan) if plan[0] != "" %>
         <%= label_tag "plan_#{index}", plan[0] %>
 
       <% if index % 2 > 0 %>
@@ -20,12 +20,12 @@
     <h1>Payment Information</h1>
     <div>
       <%= label_tag :first_name, "First Name (on card)" %>
-      <%= text_field_tag :first_name, current_refinery_user.first_name, :size => 30 %>
+      <%= text_field_tag :first_name, @user.first_name, :size => 30 %>
     </div>
 
     <div>
       <%= label_tag :last_name, "Last Name (on card)" %>
-      <%= text_field_tag :last_name, current_refinery_user.last_name, :size => 30 %>
+      <%= text_field_tag :last_name, @user.last_name, :size => 30 %>
     </div>
 
     <div>
