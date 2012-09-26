@@ -56,7 +56,7 @@
       <% @workshops.each do |workshop| %>
         <li>
           <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) || false, :disabled => (true if !@user.can_attend_workshop?) %>
-          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date.to_formatted_s(:pretty)}", :value => workshop.id %>
+          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date}", :value => workshop.id %>
         </li>
       <% end %>
     </ul>

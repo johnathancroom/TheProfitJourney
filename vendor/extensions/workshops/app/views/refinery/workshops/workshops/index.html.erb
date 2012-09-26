@@ -5,7 +5,8 @@
         <a href="<%= refinery.workshops_workshop_path(workshop) %>">
           <ul>
             <li><h2><%= workshop.title %> <span><%= "(#{workshop.location})" %></span></h2></li>
-            <li><%= workshop.date.to_formatted_s(:pretty) %></li>
+            <li><%= workshop.date %></li>
+            <li><%= workshop.time %></li>
             <li class="anchor">Learn more&hellip;</li>
           </ul>
         </a>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925154737) do
+ActiveRecord::Schema.define(:version => 20120926174841) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -778,11 +778,14 @@ ActiveRecord::Schema.define(:version => 20120925154737) do
     t.string   "title"
     t.text     "description"
     t.string   "location"
-    t.datetime "date"
+    t.date     "start_date"
     t.integer  "seats"
     t.integer  "position"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.date     "end_date"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   create_table "seo_meta", :force => true do |t|

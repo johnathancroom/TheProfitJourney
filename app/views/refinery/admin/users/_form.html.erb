@@ -86,7 +86,7 @@
       <% @workshops.each do |workshop| %>
         <li>
           <%= radio_button_tag "user[workshop_id]", workshop.id, (true if @user.workshop == workshop), :id => "workshop_#{workshop.id}" %>
-          <%= f.label "user[workshop_id]", "#{workshop.title} – #{workshop.date.to_formatted_s(:pretty)}", :class => 'stripped', :for => "workshop_#{workshop.id}" %>
+          <%= f.label "user[workshop_id]", "#{workshop.title} – #{workshop.date}", :class => 'stripped', :for => "workshop_#{workshop.id}" %>
         </li>
       <% end %>
     </ul>

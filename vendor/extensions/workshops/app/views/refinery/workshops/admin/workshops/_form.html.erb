@@ -32,19 +32,32 @@
 
   <div class='field'>
     <%= f.label :location -%>
-    <%= f.text_field :location  -%>
-
+    <%= f.text_field :location -%>
   </div>
 
   <div class='field'>
-    <%= f.label :date -%>
-    <%= f.datetime_select :date  -%>
+    <%= f.label :start_date -%>
+    <%= f.date_select :start_date -%>
+  </div>
 
+  <div class='field'>
+    <%= f.label :end_date -%>
+    <%= f.date_select :end_date -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :start_time -%>
+    <%= f.time_select :start_time, :ampm => true, :minute_step => 10 -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :end_time -%>
+    <%= f.time_select :end_time, :ampm => true, :minute_step => 10 -%>
   </div>
 
   <div class='field'>
     <%= f.label :seats -%>
-    <%= f.number_field :seats  -%>
+    <%= f.number_field :seats -%>
   </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,

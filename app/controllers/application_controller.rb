@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def get_sidebar_workshops
-    @sidebar_workshops = ::Refinery::Workshops::Workshop.where("date > ?", Time.now.beginning_of_day).order('date ASC').limit(3)
+    @sidebar_workshops = ::Refinery::Workshops::Workshop.current.limit(3)
   end
 
   def redirect?

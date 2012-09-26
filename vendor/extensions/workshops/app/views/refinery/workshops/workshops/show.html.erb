@@ -13,13 +13,15 @@
         <th>Location</th>
         <th>Seats Available</th>
         <th>Date</th>
+        <th>Time</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= @workshop.location %></td>
         <td><%= "#{@workshop.seats-@workshop.users.count}/#{@workshop.seats}" %></td>
-        <td><%= @workshop.date.to_formatted_s(:pretty) %></td>
+        <td><%= @workshop.date %></td>
+        <td><%= @workshop.time %></td>
       </tr>
     </tbody>
   </table>

@@ -54,7 +54,7 @@ module Refinery
       def account_page_specifics
         @user = current_refinery_user
         @page = ::Refinery::Page.where(:link_url => "/account").first
-        @workshops = ::Refinery::Workshops::Workshop.where("date > ?", Time.now.beginning_of_day).order('date ASC')
+        @workshops = ::Refinery::Workshops::Workshop.current
       end
 
     end

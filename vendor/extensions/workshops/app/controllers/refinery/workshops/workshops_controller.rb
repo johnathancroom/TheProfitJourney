@@ -9,7 +9,7 @@ module Refinery
     protected
 
       def find_all_workshops
-        @workshops = Workshop.where("date > ?", Time.now.beginning_of_day).order('date ASC')
+        @workshops = Workshop.current
       end
 
       def find_workshop
