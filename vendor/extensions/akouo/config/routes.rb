@@ -4,16 +4,13 @@ Refinery::Core::Engine.routes.append do
   namespace :akouo do
     resources :home, :path => "", :only => [:index]
 
-    get "start" => "sheet#start/show"
-    get "start/edit" => "sheet#start/edit"
+    get "start" => "sheet#start"
     put "start" => "sheet#start_update"
 
-    get "vision" => "sheet#vision/show"
-    get "vision/edit" => "sheet#vision/edit"
+    get "vision" => "sheet#vision"
     put "vision" => "sheet#start_update"
 
-    get "last_year" => "sheet#last_year/show"
-    get "last_year/edit" => "sheet#last_year/edit"
+    get "last_year" => "sheet#last_year"
     put "last_year" => "sheet#last_year_update"
   end
 
