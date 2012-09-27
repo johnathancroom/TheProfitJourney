@@ -3,24 +3,24 @@
     <h1>Bank</h1>
     <ul>
       <li>
-        <%= f.label :lycoh, "Cash on Hand" %>
-        <%= f.money_field :lycoh %>
+        <%= f.label :"#{prefix}coh", "Cash on Hand" %>
+        <%= f.money_field :"#{prefix}coh" %>
       </li>
       <li>
         <%= f.label :formula, "Cash in Banks" %>
         <%= f.money_field :formula, :value => @formula["cb"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyckone, "Checking Account No. 1" %>
-            <%= f.money_field :lyckone %>
+            <%= f.label :"#{prefix}ckone", "Checking Account No. 1" %>
+            <%= f.money_field :"#{prefix}ckone" %>
           </li>
           <li>
-            <%= f.label :lycktwo, "Checking Account No. 2" %>
-            <%= f.money_field :lycktwo %>
+            <%= f.label :"#{prefix}cktwo", "Checking Account No. 2" %>
+            <%= f.money_field :"#{prefix}cktwo" %>
           </li>
           <li>
-            <%= f.label :lyckthree, "Checking Account No. 3" %>
-            <%= f.money_field :lyckthree %>
+            <%= f.label :"#{prefix}ckthree", "Checking Account No. 3" %>
+            <%= f.money_field :"#{prefix}ckthree" %>
           </li>
         </ul>
       </li>
@@ -29,44 +29,44 @@
         <%= f.money_field :formula, :value => @formula["tb"], :disabled => true %>
       </li>
       <li>
-        <%= f.label :lyar, "Amounts Receivable" %>
-        <%= f.money_field :lyar %>
+        <%= f.label :"#{prefix}ar", "Amounts Receivable" %>
+        <%= f.money_field :"#{prefix}ar" %>
       </li>
     </ul>
 
     <h1>Other Current Asset</h1>
     <ul>
       <li>
-        <%= f.label :lymma, "Money Market Account" %>
-        <%= f.money_field :lymma %>
+        <%= f.label :"#{prefix}mma", "Money Market Account" %>
+        <%= f.money_field :"#{prefix}mma" %>
       </li>
       <li>
-        <%= f.label :lysti, "Short Term Investments" %>
-        <%= f.money_field :lysti %>
+        <%= f.label :"#{prefix}sti", "Short Term Investments" %>
+        <%= f.money_field :"#{prefix}sti" %>
       </li>
       <li>
-        <%= f.label :lyada, "Allowance for Doubtful Accounts" %>
-        <%= f.money_field :lyada %>
+        <%= f.label :"#{prefix}ada", "Allowance for Doubtful Accounts" %>
+        <%= f.money_field :"#{prefix}ada" %>
       </li>
       <li>
-        <%= f.label :lyer, "Employee Receivables" %>
-        <%= f.money_field :lyer %>
+        <%= f.label :"#{prefix}er", "Employee Receivables" %>
+        <%= f.money_field :"#{prefix}er" %>
       </li>
       <li>
-        <%= f.label :lynrc, "Notes Receivable – Current" %>
-        <%= f.money_field :lynrc %>
+        <%= f.label :"#{prefix}nrc", "Notes Receivable – Current" %>
+        <%= f.money_field :"#{prefix}nrc" %>
       </li>
       <li>
-        <%= f.label :lyi, "Inventory" %>
-        <%= f.money_field :lyi %>
+        <%= f.label :"#{prefix}i", "Inventory" %>
+        <%= f.money_field :"#{prefix}i" %>
       </li>
       <li>
-        <%= f.label :lyppe, "Prepaid Expenses" %>
-        <%= f.money_field :lyppe %>
+        <%= f.label :"#{prefix}ppe", "Prepaid Expenses" %>
+        <%= f.money_field :"#{prefix}ppe" %>
       </li>
       <li>
-        <%= f.label :lyuf, "Undeposited Funds" %>
-        <%= f.money_field :lyuf %>
+        <%= f.label :"#{prefix}uf", "Undeposited Funds" %>
+        <%= f.money_field :"#{prefix}uf" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Other Asset" %></strong>
@@ -77,56 +77,56 @@
     <h1>Fixed Asset</h1>
     <ul>
       <li>
-        <%= f.label :lyfavt, "Vans & Trucks" %>
-        <%= f.money_field :lyfavt %>
+        <%= f.label :"#{prefix}favt", "Vans & Trucks" %>
+        <%= f.money_field :"#{prefix}favt" %>
       </li>
       <li>
-        <%= f.label :lyfadvt, "Accum Depree – Vans & Trucks" %>
-        <%= f.money_field :lyfadvt %>
+        <%= f.label :"#{prefix}fadvt", "Accum Depree – Vans & Trucks" %>
+        <%= f.money_field :"#{prefix}fadvt" %>
       </li>
       <li>
-        <%= f.label :lyfaov, "Other Vehicles" %>
-        <%= f.money_field :lyfaov %>
+        <%= f.label :"#{prefix}faov", "Other Vehicles" %>
+        <%= f.money_field :"#{prefix}faov" %>
       </li>
       <li>
-        <%= f.label :lyfadov, "Accum Depree – Other Vehicles" %>
-        <%= f.money_field :lyfadov %>
+        <%= f.label :"#{prefix}fadov", "Accum Depree – Other Vehicles" %>
+        <%= f.money_field :"#{prefix}fadov" %>
       </li>
       <li>
-        <%= f.label :lyfaeo, "Equipment – Operations" %>
-        <%= f.money_field :lyfaeo %>
+        <%= f.label :"#{prefix}faeo", "Equipment – Operations" %>
+        <%= f.money_field :"#{prefix}faeo" %>
       </li>
       <li>
-        <%= f.label :lyfadeo, "Accum Depree – Equipment" %>
-        <%= f.money_field :lyfadeo %>
+        <%= f.label :"#{prefix}fadeo", "Accum Depree – Equipment" %>
+        <%= f.money_field :"#{prefix}fadeo" %>
       </li>
       <li>
-        <%= f.label :lyfafe, "Furniture & Equipment – Office" %>
-        <%= f.money_field :lyfafe %>
+        <%= f.label :"#{prefix}fafe", "Furniture & Equipment – Office" %>
+        <%= f.money_field :"#{prefix}fafe" %>
       </li>
       <li>
-        <%= f.label :lyfadfe, "Accum Depree – Furniture & Equipment" %>
-        <%= f.money_field :lyfadfe %>
+        <%= f.label :"#{prefix}fadfe", "Accum Depree – Furniture & Equipment" %>
+        <%= f.money_field :"#{prefix}fadfe" %>
       </li>
       <li>
-        <%= f.label :lyfal, "Land" %>
-        <%= f.money_field :lyfal %>
+        <%= f.label :"#{prefix}fal", "Land" %>
+        <%= f.money_field :"#{prefix}fal" %>
       </li>
       <li>
-        <%= f.label :lyfab, "Buildings" %>
-        <%= f.money_field :lyfab %>
+        <%= f.label :"#{prefix}fab", "Buildings" %>
+        <%= f.money_field :"#{prefix}fab" %>
       </li>
       <li>
-        <%= f.label :lyfadb, "Accum Depree – Buildings" %>
-        <%= f.money_field :lyfadb %>
+        <%= f.label :"#{prefix}fadb", "Accum Depree – Buildings" %>
+        <%= f.money_field :"#{prefix}fadb" %>
       </li>
       <li>
-        <%= f.label :lyfali, "Leasehold Improvements" %>
-        <%= f.money_field :lyfali %>
+        <%= f.label :"#{prefix}fali", "Leasehold Improvements" %>
+        <%= f.money_field :"#{prefix}fali" %>
       </li>
       <li>
-        <%= f.label :lyfadli, "Accum Depree – Leasehold Improvements" %>
-        <%= f.money_field :lyfadli %>
+        <%= f.label :"#{prefix}fadli", "Accum Depree – Leasehold Improvements" %>
+        <%= f.money_field :"#{prefix}fadli" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Fixed Asset" %></strong>
@@ -137,28 +137,28 @@
     <h1>Other Asset</h1>
     <ul>
       <li>
-        <%= f.label :lynrlt, "Notes Receivable – Long Term" %>
-        <%= f.money_field :lynrlt %>
+        <%= f.label :"#{prefix}nrlt", "Notes Receivable – Long Term" %>
+        <%= f.money_field :"#{prefix}nrlt" %>
       </li>
       <li>
-        <%= f.label :lys, "Suspense" %>
-        <%= f.money_field :lys %>
+        <%= f.label :"#{prefix}s", "Suspense" %>
+        <%= f.money_field :"#{prefix}s" %>
       </li>
       <li>
         <%= f.label :formula, "Franchise Rights" %>
         <%= f.money_field :formula, :value => @formula["fr"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyfraone, "Area No. 1" %>
-            <%= f.money_field :lyfraone %>
+            <%= f.label :"#{prefix}fraone", "Area No. 1" %>
+            <%= f.money_field :"#{prefix}fraone" %>
           </li>
           <li>
-            <%= f.label :lyfratwo, "Area No. 2" %>
-            <%= f.money_field :lyfratwo %>
+            <%= f.label :"#{prefix}fratwo", "Area No. 2" %>
+            <%= f.money_field :"#{prefix}fratwo" %>
           </li>
           <li>
-            <%= f.label :lyfrathree, "Area No. 3" %>
-            <%= f.money_field :lyfrathree %>
+            <%= f.label :"#{prefix}frathree", "Area No. 3" %>
+            <%= f.money_field :"#{prefix}frathree" %>
           </li>
         </ul>
       </li>
@@ -167,46 +167,46 @@
         <%= f.money_field :formula, :value => @formula["aaf"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyaaaone, "Area No. 1" %>
-            <%= f.money_field :lyaaaone %>
+            <%= f.label :"#{prefix}aaaone", "Area No. 1" %>
+            <%= f.money_field :"#{prefix}aaaone" %>
           </li>
           <li>
-            <%= f.label :lyaaatwo, "Area No. 2" %>
-            <%= f.money_field :lyaaatwo %>
+            <%= f.label :"#{prefix}aaatwo", "Area No. 2" %>
+            <%= f.money_field :"#{prefix}aaatwo" %>
           </li>
           <li>
-            <%= f.label :lyaaathree, "Area No. 3" %>
-            <%= f.money_field :lyaaathree %>
+            <%= f.label :"#{prefix}aaathree", "Area No. 3" %>
+            <%= f.money_field :"#{prefix}aaathree" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :lyoia, "Other Intangible Assets" %>
-        <%= f.money_field :lyoia %>
+        <%= f.label :"#{prefix}oia", "Other Intangible Assets" %>
+        <%= f.money_field :"#{prefix}oia" %>
       </li>
       <li>
-        <%= f.label :lyaaoi, "Accum Amortiz – Other Intagible Assets" %>
-        <%= f.money_field :lyaaoi %>
+        <%= f.label :"#{prefix}aaoi", "Accum Amortiz – Other Intagible Assets" %>
+        <%= f.money_field :"#{prefix}aaoi" %>
       </li>
       <li>
-        <%= f.label :lyoc, "Organization Costs" %>
-        <%= f.money_field :lyoc %>
+        <%= f.label :"#{prefix}oc", "Organization Costs" %>
+        <%= f.money_field :"#{prefix}oc" %>
       </li>
       <li>
-        <%= f.label :lyaaoc, "Accum Amortiz – Organization Costs" %>
-        <%= f.money_field :lyaaoc %>
+        <%= f.label :"#{prefix}aaoc", "Accum Amortiz – Organization Costs" %>
+        <%= f.money_field :"#{prefix}aaoc" %>
       </li>
       <li>
-        <%= f.label :lyd, "Deposits" %>
-        <%= f.money_field :lyd %>
+        <%= f.label :"#{prefix}d", "Deposits" %>
+        <%= f.money_field :"#{prefix}d" %>
       </li>
       <li>
-        <%= f.label :lylti, "Long Term Investments" %>
-        <%= f.money_field :lylti %>
+        <%= f.label :"#{prefix}lti", "Long Term Investments" %>
+        <%= f.money_field :"#{prefix}lti" %>
       </li>
       <li>
-        <%= f.label :lyoa, "Other Assets" %>
-        <%= f.money_field :lyoa %>
+        <%= f.label :"#{prefix}oa", "Other Assets" %>
+        <%= f.money_field :"#{prefix}oa" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Other Asset" %></strong>
@@ -220,8 +220,8 @@
     <h1>Accounts Payable</h1>
     <ul>
       <li>
-        <%= f.label :lyap, "Accounts Payable" %>
-        <%= f.money_field :lyap %>
+        <%= f.label :"#{prefix}ap", "Accounts Payable" %>
+        <%= f.money_field :"#{prefix}ap" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Accounts Payable" %></strong>
@@ -232,16 +232,16 @@
     <h1>Credit Card</h1>
     <ul>
       <li>
-        <%= f.label :lyccone, "Credit Card No. 1" %>
-        <%= f.money_field :lyccone %>
+        <%= f.label :"#{prefix}ccone", "Credit Card No. 1" %>
+        <%= f.money_field :"#{prefix}ccone" %>
       </li>
       <li>
-        <%= f.label :lycctwo, "Credit Card No. 2" %>
-        <%= f.money_field :lycctwo %>
+        <%= f.label :"#{prefix}cctwo", "Credit Card No. 2" %>
+        <%= f.money_field :"#{prefix}cctwo" %>
       </li>
       <li>
-        <%= f.label :lyccthree, "Credit Card No. 3" %>
-        <%= f.money_field :lyccthree %>
+        <%= f.label :"#{prefix}ccthree", "Credit Card No. 3" %>
+        <%= f.money_field :"#{prefix}ccthree" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Credit Card" %></strong>
@@ -252,60 +252,60 @@
     <h1>Other Current Liability</h1>
     <ul>
       <li>
-        <%= f.label :lyalp, "Accr Liabilities – Payroll" %>
-        <%= f.money_field :lyalp %>
+        <%= f.label :"#{prefix}alp", "Accr Liabilities – Payroll" %>
+        <%= f.money_field :"#{prefix}alp" %>
       </li>
       <li>
-        <%= f.label :lyalc, "Accr Liabilities – Commissions" %>
-        <%= f.money_field :lyalc %>
+        <%= f.label :"#{prefix}alc", "Accr Liabilities – Commissions" %>
+        <%= f.money_field :"#{prefix}alc" %>
       </li>
       <li>
-        <%= f.label :lyalpt, "Accr Liabilities – Payroll Tax" %>
-        <%= f.money_field :lyalpt %>
+        <%= f.label :"#{prefix}alpt", "Accr Liabilities – Payroll Tax" %>
+        <%= f.money_field :"#{prefix}alpt" %>
       </li>
       <li>
-        <%= f.label :lyfica, "FICA" %>
-        <%= f.money_field :lyfica %>
+        <%= f.label :"#{prefix}fica", "FICA" %>
+        <%= f.money_field :"#{prefix}fica" %>
       </li>
       <li>
-        <%= f.label :lym, "Medicare" %>
-        <%= f.money_field :lym %>
+        <%= f.label :"#{prefix}m", "Medicare" %>
+        <%= f.money_field :"#{prefix}m" %>
       </li>
       <li>
-        <%= f.label :lyw, "Withholding" %>
-        <%= f.money_field :lyw %>
+        <%= f.label :"#{prefix}w", "Withholding" %>
+        <%= f.money_field :"#{prefix}w" %>
       </li>
       <li>
-        <%= f.label :lyalwc, "Accr Liabilities – Workers Comp" %>
-        <%= f.money_field :lyalwc %>
+        <%= f.label :"#{prefix}alwc", "Accr Liabilities – Workers Comp" %>
+        <%= f.money_field :"#{prefix}alwc" %>
       </li>
       <li>
-        <%= f.label :lyalst, "Accr Liabilities – Sales Tax" %>
-        <%= f.money_field :lyalst %>
+        <%= f.label :"#{prefix}alst", "Accr Liabilities – Sales Tax" %>
+        <%= f.money_field :"#{prefix}alst" %>
       </li>
       <li>
-        <%= f.label :lyalprt, "Accr Liabilities – Property Tax" %>
-        <%= f.money_field :lyalprt %>
+        <%= f.label :"#{prefix}alprt", "Accr Liabilities – Property Tax" %>
+        <%= f.money_field :"#{prefix}alprt" %>
       </li>
       <li>
-        <%= f.label :lyalot, "Accr Liabilities – Other Taxes" %>
-        <%= f.money_field :lyalot %>
+        <%= f.label :"#{prefix}alot", "Accr Liabilities – Other Taxes" %>
+        <%= f.money_field :"#{prefix}alot" %>
       </li>
       <li>
-        <%= f.label :lyali, "Accr Liabilities – Interest" %>
-        <%= f.money_field :lyali %>
+        <%= f.label :"#{prefix}ali", "Accr Liabilities – Interest" %>
+        <%= f.money_field :"#{prefix}ali" %>
       </li>
       <li>
-        <%= f.label :lyaldr, "Deferred Revenue" %>
-        <%= f.money_field :lyaldr %>
+        <%= f.label :"#{prefix}aldr", "Deferred Revenue" %>
+        <%= f.money_field :"#{prefix}aldr" %>
       </li>
       <li>
-        <%= f.label :lycplt, "Current Portion Long Term" %>
-        <%= f.money_field :lycplt %>
+        <%= f.label :"#{prefix}cplt", "Current Portion Long Term" %>
+        <%= f.money_field :"#{prefix}cplt" %>
       </li>
       <li>
-        <%= f.label :lyol, "Other Liabilities" %>
-        <%= f.money_field :lyol %>
+        <%= f.label :"#{prefix}ol", "Other Liabilities" %>
+        <%= f.money_field :"#{prefix}ol" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Other Current Liability" %></strong>
@@ -319,33 +319,33 @@
         <%= f.money_field :formula, :value => @formula["nplt"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyltlone, "Note Payable No. 1" %>
-            <%= f.money_field :lyltlone %></li>
+            <%= f.label :"#{prefix}ltlone", "Note Payable No. 1" %>
+            <%= f.money_field :"#{prefix}ltlone" %></li>
           <li>
-            <%= f.label :lyltltwo, "Note Payable No. 2" %>
-            <%= f.money_field :lyltltwo %>
+            <%= f.label :"#{prefix}ltltwo", "Note Payable No. 2" %>
+            <%= f.money_field :"#{prefix}ltltwo" %>
           </li>
           <li>
-            <%= f.label :lyltlthree, "Note Payable No. 3" %>
-            <%= f.money_field :lyltlthree %>
+            <%= f.label :"#{prefix}ltlthree", "Note Payable No. 3" %>
+            <%= f.money_field :"#{prefix}ltlthree" %>
           </li>
           <li>
-            <%= f.label :lyltlfour, "Note Payable No. 4" %>
-            <%= f.money_field :lyltlfour %>
+            <%= f.label :"#{prefix}ltlfour", "Note Payable No. 4" %>
+            <%= f.money_field :"#{prefix}ltlfour" %>
           </li>
           <li>
-            <%= f.label :lyltlfive, "Note Payable No. 5" %>
-            <%= f.money_field :lyltlfive %>
+            <%= f.label :"#{prefix}ltlfive", "Note Payable No. 5" %>
+            <%= f.money_field :"#{prefix}ltlfive" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :lylcp, "Less Current Portion" %>
-        <%= f.money_field :lylcp %>
+        <%= f.label :"#{prefix}lcp", "Less Current Portion" %>
+        <%= f.money_field :"#{prefix}lcp" %>
       </li>
       <li>
-        <%= f.label :lyshl, "Shareholder Loans" %>
-        <%= f.money_field :lyshl %>
+        <%= f.label :"#{prefix}shl", "Shareholder Loans" %>
+        <%= f.money_field :"#{prefix}shl" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Long Term Liability" %></strong>
@@ -359,28 +359,28 @@
     <h1>Equity</h1>
     <ul>
       <li>
-        <%= f.label :lyecs, "Common Stock" %>
-        <%= f.money_field :lyecs %>
+        <%= f.label :"#{prefix}ecs", "Common Stock" %>
+        <%= f.money_field :"#{prefix}ecs" %>
       </li>
       <li>
-        <%= f.label :lyeoe, "Owners Equity" %>
-        <%= f.money_field :lyeoe %>
+        <%= f.label :"#{prefix}eoe", "Owners Equity" %>
+        <%= f.money_field :"#{prefix}eoe" %>
       </li>
       <li>
-        <%= f.label :lyepc, "Paid in Capital" %>
-        <%= f.money_field :lyepc %>
+        <%= f.label :"#{prefix}epc", "Paid in Capital" %>
+        <%= f.money_field :"#{prefix}epc" %>
       </li>
       <li>
-        <%= f.label :lyedp, "Dividends Paid" %>
-        <%= f.money_field :lyedp %>
+        <%= f.label :"#{prefix}edp", "Dividends Paid" %>
+        <%= f.money_field :"#{prefix}edp" %>
       </li>
       <li>
-        <%= f.label :lyeow, "Owners Withdrawals" %>
-        <%= f.money_field :lyeow %>
+        <%= f.label :"#{prefix}eow", "Owners Withdrawals" %>
+        <%= f.money_field :"#{prefix}eow" %>
       </li>
       <li>
-        <%= f.label :lyere, "Retained Earnings" %>
-        <%= f.money_field :lyere %>
+        <%= f.label :"#{prefix}ere", "Retained Earnings" %>
+        <%= f.money_field :"#{prefix}ere" %>
       </li>
       <li>
         <%= f.label :formula, "Opening Bal Equity" %>
@@ -405,24 +405,24 @@
         <%= f.money_field :formula, :value => @formula["tsr"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :pclyrs, "Sales" %>
-            <%= f.money_field :pclyrs %>
+            <%= f.label :"pc#{prefix}rs", "Sales" %>
+            <%= f.money_field :"pc#{prefix}rs" %>
           </li>
           <li>
-            <%= f.label :pclyrao, "Add-on" %>
-            <%= f.money_field :pclyrao %>
+            <%= f.label :"pc#{prefix}rao", "Add-on" %>
+            <%= f.money_field :"pc#{prefix}rao" %>
           </li>
           <li>
-            <%= f.label :pclyrsa, "Service Agreements" %>
-            <%= f.money_field :pclyrsa %>
+            <%= f.label :"pc#{prefix}rsa", "Service Agreements" %>
+            <%= f.money_field :"pc#{prefix}rsa" %>
           </li>
           <li>
-            <%= f.label :pclyrr, "Repair" %>
-            <%= f.money_field :pclyrr %>
+            <%= f.label :"pc#{prefix}rr", "Repair" %>
+            <%= f.money_field :"pc#{prefix}rr" %>
           </li>
           <li>
-            <%= f.label :pclyrra, "Refunds and Allowances" %>
-            <%= f.money_field :pclyrra %>
+            <%= f.label :"pc#{prefix}rra", "Refunds and Allowances" %>
+            <%= f.money_field :"pc#{prefix}rra" %>
           </li>
         </ul>
       </li>
@@ -431,24 +431,24 @@
         <%= f.money_field :formula, :value => @formula["tsc"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :pclycs, "Sales" %>
-            <%= f.money_field :pclycs %>
+            <%= f.label :"pc#{prefix}cs", "Sales" %>
+            <%= f.money_field :"pc#{prefix}cs" %>
           </li>
           <li>
-            <%= f.label :pclycao, "Add-on" %>
-            <%= f.money_field :pclycao %>
+            <%= f.label :"pc#{prefix}cao", "Add-on" %>
+            <%= f.money_field :"pc#{prefix}cao" %>
           </li>
           <li>
-            <%= f.label :pclycsa, "Service Agreements" %>
-            <%= f.money_field :pclycsa %>
+            <%= f.label :"pc#{prefix}csa", "Service Agreements" %>
+            <%= f.money_field :"pc#{prefix}csa" %>
           </li>
           <li>
-            <%= f.label :pclycr, "Repair" %>
-            <%= f.money_field :pclycr %>
+            <%= f.label :"pc#{prefix}cr", "Repair" %>
+            <%= f.money_field :"pc#{prefix}cr" %>
           </li>
           <li>
-            <%= f.label :pclycra, "Refunds and Allowances" %>
-            <%= f.money_field :pclycra %>
+            <%= f.label :"pc#{prefix}cra", "Refunds and Allowances" %>
+            <%= f.money_field :"pc#{prefix}cra" %>
           </li>
         </ul>
       </li>
@@ -461,80 +461,80 @@
     <h1>Variable Expenses</h1>
     <ul>
       <li>
-        <%= f.label :pclym, "Materials" %>
-        <%= f.money_field :pclym %>
+        <%= f.label :"pc#{prefix}m", "Materials" %>
+        <%= f.money_field :"pc#{prefix}m" %>
       </li>
       <li>
         <%= f.label :formula, "Labor" %>
         <%= f.money_field :formula, :value => @formula["l"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :pclyltl, "Technician Labor" %>
-            <%= f.money_field :pclyltl %>
+            <%= f.label :"pc#{prefix}ltl", "Technician Labor" %>
+            <%= f.money_field :"pc#{prefix}ltl" %>
           </li>
           <li>
-            <%= f.label :pclyltc, "Technician Commissions" %>
-            <%= f.money_field :pclyltc %>
+            <%= f.label :"pc#{prefix}ltc", "Technician Commissions" %>
+            <%= f.money_field :"pc#{prefix}ltc" %>
           </li>
           <li>
-            <%= f.label :pclylptf, "Payroll Taxes – Field" %>
-            <%= f.money_field :pclylptf %>
+            <%= f.label :"pc#{prefix}lptf", "Payroll Taxes – Field" %>
+            <%= f.money_field :"pc#{prefix}lptf" %>
           </li>
           <li>
-            <%= f.label :pclylwci, "Workers Compensation Insurance" %>
-            <%= f.money_field :pclylwci %>
+            <%= f.label :"pc#{prefix}lwci", "Workers Compensation Insurance" %>
+            <%= f.money_field :"pc#{prefix}lwci" %>
           </li>
           <li>
-            <%= f.label :pclyltb, "Technician Benefits" %>
-            <%= f.money_field :pclyltb %>
+            <%= f.label :"pc#{prefix}ltb", "Technician Benefits" %>
+            <%= f.money_field :"pc#{prefix}ltb" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :pclysc, "Sales Commisions" %>
-        <%= f.money_field :pclysc %>
+        <%= f.label :"pc#{prefix}sc", "Sales Commisions" %>
+        <%= f.money_field :"pc#{prefix}sc" %>
       </li>
       <li>
-        <%= f.label :pclyp, "Permits" %>
-        <%= f.money_field :pclyp %>
+        <%= f.label :"pc#{prefix}p", "Permits" %>
+        <%= f.money_field :"pc#{prefix}p" %>
       </li>
       <li>
-        <%= f.label :pclyw, "Warranty" %>
-        <%= f.money_field :pclyw %>
+        <%= f.label :"pc#{prefix}w", "Warranty" %>
+        <%= f.money_field :"pc#{prefix}w" %>
       </li>
       <li>
-        <%= f.label :pclysct, "Subcontractors" %>
-        <%= f.money_field :pclysct %>
+        <%= f.label :"pc#{prefix}sct", "Subcontractors" %>
+        <%= f.money_field :"pc#{prefix}sct" %>
       </li>
       <li>
         <%= f.label :formula, "Other" %>
         <%= f.money_field :formula, :value => @formula["o"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :pclyvf, "Vehicle Fuel" %>
-            <%= f.money_field :pclyvf %>
+            <%= f.label :"pc#{prefix}vf", "Vehicle Fuel" %>
+            <%= f.money_field :"pc#{prefix}vf" %>
           </li>
           <li>
-            <%= f.label :pclyvmr, "Vehicle Maintenance & Repair" %>
-            <%= f.money_field :pclyvmr %>
+            <%= f.label :"pc#{prefix}vmr", "Vehicle Maintenance & Repair" %>
+            <%= f.money_field :"pc#{prefix}vmr" %>
           </li>
           <li>
-            <%= f.label :pclyt, "Tools" %>
-            <%= f.money_field :pclyt %>
+            <%= f.label :"pc#{prefix}t", "Tools" %>
+            <%= f.money_field :"pc#{prefix}t" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :pclyfsf, "Franchise Service Fees" %>
-        <%= f.money_field :pclyfsf %>
+        <%= f.label :"pc#{prefix}fsf", "Franchise Service Fees" %>
+        <%= f.money_field :"pc#{prefix}fsf" %>
       </li>
       <li>
-        <%= f.label :pclyfnad, "Franchise National Ad Fees" %>
-        <%= f.money_field :pclyfnad %>
+        <%= f.label :"pc#{prefix}fnad", "Franchise National Ad Fees" %>
+        <%= f.money_field :"pc#{prefix}fnad" %>
       </li>
       <li>
-        <%= f.label :pclypd, "Promotions – Discounts" %>
-        <%= f.money_field :pclypd %>
+        <%= f.label :"pc#{prefix}pd", "Promotions – Discounts" %>
+        <%= f.money_field :"pc#{prefix}pd" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Cost of Service" %></strong>
@@ -556,286 +556,286 @@
         <%= f.money_field :formula, :value => @formula["s"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyfeso, "Officers" %>
-            <%= f.money_field :lyfeso %>
+            <%= f.label :"#{prefix}feso", "Officers" %>
+            <%= f.money_field :"#{prefix}feso" %>
           </li>
           <li>
-            <%= f.label :lyfesm, "Management" %>
-            <%= f.money_field :lyfesm %>
+            <%= f.label :"#{prefix}fesm", "Management" %>
+            <%= f.money_field :"#{prefix}fesm" %>
           </li>
           <li>
-            <%= f.label :lyfesa, "Administrative" %>
-            <%= f.money_field :lyfesa %>
+            <%= f.label :"#{prefix}fesa", "Administrative" %>
+            <%= f.money_field :"#{prefix}fesa" %>
           </li>
           <li>
-            <%= f.label :lyfesop, "Operations" %>
-            <%= f.money_field :lyfesop %>
+            <%= f.label :"#{prefix}fesop", "Operations" %>
+            <%= f.money_field :"#{prefix}fesop" %>
           </li>
           <li>
-            <%= f.label :lyfess, "Sales" %>
-            <%= f.money_field :lyfess %>
+            <%= f.label :"#{prefix}fess", "Sales" %>
+            <%= f.money_field :"#{prefix}fess" %>
           </li>
           <li>
-            <%= f.label :lyfest, "Training" %>
-            <%= f.money_field :lyfest %>
+            <%= f.label :"#{prefix}fest", "Training" %>
+            <%= f.money_field :"#{prefix}fest" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :lyfeb, "Bonuses" %>
-        <%= f.money_field :lyfeb %>
+        <%= f.label :"#{prefix}feb", "Bonuses" %>
+        <%= f.money_field :"#{prefix}feb" %>
       </li>
       <li>
-        <%= f.label :lyfept, "Payroll Taxes" %>
-        <%= f.money_field :lyfept %>
+        <%= f.label :"#{prefix}fept", "Payroll Taxes" %>
+        <%= f.money_field :"#{prefix}fept" %>
       </li>
       <li>
-        <%= f.label :lyfewci, "Workers Compensation Insurance" %>
-        <%= f.money_field :lyfewci %>
+        <%= f.label :"#{prefix}fewci", "Workers Compensation Insurance" %>
+        <%= f.money_field :"#{prefix}fewci" %>
       </li>
       <li>
-        <%= f.label :lyfeeb, "Employee Benefits" %>
-        <%= f.money_field :lyfeeb %>
+        <%= f.label :"#{prefix}feeb", "Employee Benefits" %>
+        <%= f.money_field :"#{prefix}feeb" %>
       </li>
       <li>
-        <%= f.label :lyfehvp, "Holdiay & Vacation Pay" %>
-        <%= f.money_field :lyfehvp %>
+        <%= f.label :"#{prefix}fehvp", "Holdiay & Vacation Pay" %>
+        <%= f.money_field :"#{prefix}fehvp" %>
       </li>
       <li>
-        <%= f.label :lyfet, "Training" %>
-        <%= f.money_field :lyfet %>
+        <%= f.label :"#{prefix}fet", "Training" %>
+        <%= f.money_field :"#{prefix}fet" %>
       </li>
       <li>
-        <%= f.label :lyfeth, "Temporary Help" %>
-        <%= f.money_field :lyfeth %>
+        <%= f.label :"#{prefix}feth", "Temporary Help" %>
+        <%= f.money_field :"#{prefix}feth" %>
       </li>
       <li>
-        <%= f.label :lyfer, "Rent" %>
-        <%= f.money_field :lyfer %>
+        <%= f.label :"#{prefix}fer", "Rent" %>
+        <%= f.money_field :"#{prefix}fer" %>
       </li>
       <li>
-        <%= f.label :lyfeu, "Utilities" %>
-        <%= f.money_field :lyfeu %>
+        <%= f.label :"#{prefix}feu", "Utilities" %>
+        <%= f.money_field :"#{prefix}feu" %>
       </li>
       <li>
-        <%= f.label :lyfebrm, "Building Repair & Maintenance" %>
-        <%= f.money_field :lyfebrm %>
+        <%= f.label :"#{prefix}febrm", "Building Repair & Maintenance" %>
+        <%= f.money_field :"#{prefix}febrm" %>
       </li>
       <li>
-        <%= f.label :lyfetl, "Taxes and Licenses" %>
-        <%= f.money_field :lyfetl %>
+        <%= f.label :"#{prefix}fetl", "Taxes and Licenses" %>
+        <%= f.money_field :"#{prefix}fetl" %>
       </li>
       <li>
-        <%= f.label :lyfeto, "Telephone & Office" %>
-        <%= f.money_field :lyfeto %>
+        <%= f.label :"#{prefix}feto", "Telephone & Office" %>
+        <%= f.money_field :"#{prefix}feto" %>
       </li>
       <li>
-        <%= f.label :lyfecp, "Cell Phones" %>
-        <%= f.money_field :lyfecp %>
+        <%= f.label :"#{prefix}fecp", "Cell Phones" %>
+        <%= f.money_field :"#{prefix}fecp" %>
       </li>
       <li>
-        <%= f.label :lyfeli, "Liability Insurance" %>
-        <%= f.money_field :lyfeli %>
+        <%= f.label :"#{prefix}feli", "Liability Insurance" %>
+        <%= f.money_field :"#{prefix}feli" %>
       </li>
       <li>
-        <%= f.label :lyfeccsf, "Credit Card Service Fees" %>
-        <%= f.money_field :lyfeccsf %>
+        <%= f.label :"#{prefix}feccsf", "Credit Card Service Fees" %>
+        <%= f.money_field :"#{prefix}feccsf" %>
       </li>
       <li>
         <%= f.label :formula, "Advertising" %>
         <%= f.money_field :formula, :value => @formula["a"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyfeab, "Branding" %>
-            <%= f.money_field :lyfeab %>
+            <%= f.label :"#{prefix}feab", "Branding" %>
+            <%= f.money_field :"#{prefix}feab" %>
           </li>
           <li>
-            <%= f.label :lyfepr, "Public Relations (PR)" %>
-            <%= f.money_field :lyfepr %>
+            <%= f.label :"#{prefix}fepr", "Public Relations (PR)" %>
+            <%= f.money_field :"#{prefix}fepr" %>
           </li>
           <li>
-            <%= f.label :lyfecv, "Commercial Visits" %>
-            <%= f.money_field :lyfecv %>
+            <%= f.label :"#{prefix}fecv", "Commercial Visits" %>
+            <%= f.money_field :"#{prefix}fecv" %>
           </li>
           <li>
-            <%= f.label :lyfedv, "Decaled Vehicle" %>
-            <%= f.money_field :lyfedv %>
+            <%= f.label :"#{prefix}fedv", "Decaled Vehicle" %>
+            <%= f.money_field :"#{prefix}fedv" %>
           </li>
           <li>
-            <%= f.label :lyfedm, "Direct Mail" %>
-            <%= f.money_field :lyfedm %>
+            <%= f.label :"#{prefix}fedm", "Direct Mail" %>
+            <%= f.money_field :"#{prefix}fedm" %>
           </li>
           <li>
-            <%= f.label :lyfenm, "Neighborhood Marketing" %>
-            <%= f.money_field :lyfenm %>
+            <%= f.label :"#{prefix}fenm", "Neighborhood Marketing" %>
+            <%= f.money_field :"#{prefix}fenm" %>
           </li>
           <li>
-            <%= f.label :lyfeec, "Exisiting Customer (Retention)" %>
-            <%= f.money_field :lyfeec %>
+            <%= f.label :"#{prefix}feec", "Exisiting Customer (Retention)" %>
+            <%= f.money_field :"#{prefix}feec" %>
           </li>
           <li>
-            <%= f.label :lyfehms, "Home/Mall Shows" %>
-            <%= f.money_field :lyfehms %>
+            <%= f.label :"#{prefix}fehms", "Home/Mall Shows" %>
+            <%= f.money_field :"#{prefix}fehms" %>
           </li>
           <li>
-            <%= f.label :lyfeo, "Other" %>
-            <%= f.money_field :lyfeo %>
+            <%= f.label :"#{prefix}feo", "Other" %>
+            <%= f.money_field :"#{prefix}feo" %>
           </li>
           <li>
-            <%= f.label :lyfeiss, "Internet-SEO/SEM" %>
-            <%= f.money_field :lyfeiss %>
+            <%= f.label :"#{prefix}feiss", "Internet-SEO/SEM" %>
+            <%= f.money_field :"#{prefix}feiss" %>
           </li>
           <li>
-            <%= f.label :lyfesrv, "Show Room Visits" %>
-            <%= f.money_field :lyfesrv %>
+            <%= f.label :"#{prefix}fesrv", "Show Room Visits" %>
+            <%= f.money_field :"#{prefix}fesrv" %>
           </li>
           <li>
-            <%= f.label :lyfeys, "Yard Signs" %>
-            <%= f.money_field :lyfeys %>
+            <%= f.label :"#{prefix}feys", "Yard Signs" %>
+            <%= f.money_field :"#{prefix}feys" %>
           </li>
           <li>
-            <%= f.label :lyfeyppo, "Yellow Pages Print & Online" %>
-            <%= f.money_field :lyfeyppo %>
+            <%= f.label :"#{prefix}feyppo", "Yellow Pages Print & Online" %>
+            <%= f.money_field :"#{prefix}feyppo" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :lyferr, "Recruiting & Relocation" %>
-        <%= f.money_field :lyferr %>
+        <%= f.label :"#{prefix}ferr", "Recruiting & Relocation" %>
+        <%= f.money_field :"#{prefix}ferr" %>
       </li>
       <li>
-        <%= f.label :lyfeos, "Office Supplies" %>
-        <%= f.money_field :lyfeos %>
+        <%= f.label :"#{prefix}feos", "Office Supplies" %>
+        <%= f.money_field :"#{prefix}feos" %>
       </li>
       <li>
-        <%= f.label :lyfep, "Printing" %>
-        <%= f.money_field :lyfep %>
+        <%= f.label :"#{prefix}fep", "Printing" %>
+        <%= f.money_field :"#{prefix}fep" %>
       </li>
       <li>
-        <%= f.label :lyfepos, "Postage" %>
-        <%= f.money_field :lyfepos %>
+        <%= f.label :"#{prefix}fepos", "Postage" %>
+        <%= f.money_field :"#{prefix}fepos" %>
       </li>
       <li>
-        <%= f.label :lyfeoel, "Office Equipment Leases" %>
-        <%= f.money_field :lyfeoel %>
+        <%= f.label :"#{prefix}feoel", "Office Equipment Leases" %>
+        <%= f.money_field :"#{prefix}feoel" %>
       </li>
       <li>
-        <%= f.label :lyfefel, "Field Equipment Leases" %>
-        <%= f.money_field :lyfefel %>
+        <%= f.label :"#{prefix}fefel", "Field Equipment Leases" %>
+        <%= f.money_field :"#{prefix}fefel" %>
       </li>
       <li>
-        <%= f.label :lyfeoerm, "Office Equipment Repair & Maintenance" %>
-        <%= f.money_field :lyfeoerm %>
+        <%= f.label :"#{prefix}feoerm", "Office Equipment Repair & Maintenance" %>
+        <%= f.money_field :"#{prefix}feoerm" %>
       </li>
       <li>
-        <%= f.label :lyfesd, "Shipping & Delivery" %>
-        <%= f.money_field :lyfesd %>
+        <%= f.label :"#{prefix}fesd", "Shipping & Delivery" %>
+        <%= f.money_field :"#{prefix}fesd" %>
       </li>
       <li>
-        <%= f.label :lyfeulr, "Uniform Laundry & Rental" %>
-        <%= f.money_field :lyfeulr %>
+        <%= f.label :"#{prefix}feulr", "Uniform Laundry & Rental" %>
+        <%= f.money_field :"#{prefix}feulr" %>
       </li>
       <li>
         <%= f.label :formula, "Vehicle" %>
         <%= f.money_field :formula, :value => @formula["v"], :disabled => true %>
         <ul>
           <li>
-            <%= f.label :lyfevl, "Leases" %>
-            <%= f.money_field :lyfevl %>
+            <%= f.label :"#{prefix}fevl", "Leases" %>
+            <%= f.money_field :"#{prefix}fevl" %>
           </li>
           <li>
-            <%= f.label :lyfevrm, "Repair & Maintenance" %>
-            <%= f.money_field :lyfevrm %>
+            <%= f.label :"#{prefix}fevrm", "Repair & Maintenance" %>
+            <%= f.money_field :"#{prefix}fevrm" %>
           </li>
           <li>
-            <%= f.label :lyfevi, "Insurance" %>
-            <%= f.money_field :lyfevi %>
+            <%= f.label :"#{prefix}fevi", "Insurance" %>
+            <%= f.money_field :"#{prefix}fevi" %>
           </li>
           <li>
-            <%= f.label :lyfevf, "Fuel (Non-revenue Generating)" %>
-            <%= f.money_field :lyfevf %>
+            <%= f.label :"#{prefix}fevf", "Fuel (Non-revenue Generating)" %>
+            <%= f.money_field :"#{prefix}fevf" %>
           </li>
           <li>
-            <%= f.label :lyfel, "Licensing" %>
-            <%= f.money_field :lyfel %>
+            <%= f.label :"#{prefix}fel", "Licensing" %>
+            <%= f.money_field :"#{prefix}fel" %>
           </li>
         </ul>
       </li>
       <li>
-        <%= f.label :lyfeaf, "Accounting Fees" %>
-        <%= f.money_field :lyfeaf %>
+        <%= f.label :"#{prefix}feaf", "Accounting Fees" %>
+        <%= f.money_field :"#{prefix}feaf" %>
       </li>
       <li>
-        <%= f.label :lyfelf, "Legal Fees" %>
-        <%= f.money_field :lyfelf %>
+        <%= f.label :"#{prefix}felf", "Legal Fees" %>
+        <%= f.money_field :"#{prefix}felf" %>
       </li>
       <li>
-        <%= f.label :lyfeeer, "Employee Education & Relations" %>
-        <%= f.money_field :lyfeeer %>
+        <%= f.label :"#{prefix}feeer", "Employee Education & Relations" %>
+        <%= f.money_field :"#{prefix}feeer" %>
       </li>
       <li>
-        <%= f.label :lyfeoser, "Outside Services" %>
-        <%= f.money_field :lyfeoser %>
+        <%= f.label :"#{prefix}feoser", "Outside Services" %>
+        <%= f.money_field :"#{prefix}feoser" %>
       </li>
       <li>
-        <%= f.label :lyfece, "Computer Expenses" %>
-        <%= f.money_field :lyfece %>
+        <%= f.label :"#{prefix}fece", "Computer Expenses" %>
+        <%= f.money_field :"#{prefix}fece" %>
       </li>
       <li>
-        <%= f.label :lyfebsc, "Bank Service Charges" %>
-        <%= f.money_field :lyfebsc %>
+        <%= f.label :"#{prefix}febsc", "Bank Service Charges" %>
+        <%= f.money_field :"#{prefix}febsc" %>
       </li>
       <li>
-        <%= f.label :lyfeds, "Dues & Subscriptions" %>
-        <%= f.money_field :lyfeds %>
+        <%= f.label :"#{prefix}feds", "Dues & Subscriptions" %>
+        <%= f.money_field :"#{prefix}feds" %>
       </li>
       <li>
-        <%= f.label :lyfec, "Contributions" %>
-        <%= f.money_field :lyfec %>
+        <%= f.label :"#{prefix}fec", "Contributions" %>
+        <%= f.money_field :"#{prefix}fec" %>
       </li>
       <li>
-        <%= f.label :lyfebd, "Bad Debts" %>
-        <%= f.money_field :lyfebd %>
+        <%= f.label :"#{prefix}febd", "Bad Debts" %>
+        <%= f.money_field :"#{prefix}febd" %>
       </li>
       <li>
-        <%= f.label :lyfect, "Conferences & Travel" %>
-        <%= f.money_field :lyfect %>
+        <%= f.label :"#{prefix}fect", "Conferences & Travel" %>
+        <%= f.money_field :"#{prefix}fect" %>
       </li>
       <li>
-        <%= f.label :lyfeme, "Meals & Entertainment" %>
-        <%= f.money_field :lyfeme %>
+        <%= f.label :"#{prefix}feme", "Meals & Entertainment" %>
+        <%= f.money_field :"#{prefix}feme" %>
       </li>
       <li>
-        <%= f.label :lyfem, "Miscellaneous" %>
-        <%= f.money_field :lyfem %>
+        <%= f.label :"#{prefix}fem", "Miscellaneous" %>
+        <%= f.money_field :"#{prefix}fem" %>
       </li>
       <li>
-        <%= f.label :lyfeii, "Interest Income" %>
-        <%= f.money_field :lyfeii %>
+        <%= f.label :"#{prefix}feii", "Interest Income" %>
+        <%= f.money_field :"#{prefix}feii" %>
       </li>
       <li>
-        <%= f.label :lyfedtv, "Discounts Taken – Vendor" %>
-        <%= f.money_field :lyfedtv %>
+        <%= f.label :"#{prefix}fedtv", "Discounts Taken – Vendor" %>
+        <%= f.money_field :"#{prefix}fedtv" %>
       </li>
       <li>
-        <%= f.label :lyfeie, "Interest Expense" %>
-        <%= f.money_field :lyfeie %>
+        <%= f.label :"#{prefix}feie", "Interest Expense" %>
+        <%= f.money_field :"#{prefix}feie" %>
       </li>
       <li>
-        <%= f.label :lyfed, "Depreciation" %>
-        <%= f.money_field :lyfed %>
+        <%= f.label :"#{prefix}fed", "Depreciation" %>
+        <%= f.money_field :"#{prefix}fed" %>
       </li>
       <li>
-        <%= f.label :lyfea, "Amoritization" %>
-        <%= f.money_field :lyfea %>
+        <%= f.label :"#{prefix}fea", "Amoritization" %>
+        <%= f.money_field :"#{prefix}fea" %>
       </li>
       <li>
-        <%= f.label :lyfeoe, "Other Expenses" %>
-        <%= f.money_field :lyfeoe %>
+        <%= f.label :"#{prefix}feoe", "Other Expenses" %>
+        <%= f.money_field :"#{prefix}feoe" %>
       </li>
       <li>
-        <%= f.label :lyfeit, "Income Taxes" %>
-        <%= f.money_field :lyfeit %>
+        <%= f.label :"#{prefix}feit", "Income Taxes" %>
+        <%= f.money_field :"#{prefix}feit" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Total Expenses" %></strong>
@@ -847,12 +847,12 @@
       </li>
       <li></li>
       <li>
-        <%= f.label :lyfenone, "Note 1" %>
-        <%= f.money_field :lyfenone %>
+        <%= f.label :"#{prefix}fenone", "Note 1" %>
+        <%= f.money_field :"#{prefix}fenone" %>
       </li>
       <li>
-        <%= f.label :lyfentwo, "Note 2" %>
-        <%= f.money_field :lyfentwo %>
+        <%= f.label :"#{prefix}fentwo", "Note 2" %>
+        <%= f.money_field :"#{prefix}fentwo" %>
       </li>
       <li>
         <strong><%= f.label :formula, "Net After Note Payments" %></strong>
