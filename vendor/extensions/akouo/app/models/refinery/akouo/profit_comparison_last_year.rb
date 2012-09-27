@@ -1,6 +1,6 @@
 module Refinery
   module Akouo
-    class ProfitComparisonLastYear < Refinery::Core::BaseModel
+    class ProfitCenterLastYear < Refinery::Core::BaseModel
       self.table_name = 'pcly'
 
       attr_accessible(

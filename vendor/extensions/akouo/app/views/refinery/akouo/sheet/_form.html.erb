@@ -396,7 +396,7 @@
     <%= f.money_field :formula, :value => @formula["tle"], :disabled => true %>
   <% end # fields_for :last_year %>
 
-  <%= user.fields_for :profit_comparison_last_year do |f| %>
+  <%= user.fields_for :profit_center_last_year do |f| %>
     <h1>Income & Expense Statement</h1>
     <h1>Income</h1>
     <ul>
@@ -546,7 +546,7 @@
         <%= f.money_field :formula, :value => @formula["gm"], :disabled => true %>
       </li>
     </ul>
-  <% end # fields_for :profit_comparison_last_year %>
+  <% end # fields_for :profit_center_last_year %>
 
   <%= user.fields_for :last_year do |f| %>
     <h1>Fixed Expenses</h1>

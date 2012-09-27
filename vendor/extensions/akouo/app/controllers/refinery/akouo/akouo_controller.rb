@@ -26,7 +26,7 @@ module Refinery
         needed_tables = [
           "customer",
           "last_year",
-          "profit_comparison_last_year"
+          "profit_center_last_year"
         ]
 
         needed_tables.each do |table|
