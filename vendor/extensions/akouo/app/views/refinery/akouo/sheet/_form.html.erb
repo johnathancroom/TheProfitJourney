@@ -1,5 +1,5 @@
-<%= form_for @user, :url => action, :html => { :method => "PUT", :class => "form" } do |user| %>
-  <%= user.fields_for :"#{model}" do |f| %>
+<%= form_for @profit_center, :url => action, :html => { :method => "PUT", :class => "form" } do |profit_center| %>
+  <%= profit_center.fields_for :"#{model}" do |f| %>
     <h1>Bank</h1>
     <ul>
       <li>
@@ -396,7 +396,7 @@
     <%= f.money_field :formula, :value => @formula["tle"], :disabled => true %>
   <% end # fields_for :#{model} %>
 
-  <%= user.fields_for :"profit_center_#{model}" do |f| %>
+  <%= profit_center.fields_for :"profit_center_#{model}" do |f| %>
     <h1>Income & Expense Statement</h1>
     <h1>Income</h1>
     <ul>
@@ -548,7 +548,7 @@
     </ul>
   <% end # fields_for :"profit_center_#{model}" %>
 
-  <%= user.fields_for :"#{model}" do |f| %>
+  <%= profit_center.fields_for :"#{model}" do |f| %>
     <h1>Fixed Expenses</h1>
     <ul>
       <li>
@@ -860,5 +860,5 @@
       </li>
     </ul>
   <% end %>
-  <%= user.submit "Save changes", :class => "button" %>
+  <%= profit_center.submit "Save changes", :class => "button" %>
 <% end %>

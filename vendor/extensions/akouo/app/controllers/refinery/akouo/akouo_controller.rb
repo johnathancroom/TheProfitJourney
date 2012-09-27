@@ -20,9 +20,6 @@ module Refinery
       end
 
       def check_and_build_user_tables
-        # This will be nice to have in the views anyway
-        @user = current_refinery_user
-
         needed_tables = [
           "customer",
           "last_year",
@@ -31,11 +28,19 @@ module Refinery
           "profit_center_next_year"
         ]
 
-        needed_tables.each do |table|
-          # @user.customer.nil?
-          if @user.send(table).nil?
-            # @user.build_customer
-            @user.send("build_#{table}")
+        # Create first profit center
+        if current_refinery_user.profit_centers.empty?
+          profit_center = current_refinery_user.profit_centers.create(:pcn => "Profit Center")
+        end
+
+        # Create profit center dependencies
+        current_refinery_user.profit_centers.each do |profit_center|
+          needed_tables.each do |table|
+            # profit_center.customer.nil?
+            if profit_center.send(table).nil?
+              # profit_center.build_customer
+              profit_center.send("build_#{table}")
+            end
           end
         end
       end

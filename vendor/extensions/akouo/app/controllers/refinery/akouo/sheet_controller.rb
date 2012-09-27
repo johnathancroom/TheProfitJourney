@@ -7,56 +7,51 @@ module Refinery
       before_filter :redirect?
 
       before_filter :find_models
-      before_filter :only => [:start] { |c| c.find_page("/akouo/start") }
-      before_filter :only => [:vision] { |c| c.find_page("/akouo/vision") }
-      before_filter :only => [:last_year] { |c| c.find_page("/akouo/last_year") }
-      before_filter :only => [:next_year] { |c| c.find_page("/akouo/next_year") }
+      before_filter :only => [:start, :start_update] { |c| c.find_page("/akouo/start") }
+      before_filter :only => [:vision, :vision_update] { |c| c.find_page("/akouo/vision") }
+      before_filter :only => [:last_year, :last_year_update] { |c|
+        c.find_page("/akouo/last_year")
+        c.do_formulas("ly", @last_year, @pcly)
+      }
+      before_filter :only => [:next_year, :next_year_update] { |c|
+        c.find_page("/akouo/next_year")
+        c.do_formulas("ny", @next_year, @pcny)
+      }
 
       def start_update
-        if @user.update_attributes(params[:user])
-          redirect_to refinery.akouo_start_path, :notice => SAVED_MESSAGE
-        else
-          render :start
-        end
-      end
-
-      def last_year
-        do_formulas "ly", @last_year, @pcly
+        update(:start)
       end
 
       def last_year_update
-        if @user.update_attributes(params[:user])
-          redirect_to refinery.akouo_last_year_path, :notice => SAVED_MESSAGE
-        else
-          render :last_year
-        end
-      end
-
-      def next_year
-        do_formulas "ny", @next_year, @pcny
+        update(:last_year)
       end
 
       def next_year_update
-        if @user.update_attributes(params[:user])
-          redirect_to refinery.akouo_next_year_path, :notice => SAVED_MESSAGE
-        else
-          render :next_year
-        end
+        update(:next_year)
       end
 
     protected
 
       def find_models
         @user = current_refinery_user
-        @customer = @user.customer
-        @last_year = @user.last_year
-        @pcly = @user.profit_center_last_year
-        @next_year = @user.next_year
-        @pcny = @user.profit_center_next_year
+        @profit_center = current_refinery_user.profit_centers.first
+        @customer = @profit_center.customer
+        @last_year = @profit_center.last_year
+        @pcly = @profit_center.profit_center_last_year
+        @next_year = @profit_center.next_year
+        @pcny = @profit_center.profit_center_next_year
       end
 
       def find_page(link_url)
         @page = ::Refinery::Page.where(:link_url => link_url).first
+      end
+
+      def update(path)
+        if @profit_center.update_attributes(params[:profit_center])
+          flash.now[:notice] = SAVED_MESSAGE
+        end
+
+        render path
       end
 
       def do_formulas(prefix, model, model2)

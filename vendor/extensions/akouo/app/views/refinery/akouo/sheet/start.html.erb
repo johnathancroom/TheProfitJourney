@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <%= form_for @user, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |user| %>
+  <%= form_for @profit_center, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |user| %>
     <%= user.fields_for :customer do |f| %>
       <%= f.label :cdba, "Doing Business As" %>
       <%= f.text_field :cdba %>

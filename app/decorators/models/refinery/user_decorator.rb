@@ -1,20 +1,11 @@
 Refinery::User.class_eval do
-  has_one :customer, :class_name => 'Refinery::Akouo::Customer'
-  has_one :last_year, :class_name => "Refinery::Akouo::LastYear"
-  has_one :profit_center_last_year, :class_name => "Refinery::Akouo::ProfitCenterLastYear"
-  has_one :next_year, :class_name => "Refinery::Akouo::NextYear"
-  has_one :profit_center_next_year, :class_name => "Refinery::Akouo::ProfitCenterNextYear"
+  has_many :profit_centers, :class_name => "Refinery::Akouo::ProfitCenter"
   belongs_to :workshop, :class_name => "Refinery::Workshops::Workshop"
 
   attr_accessible(
     :workshop_id,
-    :first_name, :last_name,
-    :customer_attributes,
-    :last_year_attributes, :profit_center_last_year_attributes,
-    :next_year_attributes, :profit_center_next_year_attributes
+    :first_name, :last_name
   )
-
-  accepts_nested_attributes_for :customer, :last_year, :profit_center_last_year, :next_year, :profit_center_next_year
 
   validates_presence_of :first_name, :last_name
   validate :workshop_requires_platinum_plan

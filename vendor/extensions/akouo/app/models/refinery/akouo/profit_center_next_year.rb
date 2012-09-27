@@ -8,7 +8,7 @@ module Refinery
         :pcnym, :pcnyltl, :pcnyltc, :pcnylptf, :pcnylwci, :pcnyltb, :pcnysc, :pcnyp, :pcnyw, :pcnysct, :pcnyvf, :pcnyvmr, :pcnyt, :pcnyfsf, :pcnyfnad, :pcnypd
       )
 
-      belongs_to :user, :class_name => 'Refinery::User'
+      belongs_to :profit_center, :class_name => "Refinery::Akouo::ProfitCenter"
     end
   end
 end
