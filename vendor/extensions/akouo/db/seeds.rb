@@ -15,6 +15,7 @@
     ["/akouo/start", "Start"],
     ["/akouo/vision", "Vision"],
     ["/akouo/last_year", "Last Year"],
+    ["/akouo/next_year", "Next Year Projection"],
 
     ["/register", "Register"],
     ["/login", "Login"],

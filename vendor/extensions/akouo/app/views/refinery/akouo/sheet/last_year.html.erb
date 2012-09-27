@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <%= render :partial => "form", :locals => { :prefix => "ly" } %>
+  <%= render :partial => "form", :locals => { :prefix => "ly", :model => "last_year", :action => refinery.akouo_last_year_path } %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

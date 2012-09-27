@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926174841) do
+ActiveRecord::Schema.define(:version => 20120927164406) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -344,141 +344,155 @@ ActiveRecord::Schema.define(:version => 20120926174841) do
     t.integer "user_id"
   end
 
-  create_table "ny", :primary_key => "NYID", :force => true do |t|
-    t.integer "CID"
-    t.decimal "NYCoH",      :precision => 19, :scale => 4
-    t.decimal "NYCkOne",    :precision => 19, :scale => 4
-    t.decimal "NYCkTwo",    :precision => 19, :scale => 4
-    t.decimal "NYCkThree",  :precision => 19, :scale => 4
-    t.decimal "NYAR",       :precision => 19, :scale => 4
-    t.decimal "NYMMA",      :precision => 19, :scale => 4
-    t.decimal "NYSTI",      :precision => 19, :scale => 4
-    t.decimal "NYADA",      :precision => 19, :scale => 4
-    t.decimal "NYER",       :precision => 19, :scale => 4
-    t.decimal "NYNRC",      :precision => 19, :scale => 4
-    t.decimal "NYI",        :precision => 19, :scale => 4
-    t.decimal "NYPPE",      :precision => 19, :scale => 4
-    t.decimal "NYUF",       :precision => 19, :scale => 4
-    t.decimal "NYFAVT",     :precision => 19, :scale => 4
-    t.decimal "NYFADVT",    :precision => 19, :scale => 4
-    t.decimal "NYFAOV",     :precision => 19, :scale => 4
-    t.decimal "NYFADOV",    :precision => 19, :scale => 4
-    t.decimal "NYFAEO",     :precision => 19, :scale => 4
-    t.decimal "NYFADEO",    :precision => 19, :scale => 4
-    t.decimal "NYFAFE",     :precision => 19, :scale => 4
-    t.decimal "NYFADFE",    :precision => 19, :scale => 4
-    t.decimal "NYFAL",      :precision => 19, :scale => 4
-    t.decimal "NYFAB",      :precision => 19, :scale => 4
-    t.decimal "NYFADB",     :precision => 19, :scale => 4
-    t.decimal "NYFALI",     :precision => 19, :scale => 4
-    t.decimal "NYFADLI",    :precision => 19, :scale => 4
-    t.decimal "NYNRLT",     :precision => 19, :scale => 4
-    t.decimal "NYS",        :precision => 19, :scale => 4
-    t.decimal "NYFRAone",   :precision => 19, :scale => 4
-    t.decimal "NYFRAtwo",   :precision => 19, :scale => 4
-    t.decimal "NYFRAthree", :precision => 19, :scale => 4
-    t.decimal "NYAAAone",   :precision => 19, :scale => 4
-    t.decimal "NYAAAtwo",   :precision => 19, :scale => 4
-    t.decimal "NYAAAthree", :precision => 19, :scale => 4
-    t.decimal "NYOIA",      :precision => 19, :scale => 4
-    t.decimal "NYAAOI",     :precision => 19, :scale => 4
-    t.decimal "NYOC",       :precision => 19, :scale => 4
-    t.decimal "NYAAOC",     :precision => 19, :scale => 4
-    t.decimal "NYD",        :precision => 19, :scale => 4
-    t.decimal "NYLTI",      :precision => 19, :scale => 4
-    t.decimal "NYOA",       :precision => 19, :scale => 4
-    t.decimal "NYAP",       :precision => 19, :scale => 4
-    t.decimal "NYCCone",    :precision => 19, :scale => 4
-    t.decimal "NYCCtwo",    :precision => 19, :scale => 4
-    t.decimal "NYCCthree",  :precision => 19, :scale => 4
-    t.decimal "NYALP",      :precision => 19, :scale => 4
-    t.decimal "NYALC",      :precision => 19, :scale => 4
-    t.decimal "NYALPT",     :precision => 19, :scale => 4
-    t.decimal "NYFICA",     :precision => 19, :scale => 4
-    t.decimal "NYM",        :precision => 19, :scale => 4
-    t.decimal "NYW",        :precision => 19, :scale => 4
-    t.decimal "NYALWC",     :precision => 19, :scale => 4
-    t.decimal "NYALST",     :precision => 19, :scale => 4
-    t.decimal "NYALPRT",    :precision => 19, :scale => 4
-    t.decimal "NYALOT",     :precision => 19, :scale => 4
-    t.decimal "NYALI",      :precision => 19, :scale => 4
-    t.decimal "NYALDR",     :precision => 19, :scale => 4
-    t.decimal "NYCPLT",     :precision => 19, :scale => 4
-    t.decimal "NYOL",       :precision => 19, :scale => 4
-    t.decimal "NYLTLone",   :precision => 19, :scale => 4
-    t.decimal "NYLTLtwo",   :precision => 19, :scale => 4
-    t.decimal "NYLTLthree", :precision => 19, :scale => 4
-    t.decimal "NYLTLfour",  :precision => 19, :scale => 4
-    t.decimal "NYLTLfive",  :precision => 19, :scale => 4
-    t.decimal "NYLCP",      :precision => 19, :scale => 4
-    t.decimal "NYSHL",      :precision => 19, :scale => 4
-    t.decimal "NYECS",      :precision => 19, :scale => 4
-    t.decimal "NYEOE",      :precision => 19, :scale => 4
-    t.decimal "NYEPC",      :precision => 19, :scale => 4
-    t.decimal "NYEDP",      :precision => 19, :scale => 4
-    t.decimal "NYEOW",      :precision => 19, :scale => 4
-    t.decimal "NYERE",      :precision => 19, :scale => 4
-    t.decimal "NYFESO",     :precision => 19, :scale => 4
-    t.decimal "NYFESM",     :precision => 19, :scale => 4
-    t.decimal "NYFESA",     :precision => 19, :scale => 4
-    t.decimal "NYFESOP",    :precision => 19, :scale => 4
-    t.decimal "NYFESS",     :precision => 19, :scale => 4
-    t.decimal "NYFEST",     :precision => 19, :scale => 4
-    t.decimal "NYFEB",      :precision => 19, :scale => 4
-    t.decimal "NYFEEB",     :precision => 19, :scale => 4
-    t.decimal "NYFEHVP",    :precision => 19, :scale => 4
-    t.decimal "NYFET",      :precision => 19, :scale => 4
-    t.decimal "NYFETH",     :precision => 19, :scale => 4
-    t.decimal "NYFER",      :precision => 19, :scale => 4
-    t.decimal "NYFEU",      :precision => 19, :scale => 4
-    t.decimal "NYFEBRM",    :precision => 19, :scale => 4
-    t.decimal "NYFETL",     :precision => 19, :scale => 4
-    t.decimal "NYFETO",     :precision => 19, :scale => 4
-    t.decimal "NYFECP",     :precision => 19, :scale => 4
-    t.decimal "NYFELI",     :precision => 19, :scale => 4
-    t.decimal "NYFECCSF",   :precision => 19, :scale => 4
-    t.decimal "NYFERR",     :precision => 19, :scale => 4
-    t.decimal "NYFEOS",     :precision => 19, :scale => 4
-    t.decimal "NYFEP",      :precision => 19, :scale => 4
-    t.decimal "NYFEPOS",    :precision => 19, :scale => 4
-    t.decimal "NYFEOEL",    :precision => 19, :scale => 4
-    t.decimal "NYFEFEL",    :precision => 19, :scale => 4
-    t.decimal "NYFEOERM",   :precision => 19, :scale => 4
-    t.decimal "NYFESD",     :precision => 19, :scale => 4
-    t.decimal "NYFEULR",    :precision => 19, :scale => 4
-    t.decimal "NYFEVL",     :precision => 19, :scale => 4
-    t.decimal "NYFEVRM",    :precision => 19, :scale => 4
-    t.decimal "NYFEVI",     :precision => 19, :scale => 4
-    t.decimal "NYFEVF",     :precision => 19, :scale => 4
-    t.decimal "NYFEL",      :precision => 19, :scale => 4
-    t.decimal "NYFEAF",     :precision => 19, :scale => 4
-    t.decimal "NYFELF",     :precision => 19, :scale => 4
-    t.decimal "NYFEEER",    :precision => 19, :scale => 4
-    t.decimal "NYFEOSER",   :precision => 19, :scale => 4
-    t.decimal "NYFECE",     :precision => 19, :scale => 4
-    t.decimal "NYFEBSC",    :precision => 19, :scale => 4
-    t.decimal "NYFEDS",     :precision => 19, :scale => 4
-    t.decimal "NYFEC",      :precision => 19, :scale => 4
-    t.decimal "NYFEBD",     :precision => 19, :scale => 4
-    t.decimal "NYFECT",     :precision => 19, :scale => 4
-    t.decimal "NYFEME",     :precision => 19, :scale => 4
-    t.decimal "NYFEM",      :precision => 19, :scale => 4
-    t.decimal "NYFEII",     :precision => 19, :scale => 4
-    t.decimal "NYFEDTV",    :precision => 19, :scale => 4
-    t.decimal "NYFEIE",     :precision => 19, :scale => 4
-    t.decimal "NYFED",      :precision => 19, :scale => 4
-    t.decimal "NYFEA",      :precision => 19, :scale => 4
-    t.decimal "NYFEOE",     :precision => 19, :scale => 4
-    t.decimal "NYFEIT",     :precision => 19, :scale => 4
-    t.decimal "NYFENone",   :precision => 19, :scale => 4
-    t.decimal "NYFENtwo",   :precision => 19, :scale => 4
-    t.float   "NYEPT"
-    t.float   "NYEWC"
-    t.float   "NYFWC"
+  create_table "ny", :force => true do |t|
+    t.decimal "nycoh",      :precision => 19, :scale => 4
+    t.decimal "nyckone",    :precision => 19, :scale => 4
+    t.decimal "nycktwo",    :precision => 19, :scale => 4
+    t.decimal "nyckthree",  :precision => 19, :scale => 4
+    t.decimal "nyar",       :precision => 19, :scale => 4
+    t.decimal "nymma",      :precision => 19, :scale => 4
+    t.decimal "nysti",      :precision => 19, :scale => 4
+    t.decimal "nyada",      :precision => 19, :scale => 4
+    t.decimal "nyer",       :precision => 19, :scale => 4
+    t.decimal "nynrc",      :precision => 19, :scale => 4
+    t.decimal "nyi",        :precision => 19, :scale => 4
+    t.decimal "nyppe",      :precision => 19, :scale => 4
+    t.decimal "nyuf",       :precision => 19, :scale => 4
+    t.decimal "nyfavt",     :precision => 19, :scale => 4
+    t.decimal "nyfadvt",    :precision => 19, :scale => 4
+    t.decimal "nyfaov",     :precision => 19, :scale => 4
+    t.decimal "nyfadov",    :precision => 19, :scale => 4
+    t.decimal "nyfaeo",     :precision => 19, :scale => 4
+    t.decimal "nyfadeo",    :precision => 19, :scale => 4
+    t.decimal "nyfafe",     :precision => 19, :scale => 4
+    t.decimal "nyfadfe",    :precision => 19, :scale => 4
+    t.decimal "nyfal",      :precision => 19, :scale => 4
+    t.decimal "nyfab",      :precision => 19, :scale => 4
+    t.decimal "nyfadb",     :precision => 19, :scale => 4
+    t.decimal "nyfali",     :precision => 19, :scale => 4
+    t.decimal "nyfadli",    :precision => 19, :scale => 4
+    t.decimal "nynrlt",     :precision => 19, :scale => 4
+    t.decimal "nys",        :precision => 19, :scale => 4
+    t.decimal "nyfraone",   :precision => 19, :scale => 4
+    t.decimal "nyfratwo",   :precision => 19, :scale => 4
+    t.decimal "nyfrathree", :precision => 19, :scale => 4
+    t.decimal "nyaaaone",   :precision => 19, :scale => 4
+    t.decimal "nyaaatwo",   :precision => 19, :scale => 4
+    t.decimal "nyaaathree", :precision => 19, :scale => 4
+    t.decimal "nyoia",      :precision => 19, :scale => 4
+    t.decimal "nyaaoi",     :precision => 19, :scale => 4
+    t.decimal "nyoc",       :precision => 19, :scale => 4
+    t.decimal "nyaaoc",     :precision => 19, :scale => 4
+    t.decimal "nyd",        :precision => 19, :scale => 4
+    t.decimal "nylti",      :precision => 19, :scale => 4
+    t.decimal "nyoa",       :precision => 19, :scale => 4
+    t.decimal "nyap",       :precision => 19, :scale => 4
+    t.decimal "nyccone",    :precision => 19, :scale => 4
+    t.decimal "nycctwo",    :precision => 19, :scale => 4
+    t.decimal "nyccthree",  :precision => 19, :scale => 4
+    t.decimal "nyalp",      :precision => 19, :scale => 4
+    t.decimal "nyalc",      :precision => 19, :scale => 4
+    t.decimal "nyalpt",     :precision => 19, :scale => 4
+    t.decimal "nyfica",     :precision => 19, :scale => 4
+    t.decimal "nym",        :precision => 19, :scale => 4
+    t.decimal "nyw",        :precision => 19, :scale => 4
+    t.decimal "nyalwc",     :precision => 19, :scale => 4
+    t.decimal "nyalst",     :precision => 19, :scale => 4
+    t.decimal "nyalprt",    :precision => 19, :scale => 4
+    t.decimal "nyalot",     :precision => 19, :scale => 4
+    t.decimal "nyali",      :precision => 19, :scale => 4
+    t.decimal "nyaldr",     :precision => 19, :scale => 4
+    t.decimal "nycplt",     :precision => 19, :scale => 4
+    t.decimal "nyol",       :precision => 19, :scale => 4
+    t.decimal "nyltlone",   :precision => 19, :scale => 4
+    t.decimal "nyltltwo",   :precision => 19, :scale => 4
+    t.decimal "nyltlthree", :precision => 19, :scale => 4
+    t.decimal "nyltlfour",  :precision => 19, :scale => 4
+    t.decimal "nyltlfive",  :precision => 19, :scale => 4
+    t.decimal "nylcp",      :precision => 19, :scale => 4
+    t.decimal "nyshl",      :precision => 19, :scale => 4
+    t.decimal "nyecs",      :precision => 19, :scale => 4
+    t.decimal "nyeoe",      :precision => 19, :scale => 4
+    t.decimal "nyepc",      :precision => 19, :scale => 4
+    t.decimal "nyedp",      :precision => 19, :scale => 4
+    t.decimal "nyeow",      :precision => 19, :scale => 4
+    t.decimal "nyere",      :precision => 19, :scale => 4
+    t.decimal "nyfeso",     :precision => 19, :scale => 4
+    t.decimal "nyfesm",     :precision => 19, :scale => 4
+    t.decimal "nyfesa",     :precision => 19, :scale => 4
+    t.decimal "nyfesop",    :precision => 19, :scale => 4
+    t.decimal "nyfess",     :precision => 19, :scale => 4
+    t.decimal "nyfest",     :precision => 19, :scale => 4
+    t.decimal "nyfeb",      :precision => 19, :scale => 4
+    t.decimal "nyfeeb",     :precision => 19, :scale => 4
+    t.decimal "nyfehvp",    :precision => 19, :scale => 4
+    t.decimal "nyfet",      :precision => 19, :scale => 4
+    t.decimal "nyfeth",     :precision => 19, :scale => 4
+    t.decimal "nyfer",      :precision => 19, :scale => 4
+    t.decimal "nyfeu",      :precision => 19, :scale => 4
+    t.decimal "nyfebrm",    :precision => 19, :scale => 4
+    t.decimal "nyfetl",     :precision => 19, :scale => 4
+    t.decimal "nyfeto",     :precision => 19, :scale => 4
+    t.decimal "nyfecp",     :precision => 19, :scale => 4
+    t.decimal "nyfeli",     :precision => 19, :scale => 4
+    t.decimal "nyfeccsf",   :precision => 19, :scale => 4
+    t.decimal "nyferr",     :precision => 19, :scale => 4
+    t.decimal "nyfeos",     :precision => 19, :scale => 4
+    t.decimal "nyfep",      :precision => 19, :scale => 4
+    t.decimal "nyfepos",    :precision => 19, :scale => 4
+    t.decimal "nyfeoel",    :precision => 19, :scale => 4
+    t.decimal "nyfefel",    :precision => 19, :scale => 4
+    t.decimal "nyfeoerm",   :precision => 19, :scale => 4
+    t.decimal "nyfesd",     :precision => 19, :scale => 4
+    t.decimal "nyfeulr",    :precision => 19, :scale => 4
+    t.decimal "nyfevl",     :precision => 19, :scale => 4
+    t.decimal "nyfevrm",    :precision => 19, :scale => 4
+    t.decimal "nyfevi",     :precision => 19, :scale => 4
+    t.decimal "nyfevf",     :precision => 19, :scale => 4
+    t.decimal "nyfel",      :precision => 19, :scale => 4
+    t.decimal "nyfeaf",     :precision => 19, :scale => 4
+    t.decimal "nyfelf",     :precision => 19, :scale => 4
+    t.decimal "nyfeeer",    :precision => 19, :scale => 4
+    t.decimal "nyfeoser",   :precision => 19, :scale => 4
+    t.decimal "nyfece",     :precision => 19, :scale => 4
+    t.decimal "nyfebsc",    :precision => 19, :scale => 4
+    t.decimal "nyfeds",     :precision => 19, :scale => 4
+    t.decimal "nyfec",      :precision => 19, :scale => 4
+    t.decimal "nyfebd",     :precision => 19, :scale => 4
+    t.decimal "nyfect",     :precision => 19, :scale => 4
+    t.decimal "nyfeme",     :precision => 19, :scale => 4
+    t.decimal "nyfem",      :precision => 19, :scale => 4
+    t.decimal "nyfeii",     :precision => 19, :scale => 4
+    t.decimal "nyfedtv",    :precision => 19, :scale => 4
+    t.decimal "nyfeie",     :precision => 19, :scale => 4
+    t.decimal "nyfed",      :precision => 19, :scale => 4
+    t.decimal "nyfea",      :precision => 19, :scale => 4
+    t.decimal "nyfeoe",     :precision => 19, :scale => 4
+    t.decimal "nyfeit",     :precision => 19, :scale => 4
+    t.decimal "nyfenone",   :precision => 19, :scale => 4
+    t.decimal "nyfentwo",   :precision => 19, :scale => 4
+    t.float   "nyept"
+    t.float   "nyewc"
+    t.float   "nyfwc"
+    t.integer "user_id"
+    t.decimal "nyfeab",     :precision => 19, :scale => 4
+    t.decimal "nyfepr",     :precision => 19, :scale => 4
+    t.decimal "nyfecv",     :precision => 19, :scale => 4
+    t.decimal "nyfedv",     :precision => 19, :scale => 4
+    t.decimal "nyfedm",     :precision => 19, :scale => 4
+    t.decimal "nyfenm",     :precision => 19, :scale => 4
+    t.decimal "nyfeec",     :precision => 19, :scale => 4
+    t.decimal "nyfehms",    :precision => 19, :scale => 4
+    t.decimal "nyfeo",      :precision => 19, :scale => 4
+    t.decimal "nyfeiss",    :precision => 19, :scale => 4
+    t.decimal "nyfesrv",    :precision => 19, :scale => 4
+    t.decimal "nyfeys",     :precision => 19, :scale => 4
+    t.decimal "nyfeyppo",   :precision => 19, :scale => 4
+    t.decimal "nyfept",     :precision => 19, :scale => 4
+    t.decimal "nyfewci",    :precision => 19, :scale => 4
   end
 
-  add_index "ny", ["CID"], :name => "CID"
-  add_index "ny", ["NYID"], :name => "NYID"
+  add_index "ny", ["id"], :name => "NYID"
 
   create_table "oc", :primary_key => "OCID", :force => true do |t|
     t.integer "CID",  :null => false
@@ -550,36 +564,37 @@ ActiveRecord::Schema.define(:version => 20120926174841) do
     t.integer "user_id"
   end
 
-  create_table "pcny", :primary_key => "PCNYID", :force => true do |t|
-    t.integer "PCID"
-    t.decimal "PCNYTS",     :precision => 19, :scale => 4
-    t.float   "PCNYAO"
-    t.float   "PCNYSA"
-    t.float   "PCNYR"
-    t.float   "PCNYRA"
-    t.float   "PCNYCS"
-    t.float   "PCNYCAO"
-    t.float   "PCNYCSA"
-    t.float   "PCNYCR"
-    t.float   "PCNYCRA"
-    t.float   "PCNYVEM"
-    t.float   "PCNYVETL"
-    t.float   "PCNYVETC"
-    t.float   "PCNYVETB"
-    t.float   "PCNYVESC"
-    t.float   "PCNYVEP"
-    t.float   "PCNYVEW"
-    t.float   "PCNYVES"
-    t.float   "PCNYVEVF"
-    t.float   "PCNYVEVMR"
-    t.float   "PVNYVET"
-    t.float   "PCNYVEFSF"
-    t.float   "PCNYVEFNAF"
-    t.float   "PCNYVEPD"
+  create_table "pcny", :force => true do |t|
+    t.decimal "pcnyrs",   :precision => 19, :scale => 4
+    t.float   "pcnyrao"
+    t.float   "pcnyrsa"
+    t.float   "pcnyrr"
+    t.float   "pcnyrra"
+    t.float   "pcnycs"
+    t.float   "pcnycao"
+    t.float   "pcnycsa"
+    t.float   "pcnycr"
+    t.float   "pcnycra"
+    t.float   "pcnym"
+    t.float   "pcnyltl"
+    t.float   "pcnyltc"
+    t.float   "pcnyltb"
+    t.float   "pcnysc"
+    t.float   "pcnyp"
+    t.float   "pcnyw"
+    t.float   "pcnysct"
+    t.float   "pcnyvf"
+    t.float   "pcnyvmr"
+    t.float   "pcnyt"
+    t.float   "pcnyfsf"
+    t.float   "pcnyfnad"
+    t.float   "pcnypd"
+    t.integer "user_id"
+    t.decimal "pcnylptf", :precision => 19, :scale => 4
+    t.decimal "pcnylwci", :precision => 19, :scale => 4
   end
 
-  add_index "pcny", ["PCID"], :name => "PCID"
-  add_index "pcny", ["PCNYID"], :name => "PCNYID"
+  add_index "pcny", ["id"], :name => "PCNYID"
 
   create_table "refinery_blog_categories", :force => true do |t|
     t.string   "title"

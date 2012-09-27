@@ -10,7 +10,7 @@ module ActionView
 
         # Show label if field is disabled
         if options[:disabled] == true
-          @template.label(@object_name, method, options[:value], objectify_options(options))
+          @template.label(@object_name, method, ActionController::Base.helpers.number_to_currency(options[:value]), objectify_options(options))
         else
           @template.number_field(@object_name, method, objectify_options(options))
         end

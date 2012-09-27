@@ -10,52 +10,37 @@ module Refinery
       before_filter :only => [:start] { |c| c.find_page("/akouo/start") }
       before_filter :only => [:vision] { |c| c.find_page("/akouo/vision") }
       before_filter :only => [:last_year] { |c| c.find_page("/akouo/last_year") }
+      before_filter :only => [:next_year] { |c| c.find_page("/akouo/next_year") }
 
       def start_update
         if @user.update_attributes(params[:user])
           redirect_to refinery.akouo_start_path, :notice => SAVED_MESSAGE
         else
-          render :"start/edit"
+          render :start
         end
       end
 
       def last_year
-        @formula = Hash.new
-        @formula["cb"] = @last_year.lyckone+@last_year.lycktwo+@last_year.lyckthree
-        @formula["tb"] = @last_year.lycoh+@formula["cb"]
-        @formula["toa"] = @last_year.lymma+@last_year.lysti+@last_year.lyada+@last_year.lyer+@last_year.lynrc+@last_year.lyi+@last_year.lyppe+@last_year.lyuf
-        @formula["tfa"] = @last_year.lyfavt+@last_year.lyfadvt+@last_year.lyfaov+@last_year.lyfadov+@last_year.lyfaeo+@last_year.lyfafe+@last_year.lyfadfe+@last_year.lyfal+@last_year.lyfab+@last_year.lyfadb+@last_year.lyfali+@last_year.lyfadli
-        @formula["fr"] = @last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree
-        @formula["aaf"] = @last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree
-        @formula["toa2"] = @last_year.lynrlt+@last_year.lys+@last_year.lyfraone+@last_year.lyfratwo+@last_year.lyfrathree+@last_year.lyaaaone+@last_year.lyaaatwo+@last_year.lyaaathree+@last_year.lyoia+@last_year.lyaaoi+@last_year.lyoc+@last_year.lyaaoc+@last_year.lyd+@last_year.lylti+@last_year.lyoa
-        @formula["ta"] = @formula["tb"]+@last_year.lyar+@formula["toa"]+@formula["tfa"]+@formula["toa2"]
-        @formula["tcc"] = @last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree
-        @formula["tocl"] = @last_year.lyalp+@last_year.lyalc+@last_year.lyalpt+@last_year.lyfica+@last_year.lym+@last_year.lyw+@last_year.lyalwc+@last_year.lyalst+@last_year.lyalprt+@last_year.lyalot+@last_year.lyali+@last_year.lyaldr+@last_year.lycplt+@last_year.lyol
-        @formula["nplt"] = @last_year.lyltlone+@last_year.lyltltwo+@last_year.lyltlthree+@last_year.lyltlfour+@last_year.lyltlfive
-        @formula["tltl"] = @formula["nplt"]+@last_year.lylcp+@last_year.lyshl
-        @formula["tl"] = @last_year.lyap+@last_year.lyccone+@last_year.lycctwo+@last_year.lyccthree+@formula["tocl"]+@formula["tltl"]
-        @formula["tsr"] = @pcly.pclyrs+@pcly.pclyrao+@pcly.pclyrsa+@pcly.pclyrr+@pcly.pclyrra
-        @formula["tsc"] = @pcly.pclycs+@pcly.pclycao+@pcly.pclycsa+@pcly.pclycr+@pcly.pclycra
-        @formula["ts"] = @formula["tsr"]+@formula["tsc"]
-        @formula["l"] = @pcly.pclyltl+@pcly.pclyltc+@pcly.pclylptf+@pcly.pclylwci+@pcly.pclyltb
-        @formula["o"] = @pcly.pclyvf+@pcly.pclyvmr+@pcly.pclyt
-        @formula["tcs"] = @pcly.pclym+@formula["l"]+@pcly.pclysc+@pcly.pclyp+@pcly.pclyw+@pcly.pclysct+@formula["o"]+@pcly.pclyfsf+@pcly.pclyfnad+@pcly.pclypd
-        @formula["gm"] = @formula["ts"]-@formula["tcs"]
-        @formula["s"] = @last_year.lyfeso+@last_year.lyfesm+@last_year.lyfesa+@last_year.lyfesop+@last_year.lyfess+@last_year.lyfest
-        @formula["a"] = @last_year.lyfeab+@last_year.lyfepr+@last_year.lyfecv+@last_year.lyfedv+@last_year.lyfedm+@last_year.lyfenm+@last_year.lyfeec+@last_year.lyfehms+@last_year.lyfeo+@last_year.lyfeiss+@last_year.lyfesrv+@last_year.lyfeys+@last_year.lyfeyppo
-        @formula["v"] = @last_year.lyfevl+@last_year.lyfevrm+@last_year.lyfevi+@last_year.lyfevf+@last_year.lyfel
-        @formula["te2"] = @formula["s"]+@last_year.lyfeb+@last_year.lyfept+@last_year.lyfewci+@last_year.lyfeeb+@last_year.lyfehvp+@last_year.lyfet+@last_year.lyfeth+@last_year.lyfer+@last_year.lyfeu+@last_year.lyfebrm+@last_year.lyfetl+@last_year.lyfeto+@last_year.lyfecp+@last_year.lyfeli+@last_year.lyfeccsf+@formula["a"]+@last_year.lyferr+@last_year.lyfeos+@last_year.lyfep+@last_year.lyfepos+@last_year.lyfeoel+@last_year.lyfefel+@last_year.lyfeoerm+@last_year.lyfesd+@last_year.lyfeulr+@formula["v"]+@last_year.lyfeaf+@last_year.lyfelf+@last_year.lyfeeer+@last_year.lyfeoser+@last_year.lyfece+@last_year.lyfebsc+@last_year.lyfeds+@last_year.lyfec+@last_year.lyfebd+@last_year.lyfect+@last_year.lyfeme+@last_year.lyfem+@last_year.lyfeii+@last_year.lyfedtv+@last_year.lyfeie+@last_year.lyfed+@last_year.lyfea+@last_year.lyfeoe+@last_year.lyfeit
-        @formula["npbt"] = @formula["gm"]-@formula["te2"]
-        @formula["te"] = @last_year.lyecs+@last_year.lyeoe+@last_year.lyepc+@last_year.lyedp+@last_year.lyeow+@last_year.lyere+@formula["npbt"]
-        @formula["tle"] = @formula["tl"]+@formula["te"]
-        @formula["nanp"] = @formula["npbt"]-(@last_year.lyfenone+@last_year.lyfentwo)
+        do_formulas "ly", @last_year, @pcly
       end
 
       def last_year_update
         if @user.update_attributes(params[:user])
           redirect_to refinery.akouo_last_year_path, :notice => SAVED_MESSAGE
         else
-          render :"last_year/edit"
+          render :last_year
+        end
+      end
+
+      def next_year
+        do_formulas "ny", @next_year, @pcny
+      end
+
+      def next_year_update
+        if @user.update_attributes(params[:user])
+          redirect_to refinery.akouo_next_year_path, :notice => SAVED_MESSAGE
+        else
+          render :next_year
         end
       end
 
@@ -66,12 +51,46 @@ module Refinery
         @customer = @user.customer
         @last_year = @user.last_year
         @pcly = @user.profit_center_last_year
+        @next_year = @user.next_year
+        @pcny = @user.profit_center_next_year
       end
 
       def find_page(link_url)
         @page = ::Refinery::Page.where(:link_url => link_url).first
       end
 
+      def do_formulas(prefix, model, model2)
+        @formula = Hash.new
+        @formula["cb"] = model.send("#{prefix}ckone")+model.send("#{prefix}cktwo")+model.send("#{prefix}ckthree")
+        @formula["tb"] = model.send("#{prefix}coh")+@formula["cb"]
+        @formula["toa"] = model.send("#{prefix}mma")+model.send("#{prefix}sti")+model.send("#{prefix}ada")+model.send("#{prefix}er")+model.send("#{prefix}nrc")+model.send("#{prefix}i")+model.send("#{prefix}ppe")+model.send("#{prefix}uf")
+        @formula["tfa"] = model.send("#{prefix}favt")+model.send("#{prefix}fadvt")+model.send("#{prefix}faov")+model.send("#{prefix}fadov")+model.send("#{prefix}faeo")+model.send("#{prefix}fafe")+model.send("#{prefix}fadfe")+model.send("#{prefix}fal")+model.send("#{prefix}fab")+model.send("#{prefix}fadb")+model.send("#{prefix}fali")+model.send("#{prefix}fadli")
+        @formula["fr"] = model.send("#{prefix}fraone")+model.send("#{prefix}fratwo")+model.send("#{prefix}frathree")
+        @formula["aaf"] = model.send("#{prefix}aaaone")+model.send("#{prefix}aaatwo")+model.send("#{prefix}aaathree")
+        @formula["toa2"] = model.send("#{prefix}nrlt")+model.send("#{prefix}s")+model.send("#{prefix}fraone")+model.send("#{prefix}fratwo")+model.send("#{prefix}frathree")+model.send("#{prefix}aaaone")+model.send("#{prefix}aaatwo")+model.send("#{prefix}aaathree")+model.send("#{prefix}oia")+model.send("#{prefix}aaoi")+model.send("#{prefix}oc")+model.send("#{prefix}aaoc")+model.send("#{prefix}d")+model.send("#{prefix}lti")+model.send("#{prefix}oa")
+        @formula["ta"] = @formula["tb"]+model.send("#{prefix}ar")+@formula["toa"]+@formula["tfa"]+@formula["toa2"]
+        @formula["tap"] = model.send("#{prefix}ap")
+        @formula["tcc"] = model.send("#{prefix}ccone")+model.send("#{prefix}cctwo")+model.send("#{prefix}ccthree")
+        @formula["tocl"] = model.send("#{prefix}alp")+model.send("#{prefix}alc")+model.send("#{prefix}alpt")+model.send("#{prefix}fica")+model.send("#{prefix}m")+model.send("#{prefix}w")+model.send("#{prefix}alwc")+model.send("#{prefix}alst")+model.send("#{prefix}alprt")+model.send("#{prefix}alot")+model.send("#{prefix}ali")+model.send("#{prefix}aldr")+model.send("#{prefix}cplt")+model.send("#{prefix}ol")
+        @formula["nplt"] = model.send("#{prefix}ltlone")+model.send("#{prefix}ltltwo")+model.send("#{prefix}ltlthree")+model.send("#{prefix}ltlfour")+model.send("#{prefix}ltlfive")
+        @formula["tltl"] = @formula["nplt"]+model.send("#{prefix}lcp")+model.send("#{prefix}shl")
+        @formula["tl"] = model.send("#{prefix}ap")+model.send("#{prefix}ccone")+model.send("#{prefix}cctwo")+model.send("#{prefix}ccthree")+@formula["tocl"]+@formula["tltl"]
+        @formula["tsr"] = model2.send("pc#{prefix}rs")+model2.send("pc#{prefix}rao")+model2.send("pc#{prefix}rsa")+model2.send("pc#{prefix}rr")+model2.send("pc#{prefix}rra")
+        @formula["tsc"] = model2.send("pc#{prefix}cs")+model2.send("pc#{prefix}cao")+model2.send("pc#{prefix}csa")+model2.send("pc#{prefix}cr")+model2.send("pc#{prefix}cra")
+        @formula["ts"] = @formula["tsr"]+@formula["tsc"]
+        @formula["l"] = model2.send("pc#{prefix}ltl")+model2.send("pc#{prefix}ltc")+model2.send("pc#{prefix}lptf")+model2.send("pc#{prefix}lwci")+model2.send("pc#{prefix}ltb")
+        @formula["o"] = model2.send("pc#{prefix}vf")+model2.send("pc#{prefix}vmr")+model2.send("pc#{prefix}t")
+        @formula["tcs"] = model2.send("pc#{prefix}m")+@formula["l"]+model2.send("pc#{prefix}sc")+model2.send("pc#{prefix}p")+model2.send("pc#{prefix}w")+model2.send("pc#{prefix}sct")+@formula["o"]+model2.send("pc#{prefix}fsf")+model2.send("pc#{prefix}fnad")+model2.send("pc#{prefix}pd")
+        @formula["gm"] = @formula["ts"]-@formula["tcs"]
+        @formula["s"] = model.send("#{prefix}feso")+model.send("#{prefix}fesm")+model.send("#{prefix}fesa")+model.send("#{prefix}fesop")+model.send("#{prefix}fess")+model.send("#{prefix}fest")
+        @formula["a"] = model.send("#{prefix}feab")+model.send("#{prefix}fepr")+model.send("#{prefix}fecv")+model.send("#{prefix}fedv")+model.send("#{prefix}fedm")+model.send("#{prefix}fenm")+model.send("#{prefix}feec")+model.send("#{prefix}fehms")+model.send("#{prefix}feo")+model.send("#{prefix}feiss")+model.send("#{prefix}fesrv")+model.send("#{prefix}feys")+model.send("#{prefix}feyppo")
+        @formula["v"] = model.send("#{prefix}fevl")+model.send("#{prefix}fevrm")+model.send("#{prefix}fevi")+model.send("#{prefix}fevf")+model.send("#{prefix}fel")
+        @formula["te2"] = @formula["s"]+model.send("#{prefix}feb")+model.send("#{prefix}fept")+model.send("#{prefix}fewci")+model.send("#{prefix}feeb")+model.send("#{prefix}fehvp")+model.send("#{prefix}fet")+model.send("#{prefix}feth")+model.send("#{prefix}fer")+model.send("#{prefix}feu")+model.send("#{prefix}febrm")+model.send("#{prefix}fetl")+model.send("#{prefix}feto")+model.send("#{prefix}fecp")+model.send("#{prefix}feli")+model.send("#{prefix}feccsf")+@formula["a"]+model.send("#{prefix}ferr")+model.send("#{prefix}feos")+model.send("#{prefix}fep")+model.send("#{prefix}fepos")+model.send("#{prefix}feoel")+model.send("#{prefix}fefel")+model.send("#{prefix}feoerm")+model.send("#{prefix}fesd")+model.send("#{prefix}feulr")+@formula["v"]+model.send("#{prefix}feaf")+model.send("#{prefix}felf")+model.send("#{prefix}feeer")+model.send("#{prefix}feoser")+model.send("#{prefix}fece")+model.send("#{prefix}febsc")+model.send("#{prefix}feds")+model.send("#{prefix}fec")+model.send("#{prefix}febd")+model.send("#{prefix}fect")+model.send("#{prefix}feme")+model.send("#{prefix}fem")+model.send("#{prefix}feii")+model.send("#{prefix}fedtv")+model.send("#{prefix}feie")+model.send("#{prefix}fed")+model.send("#{prefix}fea")+model.send("#{prefix}feoe")+model.send("#{prefix}feit")
+        @formula["npbt"] = @formula["gm"]-@formula["te2"]
+        @formula["te"] = model.send("#{prefix}ecs")+model.send("#{prefix}eoe")+model.send("#{prefix}epc")+model.send("#{prefix}edp")+model.send("#{prefix}eow")+model.send("#{prefix}ere")+@formula["npbt"]
+        @formula["tle"] = @formula["tl"]+@formula["te"]
+        @formula["nanp"] = @formula["npbt"]-(model.send("#{prefix}fenone")+model.send("#{prefix}fentwo"))
+      end
     end
   end
 end

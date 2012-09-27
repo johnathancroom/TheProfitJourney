@@ -1,5 +1,5 @@
-<%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :method => "PUT", :class => "form" } do |user| %>
-  <%= user.fields_for :last_year do |f| %>
+<%= form_for @user, :url => action, :html => { :method => "PUT", :class => "form" } do |user| %>
+  <%= user.fields_for :"#{model}" do |f| %>
     <h1>Bank</h1>
     <ul>
       <li>
@@ -225,7 +225,7 @@
       </li>
       <li>
         <strong><%= f.label :formula, "Total Accounts Payable" %></strong>
-        <%= f.money_field :formula, :value => @last_year.lyap, :disabled => true %>
+        <%= f.money_field :formula, :value => @formula["tap"], :disabled => true %>
       </li>
     </ul>
 
@@ -394,9 +394,9 @@
 
     <strong><%= f.label :formula, "Total Liabilities & Equity" %></strong>
     <%= f.money_field :formula, :value => @formula["tle"], :disabled => true %>
-  <% end # fields_for :last_year %>
+  <% end # fields_for :#{model} %>
 
-  <%= user.fields_for :profit_center_last_year do |f| %>
+  <%= user.fields_for :"profit_center_#{model}" do |f| %>
     <h1>Income & Expense Statement</h1>
     <h1>Income</h1>
     <ul>
@@ -546,9 +546,9 @@
         <%= f.money_field :formula, :value => @formula["gm"], :disabled => true %>
       </li>
     </ul>
-  <% end # fields_for :profit_center_last_year %>
+  <% end # fields_for :"profit_center_#{model}" %>
 
-  <%= user.fields_for :last_year do |f| %>
+  <%= user.fields_for :"#{model}" do |f| %>
     <h1>Fixed Expenses</h1>
     <ul>
       <li>

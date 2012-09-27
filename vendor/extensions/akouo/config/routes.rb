@@ -12,6 +12,9 @@ Refinery::Core::Engine.routes.append do
 
     get "last_year" => "sheet#last_year"
     put "last_year" => "sheet#last_year_update"
+
+    get "next_year" => "sheet#next_year"
+    put "next_year" => "sheet#next_year_update"
   end
 
   namespace :akouo, :path => "" do
