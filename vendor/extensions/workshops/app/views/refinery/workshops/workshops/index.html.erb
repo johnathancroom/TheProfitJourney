@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%=raw @page.content_for(:body) %>
+
   <ol class="workshops">
     <% @workshops.each do |workshop| %>
       <li>

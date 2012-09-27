@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%=raw @page.content_for(:body) %>
+
   <%= form_tag refinery.akouo_account_plans_path, :method => "PUT", :class => "styled_form" do %>
 
     <h1>Select a Plan</h1>

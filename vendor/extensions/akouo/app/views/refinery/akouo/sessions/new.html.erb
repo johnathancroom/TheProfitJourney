@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%=raw @page.content_for(:body) %>
+
   <%= form_for resource, :as => resource_name, :url => refinery.akouo_login_path, :html => { :class => "styled_form" } do |f| %>
     <div>
       <%= f.label :login %>

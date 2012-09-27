@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%=raw @page.content_for(:body) %>
+
   <%= form_for @profit_center, :url => refinery.akouo_vision_path, :html => { :method => "PUT", :class => "form" } do |user| %>
 
     <%= user.submit "Save changes", :class => "button" %>

@@ -1,4 +1,6 @@
 <% content_for :body do %>
+  <%=raw @page.content_for(:body) %>
+
   <ul>
     <li><%= link_to "Start", refinery.akouo_start_path %></li>
     <li><%= link_to "Vision", refinery.akouo_vision_path %></li>
