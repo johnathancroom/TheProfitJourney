@@ -1,9 +1,13 @@
 module Refinery
   module Akouo
     class AkouoController < ::ApplicationController
-      before_filter :get_plans, :check_and_build_user_tables
+      before_filter :get_plans, :check_and_build_user_tables, :get_user
 
     protected
+
+      def get_user
+        @user = current_refinery_user
+      end
 
       def get_plans
         @plans = [
