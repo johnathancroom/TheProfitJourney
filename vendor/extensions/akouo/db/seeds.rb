@@ -17,6 +17,8 @@
     ["/akouo/last_year", "Last Year"],
     ["/akouo/next_year", "Next Year Projection"],
 
+    ["/journeyboard", "Journey Board"],
+
     ["/register", "Register"],
     ["/login", "Login"],
     ["/account", "My Account"],
