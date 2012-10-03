@@ -1,7 +1,7 @@
 module Refinery
   module Akouo
     class AkouoController < ::ApplicationController
-      before_filter :get_plans, :check_and_build_user_tables, :get_user
+      before_filter :get_plans, :get_user
 
     protected
 

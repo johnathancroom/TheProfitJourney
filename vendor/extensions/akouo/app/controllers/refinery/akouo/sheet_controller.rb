@@ -4,7 +4,7 @@ module Refinery
 
       SAVED_MESSAGE = "Successfully saved!"
 
-      before_filter :redirect?
+      before_filter :redirect?, :check_and_build_user_tables
 
       before_filter :find_models
       before_filter :only => [:start, :start_update] { |c| c.find_page("/akouo/start") }
