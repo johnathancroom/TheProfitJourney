@@ -1,5 +1,6 @@
 Refinery::User.class_eval do
   has_many :profit_centers, :class_name => "Refinery::Akouo::ProfitCenter"
+  has_many :journeyboard_entries, :class_name => "Refinery::Akouo::JourneyboardEntry"
   belongs_to :workshop, :class_name => "Refinery::Workshops::Workshop"
 
   attr_accessible(

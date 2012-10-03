@@ -1,0 +1,27 @@
+<%= form_for @entry, :url => path, :html => { :class => "styled_form" } do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> need to be corrected before continuing:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date %>
+  </div>
+
+  <div>
+    <%= f.label :fuel_cost %>
+    <%= f.money_field :fuel_cost %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit", :class => "button" %>
+  </div>
+<% end %>

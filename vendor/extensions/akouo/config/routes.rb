@@ -26,7 +26,7 @@ Refinery::Core::Engine.routes.append do
     get "account/plans" => "payments#new"
     put "account/plans" => "payments#create"
 
-    resources :journeyboard, :only => [:index]
+    resources :journeyboard, :except => [:show]
   end
 
   devise_scope :refinery_user do

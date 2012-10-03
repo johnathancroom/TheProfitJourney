@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927184807) do
+ActiveRecord::Schema.define(:version => 20121003201922) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -658,6 +658,15 @@ ActiveRecord::Schema.define(:version => 20120927184807) do
     t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "refinery_journeyboard_entries", :force => true do |t|
+    t.decimal  "fuel_cost",        :precision => 19, :scale => 2
+    t.integer  "profit_center_id"
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|

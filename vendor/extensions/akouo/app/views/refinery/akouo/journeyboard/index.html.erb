@@ -1,7 +1,20 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  Hello
+  <%= link_to "New Entry", refinery.new_akouo_journeyboard_path %>
+
+  <ul>
+    <% if @entries.blank? %>
+      <li>No Entries Yet</li>
+    <% else %>
+      <% @entries.each do |entry| %>
+        <li>
+          <%= entry %>
+          <%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= render "/refinery/content_page" %>
