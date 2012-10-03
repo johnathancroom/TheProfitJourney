@@ -2,6 +2,8 @@ module Refinery
   module Akouo
     class JourneyboardController < ::Refinery::Akouo::AkouoController
 
+      before_filter :redirect?, :check_and_build_user_tables
+
       before_filter :find_page
       before_filter :find_profit_centers, :only => [:index, :new, :create, :edit, :update]
       before_filter :find_entry, :only => [:edit, :update]

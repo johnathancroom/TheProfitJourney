@@ -1,34 +1,40 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  <%= form_for @profit_center, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |user| %>
-    <%= user.fields_for :customer do |f| %>
-      <%= f.label :cdba, "Doing Business As" %>
-      <%= f.text_field :cdba %>
+  <%= form_for @customer, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |f| %>
+    <%= f.label :cdba, "Doing Business As" %>
+    <%= f.text_field :cdba %>
 
-      <%= f.label :cfn, "Owner First Name" %>
-      <%= f.text_field :cfn %>
+    <%= f.label :cfn, "Owner First Name" %>
+    <%= f.text_field :cfn %>
 
-      <%= f.label :cln, "Last Name (Used as a reference)" %>
-      <%= f.text_field :cln %>
+    <%= f.label :cln, "Last Name (Used as a reference)" %>
+    <%= f.text_field :cln %>
 
-      <%= f.label :cidate, "Date Assembled" %>
-      <%= f.date_select :cidate, :start_year => 1980 %>
+    <%= f.label :cidate, "Date Assembled" %>
+    <%= f.date_select :cidate, :start_year => 1980 %>
 
-      <%= f.label :ccsd, "History Financial Comparison Start Date" %>
-      <%= f.date_select :ccsd, :start_year => 1980 %>
+    <%= f.label :ccsd, "History Financial Comparison Start Date" %>
+    <%= f.date_select :ccsd, :start_year => 1980 %>
 
-      <%= f.label :cced, "History Financial Comparison End Date" %>
-      <%= f.date_select :cced, :start_year => 1980 %>
+    <%= f.label :cced, "History Financial Comparison End Date" %>
+    <%= f.date_select :cced, :start_year => 1980 %>
 
-      <%= f.label :ccpd, "Projection Start Date" %>
-      <%= f.date_select :ccpd, :start_year => 1980 %>
+    <%= f.label :ccpd, "Projection Start Date" %>
+    <%= f.date_select :ccpd, :start_year => 1980 %>
 
-      <%= f.label :cah, "Average Number of Holidays & Vacations Yearly – Field Personnel" %>
-      <%= f.number_field :cah %>
-    <% end %>
+    <%= f.label :cah, "Average Number of Holidays & Vacations Yearly – Field Personnel" %>
+    <%= f.number_field :cah %>
 
-    <%= user.submit "Save changes", :class => "button" %>
+    <hr>
+
+    <%= f.label :profit_center_names %>
+    <%= f.text_field :profit_center_name_1 %>
+    <%= f.text_field :profit_center_name_2 %>
+    <%= f.text_field :profit_center_name_3 %>
+    <%= f.text_field :profit_center_name_4 %>
+
+    <%= f.submit "Save changes", :class => "button" %>
   <% end %>
 <% end %>
 

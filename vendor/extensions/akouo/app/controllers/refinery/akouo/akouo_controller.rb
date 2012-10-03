@@ -25,24 +25,35 @@ module Refinery
 
       def check_and_build_user_tables
         needed_tables = [
-          "customer",
           "last_year",
           "profit_center_last_year",
           "next_year",
           "profit_center_next_year"
         ]
 
-        # Create first profit center
-        if current_refinery_user.profit_centers.empty?
-          profit_center = current_refinery_user.profit_centers.create(:pcn => "Profit Center")
+        profit_center_default_names = [
+          "Replacement",
+          "Repair",
+          "Maintenance",
+          "Specialty"
+        ]
+
+        # Create four profit centers
+        for x in current_refinery_user.profit_centers.count..3
+          current_refinery_user.profit_centers.create(:pcn => profit_center_default_names[x-1])
+        end
+
+        # Create customer
+        if @user.customer.nil?
+          @user.build_customer
         end
 
         # Create profit center dependencies
-        current_refinery_user.profit_centers.each do |profit_center|
+        @user.profit_centers.each do |profit_center|
           needed_tables.each do |table|
-            # profit_center.customer.nil?
+            # profit_center.last_year.nil?
             if profit_center.send(table).nil?
-              # profit_center.build_customer
+              # profit_center.build_last_year
               profit_center.send("build_#{table}")
             end
           end

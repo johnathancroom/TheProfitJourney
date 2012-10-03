@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003212602) do
+ActiveRecord::Schema.define(:version => 20121003222024) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -102,19 +102,19 @@ ActiveRecord::Schema.define(:version => 20121003212602) do
   add_index "ap", ["PCID"], :name => "PCID"
 
   create_table "cust", :force => true do |t|
-    t.string   "cdba",             :limit => 50
+    t.string   "cdba",       :limit => 50
     t.datetime "cidate"
-    t.string   "cfn",              :limit => 50
-    t.string   "cln",              :limit => 50
+    t.string   "cfn",        :limit => 50
+    t.string   "cln",        :limit => 50
     t.datetime "ccsd"
     t.datetime "cced"
     t.datetime "ccpd"
     t.integer  "cah"
-    t.text     "cpg",              :limit => 2147483647
-    t.text     "ccg",              :limit => 2147483647
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.integer  "profit_center_id"
+    t.text     "cpg",        :limit => 2147483647
+    t.text     "ccg",        :limit => 2147483647
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "user_id"
   end
 
   create_table "de", :primary_key => "DEID", :force => true do |t|

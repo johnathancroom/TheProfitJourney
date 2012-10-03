@@ -19,15 +19,15 @@ module Refinery
       }
 
       def start_update
-        update(:start)
+        update(@customer, params[:customer], :start)
       end
 
       def last_year_update
-        update(:last_year)
+        update(@profit_center, params[:profit_center], :last_year)
       end
 
       def next_year_update
-        update(:next_year)
+        update(@profit_center, params[:profit_center], :next_year)
       end
 
     protected
@@ -35,7 +35,7 @@ module Refinery
       def find_models
         @user = current_refinery_user
         @profit_center = current_refinery_user.profit_centers.first
-        @customer = @profit_center.customer
+        @customer = @user.customer
         @last_year = @profit_center.last_year
         @pcly = @profit_center.profit_center_last_year
         @next_year = @profit_center.next_year
@@ -46,8 +46,8 @@ module Refinery
         @page = ::Refinery::Page.where(:link_url => link_url).first
       end
 
-      def update(path)
-        if @profit_center.update_attributes(params[:profit_center])
+      def update(model, attributes, path)
+        if model.update_attributes(attributes)
           flash.now[:notice] = SAVED_MESSAGE
         end
 
@@ -86,6 +86,7 @@ module Refinery
         @formula["tle"] = @formula["tl"]+@formula["te"]
         @formula["nanp"] = @formula["npbt"]-(model.send("#{prefix}fenone")+model.send("#{prefix}fentwo"))
       end
+
     end
   end
 end
