@@ -15,7 +15,6 @@ module Refinery
 
       def create
         @entry = @user.journeyboard_entries.build(params[:journeyboard_entry])
-        #@entry.user_id = @user.id # This shouldn't be necessary
 
         if @entry.save
           redirect_to refinery.akouo_journeyboard_index_path, :notice => "Entry successfully added."
