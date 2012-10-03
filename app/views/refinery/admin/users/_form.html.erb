@@ -82,11 +82,16 @@
       <%= f.label :workshop, "Workshop" %>
     </span>
     <ul class="checkboxes">
+      <li>
+        <%= f.radio_button :workshop_id, "-1", :checked => (true if @user.workshop == nil) || false %>
+        <%= f.label :workshop_id, "No Workshop", :value => "-1", :class => "stripped" %>
+      </li>
+
       <% @workshops = ::Refinery::Workshops::Workshop.all %>
       <% @workshops.each do |workshop| %>
         <li>
-          <%= radio_button_tag "user[workshop_id]", workshop.id, (true if @user.workshop == workshop), :id => "workshop_#{workshop.id}" %>
-          <%= f.label "user[workshop_id]", "#{workshop.title} – #{workshop.date}", :class => 'stripped', :for => "workshop_#{workshop.id}" %>
+          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) || false, :disabled => (true if !@user.can_attend_workshop?) %>
+          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date}", :value => workshop.id, :class => "stripped" %>
         </li>
       <% end %>
     </ul>
