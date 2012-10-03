@@ -3,18 +3,27 @@
 
   <%= link_to "New Entry", refinery.new_akouo_journeyboard_path %>
 
-  <ul>
-    <% if @entries.blank? %>
-      <li>No Entries Yet</li>
-    <% else %>
-      <% @entries.each do |entry| %>
-        <li>
-          <%= entry %>
-          <%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %>
-        </li>
+  <hr>
+
+  <% @profit_centers.each do |profit_center| %>
+    <h1><%= profit_center.pcn %></h1>
+
+    <% entries = profit_center.journeyboard_entries %>
+    <ul>
+      <% if entries.blank? %>
+        <li>No Entries Yet</li>
+      <% else %>
+        <% entries.each do |entry| %>
+          <li>
+            <%= entry %>
+            <%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+
+    <%= tag :hr if profit_center != @profit_centers.last %>
+  <% end %>
 <% end %>
 
 <%= render "/refinery/content_page" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003201922) do
+ActiveRecord::Schema.define(:version => 20121003212602) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -664,7 +664,6 @@ ActiveRecord::Schema.define(:version => 20121003201922) do
     t.decimal  "fuel_cost",        :precision => 19, :scale => 2
     t.integer  "profit_center_id"
     t.date     "date"
-    t.integer  "user_id"
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
   end

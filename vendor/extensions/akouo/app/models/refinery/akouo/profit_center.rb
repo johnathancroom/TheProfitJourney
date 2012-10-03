@@ -9,6 +9,8 @@ module Refinery
       has_one :next_year, :class_name => "Refinery::Akouo::NextYear"
       has_one :profit_center_next_year, :class_name => "Refinery::Akouo::ProfitCenterNextYear"
 
+      has_many :journeyboard_entries, :class_name => "Refinery::Akouo::JourneyboardEntry"
+
       belongs_to :user, :class_name => "Refinery::User"
 
       attr_accessible(
@@ -19,6 +21,7 @@ module Refinery
       )
 
       accepts_nested_attributes_for :customer, :last_year, :profit_center_last_year, :next_year, :profit_center_next_year
+
     end
   end
 end
