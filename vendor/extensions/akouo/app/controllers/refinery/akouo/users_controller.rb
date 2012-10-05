@@ -36,11 +36,6 @@ module Refinery
           params[:user].except!(:password, :password_confirmation)
         end
 
-        # Set workshop to nil
-        if params[:user][:workshop_id] == "-1"
-          params[:user][:workshop_id] = nil
-        end
-
         if @user.update_attributes(params[:user])
           flash.now[:notice] = "Changes have been saved."
           render :show

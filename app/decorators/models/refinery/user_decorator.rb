@@ -31,7 +31,7 @@ Refinery::User.class_eval do
 
   def workshop_requires_platinum_plan
     # Attempting to set workshop
-    if workshop_id != nil
+    if workshop_id != nil and workshop_id != -1
       # Not platinum member
       unless can_attend_workshop?
         errors.add :workshop_id, "can't be selected because your plan doesn't include workshop attendance"
