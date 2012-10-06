@@ -18,12 +18,57 @@
 
   <div>
     <%= f.label :date %>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :order => [:month, :day, :year] %>
+  </div>
+
+  <div>
+    <%= f.label :commission %>
+    <%= f.money_field :commission %>
+  </div>
+
+  <div>
+    <%= f.label :todays_pay, "Today's Pay" %>
+    <%= f.money_field :todays_pay %>
+  </div>
+
+  <div>
+    <%= f.label :revenue %>
+    <%= f.money_field :revenue %>
   </div>
 
   <div>
     <%= f.label :fuel_cost %>
     <%= f.money_field :fuel_cost %>
+  </div>
+
+  <div>
+    <%= f.label :other_cost %>
+    <%= f.money_field :other_cost %>
+  </div>
+
+  <div>
+    <%= f.label :add_on, "Add-on" %>
+    <%= f.number_field :add_on %>
+  </div>
+
+  <div>
+    <%= f.label :drains %>
+    <%= f.money_field :drains %>
+  </div>
+
+  <div>
+    <%= f.label :opportunities %>
+    <%= f.number_field :opportunities %>
+  </div>
+
+  <div>
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+  </div>
+
+  <div>
+    <%= f.label :hours %>
+    <%= f.money_field :hours %>
   </div>
 
   <div>

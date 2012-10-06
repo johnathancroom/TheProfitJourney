@@ -5,7 +5,10 @@ module Refinery
 
       belongs_to :profit_center, :class_name => "::Refinery::Akouo::ProfitCenter"
 
-      attr_accessible :profit_center_id, :date, :fuel_cost
+      attr_accessible(
+        :profit_center_id, :date,
+        :commission, :todays_pay, :revenue, :other_cost, :add_on, :drains, :opportunities, :tickets, :hours, :fuel_cost
+      )
     end
   end
 end

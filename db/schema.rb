@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003222024) do
+ActiveRecord::Schema.define(:version => 20121006003157) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -666,6 +666,19 @@ ActiveRecord::Schema.define(:version => 20121003222024) do
     t.date     "date"
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
+    t.decimal  "commission",       :precision => 19, :scale => 2
+    t.decimal  "todays_pay",       :precision => 19, :scale => 2
+    t.decimal  "revenue",          :precision => 19, :scale => 2
+    t.decimal  "other_cost",       :precision => 19, :scale => 2
+    t.integer  "add_on"
+    t.decimal  "drains",           :precision => 19, :scale => 2
+    t.integer  "opportunities"
+    t.integer  "tickets"
+    t.decimal  "hours",            :precision => 19, :scale => 2
+    t.integer  "agreement_1"
+    t.integer  "agreement_2"
+    t.integer  "agreement_3"
+    t.integer  "agreement_4"
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|
