@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006003157) do
+ActiveRecord::Schema.define(:version => 20121006005731) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -679,6 +679,14 @@ ActiveRecord::Schema.define(:version => 20121006003157) do
     t.integer  "agreement_2"
     t.integer  "agreement_3"
     t.integer  "agreement_4"
+    t.integer  "technician_id"
+  end
+
+  create_table "refinery_journeyboard_technicians", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|

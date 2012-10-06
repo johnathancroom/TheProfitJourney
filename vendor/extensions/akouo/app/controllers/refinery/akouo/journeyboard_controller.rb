@@ -5,7 +5,7 @@ module Refinery
       before_filter :redirect?, :check_and_build_user_tables
 
       before_filter :find_page
-      before_filter :find_profit_centers, :only => [:index, :new, :create, :edit, :update]
+      before_filter :find_things
       before_filter :find_entry, :only => [:edit, :update]
 
       def new
@@ -30,14 +30,43 @@ module Refinery
         end
       end
 
+      def new_technician
+        @technician = Refinery::Akouo::JourneyboardTechnician.new
+      end
+
+      def edit_technician
+        @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+      end
+
+      def create_technician
+        @technician = @user.technicians.build(params[:journeyboard_technician])
+
+        if @technician.save
+          redirect_to refinery.technicians_akouo_journeyboard_index_path, :notice => "Technician Added"
+        else
+          render :new_technician
+        end
+      end
+
+      def update_technician
+        @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+
+        if @technician.update_attributes(params[:journeyboard_technician])
+          redirect_to refinery.technicians_akouo_journeyboard_index_path, :notice => "Technician Saved"
+        else
+          render :edit_technician
+        end
+      end
+
     protected
 
       def find_page
         @page = ::Refinery::Page.where(:link_url => "/journeyboard").first
       end
 
-      def find_profit_centers
+      def find_things
         @profit_centers = ::Refinery::Akouo::ProfitCenter.where(:user_id => @user.id)
+        @technicians = ::Refinery::Akouo::JourneyboardTechnician.where(:user_id => @user.id)
       end
 
       def find_entry

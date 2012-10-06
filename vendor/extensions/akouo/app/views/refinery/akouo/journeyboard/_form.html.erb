@@ -12,6 +12,11 @@
   <% end %>
 
   <div>
+    <%= f.label :technician_id, "Technician" %>
+    <%= f.select :technician_id, @technicians.collect { |x| [x.name, x.id] } %>
+  </div>
+
+  <div>
     <%= f.label :profit_center_id, "Profit Center" %>
     <%= f.select :profit_center_id, @profit_centers.collect { |x| [x.pcn, x.id] } %>
   </div>

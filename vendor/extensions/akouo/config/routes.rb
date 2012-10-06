@@ -28,7 +28,11 @@ Refinery::Core::Engine.routes.append do
 
     resources :journeyboard, :except => [:show] do
       collection do
-        get "techs"
+        get "technicians"
+        get "technicians/new" => "journeyboard#new_technician"
+        post "technicians" => "journeyboard#create_technician"
+        get "technicians/:id" => "journeyboard#edit_technician", :as => "edit_technician"
+        put "technicians/:id" => "journeyboard#update_technician"
       end
     end
   end

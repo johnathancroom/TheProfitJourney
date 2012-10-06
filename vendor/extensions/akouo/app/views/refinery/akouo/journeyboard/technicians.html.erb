@@ -1,0 +1,25 @@
+<% content_for :body_content_title do %>
+  <%= "#{page_title} Technicians" %>
+<% end %>
+
+<% content_for :body do %>
+  <%= link_to "Back to JourneyBoard", refinery.akouo_journeyboard_index_path %>
+  <%= link_to "Add Technician", refinery.technicians_new_akouo_journeyboard_index_path %>
+
+  <hr>
+
+  <ul>
+    <% if @technicians.blank? %>
+      <li>No Technicians Yet</li>
+    <% else %>
+      <% @technicians.each do |technician| %>
+        <li>
+          <%= technician.name %>
+          <%= link_to "Edit", refinery.edit_technician_akouo_journeyboard_index_path(technician) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render "/refinery/content_page" %>
