@@ -7,8 +7,8 @@ module Refinery
       belongs_to :technician, :class_name => "Refinery::Akouo::JourneyboardTechnician"
 
       attr_accessible(
-        :profit_center_id, :date,
-        :commission, :todays_pay, :revenue, :other_cost, :add_on, :drains, :opportunities, :tickets, :hours, :fuel_cost
+        :profit_center_id, :technician_id, :date,
+        :commission, :todays_pay, :revenue, :other_cost, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
       )
     end
   end
