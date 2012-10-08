@@ -6,25 +6,80 @@
 
   <hr>
 
+  <form method="GET" class="js_date_select">
+    <%= hidden_field_tag :date %>
+
+    Viewing <%= select_date @date, :order => [:month, :day, :year] %>
+    <%= submit_tag "Submit", :class => "button", :style => "top: 0;" %>
+  </form>
+
+  <hr>
+
   <% @profit_centers.each do |profit_center| %>
     <h1><%= profit_center.pcn %></h1>
 
-    <% entries = profit_center.journeyboard_entries %>
-    <ul>
+    <% entries = profit_center.journeyboard_entries.where(:date => @date) %>
+    <table class="journeyboard">
       <% if entries.blank? %>
-        <li>No Entries Yet</li>
+        <tr>
+          <td>No Entries Yet</td>
+        </tr>
       <% else %>
         <% entries.each do |entry| %>
-          <li>
-            <%= entry %>
-            <%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %>
-          </li>
+          <thead>
+            <tr>
+              <th>Tech</th>
+              <th>Commission</th>
+              <th>Revenue</th>
+              <th>Cost</th>
+              <th>Add-on</th>
+              <th>Leads</th>
+              <th>Opp.</th>
+              <th>Tickets</th>
+              <th>Hours</th>
+              <th>MPH</th>
+              <th>Fuel</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= link_to entry.technician.name, "" %></td>
+              <td><%= number_to_currency entry.commission %></td>
+              <td><%= number_to_currency entry.revenue %></td>
+              <td><%= number_to_currency(entry.todays_pay+entry.fuel_cost+entry.other_cost) %></td>
+              <td><%= entry.add_on %></td>
+              <td><%= entry.leads %></td>
+              <td><%= entry.opportunities %></td>
+              <td><%= entry.tickets %></td>
+              <td><%= entry.hours %></td>
+              <td>&ndash;</td>
+              <td><%= number_to_currency entry.fuel_cost %></td>
+              <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
+            </tr>
+          </tbody>
         <% end %>
       <% end %>
-    </ul>
+    </table>
 
     <%= tag :hr if profit_center != @profit_centers.last %>
   <% end %>
 <% end %>
 
-<%= render "/refinery/content_page" %>
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(".js_date_select").submit(function(e) {
+      e.preventDefault();
+
+      // Set date hidden value
+      $("#date").val($("#date_month", this).val()+"-"+$("#date_day", this).val()+"-"+$("#date_year").val())
+
+      // Remove original date select
+      $("#date_month, #date_day, #date_year, .button", this).attr("name", "");
+
+      this.submit();
+    })
+  </script>
+<% end %>
+
+<%= render :partial => "/refinery/content_page", :locals => { :full_width => true } %>

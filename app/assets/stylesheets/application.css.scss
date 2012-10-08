@@ -314,6 +314,9 @@ textarea {
   float: left;
   width: 67%;
 
+  .full_width & {
+    width: 100%;
+  }
   #summary {
     border: 1px solid #f1dba0;
     padding: 14px;
@@ -453,6 +456,17 @@ textarea {
 
   label {
     width: auto;
+  }
+}
+// <table>
+.journeyboard {
+  th,
+  td {
+    padding: 5px;
+  }
+  td {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
   }
 }
 #footer {

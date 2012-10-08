@@ -1,9 +1,10 @@
 <%
 body_content_title = page_title if (body_content_title = yield :body_content_title).blank?
 body_content = @page.content_for(:body).html_safe if (body_content = yield :body).blank?
+full_width ||= false
 %>
 
-<section id="page">
+<section id="page" class="<%= "full_width" if full_width %>">
   <section id="content">
     <section id="summary">
       <h1 id="body_content_title">
@@ -23,5 +24,7 @@ body_content = @page.content_for(:body).html_safe if (body_content = yield :body
     </section>
   </section>
 
-  <%= render "/refinery/sidebar" %>
+  <% if !full_width %>
+    <%= render "/refinery/sidebar" %>
+  <% end %>
 </section>

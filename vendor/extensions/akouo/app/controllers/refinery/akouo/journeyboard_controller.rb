@@ -8,6 +8,10 @@ module Refinery
       before_filter :find_things
       before_filter :find_entry, :only => [:edit, :update]
 
+      def index
+        @date = !params[:date].nil? ? Date.strptime(params[:date], "%m-%d-%Y") : Date.today
+      end
+
       def new
         @entry = JourneyboardEntry.new
       end
