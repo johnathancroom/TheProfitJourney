@@ -1,5 +1,63 @@
+<% content_for :body_content_title do %>
+  <%= "#{page_title} Technician: #{@technician.name}" %>
+<% end %>
+
 <% content_for :body do %>
-  show
+  <%= link_to "Back to JourneyBoard", refinery.akouo_journeyboard_index_path %>
+
+  <hr>
+
+  <% @profit_centers.each do |profit_center| %>
+    <h1><%= profit_center.pcn %></h1>
+
+    <% entries = profit_center.journeyboard_entries.where(:technician_id => @technician.id).order("date DESC") %>
+    <table class="journeyboard">
+      <% if entries.blank? %>
+        <tr>
+          <td>No Entries Yet</td>
+        </tr>
+      <% else %>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Commission</th>
+            <th>Revenue</th>
+            <th>Today's Pay</th>
+            <th>Fuel</th>
+            <th>Other Cost</th>
+            <th>Add-on</th>
+            <th>Leads</th>
+            <th>Opp.</th>
+            <th>Tickets</th>
+            <th>Hours</th>
+            <th>MPH</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% entries.each do |entry| %>
+          <tbody>
+            <tr>
+              <td><%= entry.date.strftime("%B %e, %Y") %></td>
+              <td><%= number_to_currency entry.commission %></td>
+              <td><%= number_to_currency entry.revenue %></td>
+              <td><%= number_to_currency entry.todays_pay %></td>
+              <td><%= number_to_currency entry.fuel_cost %></td>
+              <td><%= number_to_currency entry.other_cost %></td>
+              <td><%= entry.add_on %></td>
+              <td><%= entry.leads %></td>
+              <td><%= entry.opportunities %></td>
+              <td><%= entry.tickets %></td>
+              <td><%= entry.hours %></td>
+              <td><%= "#{number_to_currency((entry.revenue-(entry.todays_pay+entry.fuel_cost+entry.other_cost))/entry.hours)}/hr" %></td>
+              <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      <% end %>
+    </table>
+
+    <%= tag :hr if profit_center != @profit_centers.last %>
+  <% end %>
 <% end %>
 
 <%= render :partial => "/refinery/content_page", :locals => { :full_width => true } %>

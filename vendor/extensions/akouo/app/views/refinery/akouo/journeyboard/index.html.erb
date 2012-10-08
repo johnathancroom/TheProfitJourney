@@ -25,23 +25,22 @@
           <td>No Entries Yet</td>
         </tr>
       <% else %>
+        <thead>
+          <tr>
+            <th>Tech</th>
+            <th>Commission</th>
+            <th>Revenue</th>
+            <th>Cost</th>
+            <th>Add-on</th>
+            <th>Leads</th>
+            <th>Opp.</th>
+            <th>Tickets</th>
+            <th>Hours</th>
+            <th>MPH</th>
+            <th></th>
+          </tr>
+        </thead>
         <% entries.each do |entry| %>
-          <thead>
-            <tr>
-              <th>Tech</th>
-              <th>Commission</th>
-              <th>Revenue</th>
-              <th>Cost</th>
-              <th>Add-on</th>
-              <th>Leads</th>
-              <th>Opp.</th>
-              <th>Tickets</th>
-              <th>Hours</th>
-              <th>MPH</th>
-              <th>Fuel</th>
-              <th></th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               <td><%= link_to entry.technician.name, refinery.technician_akouo_journeyboard_index_path(entry.technician) %></td>
@@ -53,8 +52,7 @@
               <td><%= entry.opportunities %></td>
               <td><%= entry.tickets %></td>
               <td><%= entry.hours %></td>
-              <td>&ndash;</td>
-              <td><%= number_to_currency entry.fuel_cost %></td>
+              <td><%= "#{number_to_currency((entry.revenue-(entry.todays_pay+entry.fuel_cost+entry.other_cost))/entry.hours)}/hr" %></td>
               <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
             </tr>
           </tbody>
