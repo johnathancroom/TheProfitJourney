@@ -15,6 +15,7 @@
       <% @technicians.each do |technician| %>
         <li>
           <%= technician.name %>
+          <%= link_to "View", refinery.technician_akouo_journeyboard_index_path(technician) %>
           <%= link_to "Edit", refinery.edit_technician_akouo_journeyboard_index_path(technician) %>
         </li>
       <% end %>

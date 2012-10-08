@@ -34,6 +34,10 @@ module Refinery
         end
       end
 
+      def show_technician
+        @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+      end
+
       def new_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.new
       end

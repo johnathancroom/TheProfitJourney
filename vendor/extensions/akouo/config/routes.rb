@@ -31,7 +31,8 @@ Refinery::Core::Engine.routes.append do
         get "technicians"
         get "technicians/new" => "journeyboard#new_technician"
         post "technicians" => "journeyboard#create_technician"
-        get "technicians/:id" => "journeyboard#edit_technician", :as => "edit_technician"
+        get "technicians/:id" => "journeyboard#show_technician", :as => "technician"
+        get "technicians/:id/edit" => "journeyboard#edit_technician", :as => "edit_technician"
         put "technicians/:id" => "journeyboard#update_technician"
       end
     end
