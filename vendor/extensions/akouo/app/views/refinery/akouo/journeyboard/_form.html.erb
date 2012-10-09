@@ -17,7 +17,7 @@
   </div>
 
   <div>
-    <%= f.label :profit_center_id, "Profit Center" %>
+    <%= f.label :profit_center_id, "Profit center" %>
     <%= f.select :profit_center_id, @profit_centers.collect { |x| [x.pcn, x.id] } %>
   </div>
 
@@ -37,7 +37,7 @@
   </div>
 
   <div>
-    <%= f.label :todays_pay, "Today's Pay" %>
+    <%= f.label :todays_pay, "Today's pay" %>
     <%= f.money_field :todays_pay %>
   </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <div>
-    <%= f.label :parts %>
+    <%= f.label :parts, "Parts cost" %>
     <%= f.money_field :parts %>
   </div>
 
@@ -62,12 +62,12 @@
   </div>
 
   <div>
-    <%= f.label :leads %>
+    <%= f.label :leads, "Leads sold" %>
     <%= f.number_field :leads %>
   </div>
 
   <div>
-    <%= f.label :opportunities %>
+    <%= f.label :opportunities, "Lead opp." %>
     <%= f.number_field :opportunities %>
   </div>
 
