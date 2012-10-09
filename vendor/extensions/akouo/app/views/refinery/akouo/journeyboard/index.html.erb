@@ -29,7 +29,6 @@
           <tr>
             <th>Tech</th>
             <th>Revenue</th>
-            <th>Commission</th>
             <th>Cost</th>
             <th>Add-on</th>
             <th>Leads</th>
@@ -45,14 +44,13 @@
             <tr>
               <td><%= link_to entry.technician.name, refinery.technician_akouo_journeyboard_index_path(entry.technician) %></td>
               <td><%= number_to_currency entry.revenue %></td>
-              <td><%= number_to_currency entry.commission %></td>
-              <td><%= number_to_currency(entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>
+              <td><%= number_to_currency(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>
               <td><%= entry.add_on %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
               <td><%= entry.tickets %></td>
               <td><%= entry.hours %></td>
-              <td><%= "#{number_to_currency((entry.revenue-(entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
+              <td><%= "#{number_to_currency((entry.revenue-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
               <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
             </tr>
           </tbody>
