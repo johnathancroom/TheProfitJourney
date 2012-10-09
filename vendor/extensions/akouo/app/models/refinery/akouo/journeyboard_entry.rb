@@ -8,10 +8,10 @@ module Refinery
 
       attr_accessible(
         :profit_center_id, :technician_id, :date,
-        :commission, :todays_pay, :revenue, :parts, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
+        :commission, :todays_pay, :revenue, :parts, :additional_labor, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
       )
 
-      validates_presence_of :profit_center_id, :technician_id, :date, :commission, :todays_pay, :revenue, :parts, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
+      validates_presence_of :profit_center_id, :technician_id, :date, :commission, :todays_pay, :revenue, :parts, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost, :additional_labor
     end
   end
 end
