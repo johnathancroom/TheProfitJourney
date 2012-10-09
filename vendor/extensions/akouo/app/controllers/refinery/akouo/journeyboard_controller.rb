@@ -28,13 +28,15 @@ module Refinery
 
       def edit
         error_404 if @entry.profit_center.nil? or @entry.profit_center.user != @user
+
+        session[:journeyboard_edit_return_to] = request.referer
       end
 
       def update
         error_404 if @entry.profit_center.nil? or @entry.profit_center.user != @user
 
         if @entry.update_attributes(params[:journeyboard_entry])
-          redirect_to refinery.akouo_journeyboard_index_path, :notice => "Entry successfully saved."
+          redirect_to (session.delete(:journeyboard_edit_return_to) || refinery.akouo_journeyboard_index_path), :notice => "Entry successfully saved."
         else
           render :edit
         end
