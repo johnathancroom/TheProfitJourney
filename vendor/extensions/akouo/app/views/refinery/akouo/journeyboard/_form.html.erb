@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= f.label :revenue %>
+    <%= f.money_field :revenue %>
+  </div>
+
+  <div>
     <%= f.label :commission %>
     <%= f.money_field :commission %>
   </div>
@@ -34,11 +39,6 @@
   <div>
     <%= f.label :todays_pay, "Today's Pay" %>
     <%= f.money_field :todays_pay %>
-  </div>
-
-  <div>
-    <%= f.label :revenue %>
-    <%= f.money_field :revenue %>
   </div>
 
   <div>
