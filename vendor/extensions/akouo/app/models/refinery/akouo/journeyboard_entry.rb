@@ -10,6 +10,8 @@ module Refinery
         :profit_center_id, :technician_id, :date,
         :commission, :todays_pay, :revenue, :other_cost, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
       )
+
+      validates_presence_of :profit_center_id, :technician_id, :date, :commission, :todays_pay, :revenue, :other_cost, :add_on, :leads, :opportunities, :tickets, :hours, :fuel_cost
     end
   end
 end
