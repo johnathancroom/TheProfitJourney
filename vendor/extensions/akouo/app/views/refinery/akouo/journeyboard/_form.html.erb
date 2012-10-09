@@ -81,6 +81,14 @@
     <%= f.money_field :hours %>
   </div>
 
+  <div class="agreements">
+    <%= f.label :agreements %>
+    <%= f.number_field :agreement_1, :class => "platinum" %>
+    <%= f.number_field :agreement_2, :class => "gold" %>
+    <%= f.number_field :agreement_3, :class => "silver" %>
+    <%= f.number_field :agreement_4, :class => "bronze" %>
+  </div>
+
   <div>
     <%= f.submit "Submit", :class => "button" %>
   </div>

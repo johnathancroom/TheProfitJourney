@@ -32,6 +32,7 @@
             <th>Tickets</th>
             <th>Hours</th>
             <th>MPH</th>
+            <th>Agreements</th>
             <th></th>
           </tr>
         </thead>
@@ -51,6 +52,16 @@
               <td><%= entry.tickets %></td>
               <td><%= entry.hours %></td>
               <td><%= "#{number_to_currency((entry.revenue-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
+              <td class="agreements">
+                <table>
+                  <tr>
+                    <%= content_tag :td, entry.agreement_1, :class => "platinum" %>
+                    <%= content_tag :td, entry.agreement_2, :class => "gold" %>
+                    <%= content_tag :td, entry.agreement_3, :class => "silver" %>
+                    <%= content_tag :td, entry.agreement_4, :class => "bronze" %>
+                  </tr>
+                </table>
+              </td>
               <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
             </tr>
           </tbody>

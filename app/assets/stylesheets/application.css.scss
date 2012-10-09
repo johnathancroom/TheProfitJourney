@@ -458,7 +458,7 @@ textarea {
     width: auto;
   }
 }
-// <table>
+// <table class="journeyboard">
 .journeyboard {
   th,
   td {
@@ -467,6 +467,32 @@ textarea {
   td {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
+  }
+}
+// <div class="agreements">
+//   <input class="platinum">
+//   <div class="platinum">
+td.agreements {
+  padding: 0;
+}
+.agreements {
+  input {
+    width: 60px;
+  }
+  td {
+    border: none;
+  }
+  .platinum {
+    background-color: #c2d7ee;
+  }
+  .gold {
+    background-color: #e8e5bf;
+  }
+  .silver {
+    background-color: #e5e5e5;
+  }
+  .bronze {
+    background-color: #ceb17e;
   }
 }
 #footer {
