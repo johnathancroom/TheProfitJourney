@@ -24,7 +24,7 @@
             <th>Commission</th>
             <th>Today's Pay</th>
             <th>Fuel</th>
-            <th>Other Cost</th>
+            <th>Parts</th>
             <th>Add-on</th>
             <th>Leads</th>
             <th>Opp.</th>
@@ -42,13 +42,13 @@
               <td><%= number_to_currency entry.commission %></td>
               <td><%= number_to_currency entry.todays_pay %></td>
               <td><%= number_to_currency entry.fuel_cost %></td>
-              <td><%= number_to_currency entry.other_cost %></td>
+              <td><%= number_to_currency entry.parts %></td>
               <td><%= entry.add_on %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
               <td><%= entry.tickets %></td>
               <td><%= entry.hours %></td>
-              <td><%= "#{number_to_currency((entry.revenue-(entry.todays_pay+entry.fuel_cost+entry.other_cost))/entry.hours)}/hr" %></td>
+              <td><%= "#{number_to_currency((entry.revenue-(entry.todays_pay+entry.fuel_cost+entry.parts))/entry.hours)}/hr" %></td>
               <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
             </tr>
           </tbody>
