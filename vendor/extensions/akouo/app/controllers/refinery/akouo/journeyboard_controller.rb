@@ -26,7 +26,13 @@ module Refinery
         end
       end
 
+      def edit
+        error_404 if @entry.profit_center.nil? or @entry.profit_center.user != @user
+      end
+
       def update
+        error_404 if @entry.profit_center.nil? or @entry.profit_center.user != @user
+
         if @entry.update_attributes(params[:journeyboard_entry])
           redirect_to refinery.akouo_journeyboard_index_path, :notice => "Entry successfully saved."
         else
@@ -36,6 +42,8 @@ module Refinery
 
       def show_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+
+        error_404 if @technician.user != @user
       end
 
       def new_technician
@@ -44,6 +52,8 @@ module Refinery
 
       def edit_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+
+        error_404 if @technician.user != @user
       end
 
       def create_technician
@@ -58,6 +68,8 @@ module Refinery
 
       def update_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
+
+        error_404 if @technician.user != @user
 
         if @technician.update_attributes(params[:journeyboard_technician])
           redirect_to refinery.technicians_akouo_journeyboard_index_path, :notice => "Technician Saved"
