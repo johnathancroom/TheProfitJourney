@@ -1,5 +1,16 @@
 <div class="slideshow">
-
+  <div class="slides_container">
+    <% slides = Refinery::Slides::Slide.all %>
+    <% slides.each do |slide| %>
+      <div>
+        <div class="content">
+          <h2><%= slide.title %></h2>
+          <%=raw slide.description %>
+        </div>
+        <%= image_tag slide.image %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="top_images">
@@ -21,3 +32,11 @@
 
   <%= render "/refinery/sidebar" %>
 </section>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $('.slideshow').slides();
+    });
+  </script>
+<% end %>
