@@ -19,6 +19,8 @@ PATH
   specs:
     refinerycms-akouo (1.0)
       refinerycms-core (~> 2.0.8)
+    refinerycms-slides (1.0)
+      refinerycms-core (~> 2.0.8)
     refinerycms-workshops (1.0)
       refinerycms-core (~> 2.0.8)
 
@@ -226,6 +228,7 @@ DEPENDENCIES
   refinerycms-akouo!
   refinerycms-blog (~> 2.0.0)
   refinerycms-core (~> 2.0.0)!
+  refinerycms-slides!
   refinerycms-workshops!
   sass-rails (~> 3.2.3)
   sqlite3
