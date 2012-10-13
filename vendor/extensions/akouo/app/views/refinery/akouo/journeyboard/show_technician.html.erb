@@ -21,7 +21,7 @@
           <tr>
             <th>Date</th>
             <th>Revenue</th>
-            <th>Commission</th>
+            <th>Comm.</th>
             <th>Today's pay</th>
             <th>Fuel</th>
             <th>Parts</th>
@@ -33,13 +33,12 @@
             <th>Hours</th>
             <th>MPH</th>
             <th>Agreements</th>
-            <th></th>
           </tr>
         </thead>
         <% entries.each do |entry| %>
           <tbody>
             <tr>
-              <td><%= entry.date.strftime("%B %e, %Y") %></td>
+              <td><%= link_to entry.date.strftime("%b %e, %Y"), refinery.edit_akouo_journeyboard_path(entry) %></td>
               <td><%= number_to_currency entry.revenue %></td>
               <td><%= number_to_currency entry.commission %></td>
               <td><%= number_to_currency entry.todays_pay %></td>
@@ -62,7 +61,6 @@
                   </tr>
                 </table>
               </td>
-              <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_path(entry) %></td>
             </tr>
           </tbody>
         <% end %>
