@@ -42,20 +42,30 @@ module Refinery
         end
       end
 
+      def technicians
+        render "refinery/akouo/journeyboard/technicians/index"
+      end
+
       def show_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
 
         error_404 if @technician.user != @user
+
+        render "refinery/akouo/journeyboard/technicians/show"
       end
 
       def new_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.new
+
+        render "refinery/akouo/journeyboard/technicians/new"
       end
 
       def edit_technician
         @technician = Refinery::Akouo::JourneyboardTechnician.find(params[:id])
 
         error_404 if @technician.user != @user
+
+        render "refinery/akouo/journeyboard/technicians/edit"
       end
 
       def create_technician
@@ -64,7 +74,7 @@ module Refinery
         if @technician.save
           redirect_to refinery.technicians_akouo_journeyboard_index_path, :notice => "Technician Added"
         else
-          render :new_technician
+          render render "refinery/akouo/journeyboard/technicians/new"
         end
       end
 
@@ -76,7 +86,7 @@ module Refinery
         if @technician.update_attributes(params[:journeyboard_technician])
           redirect_to refinery.technicians_akouo_journeyboard_index_path, :notice => "Technician Saved"
         else
-          render :edit_technician
+          render render "refinery/akouo/journeyboard/technicians/edit"
         end
       end
 
