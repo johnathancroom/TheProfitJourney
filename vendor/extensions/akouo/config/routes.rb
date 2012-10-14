@@ -28,9 +28,8 @@ Refinery::Core::Engine.routes.append do
 
     namespace :journeyboard do
       resources :technicians
-      resources :entries
+      resources :entries, :except => [:show]
     end
-
     resources :journeyboard, :except => [:show]
   end
 
