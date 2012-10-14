@@ -1,0 +1,22 @@
+<form method="GET" class="js_date_select">
+  <%= hidden_field_tag :date %>
+
+  Viewing <%= select_date @date, :order => [:month, :day, :year] %>
+  <%= submit_tag "Submit", :class => "button", :style => "top: 0;" %>
+</form>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(".js_date_select").submit(function(e) {
+      e.preventDefault();
+
+      // Set date hidden value
+      $("#date").val($("#date_month", this).val()+"-"+$("#date_day", this).val()+"-"+$("#date_year").val())
+
+      // Remove original date select
+      $("#date_month, #date_day, #date_year, .button", this).attr("name", "");
+
+      this.submit();
+    })
+  </script>
+<% end %>

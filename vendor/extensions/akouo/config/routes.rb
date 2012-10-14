@@ -27,10 +27,10 @@ Refinery::Core::Engine.routes.append do
     put "account/plans" => "payments#create"
 
     namespace :journeyboard do
-      resources :technicians
-      resources :entries, :except => [:show]
+      resources :technicians, :except => [:destroy]
+      resources :entries, :except => [:show, :destroy]
+      resources :dmr, :path => '', :except => [:show, :destroy]
     end
-    resources :journeyboard, :except => [:show]
   end
 
   devise_scope :refinery_user do
