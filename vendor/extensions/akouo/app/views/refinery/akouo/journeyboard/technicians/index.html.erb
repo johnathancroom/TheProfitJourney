@@ -3,8 +3,7 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= link_to "Back to JourneyBoard", refinery.akouo_journeyboard_index_path %>
-  <%= link_to "Add Technician", refinery.technicians_new_akouo_journeyboard_index_path %>
+  <%= link_to "Add Technician", refinery.new_akouo_journeyboard_technician_path %>
 
   <hr>
 
@@ -15,8 +14,8 @@
       <% @technicians.each do |technician| %>
         <li>
           <%= technician.name %>
-          <%= link_to "View", refinery.technician_akouo_journeyboard_index_path(technician) %>
-          <%= link_to "Edit", refinery.edit_technician_akouo_journeyboard_index_path(technician) %>
+          <%= link_to "View", refinery.akouo_journeyboard_technician_path(technician) %>
+          <%= link_to "Edit", refinery.edit_akouo_journeyboard_technician_path(technician) %>
         </li>
       <% end %>
     <% end %>

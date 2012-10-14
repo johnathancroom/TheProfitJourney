@@ -26,16 +26,12 @@ Refinery::Core::Engine.routes.append do
     get "account/plans" => "payments#new"
     put "account/plans" => "payments#create"
 
-    resources :journeyboard, :except => [:show] do
-      collection do
-        get "technicians"
-        get "technicians/new" => "journeyboard#new_technician"
-        post "technicians" => "journeyboard#create_technician"
-        get "technicians/:id" => "journeyboard#show_technician", :as => "technician"
-        get "technicians/:id/edit" => "journeyboard#edit_technician", :as => "edit_technician"
-        put "technicians/:id" => "journeyboard#update_technician"
-      end
+    namespace :journeyboard do
+      resources :technicians
+      resources :entries
     end
+
+    resources :journeyboard, :except => [:show]
   end
 
   devise_scope :refinery_user do

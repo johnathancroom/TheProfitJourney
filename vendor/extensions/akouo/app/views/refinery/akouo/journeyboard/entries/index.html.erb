@@ -1,12 +1,22 @@
-<% content_for :body_content_title do %>
-  <%= "#{page_title} Technician: #{@technician.name}" %>
-<% end %>
-
 <% content_for :body do %>
+  <%= link_to "New Entry", refinery.new_akouo_journeyboard_entry_path %> |
+  <%= link_to "Tech List", refinery.akouo_journeyboard_technicians_path %>
+
+  <hr>
+
+  <form method="GET" class="js_date_select">
+    <%= hidden_field_tag :date %>
+
+    Viewing <%= select_date @date, :order => [:month, :day, :year] %>
+    <%= submit_tag "Submit", :class => "button", :style => "top: 0;" %>
+  </form>
+
+  <hr>
+
   <% @profit_centers.each do |profit_center| %>
     <h1><%= profit_center.pcn %></h1>
 
-    <% entries = profit_center.journeyboard_entries.where(:technician_id => @technician.id).order("date DESC") %>
+    <% entries = profit_center.journeyboard_entries.where(:date => @date) %>
     <table class="journeyboard">
       <% if entries.blank? %>
         <tr>
@@ -15,13 +25,9 @@
       <% else %>
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Tech</th>
             <th>Revenue</th>
-            <th>Comm.</th>
-            <th>Today's pay</th>
-            <th>Fuel</th>
-            <th>Parts</th>
-            <th>Add. labor</th>
+            <th>Cost</th>
             <th>Add-on</th>
             <th>Leads sold</th>
             <th>Lead opp.</th>
@@ -29,18 +35,15 @@
             <th>Hours</th>
             <th>MPH</th>
             <th>Agreements</th>
+            <th></th>
           </tr>
         </thead>
         <% entries.each do |entry| %>
           <tbody>
             <tr>
-              <td><%= link_to entry.date.strftime("%b %e, %Y"), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
+              <td><%= link_to entry.technician.name, refinery.akouo_journeyboard_technician_path(entry.technician) %></td>
               <td><%= number_to_currency entry.revenue %></td>
-              <td><%= number_to_currency entry.commission %></td>
-              <td><%= number_to_currency entry.todays_pay %></td>
-              <td><%= number_to_currency entry.fuel_cost %></td>
-              <td><%= number_to_currency entry.parts %></td>
-              <td><%= number_to_currency entry.additional_labor %></td>
+              <td><%= number_to_currency(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>
               <td><%= entry.add_on %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
@@ -57,6 +60,7 @@
                   </tr>
                 </table>
               </td>
+              <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
             </tr>
           </tbody>
         <% end %>
@@ -67,4 +71,20 @@
   <% end %>
 <% end %>
 
-<%= render :partial => "/refinery/content_page", :locals => { :full_width => true } %>
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(".js_date_select").submit(function(e) {
+      e.preventDefault();
+
+      // Set date hidden value
+      $("#date").val($("#date_month", this).val()+"-"+$("#date_day", this).val()+"-"+$("#date_year").val())
+
+      // Remove original date select
+      $("#date_month, #date_day, #date_year, .button", this).attr("name", "");
+
+      this.submit();
+    })
+  </script>
+<% end %>
+
+<%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
