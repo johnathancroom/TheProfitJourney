@@ -2,7 +2,7 @@
   <%= hidden_field_tag :date %>
 
   Viewing <%= select_date @date, :order => [:month, :day, :year] %>
-  <%= submit_tag "Submit", :class => "button", :style => "top: 0;" %>
+  <%= submit_tag 'Go', :class => 'button', :style => 'top: 0;' %>
 </form>
 
 <% content_for :javascripts do %>
