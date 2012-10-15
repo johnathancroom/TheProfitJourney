@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012215515) do
+ActiveRecord::Schema.define(:version => 20121015182116) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -658,6 +658,96 @@ ActiveRecord::Schema.define(:version => 20121012215515) do
     t.string   "image_ext"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "refinery_journeyboard_budgets", :force => true do |t|
+    t.decimal "replacement_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
+    t.integer "replacement_leads_run",                                               :default => 0
+    t.integer "replacement_leads_sold",                                              :default => 0
+    t.integer "replacement_closing_ratio",                                           :default => 0
+    t.decimal "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer "repair_calls",                                                        :default => 0
+    t.integer "repair_warranty_calls",                                               :default => 0
+    t.decimal "repair_revenue",                       :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "repair_cogs",                          :precision => 19, :scale => 2, :default => 0.0
+    t.integer "repair_membership_opportunities",                                     :default => 0
+    t.integer "repair_memberships_sold",                                             :default => 0
+    t.integer "repair_opportunities",                                                :default => 0
+    t.integer "repair_sold",                                                         :default => 0
+    t.integer "repair_conversion_raio",                                              :default => 0
+    t.decimal "repair_dollars_sold",                  :precision => 19, :scale => 2, :default => 0.0
+    t.integer "maintenance_calls",                                                   :default => 0
+    t.decimal "maintenance_revenue",                  :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "maintenance_cogs",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer "maintenance_membership_opportunities",                                :default => 0
+    t.integer "maintenance_memberships_sold",                                        :default => 0
+    t.integer "maintenance_opportunities",                                           :default => 0
+    t.integer "maintenance_sold",                                                    :default => 0
+    t.integer "maintenance_conversion_ratio",                                        :default => 0
+    t.decimal "maintenance_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
+    t.integer "specialty_calls",                                                     :default => 0
+    t.decimal "specialty_revenue",                    :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "specialty_cogs",                       :precision => 19, :scale => 2, :default => 0.0
+    t.integer "specialty_membership_opportunities",                                  :default => 0
+    t.integer "specialty_memberships_sold",                                          :default => 0
+    t.integer "specialty_opportunities",                                             :default => 0
+    t.integer "specialty_sold",                                                      :default => 0
+    t.integer "specialty_conversion_ratio",                                          :default => 0
+    t.decimal "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
+    t.integer "user_id"
+  end
+
+  create_table "refinery_journeyboard_dmr_comfort_advisor_entries", :force => true do |t|
+    t.decimal "sold",               :precision => 19, :scale => 2, :default => 0.0
+    t.integer "leads_run",                                         :default => 0
+    t.integer "leads_sold",                                        :default => 0
+    t.integer "comfort_advisor_id"
+  end
+
+  create_table "refinery_journeyboard_dmr_comfort_advisors", :force => true do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  create_table "refinery_journeyboard_dmr_entries", :force => true do |t|
+    t.decimal  "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "replacement_intalled",                 :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "replacement_backlog",                  :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "repair_calls",                                                        :default => 0
+    t.integer  "repair_warranty_calls",                                               :default => 0
+    t.decimal  "repair_revenue",                       :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "repair_cogs",                          :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "repair_membership_opportunities",                                     :default => 0
+    t.integer  "repair_memberships_sold",                                             :default => 0
+    t.integer  "repair_opportunities",                                                :default => 0
+    t.integer  "repair_sold",                                                         :default => 0
+    t.decimal  "repair_dollars_sold",                  :precision => 10, :scale => 0, :default => 0
+    t.integer  "maintenance_calls",                                                   :default => 0
+    t.decimal  "maintenance_revenue",                  :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "maintenance_cogs",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "maintenance_membership_opportunities",                                :default => 0
+    t.integer  "maintenance_memberships_sold",                                        :default => 0
+    t.integer  "maintenance_opportunities",                                           :default => 0
+    t.integer  "maintenance_sold",                                                    :default => 0
+    t.decimal  "maintenance_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "specialty_calls",                                                     :default => 0
+    t.decimal  "specialty_revenue",                    :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "specialty_cogs",                       :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "specialty_membership_opportunities",                                  :default => 0
+    t.integer  "specialty_memberships_sold",                                          :default => 0
+    t.integer  "specialty_opportunities",                                             :default => 0
+    t.integer  "specialty_sold",                                                      :default => 0
+    t.decimal  "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "memberships_sold_by_csr",                                             :default => 0
+    t.integer  "memberships_sold_new_systems",                                        :default => 0
+    t.integer  "memberships_lost",                                                    :default => 0
+    t.integer  "comfort_advisor_sales_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
   end
 
   create_table "refinery_journeyboard_entries", :force => true do |t|
