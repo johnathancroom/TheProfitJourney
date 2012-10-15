@@ -12,7 +12,24 @@
 
   <hr>
 
-
+  <table>
+    <thead>
+      <tr>
+        <th>Replacement</th>
+        <th>Daily Actual</th>
+        <th>Total Budget</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dmr_entries.columns.each do |column| %>
+        <tr>
+          <td><%= column.name %></td>
+          <td><%= @dmr_entries.sum(column.name) %></td>
+          <td>&ndash;</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>

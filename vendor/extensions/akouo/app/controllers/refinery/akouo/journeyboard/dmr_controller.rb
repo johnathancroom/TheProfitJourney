@@ -5,6 +5,7 @@ module Refinery
 
         def index
           @date = !params[:date].nil? ? Date.strptime(params[:date], "%m-%d-%Y") : Date.today
+          @dmr_entries = @user.journeyboard_dmr_entries
         end
 
         def new
