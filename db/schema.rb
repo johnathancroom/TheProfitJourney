@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015183643) do
+ActiveRecord::Schema.define(:version => 20121015201213) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -748,6 +748,7 @@ ActiveRecord::Schema.define(:version => 20121015183643) do
     t.integer  "user_id"
     t.datetime "created_at",                                                                           :null => false
     t.datetime "updated_at",                                                                           :null => false
+    t.date     "date"
   end
 
   create_table "refinery_journeyboard_entries", :force => true do |t|

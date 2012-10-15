@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date, :order => [:month, :day, :year] %>
+  </div>
+
+  <hr>
+
   <h1>Replacement</h1>
 
   <div>

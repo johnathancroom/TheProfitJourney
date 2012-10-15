@@ -482,10 +482,12 @@ textarea {
   .radio label {
     width: 200px;
   }
+  input {
+    vertical-align: top;
+  }
   input,
   select {
     margin-bottom: 15px;
-    vertical-align: top;
   }
   input[type=radio] {
     margin-bottom: 0;
