@@ -4,8 +4,9 @@ module Refinery
       class DmrController < JourneyboardController
 
         def index
-          @date = !params[:date].nil? ? Date.strptime(params[:date], "%m-%d-%Y") : Date.today
-          @dmr_entries = @user.journeyboard_dmr_entries
+          @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
+          @entry = @user.journeyboard_dmr_entries.where(:date => @date).first || @user.journeyboard_dmr_entries.build
+          @entries = @user.journeyboard_dmr_entries.where(:date => @date.beginning_of_month..@date)
         end
 
         def new
@@ -16,7 +17,7 @@ module Refinery
           @entry = @user.journeyboard_dmr_entries.build(params[:journeyboard_dmr_entry])
 
           if @entry.save
-            redirect_to refinery.akouo_journeyboard_dmr_index_path, :notice => "DMR Entry Saved."
+            redirect_to refinery.akouo_journeyboard_dmr_index_path, :notice => 'DMR Entry Saved.'
           else
             render :new
           end
