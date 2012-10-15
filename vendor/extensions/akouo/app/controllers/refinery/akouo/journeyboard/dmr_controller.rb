@@ -23,6 +23,20 @@ module Refinery
           end
         end
 
+        def edit
+          @entry = Refinery::Akouo::JourneyboardDmrEntry.find(params[:id])
+        end
+
+        def update
+          @entry = Refinery::Akouo::JourneyboardDmrEntry.find(params[:id])
+
+          if @entry.update_attributes(params[:journeyboard_dmr_entry])
+            redirect_to refinery.akouo_journeyboard_dmr_index_path, :notice => 'DMR Entry Saved.'
+          else
+            render :edit
+          end
+        end
+
       end
     end
   end

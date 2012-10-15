@@ -7,6 +7,8 @@
   <%= link_to 'Edit Budgets', refinery.budget_akouo_journeyboard_dmr_index_path %> |
   <%= link_to 'Entries', refinery.akouo_journeyboard_entries_path %>
 
+  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.blank? %>
+
   <hr>
 
   <%= render 'data_select' %>
