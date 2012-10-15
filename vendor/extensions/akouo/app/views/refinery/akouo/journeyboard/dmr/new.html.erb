@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :body do %>
-New
+  <%= render :partial => 'form', :locals => { :path => refinery.akouo_journeyboard_dmr_index_path } %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

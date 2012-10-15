@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015182116) do
+ActiveRecord::Schema.define(:version => 20121015183643) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -713,7 +713,7 @@ ActiveRecord::Schema.define(:version => 20121015182116) do
 
   create_table "refinery_journeyboard_dmr_entries", :force => true do |t|
     t.decimal  "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "replacement_intalled",                 :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "replacement_backlog",                  :precision => 19, :scale => 2, :default => 0.0
     t.integer  "repair_calls",                                                        :default => 0

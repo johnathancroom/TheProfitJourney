@@ -476,6 +476,7 @@ textarea {
 .styled_form {
   label {
     display: inline-block;
+    margin: 8px 0;
     width: 140px;
   }
   .radio label {
@@ -484,6 +485,7 @@ textarea {
   input,
   select {
     margin-bottom: 15px;
+    vertical-align: top;
   }
   input[type=radio] {
     margin-bottom: 0;
@@ -499,6 +501,9 @@ textarea {
     position: relative;
     top: 9px;
   }
+}
+.wide label {
+  width: 200px;
 }
 .account_workshops {
   list-style: none;
