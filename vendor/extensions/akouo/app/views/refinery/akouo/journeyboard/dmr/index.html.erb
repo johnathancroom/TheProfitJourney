@@ -13,392 +13,398 @@
   <hr>
 
   <table class="journeyboard">
-    <thead>
+    <% if @entry.blank? %>
       <tr>
-        <th><strong>Replacement</strong></th>
-        <th>Daily Actual</th>
-        <th>Total Budget</th>
+        <td>No Data for <%= @date.strftime('%B %e, %Y') %></td>
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Replacement Dollars Sold</td>
-        <td>&ndash;</td>
-        <td>&ndash;</td>
-      </tr>
+    <% else %>
+      <thead>
+        <tr>
+          <th><strong>Replacement</strong></th>
+          <th>Daily Actual</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Replacement Dollars Sold</td>
+          <td>&ndash;</td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Calls Run</td>
-        <td>&ndash;</td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Calls Run</td>
+          <td>&ndash;</td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Calls Sold</td>
-        <td>&ndash;</td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Calls Sold</td>
+          <td>&ndash;</td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Closing Ratio</td>
-        <td>&ndash;</td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Closing Ratio</td>
+          <td>&ndash;</td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Ticket</td>
-        <td>&ndash;</td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Average Ticket</td>
+          <td>&ndash;</td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replaced Yesterday</td>
-        <td><%= number_to_currency @entry.replacement_replaced %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replaced Yesterday</td>
+          <td><%= number_to_currency @entry.replacement_replaced %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Installed Yesterday</td>
-        <td><%= number_to_currency @entry.replacement_installed %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Installed Yesterday</td>
+          <td><%= number_to_currency @entry.replacement_installed %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>COG's</td>
-        <td><%= number_to_currency @entry.replacement_cogs %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>COG's</td>
+          <td><%= number_to_currency @entry.replacement_cogs %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Backlog</td>
-        <td><%= number_to_currency @entry.replacement_backlog %></td>
-        <td>&ndash;</td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>Backlog</td>
+          <td><%= number_to_currency @entry.replacement_backlog %></td>
+          <td>&ndash;</td>
+        </tr>
+      </tbody>
 
-    <thead>
-      <tr>
-        <th><strong>Repair</strong></th>
-        <th>Daily Actual</th>
-        <th>Total Budget</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th><strong>Repair</strong></th>
+          <th>Daily Actual</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>Calls Run</td>
-        <td><%= @entry.repair_calls %></td>
-        <td>&ndash;</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>Calls Run</td>
+          <td><%= @entry.repair_calls %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Warranty Calls Run</td>
-        <td><%= @entry.repair_warranty_calls %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Warranty Calls Run</td>
+          <td><%= @entry.repair_warranty_calls %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Revenue</td>
-        <td><%= number_to_currency @entry.repair_revenue %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Revenue</td>
+          <td><%= number_to_currency @entry.repair_revenue %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>COG's</td>
-        <td><%= number_to_currency @entry.repair_cogs %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>COG's</td>
+          <td><%= number_to_currency @entry.repair_cogs %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Ticket</td>
-        <td>
-          <% if @entry.repair_revenue == 0 or @entry.repair_calls == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.repair_revenue/@entry.repair_calls.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Average Ticket</td>
+          <td>
+            <% if @entry.repair_revenue == 0 or @entry.repair_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.repair_revenue/@entry.repair_calls.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Opportunities Run</td>
-        <td><%= @entry.repair_membership_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Opportunities Run</td>
+          <td><%= @entry.repair_membership_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Memberships Sold</td>
-        <td><%= @entry.repair_memberships_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Memberships Sold</td>
+          <td><%= @entry.repair_memberships_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Conversion Rate</td>
-        <td>
-          <% if @entry.repair_membership_opportunities == 0 or @entry.repair_memberships_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.repair_memberships_sold.to_f/@entry.repair_membership_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Conversion Rate</td>
+          <td>
+            <% if @entry.repair_membership_opportunities == 0 or @entry.repair_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.repair_memberships_sold.to_f/@entry.repair_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Opportunities Run</td>
-        <td><%= @entry.repair_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Opportunities Run</td>
+          <td><%= @entry.repair_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacements Sold</td>
-        <td><%= @entry.repair_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacements Sold</td>
+          <td><%= @entry.repair_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Conversion Ratio</td>
-        <td>
-          <% if @entry.repair_opportunities == 0 or @entry.repair_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.repair_sold.to_f/@entry.repair_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Conversion Ratio</td>
+          <td>
+            <% if @entry.repair_opportunities == 0 or @entry.repair_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.repair_sold.to_f/@entry.repair_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Dollars Sold</td>
-        <td><%= number_to_currency @entry.repair_dollars_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Dollars Sold</td>
+          <td><%= number_to_currency @entry.repair_dollars_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Replacement Ticket</td>
-        <td>
-          <% if @entry.repair_sold == 0 or @entry.repair_dollars_sold == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.repair_dollars_sold/@entry.repair_sold.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>Average Replacement Ticket</td>
+          <td>
+            <% if @entry.repair_sold == 0 or @entry.repair_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.repair_dollars_sold/@entry.repair_sold.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
+      </tbody>
 
-    <thead>
-      <tr>
-        <th><strong>Maintenance</strong></th>
-        <th>Daily Actual</th>
-        <th>Total Budget</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th><strong>Maintenance</strong></th>
+          <th>Daily Actual</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>Calls Run</td>
-        <td><%= @entry.maintenance_calls %></td>
-        <td>&ndash;</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>Calls Run</td>
+          <td><%= @entry.maintenance_calls %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Revenue</td>
-        <td><%= number_to_currency @entry.maintenance_revenue %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Revenue</td>
+          <td><%= number_to_currency @entry.maintenance_revenue %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>COG's</td>
-        <td><%= number_to_currency @entry.maintenance_cogs %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>COG's</td>
+          <td><%= number_to_currency @entry.maintenance_cogs %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Ticket</td>
-        <td>
-          <% if @entry.maintenance_revenue == 0 or @entry.maintenance_calls == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.maintenance_revenue/@entry.maintenance_calls.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Average Ticket</td>
+          <td>
+            <% if @entry.maintenance_revenue == 0 or @entry.maintenance_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.maintenance_revenue/@entry.maintenance_calls.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Opportunities Run</td>
-        <td><%= @entry.maintenance_membership_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Opportunities Run</td>
+          <td><%= @entry.maintenance_membership_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Memberships Sold</td>
-        <td><%= @entry.maintenance_memberships_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Memberships Sold</td>
+          <td><%= @entry.maintenance_memberships_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Conversion Rate</td>
-        <td>
-          <% if @entry.maintenance_membership_opportunities == 0 or @entry.maintenance_memberships_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.maintenance_memberships_sold.to_f/@entry.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Conversion Rate</td>
+          <td>
+            <% if @entry.maintenance_membership_opportunities == 0 or @entry.maintenance_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.maintenance_memberships_sold.to_f/@entry.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Opportunities Run</td>
-        <td><%= @entry.maintenance_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Opportunities Run</td>
+          <td><%= @entry.maintenance_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacements Sold</td>
-        <td><%= @entry.maintenance_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacements Sold</td>
+          <td><%= @entry.maintenance_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Conversion Ratio</td>
-        <td>
-          <% if @entry.maintenance_opportunities == 0 or @entry.maintenance_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.maintenance_sold.to_f/@entry.maintenance_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Conversion Ratio</td>
+          <td>
+            <% if @entry.maintenance_opportunities == 0 or @entry.maintenance_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.maintenance_sold.to_f/@entry.maintenance_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Dollars Sold</td>
-        <td><%= number_to_currency @entry.maintenance_dollars_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Dollars Sold</td>
+          <td><%= number_to_currency @entry.maintenance_dollars_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Replacement Ticket</td>
-        <td>
-          <% if @entry.maintenance_sold == 0 or @entry.maintenance_dollars_sold == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.maintenance_dollars_sold/@entry.maintenance_sold.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>Average Replacement Ticket</td>
+          <td>
+            <% if @entry.maintenance_sold == 0 or @entry.maintenance_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.maintenance_dollars_sold/@entry.maintenance_sold.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
+      </tbody>
 
-    <thead>
-      <tr>
-        <th><strong>Specialty</strong></th>
-        <th>Daily Actual</th>
-        <th>Total Budget</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th><strong>Specialty</strong></th>
+          <th>Daily Actual</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>Calls Run</td>
-        <td><%= @entry.specialty_calls %></td>
-        <td>&ndash;</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>Calls Run</td>
+          <td><%= @entry.specialty_calls %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Revenue</td>
-        <td><%= number_to_currency @entry.specialty_revenue %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Revenue</td>
+          <td><%= number_to_currency @entry.specialty_revenue %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>COG's</td>
-        <td><%= number_to_currency @entry.specialty_cogs %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>COG's</td>
+          <td><%= number_to_currency @entry.specialty_cogs %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Ticket</td>
-        <td>
-          <% if @entry.specialty_revenue == 0 or @entry.specialty_calls == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.specialty_revenue/@entry.specialty_calls.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Average Ticket</td>
+          <td>
+            <% if @entry.specialty_revenue == 0 or @entry.specialty_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.specialty_revenue/@entry.specialty_calls.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Opportunities Run</td>
-        <td><%= @entry.specialty_membership_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Opportunities Run</td>
+          <td><%= @entry.specialty_membership_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Memberships Sold</td>
-        <td><%= @entry.specialty_memberships_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Memberships Sold</td>
+          <td><%= @entry.specialty_memberships_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Membership Conversion Rate</td>
-        <td>
-          <% if @entry.specialty_membership_opportunities == 0 or @entry.specialty_memberships_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.specialty_memberships_sold.to_f/@entry.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Membership Conversion Rate</td>
+          <td>
+            <% if @entry.specialty_membership_opportunities == 0 or @entry.specialty_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.specialty_memberships_sold.to_f/@entry.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Opportunities Run</td>
-        <td><%= @entry.specialty_opportunities %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Opportunities Run</td>
+          <td><%= @entry.specialty_opportunities %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacements Sold</td>
-        <td><%= @entry.specialty_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacements Sold</td>
+          <td><%= @entry.specialty_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Conversion Ratio</td>
-        <td>
-          <% if @entry.specialty_opportunities == 0 or @entry.specialty_sold == 0 %>
-            &ndash;
-          <% else %>
-            <%= "#{((@entry.specialty_sold.to_f/@entry.specialty_opportunities.to_f)*100).round(2)}%" %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Conversion Ratio</td>
+          <td>
+            <% if @entry.specialty_opportunities == 0 or @entry.specialty_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.specialty_sold.to_f/@entry.specialty_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Replacement Dollars Sold</td>
-        <td><%= number_to_currency @entry.specialty_dollars_sold %></td>
-        <td>&ndash;</td>
-      </tr>
+        <tr>
+          <td>Replacement Dollars Sold</td>
+          <td><%= number_to_currency @entry.specialty_dollars_sold %></td>
+          <td>&ndash;</td>
+        </tr>
 
-      <tr>
-        <td>Average Replacement Ticket</td>
-        <td>
-          <% if @entry.specialty_sold == 0 or @entry.specialty_dollars_sold == 0 %>
-            <%= number_to_currency 0 %>
-          <% else %>
-            <%= number_to_currency(@entry.specialty_dollars_sold/@entry.specialty_sold.to_f) %>
-          <% end %>
-        </td>
-        <td>&ndash;</td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>Average Replacement Ticket</td>
+          <td>
+            <% if @entry.specialty_sold == 0 or @entry.specialty_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.specialty_dollars_sold/@entry.specialty_sold.to_f) %>
+            <% end %>
+          </td>
+          <td>&ndash;</td>
+        </tr>
+      </tbody>
+    <% end %>
   </table>
 <% end %>
 

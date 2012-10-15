@@ -5,7 +5,7 @@ module Refinery
 
         def index
           @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
-          @entry = @user.journeyboard_dmr_entries.where(:date => @date).first || @user.journeyboard_dmr_entries.build
+          @entry = @user.journeyboard_dmr_entries.where(:date => @date).first
           @entries = @user.journeyboard_dmr_entries.where(:date => @date.beginning_of_month..@date)
         end
 
