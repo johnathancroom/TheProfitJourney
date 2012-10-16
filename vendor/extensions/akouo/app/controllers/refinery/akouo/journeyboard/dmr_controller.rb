@@ -13,6 +13,7 @@ module Refinery
 
         def new
           @entry = @user.journeyboard_dmr_entries.build
+          build_comfort_advisor_entries
         end
 
         def create
@@ -27,6 +28,7 @@ module Refinery
 
         def edit
           @entry = Refinery::Akouo::JourneyboardDmrEntry.find(params[:id])
+          build_comfort_advisor_entries
         end
 
         def update
@@ -51,6 +53,14 @@ module Refinery
 
         def find_budgets
           @budget = @user.journeyboard_budget || @user.build_journeyboard_budget
+        end
+
+        def build_comfort_advisor_entries
+          @entry.user.journeyboard_dmr_comfort_advisors.each do |comfort_advisor|
+            if @entry.comfort_advisor_entries.where(:comfort_advisor_id => comfort_advisor.id).blank?
+              @entry.comfort_advisor_entries.build(:comfort_advisor_id => comfort_advisor.id)
+            end
+          end
         end
 
       end

@@ -196,6 +196,32 @@
     <%= f.number_field :memberships_lost %>
   </div>
 
+  <hr>
+
+  <h1>Comfort Advisors Sales Performance</h1>
+
+  <% @entry.comfort_advisor_entries.each do |comfort_advisor_entry| %>
+    <h2><%= comfort_advisor_entry.comfort_advisor.name %></h2>
+    <%= f.fields_for :comfort_advisor_entries, comfort_advisor_entry do |g| %>
+      <div>
+        <%= g.label :sold %>
+        <%= g.money_field :sold %>
+      </div>
+
+      <div>
+        <%= g.label :calls_run %>
+        <%= g.number_field :calls_run %>
+      </div>
+
+      <div>
+        <%= g.label :calls_sold %>
+        <%= g.number_field :calls_sold %>
+      </div>
+
+      <%= g.hidden_field :comfort_advisor_id, :value => comfort_advisor_entry.comfort_advisor.id %>
+    <% end %>
+  <% end %>
+
   <div>
     <%= f.submit 'Submit', :class => 'button' %>
   </div>
