@@ -33,25 +33,31 @@
       <tbody>
         <tr>
           <td>Replacement Dollars Sold</td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @entry.comfort_advisor_entries.sum(:sold) %></td>
           <td><%= number_to_currency @budget.replacement_dollars_sold %></td>
         </tr>
 
         <tr>
           <td>Replacement Calls Run</td>
-          <td>&ndash;</td>
+          <td><%= @entry.comfort_advisor_entries.sum(:calls_run) %></td>
           <td><%= @budget.replacement_calls_run %></td>
         </tr>
 
         <tr>
           <td>Replacement Calls Sold</td>
-          <td>&ndash;</td>
+          <td><%= @entry.comfort_advisor_entries.sum(:calls_sold) %></td>
           <td><%= @budget.replacement_calls_sold %></td>
         </tr>
 
         <tr>
           <td>Closing Ratio</td>
-          <td>&ndash;</td>
+          <td>
+            <% if @entry.comfort_advisor_entries.sum(:calls_run) == 0 or @entry.comfort_advisor_entries.sum(:calls_sold) == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entry.comfort_advisor_entries.sum(:calls_sold).to_f/@entry.comfort_advisor_entries.sum(:calls_run).to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
           <td>
             <% if @budget.replacement_calls_run == 0 or @budget.replacement_calls_sold == 0 %>
               &ndash;
@@ -63,7 +69,13 @@
 
         <tr>
           <td>Average Ticket</td>
-          <td>&ndash;</td>
+          <td>
+            <% if @entry.comfort_advisor_entries.sum(:sold) == 0 or @entry.comfort_advisor_entries.sum(:calls_sold) == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entry.comfort_advisor_entries.sum(:sold)/@entry.comfort_advisor_entries.sum(:calls_sold)) %>
+            <% end %>
+          </td>
           <td>
             <% if @budget.replacement_dollars_sold == 0 or @budget.replacement_calls_sold == 0 %>
               &ndash;
