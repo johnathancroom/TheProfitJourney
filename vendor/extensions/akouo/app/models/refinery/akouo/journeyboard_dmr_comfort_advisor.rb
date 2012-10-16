@@ -5,6 +5,10 @@ module Refinery
 
       belongs_to :user, :class_name => 'Refinery::User'
       has_many :entries, :class_name => 'Refinery::Akouo::JourneyboardDmrComfortAdvisorEntry'
+
+      attr_accessible :name
+
+      validates_presence_of :name
     end
   end
 end

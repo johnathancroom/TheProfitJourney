@@ -35,6 +35,7 @@ Refinery::Core::Engine.routes.append do
           put 'budget' => 'dmr#update_budget'
         end
       end
+      resources :comfort_advisors, :except => [:destroy, :show]
     end
   end
 
