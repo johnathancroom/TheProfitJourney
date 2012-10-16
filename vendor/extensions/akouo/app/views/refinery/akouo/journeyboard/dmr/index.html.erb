@@ -541,7 +541,25 @@
     <div class="half">
       <h1>Comfort Advisor Sales Performance</h1>
       <table class="journeyboard">
+        <thead>
+          <tr>
+            <th>Comfort Advisor</th>
+            <th>Sold</th>
+            <th>Calls Run</th>
+            <th>Calls Sold</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <% @entry.comfort_advisor_entries.each do |comfort_advisor_entry| %>
+            <tr>
+              <td><%= comfort_advisor_entry.comfort_advisor.name %></td>
+              <td><%= number_to_currency comfort_advisor_entry.sold %></td>
+              <td><%= comfort_advisor_entry.calls_run %></td>
+              <td><%= comfort_advisor_entry.calls_sold %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   <% end %>
