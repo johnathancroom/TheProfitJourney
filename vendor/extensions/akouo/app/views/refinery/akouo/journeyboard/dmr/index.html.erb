@@ -495,12 +495,12 @@
     <% end %>
   </table>
 
-  <hr>
+  <% if !@entry.blank? %>
+    <hr>
 
-  <div class="half">
-    <h1>Memberships</h1>
-    <table class="journeyboard">
-      <% if !@entry.blank? %>
+    <div class="half">
+      <h1>Memberships</h1>
+      <table class="journeyboard">
         <thead>
           <tr>
             <th></th>
@@ -534,16 +534,16 @@
             <td><%= @entries.sum(:memberships_lost) %></td>
           </tr>
         </tbody>
-      <% end %>
-    </table>
-  </div>
+      </table>
+    </div>
 
-  <div class="half">
-    <h1>Comfort Advisor Sales Performance</h1>
-    <table class="journeyboard">
+    <div class="half">
+      <h1>Comfort Advisor Sales Performance</h1>
+      <table class="journeyboard">
 
-    </table>
-  </div>
+      </table>
+    </div>
+  <% end %>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
