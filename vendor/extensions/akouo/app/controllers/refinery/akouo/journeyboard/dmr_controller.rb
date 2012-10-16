@@ -3,6 +3,8 @@ module Refinery
     module Journeyboard
       class DmrController < JourneyboardController
 
+        before_filter :find_budgets
+
         def index
           @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
           @entry = @user.journeyboard_dmr_entries.where(:date => @date).first
@@ -35,6 +37,20 @@ module Refinery
           else
             render :edit
           end
+        end
+
+        def update_budget
+          if @budget.update_attributes(params[:journeyboard_budget])
+            redirect_to refinery.akouo_journeyboard_dmr_index_path, :notice => 'DMR Budgets Saved.'
+          else
+            render :budget
+          end
+        end
+
+      protected
+
+        def find_budgets
+          @budget = @user.journeyboard_budget || @user.build_journeyboard_budget
         end
 
       end

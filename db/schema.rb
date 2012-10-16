@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015201213) do
+ActiveRecord::Schema.define(:version => 20121016034634) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -662,9 +662,8 @@ ActiveRecord::Schema.define(:version => 20121015201213) do
 
   create_table "refinery_journeyboard_budgets", :force => true do |t|
     t.decimal "replacement_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
-    t.integer "replacement_leads_run",                                               :default => 0
-    t.integer "replacement_leads_sold",                                              :default => 0
-    t.integer "replacement_closing_ratio",                                           :default => 0
+    t.integer "replacement_calls_run",                                               :default => 0
+    t.integer "replacement_calls_sold",                                              :default => 0
     t.decimal "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
     t.decimal "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
     t.decimal "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
@@ -676,7 +675,6 @@ ActiveRecord::Schema.define(:version => 20121015201213) do
     t.integer "repair_memberships_sold",                                             :default => 0
     t.integer "repair_opportunities",                                                :default => 0
     t.integer "repair_sold",                                                         :default => 0
-    t.integer "repair_conversion_raio",                                              :default => 0
     t.decimal "repair_dollars_sold",                  :precision => 19, :scale => 2, :default => 0.0
     t.integer "maintenance_calls",                                                   :default => 0
     t.decimal "maintenance_revenue",                  :precision => 19, :scale => 2, :default => 0.0
@@ -685,7 +683,6 @@ ActiveRecord::Schema.define(:version => 20121015201213) do
     t.integer "maintenance_memberships_sold",                                        :default => 0
     t.integer "maintenance_opportunities",                                           :default => 0
     t.integer "maintenance_sold",                                                    :default => 0
-    t.integer "maintenance_conversion_ratio",                                        :default => 0
     t.decimal "maintenance_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
     t.integer "specialty_calls",                                                     :default => 0
     t.decimal "specialty_revenue",                    :precision => 19, :scale => 2, :default => 0.0
@@ -694,7 +691,6 @@ ActiveRecord::Schema.define(:version => 20121015201213) do
     t.integer "specialty_memberships_sold",                                          :default => 0
     t.integer "specialty_opportunities",                                             :default => 0
     t.integer "specialty_sold",                                                      :default => 0
-    t.integer "specialty_conversion_ratio",                                          :default => 0
     t.decimal "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
     t.integer "user_id"
   end

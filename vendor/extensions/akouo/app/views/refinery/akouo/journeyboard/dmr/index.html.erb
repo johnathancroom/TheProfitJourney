@@ -32,49 +32,61 @@
         <tr>
           <td>Replacement Dollars Sold</td>
           <td>&ndash;</td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.replacement_dollars_sold %></td>
         </tr>
 
         <tr>
           <td>Replacement Calls Run</td>
           <td>&ndash;</td>
-          <td>&ndash;</td>
+          <td><%= @budget.replacement_calls_run %></td>
         </tr>
 
         <tr>
           <td>Replacement Calls Sold</td>
           <td>&ndash;</td>
-          <td>&ndash;</td>
+          <td><%= @budget.replacement_calls_sold %></td>
         </tr>
 
         <tr>
           <td>Closing Ratio</td>
           <td>&ndash;</td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.replacement_calls_run == 0 or @budget.replacement_calls_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.replacement_calls_sold.to_f/@budget.replacement_calls_run.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Average Ticket</td>
           <td>&ndash;</td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.replacement_dollars_sold == 0 or @budget.replacement_calls_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.replacement_dollars_sold/@budget.replacement_calls_sold) %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replaced Yesterday</td>
           <td><%= number_to_currency @entry.replacement_replaced %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.replacement_replaced %></td>
         </tr>
 
         <tr>
           <td>Installed Yesterday</td>
           <td><%= number_to_currency @entry.replacement_installed %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.replacement_installed %></td>
         </tr>
 
         <tr>
           <td>COG's</td>
           <td><%= number_to_currency @entry.replacement_cogs %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.replacement_cogs %></td>
         </tr>
 
         <tr>
@@ -96,25 +108,25 @@
         <tr>
           <td>Calls Run</td>
           <td><%= @entry.repair_calls %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_calls %></td>
         </tr>
 
         <tr>
           <td>Warranty Calls Run</td>
           <td><%= @entry.repair_warranty_calls %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_warranty_calls %></td>
         </tr>
 
         <tr>
           <td>Revenue</td>
           <td><%= number_to_currency @entry.repair_revenue %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.repair_revenue %></td>
         </tr>
 
         <tr>
           <td>COG's</td>
           <td><%= number_to_currency @entry.repair_cogs %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.repair_cogs %></td>
         </tr>
 
         <tr>
@@ -126,19 +138,25 @@
               <%= number_to_currency(@entry.repair_revenue/@entry.repair_calls.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.repair_revenue == 0 or @budget.repair_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.repair_revenue/@budget.repair_calls.to_f) %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Membership Opportunities Run</td>
           <td><%= @entry.repair_membership_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_membership_opportunities %></td>
         </tr>
 
         <tr>
           <td>Memberships Sold</td>
           <td><%= @entry.repair_memberships_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_memberships_sold %></td>
         </tr>
 
         <tr>
@@ -150,19 +168,25 @@
               <%= "#{((@entry.repair_memberships_sold.to_f/@entry.repair_membership_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.repair_membership_opportunities == 0 or @budget.repair_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.repair_memberships_sold.to_f/@budget.repair_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Opportunities Run</td>
           <td><%= @entry.repair_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_opportunities %></td>
         </tr>
 
         <tr>
           <td>Replacements Sold</td>
           <td><%= @entry.repair_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.repair_sold %></td>
         </tr>
 
         <tr>
@@ -174,13 +198,19 @@
               <%= "#{((@entry.repair_sold.to_f/@entry.repair_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.repair_opportunities == 0 or @budget.repair_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.repair_sold.to_f/@budget.repair_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Dollars Sold</td>
           <td><%= number_to_currency @entry.repair_dollars_sold %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.repair_dollars_sold %></td>
         </tr>
 
         <tr>
@@ -192,7 +222,13 @@
               <%= number_to_currency(@entry.repair_dollars_sold/@entry.repair_sold.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.repair_sold == 0 or @budget.repair_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.repair_dollars_sold/@budget.repair_sold.to_f) %>
+            <% end %>
+          </td>
         </tr>
       </tbody>
 
@@ -208,19 +244,19 @@
         <tr>
           <td>Calls Run</td>
           <td><%= @entry.maintenance_calls %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.maintenance_calls %></td>
         </tr>
 
         <tr>
           <td>Revenue</td>
           <td><%= number_to_currency @entry.maintenance_revenue %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.maintenance_revenue %></td>
         </tr>
 
         <tr>
           <td>COG's</td>
           <td><%= number_to_currency @entry.maintenance_cogs %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.maintenance_cogs %></td>
         </tr>
 
         <tr>
@@ -232,19 +268,25 @@
               <%= number_to_currency(@entry.maintenance_revenue/@entry.maintenance_calls.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.maintenance_revenue == 0 or @budget.maintenance_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.maintenance_revenue/@budget.maintenance_calls.to_f) %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Membership Opportunities Run</td>
           <td><%= @entry.maintenance_membership_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.maintenance_membership_opportunities %></td>
         </tr>
 
         <tr>
           <td>Memberships Sold</td>
           <td><%= @entry.maintenance_memberships_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.maintenance_memberships_sold %></td>
         </tr>
 
         <tr>
@@ -256,19 +298,25 @@
               <%= "#{((@entry.maintenance_memberships_sold.to_f/@entry.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.maintenance_membership_opportunities == 0 or @budget.maintenance_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.maintenance_memberships_sold.to_f/@budget.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Opportunities Run</td>
           <td><%= @entry.maintenance_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.maintenance_opportunities %></td>
         </tr>
 
         <tr>
           <td>Replacements Sold</td>
           <td><%= @entry.maintenance_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.maintenance_sold %></td>
         </tr>
 
         <tr>
@@ -280,13 +328,19 @@
               <%= "#{((@entry.maintenance_sold.to_f/@entry.maintenance_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.maintenance_opportunities == 0 or @budget.maintenance_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.maintenance_sold.to_f/@budget.maintenance_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Dollars Sold</td>
           <td><%= number_to_currency @entry.maintenance_dollars_sold %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.maintenance_dollars_sold %></td>
         </tr>
 
         <tr>
@@ -298,7 +352,13 @@
               <%= number_to_currency(@entry.maintenance_dollars_sold/@entry.maintenance_sold.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.maintenance_sold == 0 or @budget.maintenance_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.maintenance_dollars_sold/@budget.maintenance_sold.to_f) %>
+            <% end %>
+          </td>
         </tr>
       </tbody>
 
@@ -314,19 +374,19 @@
         <tr>
           <td>Calls Run</td>
           <td><%= @entry.specialty_calls %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.specialty_calls %></td>
         </tr>
 
         <tr>
           <td>Revenue</td>
           <td><%= number_to_currency @entry.specialty_revenue %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.specialty_revenue %></td>
         </tr>
 
         <tr>
           <td>COG's</td>
           <td><%= number_to_currency @entry.specialty_cogs %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.specialty_cogs %></td>
         </tr>
 
         <tr>
@@ -338,19 +398,25 @@
               <%= number_to_currency(@entry.specialty_revenue/@entry.specialty_calls.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.specialty_revenue == 0 or @budget.specialty_calls == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.specialty_revenue/@budget.specialty_calls.to_f) %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Membership Opportunities Run</td>
           <td><%= @entry.specialty_membership_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.specialty_membership_opportunities %></td>
         </tr>
 
         <tr>
           <td>Memberships Sold</td>
           <td><%= @entry.specialty_memberships_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.specialty_memberships_sold %></td>
         </tr>
 
         <tr>
@@ -362,19 +428,25 @@
               <%= "#{((@entry.specialty_memberships_sold.to_f/@entry.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.specialty_membership_opportunities == 0 or @budget.specialty_memberships_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.specialty_memberships_sold.to_f/@budget.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Opportunities Run</td>
           <td><%= @entry.specialty_opportunities %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.specialty_opportunities %></td>
         </tr>
 
         <tr>
           <td>Replacements Sold</td>
           <td><%= @entry.specialty_sold %></td>
-          <td>&ndash;</td>
+          <td><%= @budget.specialty_sold %></td>
         </tr>
 
         <tr>
@@ -386,13 +458,19 @@
               <%= "#{((@entry.specialty_sold.to_f/@entry.specialty_opportunities.to_f)*100).round(2)}%" %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.specialty_opportunities == 0 or @budget.specialty_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@budget.specialty_sold.to_f/@budget.specialty_opportunities.to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
         </tr>
 
         <tr>
           <td>Replacement Dollars Sold</td>
           <td><%= number_to_currency @entry.specialty_dollars_sold %></td>
-          <td>&ndash;</td>
+          <td><%= number_to_currency @budget.specialty_dollars_sold %></td>
         </tr>
 
         <tr>
@@ -404,7 +482,13 @@
               <%= number_to_currency(@entry.specialty_dollars_sold/@entry.specialty_sold.to_f) %>
             <% end %>
           </td>
-          <td>&ndash;</td>
+          <td>
+            <% if @budget.specialty_sold == 0 or @budget.specialty_dollars_sold == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.specialty_dollars_sold/@budget.specialty_sold.to_f) %>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     <% end %>
