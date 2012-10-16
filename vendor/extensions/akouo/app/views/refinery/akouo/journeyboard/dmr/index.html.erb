@@ -15,6 +15,7 @@
 
   <hr>
 
+  <h1>Daily Performance</h1>
   <table class="journeyboard">
     <% if @entry.blank? %>
       <tr>
@@ -493,6 +494,56 @@
       </tbody>
     <% end %>
   </table>
+
+  <hr>
+
+  <div class="half">
+    <h1>Memberships</h1>
+    <table class="journeyboard">
+      <% if !@entry.blank? %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Yesterday</th>
+            <th>MTD</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Memberships Sold by CSR's</td>
+            <td><%= @entry.memberships_sold_by_csr %></td>
+            <td><%= @entries.sum(:memberships_sold_by_csr) %></td>
+          </tr>
+
+          <tr>
+            <td>Memberships Sold With New Systems</td>
+            <td><%= @entry.memberships_sold_new_systems %></td>
+            <td><%= @entries.sum(:memberships_sold_new_systems) %></td>
+          </tr>
+
+          <tr>
+            <td>Total Memberships Added</td>
+            <td><%= @entry.memberships_sold_by_csr + @entry.memberships_sold_new_systems %></td>
+            <td><%= @entries.sum(:memberships_sold_by_csr) + @entries.sum(:memberships_sold_new_systems) %></td>
+          </tr>
+
+          <tr>
+            <td>Memberships Lost</td>
+            <td><%= @entry.memberships_lost %></td>
+            <td><%= @entries.sum(:memberships_lost) %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="half">
+    <h1>Comfort Advisor Sales Performance</h1>
+    <table class="journeyboard">
+
+    </table>
+  </div>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
