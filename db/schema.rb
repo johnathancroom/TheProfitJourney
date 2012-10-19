@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016213539) do
+ActiveRecord::Schema.define(:version => 20121019020824) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -693,6 +693,7 @@ ActiveRecord::Schema.define(:version => 20121016213539) do
     t.integer "specialty_sold",                                                      :default => 0
     t.decimal "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
     t.integer "user_id"
+    t.integer "budget_days",                                                         :default => 20
   end
 
   create_table "refinery_journeyboard_dmr_comfort_advisor_entries", :force => true do |t|
@@ -746,6 +747,7 @@ ActiveRecord::Schema.define(:version => 20121016213539) do
     t.datetime "created_at",                                                                           :null => false
     t.datetime "updated_at",                                                                           :null => false
     t.date     "date"
+    t.integer  "day_of_month"
   end
 
   create_table "refinery_journeyboard_entries", :force => true do |t|

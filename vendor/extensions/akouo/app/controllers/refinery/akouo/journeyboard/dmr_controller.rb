@@ -9,10 +9,11 @@ module Refinery
           @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
           @entry = @user.journeyboard_dmr_entries.where(:date => @date).first
           @entries = @user.journeyboard_dmr_entries.where(:date => @date.beginning_of_month..@date)
+          @budget_days = @budget.budget_days
         end
 
         def new
-          @entry = @user.journeyboard_dmr_entries.build
+          @entry = @user.journeyboard_dmr_entries.build(:day_of_month => @user.journeyboard_dmr_entries.where(:date => Date.today.beginning_of_month..Date.today).count + 1)
           build_comfort_advisor_entries
         end
 
