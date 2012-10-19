@@ -868,6 +868,32 @@
           <% end %>
         </tr>
       </tbody>
+
+      <thead>
+        <tr>
+          <th></th>
+          <%=raw th %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><strong>Total Revenue</strong></td>
+          <td><%= number_to_currency(@entry.replacement_replaced+@entry.replacement_installed+@entry.repair_revenue+@entry.maintenance_revenue+@entry.specialty_revenue) %></td>
+          <td><%= number_to_currency((@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget_days) %></td>
+          <td><%= number_to_currency(@entries.sum(:replacement_replaced)+@entries.sum(:replacement_installed)+@entries.sum(:repair_revenue)+@entries.sum(:maintenance_revenue)+@entries.sum(:specialty_revenue)) %></td>
+          <td><%= number_to_currency(((@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget_days)*@entry.day_of_month) %></td>
+          <td><%= number_to_currency(@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue) %></td>
+        </tr>
+
+        <tr>
+          <td><strong>Total COG's</strong></td>
+          <td><%= number_to_currency(@entry.replacement_cogs+@entry.repair_cogs+@entry.maintenance_cogs+@entry.specialty_cogs) %></td>
+          <td><%= number_to_currency((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget_days) %></td>
+          <td><%= number_to_currency(@entries.sum(:replacement_cogs)+@entries.sum(:repair_cogs)+@entries.sum(:maintenance_cogs)+@entries.sum(:specialty_cogs)) %></td>
+          <td><%= number_to_currency(((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget_days)*@entry.day_of_month) %></td>
+          <td><%= number_to_currency(@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs) %></td>
+      </tbody>
     <% end %>
   </table>
 
