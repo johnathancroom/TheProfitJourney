@@ -900,6 +900,85 @@
   <% if !@entry.blank? %>
     <hr>
 
+    <h1>Profit Calculations</h1>
+    <table class="journeyboard">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Daily Actual</th>
+          <th>Daily Budget</th>
+          <th>MTD Budget</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><strong>Fixed Expense</strong></td>
+          <td>&ndash;</td>
+          <td>
+            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.total_expenses/@budget.budget_days) %>
+            <% end %>
+          </td>
+          <td>
+            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency((@budget.total_expenses/@budget.budget_days)*@entry.day_of_month) %>
+            <% end %>
+          </td>
+          <td><%= number_to_currency @budget.total_expenses %></td>
+        </tr>
+      </tbody>
+
+      <thead>
+        <tr>
+          <th></th>
+          <th>Daily Actual</th>
+          <th>Daily Budget</th>
+          <th>MTD Budget</th>
+          <th>Total Budget</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><strong>Est. Daily Profit</strong></td>
+          <td>
+            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+              &ndash;
+            <% else %>
+              <%
+                b43 = @entry.replacement_replaced+@entry.replacement_installed+@entry.repair_revenue+@entry.maintenance_revenue+@entry.specialty_revenue
+                b49 = @budget.total_expenses/@budget.budget_days
+                i2 = @budget.ytd_gross_margin
+              %>
+              <%= number_to_currency(b43-(b49+(b43*(1-i2)))) %>
+            <% end %>
+          </td>
+          <td>
+            <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.total_operating_profit/@budget.budget_days) %>
+            <% end %>
+          </td>
+          <td>
+            <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 or @entry.day_of_month == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency((@budget.total_operating_profit/@budget.budget_days)*@entry.day_of_month) %>
+            <% end %>
+          </td>
+          <td><%= number_to_currency @budget.total_operating_profit %></td>
+      </tbody>
+    </table>
+
+    <hr>
+
     <div class="half">
       <h1>Memberships</h1>
       <table class="journeyboard">
