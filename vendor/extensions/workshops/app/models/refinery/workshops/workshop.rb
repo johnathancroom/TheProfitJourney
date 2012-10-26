@@ -7,7 +7,7 @@ module Refinery
 
       acts_as_indexed :fields => [:title, :description, :location]
 
-      validates :title, :presence => true, :uniqueness => true
+      validates :title, :presence => true
 
       has_many :users, :class_name => "Refinery::User"
 
