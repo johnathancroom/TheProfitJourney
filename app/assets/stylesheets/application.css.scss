@@ -480,6 +480,7 @@ textarea {
     width: 140px;
   }
   .radio label {
+    margin: 0 0 5px 0;
     width: 200px;
   }
   input {
@@ -489,8 +490,12 @@ textarea {
   select {
     margin-bottom: 15px;
   }
+  input[type=submit] {
+    margin: 0px;
+    vertical-align: baseline;
+  }
   input[type=radio] {
-    margin-bottom: 0;
+    margin: 0px;
   }
   .card_details {
     width: 215px;
@@ -512,6 +517,7 @@ textarea {
   margin-left: 0;
 
   label {
+    margin: 0 0 5px 0;
     width: auto;
   }
 }
