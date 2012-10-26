@@ -182,7 +182,7 @@
         </tr>
 
         <tr>
-          <td>Installed Yesterday</td>
+          <td>Accessories Sold Yesterday</td>
           <td><%= number_to_currency @entry.replacement_installed %></td>
           <td><%= number_to_currency(@budget.replacement_installed/@budget_days) %></td>
           <td><%= number_to_currency @entries.sum(:replacement_installed) %></td>
