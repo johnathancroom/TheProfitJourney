@@ -8,7 +8,7 @@
   <%= link_to 'Comfort Advisors', refinery.akouo_journeyboard_comfort_advisors_path %> |
   <%= link_to 'Entries', refinery.akouo_journeyboard_entries_path %>
 
-  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.blank? %>
+  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.id.nil? %>
 
   <hr>
 

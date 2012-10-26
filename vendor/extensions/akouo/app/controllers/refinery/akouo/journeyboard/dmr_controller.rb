@@ -7,13 +7,14 @@ module Refinery
 
         def index
           @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
-          @entry = @user.journeyboard_dmr_entries.where(:date => @date).first
+          @entry = @user.journeyboard_dmr_entries.where(:date => @date).first || @user.journeyboard_dmr_entries.build(:day_of_month => new_day_of_month)
+          build_comfort_advisor_entries
           @entries = @user.journeyboard_dmr_entries.where(:date => @date.beginning_of_month..@date)
           @budget_days = @budget.budget_days
         end
 
         def new
-          @entry = @user.journeyboard_dmr_entries.build(:day_of_month => @user.journeyboard_dmr_entries.where(:date => Date.today.beginning_of_month..Date.today).count + 1)
+          @entry = @user.journeyboard_dmr_entries.build(:day_of_month => new_day_of_month)
           build_comfort_advisor_entries
         end
 
@@ -62,6 +63,10 @@ module Refinery
               @entry.comfort_advisor_entries.build(:comfort_advisor_id => comfort_advisor.id)
             end
           end
+        end
+
+        def new_day_of_month
+          @user.journeyboard_dmr_entries.where(:date => Date.today.beginning_of_month..Date.today).count + 1
         end
 
       end
