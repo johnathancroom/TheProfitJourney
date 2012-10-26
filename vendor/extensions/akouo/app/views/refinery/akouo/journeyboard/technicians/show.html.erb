@@ -22,7 +22,6 @@
             <th>Fuel</th>
             <th>Parts</th>
             <th title="Additional labor">Add. labor</th>
-            <th title="Accessories">Access.</th>
             <th>Leads sold</th>
             <th title="Lead opportunities">Lead opp.</th>
             <th>Tickets</th>
@@ -35,13 +34,12 @@
           <tbody>
             <tr>
               <td><%= link_to entry.date.strftime("%b %e, %Y"), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
-              <td><%= number_to_currency entry.revenue %></td>
+              <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
               <td><%= number_to_currency entry.commission %></td>
               <td><%= number_to_currency entry.todays_pay %></td>
               <td><%= number_to_currency entry.fuel_cost %></td>
               <td><%= number_to_currency entry.parts %></td>
               <td><%= number_to_currency entry.additional_labor %></td>
-              <td><%= entry.add_on %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
               <td><%= entry.tickets %></td>
