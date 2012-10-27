@@ -5,12 +5,13 @@ module Refinery
       before_filter :redirect?, :only => [:show, :update]
       before_filter :account_page_specifics, :only => [:show, :update]
 
+      before_filter :register_page, :only => [:new, :create]
+
       def new
         if refinery_user?
           # Redirect to account if already logged in
           redirect_to refinery.akouo_account_path
         else
-          @page = ::Refinery::Page.where(:link_url => "/register").first
           @user = ::Refinery::User.new
         end
       end
@@ -50,6 +51,10 @@ module Refinery
         @user = current_refinery_user
         @page = ::Refinery::Page.where(:link_url => "/account").first
         @workshops = ::Refinery::Workshops::Workshop.current
+      end
+
+      def register_page
+        @page = ::Refinery::Page.where(:link_url => "/register").first
       end
 
     end
