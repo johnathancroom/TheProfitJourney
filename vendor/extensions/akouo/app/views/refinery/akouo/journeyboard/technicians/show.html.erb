@@ -44,7 +44,7 @@
               <td><%= entry.opportunities %></td>
               <td><%= entry.tickets %></td>
               <td><%= entry.hours %></td>
-              <td><%= "#{number_to_currency((entry.revenue-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
+              <td><%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
               <td class="agreements">
                 <table>
                   <tr>
