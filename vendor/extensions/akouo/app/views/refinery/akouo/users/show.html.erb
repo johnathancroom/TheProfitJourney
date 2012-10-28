@@ -1,7 +1,7 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  <%= form_for @user, :url => refinery.akouo_account_path, :html => { :method => 'PUT', :class => 'styled_form' } do |f| %>
+  <%= form_for @user, :url => refinery.akouo_account_path, :html => { :method => 'PUT', :class => 'styled_form wide' } do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@user.errors.count, 'error') %> need to be corrected before continuing:</h2>
@@ -68,7 +68,7 @@
       <%=raw '<div class="radio">' if index % 2 == 0 %>
 
         <%= f.radio_button :plan_id, index, :checked => ((true if index == @user.get_plan) || false) if plan[0] != "" %>
-        <%= f.label :plan_id, plan[0], :value => index %>
+        <%= label_tag :"user_plan_id_#{index}", plan[0] %>
 
       <%=raw '</div>' if index % 2 > 0 %>
     <% end %>
