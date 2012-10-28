@@ -23,8 +23,8 @@ Refinery::Core::Engine.routes.append do
 
     get 'account' => 'users#show'
     put 'account' => 'users#update'
-    get 'account/plans' => 'payments#new'
-    put 'account/plans' => 'payments#create'
+    get 'account/payments' => 'payments#new'
+    put 'account/payments' => 'payments#create'
 
     namespace :journeyboard do
       resources :technicians, :except => [:destroy]

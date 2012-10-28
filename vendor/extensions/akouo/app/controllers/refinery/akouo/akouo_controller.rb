@@ -60,6 +60,20 @@ module Refinery
         end
       end
 
+      def new_transaction
+        AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => ((ENV['ANET_SANDBOX'].nil?) ? :production : :sandbox))
+      end
+
+      def cancel_plan
+        cancel_transaction = new_transaction
+        cancel_transaction.cancel(@user.subscription_id)
+
+        # Remove user plan
+        @user.subscription_id = nil
+        @user.plan_id = 0
+        @user.save
+      end
+
     end
   end
 end

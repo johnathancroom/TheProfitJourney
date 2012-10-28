@@ -37,9 +37,18 @@ module Refinery
           params[:user].except!(:password, :password_confirmation)
         end
 
+        if params[:user][:plan_id].to_i != @user.get_plan
+          cancel_plan
+          changed_plan = true
+        end
+
         if @user.update_attributes(params[:user])
-          flash.now[:notice] = "Changes have been saved."
-          render :show
+          if changed_plan
+            redirect_to refinery.akouo_account_payments_path, :notice => 'Please fill out your payment information to finish registering for a new plan.'
+          else
+            flash.now[:notice] = 'Account has been saved.'
+            render :show
+          end
         else
           render :show
         end

@@ -1,51 +1,67 @@
+<% content_for :body_content_title do %>
+  Payment Form
+<% end %>
+
 <% content_for :body do %>
-  <%=raw @page.content_for(:body) %>
+  <%= form_tag refinery.akouo_account_payments_path, :method => 'PUT', :class => 'styled_form wide', :style => 'position: relative;' do %>
 
-  <%= form_tag refinery.akouo_account_plans_path, :method => "PUT", :class => "styled_form" do %>
+    <%= hidden_field_tag :plan_id, params[:plan_id] || @user.plan_id %>
 
-    <h1>Select a Plan</h1>
-    <% @plans.each_with_index do |plan, index| %>
-      <% if index % 2 == 0 %>
-        <div class="radio">
-      <% end %>
+    <div>
+      <%= label_tag :first_name, 'First Name (on card)' %>
+      <%= text_field_tag :first_name, params[:first_name] || @user.first_name %>
+    </div>
 
-        <%= radio_button_tag "plan", index, (true if index == @user.get_plan) if plan[0] != "" %>
-        <%= label_tag "plan_#{index}", plan[0] %>
+    <div>
+      <%= label_tag :last_name, 'Last Name (on card)' %>
+      <%= text_field_tag :last_name, params[:first_name] || @user.last_name %>
+    </div>
 
-      <% if index % 2 > 0 %>
-        </div>
-      <% end %>
-    <% end %>
+    <div>
+      <%= label_tag :address %>
+      <%= text_field_tag :address, params[:address] %>
+    </div>
+
+    <div>
+      <%= label_tag :city %>
+      <%= text_field_tag :city, params[:city] %>
+    </div>
+
+    <div>
+      <%= label_tag :state %>
+      <%= select_tag :state, options_for_select(states, params[:state]) %>
+    </div>
+
+    <div>
+      <%= label_tag :zip_code %>
+      <%= text_field_tag :zip_code, params[:zip_code] %>
+    </div>
 
     <hr>
 
-    <h1>Payment Information</h1>
-    <div>
-      <%= label_tag :first_name, "First Name (on card)" %>
-      <%= text_field_tag :first_name, @user.first_name, :size => 30 %>
-    </div>
-
-    <div>
-      <%= label_tag :last_name, "Last Name (on card)" %>
-      <%= text_field_tag :last_name, @user.last_name, :size => 30 %>
-    </div>
-
     <div>
       <%= label_tag :card_number %>
-      <%= text_field_tag :card_number, "", :autocomplete => "off", :size => 30 %>
+      <%= text_field_tag :card_number, nil, :autocomplete => 'off' %>
     </div>
 
     <div>
       <%= label_tag :card_expiration %>
-      <%= select_tag :card_expiry_month, options_for_select(@months) %>
-      <%= select_tag :card_expiry_year, options_for_select(@years) %>
+      <%= select_tag :card_expiry_month, options_for_select(@months, params[:card_expiry_month]) %>
+      <%= select_tag :card_expiry_year, options_for_select(@years, params[:card_expiry_year]) %>
     </div>
 
     <div>
-      <%= submit_tag "Submit", :class => "button" %>
-      <%= link_to "Back to Account", refinery.akouo_account_path, :class => "button" %>
-      <%= content_tag :span, "By submitting, you agree to charge your credit card as selected.", :class => "payment_notice" %>
+      <%= label_tag :cvv, 'CVV' %>
+      <%= text_field_tag :cvv, params[:cvv], :size => 6 %>
+      <%= link_to 'What is this?', '', :style => 'margin-left: 5px;' %>
     </div>
+
+    <div>
+      <%= submit_tag 'Pay Now', :class => 'button' %>
+      <%= content_tag :span, 'By submitting, you agree to charge your credit card as selected.', :class => 'payment_notice' %>
+    </div>
+
+    <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=73657004005ed94df410120a5e496e567fef94223179670"></script></span>
   <% end %>
 <% end %>
 

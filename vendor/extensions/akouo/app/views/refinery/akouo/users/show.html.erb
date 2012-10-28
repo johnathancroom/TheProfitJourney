@@ -1,10 +1,10 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  <%= form_for @user, :url => refinery.akouo_account_path, :html => { :method => "PUT", :class => "styled_form" } do |f| %>
+  <%= form_for @user, :url => refinery.akouo_account_path, :html => { :method => 'PUT', :class => 'styled_form' } do |f| %>
     <% if @user.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> need to be corrected before continuing:</h2>
+        <h2><%= pluralize(@user.errors.count, 'error') %> need to be corrected before continuing:</h2>
 
         <ul>
         <% @user.errors.full_messages.each do |msg| %>
@@ -30,7 +30,7 @@
     <h1>Change Password</h1>
     <p>Leaving password fields blank will keep your current password the same.</p>
     <div>
-      <%= f.label :password, "New Password" %>
+      <%= f.label :password, 'New Password' %>
       <%= f.password_field :password %>
     </div>
 
@@ -41,29 +41,39 @@
 
     <hr>
 
-    <h1>Your Plan</h1>
-    <%= @plans[@user.get_plan][0] %>
-    <%= link_to "Edit Plan", refinery.akouo_account_plans_path %>
-
-    <hr>
-
     <h1>Workshop</h1>
-    <p>Workshop attendance is included with a Platinum Plan. If you would like to attend without a Platinum Plan, you can <%= link_to "sign up for a workshop", "" %> for an extra fee.
+    <p>Workshop attendance is included with a Platinum Plan. An extra fee will be charged if you aren't Platinum.</p>
+    <% if !@user.can_attend_workshop? and !@user.get_workshop.nil? %>
+      <div class="flash_alert">You have selected a workshop but need to become a Platinum member or pay an extra fee in order to attend. <%= link_to 'Click here', refinery.akouo_account_payments_path %> to pay the extra fee or change your plan below.</div>
+    <% end %>
     <ul class="account_workshops">
       <li>
-        <%= f.radio_button :workshop_id, "-1", :checked => (true if @user.workshop == nil) || false %>
-        <%= f.label :workshop_id, "No Workshop", :value => "-1" %>
+        <%= f.radio_button :workshop_id, -1, :checked => (true if @user.workshop == nil) || false %>
+        <%= f.label :workshop_id, 'No Workshop', :value => -1 %>
       </li>
 
       <% @workshops.each do |workshop| %>
         <li>
-          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) || false, :disabled => (true if !@user.can_attend_workshop?) %>
+          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) %>
           <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date}", :value => workshop.id %>
         </li>
       <% end %>
     </ul>
 
-    <%= f.submit "Save Changes", :class => "button" %>
+    <hr>
+
+    <h1>Your Plan</h1>
+    <p>You will be prompted to provide credit card information after selecting a paid plan.</p>
+    <% @plans.each_with_index do |plan, index| %>
+      <%=raw '<div class="radio">' if index % 2 == 0 %>
+
+        <%= f.radio_button :plan_id, index, :checked => ((true if index == @user.get_plan) || false) if plan[0] != "" %>
+        <%= f.label :plan_id, plan[0], :value => index %>
+
+      <%=raw '</div>' if index % 2 > 0 %>
+    <% end %>
+
+    <%= f.submit 'Save Changes', :class => 'button' %>
   <% end %>
 <% end %>
 

@@ -22,7 +22,6 @@
     ["/register", "Register"],
     ["/login", "Login"],
     ["/account", "My Account"],
-    ["/account/plans", "Account Plans"],
     ["/user/password/new", "Reset Password"]
   ]
 
