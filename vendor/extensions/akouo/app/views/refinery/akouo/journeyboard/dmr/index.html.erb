@@ -3,12 +3,12 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= link_to 'New DMR Entry', refinery.new_akouo_journeyboard_dmr_path %> |
+  <%= link_to 'New Entry', refinery.new_akouo_journeyboard_entry_path %> |
+  <%= link_to 'Employees', refinery.akouo_journeyboard_technicians_path %> |
   <%= link_to 'Edit Budgets', refinery.budget_akouo_journeyboard_dmr_index_path %> |
-  <%= link_to 'Comfort Advisors', refinery.akouo_journeyboard_comfort_advisors_path %> |
   <%= link_to 'Entries', refinery.akouo_journeyboard_entries_path %>
 
-  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.id.nil? %>
+  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.nil? %>
 
   <hr>
 

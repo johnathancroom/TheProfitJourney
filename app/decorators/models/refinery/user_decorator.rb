@@ -4,8 +4,6 @@ Refinery::User.class_eval do
   belongs_to :workshop, :class_name => "Refinery::Workshops::Workshop"
   has_one :customer, :class_name => "Refinery::Akouo::Customer"
   has_one :journeyboard_budget, :class_name => 'Refinery::Akouo::JourneyboardBudget'
-  has_many :journeyboard_dmr_entries, :class_name => 'Refinery::Akouo::JourneyboardDmrEntry'
-  has_many :journeyboard_dmr_comfort_advisors, :class_name => 'Refinery::Akouo::JourneyboardDmrComfortAdvisor'
   has_many :technicians, :class_name => "Refinery::Akouo::JourneyboardTechnician"
 
   attr_accessible(

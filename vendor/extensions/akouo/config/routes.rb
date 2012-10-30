@@ -29,13 +29,12 @@ Refinery::Core::Engine.routes.append do
     namespace :journeyboard do
       resources :technicians, :except => [:destroy]
       resources :entries, :except => [:show, :destroy]
-      resources :dmr, :path => '', :except => [:show, :destroy] do
+      resources :dmr, :path => '', :only => [:index] do
         collection do
           get 'budget'
           put 'budget' => 'dmr#update_budget'
         end
       end
-      resources :comfort_advisors, :except => [:destroy, :show]
     end
   end
 

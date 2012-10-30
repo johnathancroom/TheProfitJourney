@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026013039) do
+ActiveRecord::Schema.define(:version => 20121029153617) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -697,60 +697,6 @@ ActiveRecord::Schema.define(:version => 20121026013039) do
     t.decimal "total_expenses",                       :precision => 19, :scale => 2, :default => 0.0
     t.decimal "total_operating_profit",               :precision => 19, :scale => 2, :default => 0.0
     t.integer "ytd_gross_margin",                                                    :default => 0
-  end
-
-  create_table "refinery_journeyboard_dmr_comfort_advisor_entries", :force => true do |t|
-    t.decimal "sold",                      :precision => 19, :scale => 2, :default => 0.0
-    t.integer "calls_run",                                                :default => 0
-    t.integer "calls_sold",                                               :default => 0
-    t.integer "comfort_advisor_id"
-    t.integer "journeyboard_dmr_entry_id"
-  end
-
-  create_table "refinery_journeyboard_dmr_comfort_advisors", :force => true do |t|
-    t.string  "name"
-    t.integer "user_id"
-  end
-
-  create_table "refinery_journeyboard_dmr_entries", :force => true do |t|
-    t.decimal  "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "replacement_backlog",                  :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "repair_calls",                                                        :default => 0
-    t.integer  "repair_warranty_calls",                                               :default => 0
-    t.decimal  "repair_revenue",                       :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "repair_cogs",                          :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "repair_membership_opportunities",                                     :default => 0
-    t.integer  "repair_memberships_sold",                                             :default => 0
-    t.integer  "repair_opportunities",                                                :default => 0
-    t.integer  "repair_sold",                                                         :default => 0
-    t.decimal  "repair_dollars_sold",                  :precision => 10, :scale => 0, :default => 0
-    t.integer  "maintenance_calls",                                                   :default => 0
-    t.decimal  "maintenance_revenue",                  :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "maintenance_cogs",                     :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "maintenance_membership_opportunities",                                :default => 0
-    t.integer  "maintenance_memberships_sold",                                        :default => 0
-    t.integer  "maintenance_opportunities",                                           :default => 0
-    t.integer  "maintenance_sold",                                                    :default => 0
-    t.decimal  "maintenance_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "specialty_calls",                                                     :default => 0
-    t.decimal  "specialty_revenue",                    :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "specialty_cogs",                       :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "specialty_membership_opportunities",                                  :default => 0
-    t.integer  "specialty_memberships_sold",                                          :default => 0
-    t.integer  "specialty_opportunities",                                             :default => 0
-    t.integer  "specialty_sold",                                                      :default => 0
-    t.decimal  "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "memberships_sold_by_csr",                                             :default => 0
-    t.integer  "memberships_sold_new_systems",                                        :default => 0
-    t.integer  "memberships_lost",                                                    :default => 0
-    t.integer  "comfort_advisor_sales_id"
-    t.integer  "user_id"
-    t.datetime "created_at",                                                                           :null => false
-    t.datetime "updated_at",                                                                           :null => false
-    t.date     "date"
-    t.integer  "day_of_month"
   end
 
   create_table "refinery_journeyboard_entries", :force => true do |t|
