@@ -1,7 +1,11 @@
 <form method="GET" class="js_date_select">
   <%= hidden_field_tag :date %>
 
-  Viewing <%= select_date @date, :order => [:month, :day, :year] %>
+  <% if @mtd %>
+    Viewing <strong>Month to Date</strong>. View <%= select_date @date, :order => [:month, :day, :year] %>
+  <% else %>
+    Viewing <%= select_date @date, :order => [:month, :day, :year] %>
+  <% end %>
   <%= submit_tag 'Go', :class => 'button', :style => 'top: 0;' %>
 </form>
 

@@ -11,7 +11,7 @@
   <% @profit_centers.each do |profit_center| %>
     <h1><%= profit_center.pcn %></h1>
 
-    <% entries = profit_center.journeyboard_entries.where(:date => @date) %>
+    <% entries = profit_center.journeyboard_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
     <table class="journeyboard">
       <% if entries.blank? %>
         <tr>
@@ -20,6 +20,7 @@
       <% else %>
         <thead>
           <tr>
+            <th>Date</th>
             <th>Tech</th>
             <th>Revenue</th>
             <th>Cost</th>
@@ -35,6 +36,7 @@
         <% entries.each do |entry| %>
           <tbody>
             <tr>
+              <td><%= entry.date.strftime('%b %e, %Y') %></td>
               <td><%= link_to entry.employee.name, refinery.akouo_journeyboard_employee_path(entry.employee) %></td>
               <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
               <td><%= number_to_currency(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>

@@ -6,7 +6,12 @@ module Refinery
         before_filter :find_entry, :only => [:edit, :update]
 
         def index
-          @date = !params[:date].nil? ? Date.strptime(params[:date], "%m-%d-%Y") : Date.today
+          if params[:date].nil?
+            @date = Date.today
+            @mtd = true
+          else
+            @date = Date.strptime(params[:date], "%m-%d-%Y")
+          end
         end
 
         def new
