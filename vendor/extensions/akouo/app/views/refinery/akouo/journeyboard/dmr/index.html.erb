@@ -247,11 +247,11 @@
     <tbody>
       <tr>
         <td><strong>Total Revenue</strong></td>
-        <td><%= number_to_currency(@entries[0].sum(:revenue)+@entries[1].sum(:revenue)+@entries[2].sum(:revenue)+@entries[3].sum(:revenue)) %></td>
-        <td><%= number_to_currency((@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget.budget_days) %></td>
-        <td><%= number_to_currency(@entries_mtd[0].sum(:revenue)+@entries_mtd[1].sum(:revenue)+@entries_mtd[2].sum(:revenue)+@entries_mtd[3].sum(:revenue)) %></td>
-        <td><%= number_to_currency(((@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget.budget_days)*@day_of_month) %></td>
-        <td><%= number_to_currency(@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue) %></td>
+        <td><%= number_to_currency(@entries[0].sum(:revenue)+@entries[0].sum(:accessories)+@entries[1].sum(:revenue)+@entries[1].sum(:accessories)+@entries[2].sum(:revenue)+@entries[2].sum(:accessories)+@entries[3].sum(:revenue)+@entries[3].sum(:accessories)) %></td>
+        <td><%= number_to_currency((@budget.replacement_revenue+@budget.replacement_accessories+@budget.repair_revenue+@budget.repair_accessories+@budget.maintenance_revenue+@budget.maintenance_accessories+@budget.specialty_revenue+@budget.specialty_accessories)/@budget.budget_days) %></td>
+        <td><%= number_to_currency(@entries_mtd[0].sum(:revenue)+@entries_mtd[0].sum(:accessories)+@entries_mtd[1].sum(:revenue)+@entries_mtd[1].sum(:accessories)+@entries_mtd[2].sum(:revenue)+@entries_mtd[2].sum(:accessories)+@entries_mtd[3].sum(:revenue)+@entries_mtd[3].sum(:accessories)) %></td>
+        <td><%= number_to_currency(((@budget.replacement_revenue+@budget.replacement_accessories+@budget.repair_revenue+@budget.repair_accessories+@budget.maintenance_revenue+@budget.maintenance_accessories+@budget.specialty_revenue+@budget.specialty_accessories)/@budget.budget_days)*@day_of_month) %></td>
+        <td><%= number_to_currency(@budget.replacement_revenue+@budget.replacement_accessories+@budget.repair_revenue+@budget.repair_accessories+@budget.maintenance_revenue+@budget.maintenance_accessories+@budget.specialty_revenue+@budget.specialty_accessories) %></td>
       </tr>
 
       <tr>
@@ -424,7 +424,7 @@
           <% entries = employee.entries.where(:date => @date.beginning_of_month..@date) %>
           <tr>
             <td><%= employee.name %></td>
-            <td><%= number_to_currency entries.sum(:revenue) %></td>
+            <td><%= number_to_currency(entries.sum(:revenue)+entries.sum(:accessories)) %></td>
             <td><%= entries.sum(:calls_run) %></td>
             <td><%= entries.sum(:leads) %></td>
           </tr>
