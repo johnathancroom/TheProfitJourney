@@ -1,5 +1,6 @@
 <% content_for :body do %>
   <%= link_to 'New Entry', refinery.new_akouo_journeyboard_entry_path %> |
+  <%= link_to 'New CSR Entry', refinery.new_akouo_journeyboard_csr_entry_path %> |
   <%= link_to 'Employees', refinery.akouo_journeyboard_employees_path %>
 
   <hr>
@@ -21,7 +22,7 @@
         <thead>
           <tr>
             <th>Date</th>
-            <th>Tech</th>
+            <th>Employee</th>
             <th>Revenue</th>
             <th>Cost</th>
             <th>Leads sold</th>
@@ -62,8 +63,40 @@
       <% end %>
     </table>
 
-    <%= tag :hr if profit_center != @profit_centers.last %>
+    <hr>
   <% end %>
+
+  <h1>Memberships</h1>
+  <table class="journeyboard">
+    <% entries = @user.journeyboard_csr_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
+    <% if entries.blank? %>
+      <tr>
+        <td>No Entries Yet</td>
+      </tr>
+    <% else %>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Memberships Sold</th>
+          <th>Sold With New Systems</th>
+          <th>Memberships Lost</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% entries.each do |entry| %>
+          <tr>
+            <td><%= entry.date.strftime('%b %e, %Y') %></td>
+            <td><%= entry.sold %></td>
+            <td><%= entry.sold_new_systems %></td>
+            <td><%= entry.lost %></td>
+            <td><%= link_to 'Edit', refinery.edit_akouo_journeyboard_csr_entry_path(entry) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>

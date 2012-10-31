@@ -5,6 +5,7 @@ Refinery::User.class_eval do
   has_one :customer, :class_name => 'Refinery::Akouo::Customer'
   has_one :journeyboard_budget, :class_name => 'Refinery::Akouo::JourneyboardBudget'
   has_many :employees, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
+  has_many :journeyboard_csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry'
 
   attr_accessible(
     :workshop_id, :plan_id,

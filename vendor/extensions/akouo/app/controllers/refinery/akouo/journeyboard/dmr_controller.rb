@@ -29,6 +29,8 @@ module Refinery
             @user.profit_centers.third.journeyboard_entries.where(:date => @date.beginning_of_month..@date),
             @user.profit_centers.fourth.journeyboard_entries.where(:date => @date.beginning_of_month..@date)
           ]
+          @csr_entries = @user.journeyboard_csr_entries.where(:date => @date)
+          @csr_entries_mtd = @user.journeyboard_csr_entries.where(:date => @date.beginning_of_month..@date)
         end
 
         def update_budget

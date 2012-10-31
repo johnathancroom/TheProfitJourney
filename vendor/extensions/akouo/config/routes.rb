@@ -29,6 +29,7 @@ Refinery::Core::Engine.routes.append do
     namespace :journeyboard do
       resources :employees, :except => [:destroy]
       resources :entries, :except => [:show, :destroy]
+      resources :csr_entries, :except => [:index, :show, :destroy]
       resources :dmr, :path => '', :only => [:index] do
         collection do
           get 'budget'

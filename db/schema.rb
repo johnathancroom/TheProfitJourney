@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031175053) do
+ActiveRecord::Schema.define(:version => 20121031193448) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -663,8 +663,6 @@ ActiveRecord::Schema.define(:version => 20121031175053) do
   create_table "refinery_journeyboard_budgets", :force => true do |t|
     t.integer "replacement_calls",                                                   :default => 0
     t.integer "replacement_calls_sold",                                              :default => 0
-    t.decimal "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
     t.decimal "replacement_cogs",                     :precision => 19, :scale => 2, :default => 0.0
     t.integer "repair_calls",                                                        :default => 0
     t.integer "repair_warranty_calls",                                               :default => 0
@@ -700,6 +698,16 @@ ActiveRecord::Schema.define(:version => 20121031175053) do
     t.decimal "repair_accessories",                   :precision => 19, :scale => 2, :default => 0.0
     t.decimal "maintenance_accessories",              :precision => 19, :scale => 2, :default => 0.0
     t.decimal "specialty_accessories",                :precision => 19, :scale => 2, :default => 0.0
+  end
+
+  create_table "refinery_journeyboard_csr_entries", :force => true do |t|
+    t.date     "date"
+    t.integer  "sold",             :default => 0
+    t.integer  "sold_new_systems", :default => 0
+    t.integer  "lost",             :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "refinery_journeyboard_employees", :force => true do |t|

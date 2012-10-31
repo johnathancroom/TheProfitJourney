@@ -1,0 +1,23 @@
+<%= form_for @entry, :url => path, :html => { :class => 'styled_form wide' } do |f| %>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date, :order => [:month, :day, :year] %>
+  </div>
+
+  <div>
+    <%= f.label :sold, 'Memberships Sold' %>
+    <%= f.number_field :sold %>
+  </div>
+
+  <div>
+    <%= f.label :sold_new_systems, 'Sold With New Systems' %>
+    <%= f.number_field :sold_new_systems %>
+  </div>
+
+  <div>
+    <%= f.label :lost, 'Memberships Lost' %>
+    <%= f.number_field :lost %>
+  </div>
+
+  <%= f.submit 'Submit', :class => 'button' %>
+<% end %>

@@ -4,6 +4,7 @@
 
 <% content_for :body do %>
   <%= link_to 'New Entry', refinery.new_akouo_journeyboard_entry_path %> |
+  <%= link_to 'New CSR Entry', refinery.new_akouo_journeyboard_csr_entry_path %> |
   <%= link_to 'Employees', refinery.akouo_journeyboard_employees_path %> |
   <%= link_to 'Edit Budgets', refinery.budget_akouo_journeyboard_dmr_index_path %> |
   <%= link_to 'Entries', refinery.akouo_journeyboard_entries_path %>
@@ -382,26 +383,26 @@
       <tbody>
         <tr>
           <td>Memberships Sold by CSR's</td>
-          <td><%#= @entry.memberships_sold_by_csr %></td>
-          <td><%#= @entries.sum(:memberships_sold_by_csr) %></td>
+          <td><%= @csr_entries.sum(:sold) %></td>
+          <td><%= @csr_entries_mtd.sum(:sold) %></td>
         </tr>
 
         <tr>
           <td>Memberships Sold With New Systems</td>
-          <td><%#= @entry.memberships_sold_new_systems %></td>
-          <td><%#= @entries.sum(:memberships_sold_new_systems) %></td>
+          <td><%= @csr_entries.sum(:sold_new_systems) %></td>
+          <td><%= @csr_entries_mtd.sum(:sold_new_systems) %></td>
         </tr>
 
         <tr>
           <td>Total Memberships Added</td>
-          <td><%#= @entry.memberships_sold_by_csr + @entry.memberships_sold_new_systems %></td>
-          <td><%#= @entries.sum(:memberships_sold_by_csr) + @entries.sum(:memberships_sold_new_systems) %></td>
+          <td><%= @csr_entries.sum(:sold)+@csr_entries.sum(:sold_new_systems) %></td>
+          <td><%= @csr_entries_mtd.sum(:sold)+@csr_entries_mtd.sum(:sold_new_systems) %></td>
         </tr>
 
         <tr>
           <td>Memberships Lost</td>
-          <td><%#= @entry.memberships_lost %></td>
-          <td><%#= @entries.sum(:memberships_lost) %></td>
+          <td><%= @csr_entries.sum(:lost) %></td>
+          <td><%= @csr_entries_mtd.sum(:lost) %></td>
         </tr>
       </tbody>
     </table>
