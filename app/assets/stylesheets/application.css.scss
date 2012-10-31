@@ -270,6 +270,17 @@ textarea {
   border: 1px solid #02642d;
   line-height: 1.1;
 }
+#sidebar .images {
+  margin-top: 10px;
+
+  a {
+    display: block;
+  }
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
 .workshops {
   ul,
   li {
