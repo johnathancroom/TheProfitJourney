@@ -224,7 +224,10 @@
         <% if index == 0 %>
           <tr>
             <td>Backlog</td>
-            <td><%= number_to_currency @user.profit_centers.first.journeyboard_entries.order('date DESC').limit(1).first.backlog %></td>
+            <td>
+              <% most_recent_replacement_entry = @user.profit_centers.first.journeyboard_entries.order('date DESC').limit(1).first %>
+              <%= number_to_currency most_recent_replacement_entry.backlog if !most_recent_replacement_entry.nil? %>
+            </td>
             <td>&ndash;</td>
             <td>&ndash;</td>
             <td>&ndash;</td>
