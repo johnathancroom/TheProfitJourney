@@ -1,7 +1,7 @@
-<%= form_for @entry, :url => path, :html => { :class => "styled_form" } do |f| %>
+<%= form_for @entry, :url => path, :html => { :class => 'styled_form wide' } do |f| %>
   <% if @entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@entry.errors.count, "error") %> need to be corrected before continuing:</h2>
+      <h2><%= pluralize(@entry.errors.count, 'error') %> need to be corrected before continuing:</h2>
 
       <ul>
       <% @entry.errors.full_messages.each do |msg| %>
@@ -12,12 +12,12 @@
   <% end %>
 
   <div>
-    <%= f.label :technician_id, "Technician" %>
-    <%= f.select :technician_id, @technicians.collect { |x| [x.name, x.id] } %>
+    <%= f.label :employee_id, 'Employee' %>
+    <%= f.select :employee_id, @employees.collect { |x| [x.name, x.id] } %>
   </div>
 
   <div>
-    <%= f.label :profit_center_id, "Profit center" %>
+    <%= f.label :profit_center_id, 'Profit center' %>
     <%= f.select :profit_center_id, @profit_centers.collect { |x| [x.pcn, x.id] } %>
   </div>
 
@@ -37,7 +37,7 @@
   </div>
 
   <div>
-    <%= f.label :todays_pay, "Today's pay" %>
+    <%= f.label :todays_pay, 'Today’s pay' %>
     <%= f.money_field :todays_pay %>
   </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <div>
-    <%= f.label :parts, "Parts cost" %>
+    <%= f.label :parts, 'Parts cost' %>
     <%= f.money_field :parts %>
   </div>
 
@@ -62,18 +62,23 @@
   </div>
 
   <div>
-    <%= f.label :leads, "Leads sold" %>
+    <%= f.label :leads, 'Leads sold' %>
     <%= f.number_field :leads %>
   </div>
 
   <div>
-    <%= f.label :opportunities, "Lead opp." %>
+    <%= f.label :opportunities, 'Lead opp.' %>
     <%= f.number_field :opportunities %>
   </div>
 
   <div>
-    <%= f.label :tickets %>
-    <%= f.number_field :tickets %>
+    <%= f.label :calls_run %>
+    <%= f.number_field :calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :warranty_calls_run %>
+    <%= f.number_field :warranty_calls_run %>
   </div>
 
   <div>
@@ -81,15 +86,25 @@
     <%= f.money_field :hours %>
   </div>
 
+  <div>
+    <%= f.label :membership_opportunities %>
+    <%= f.number_field :membership_opportunities %>
+  </div>
+
   <div class="agreements">
     <%= f.label :agreements %>
-    <%= f.number_field :agreement_1, :class => "platinum" %>
-    <%= f.number_field :agreement_2, :class => "gold" %>
-    <%= f.number_field :agreement_3, :class => "silver" %>
-    <%= f.number_field :agreement_4, :class => "bronze" %>
+    <%= f.number_field :agreement_1, :class => 'platinum' %>
+    <%= f.number_field :agreement_2, :class => 'gold' %>
+    <%= f.number_field :agreement_3, :class => 'silver' %>
+    <%= f.number_field :agreement_4, :class => 'bronze' %>
   </div>
 
   <div>
-    <%= f.submit "Submit", :class => "button" %>
+    <%= f.label :backlog %>
+    <%= f.money_field :backlog %>
+  </div>
+
+  <div>
+    <%= f.submit 'Submit', :class => 'button' %>
   </div>
 <% end %>

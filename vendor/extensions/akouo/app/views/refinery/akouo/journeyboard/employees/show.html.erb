@@ -1,12 +1,12 @@
 <% content_for :body_content_title do %>
-  <%= "#{page_title} Technician: #{@technician.name}" %>
+  <%= "#{page_title} Employee: #{@employee.name}" %>
 <% end %>
 
 <% content_for :body do %>
   <% @profit_centers.each do |profit_center| %>
     <h1><%= profit_center.pcn %></h1>
 
-    <% entries = profit_center.journeyboard_entries.where(:technician_id => @technician.id).order("date DESC") %>
+    <% entries = profit_center.journeyboard_entries.where(:employee_id => @employee.id).order('date DESC') %>
     <table class="journeyboard">
       <% if entries.blank? %>
         <tr>
@@ -24,7 +24,7 @@
             <th title="Additional labor">Add. labor</th>
             <th>Leads sold</th>
             <th title="Lead opportunities">Lead opp.</th>
-            <th>Tickets</th>
+            <th>Calls Run</th>
             <th>Hours</th>
             <th title="Margin per hour">MPH</th>
             <th>Agreements</th>
@@ -33,7 +33,7 @@
         <% entries.each do |entry| %>
           <tbody>
             <tr>
-              <td><%= link_to entry.date.strftime("%b %e, %Y"), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
+              <td><%= link_to entry.date.strftime('%b %e, %Y'), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
               <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
               <td><%= number_to_currency entry.commission %></td>
               <td><%= number_to_currency entry.todays_pay %></td>
@@ -42,16 +42,16 @@
               <td><%= number_to_currency entry.additional_labor %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
-              <td><%= entry.tickets %></td>
+              <td><%= entry.calls_run %></td>
               <td><%= entry.hours %></td>
               <td><%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
               <td class="agreements">
                 <table>
                   <tr>
-                    <%= content_tag :td, entry.agreement_1, :class => "platinum" %>
-                    <%= content_tag :td, entry.agreement_2, :class => "gold" %>
-                    <%= content_tag :td, entry.agreement_3, :class => "silver" %>
-                    <%= content_tag :td, entry.agreement_4, :class => "bronze" %>
+                    <%= content_tag :td, entry.agreement_1, :class => 'platinum' %>
+                    <%= content_tag :td, entry.agreement_2, :class => 'gold' %>
+                    <%= content_tag :td, entry.agreement_3, :class => 'silver' %>
+                    <%= content_tag :td, entry.agreement_4, :class => 'bronze' %>
                   </tr>
                 </table>
               </td>
@@ -65,4 +65,4 @@
   <% end %>
 <% end %>
 
-<%= render :partial => "/refinery/content_page", :locals => { :full_width => true } %>
+<%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>

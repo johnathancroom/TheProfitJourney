@@ -1,9 +1,0 @@
-<% content_for :body_content_title do %>
-  <%= "#{page_title} Add Technician" %>
-<% end %>
-
-<% content_for :body do %>
-  <%= render :partial => "form", :locals => { :path => refinery.akouo_journeyboard_technicians_path } %>
-<% end %>
-
-<%= render "/refinery/content_page" %>

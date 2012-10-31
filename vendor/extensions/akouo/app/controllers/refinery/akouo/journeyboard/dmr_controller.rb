@@ -6,10 +6,29 @@ module Refinery
         before_filter :find_budgets
 
         def index
+          # Selected date or today
           @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
-          #@entry = @user.journeyboard_dmr_entries.where(:date => @date).first || @user.journeyboard_dmr_entries.build(:day_of_month => new_day_of_month)
-          #@entries = @user.journeyboard_dmr_entries.where(:date => @date.beginning_of_month..@date)
-          @budget_days = @budget.budget_days
+
+          # Day of month is whichever profit center has the most entries
+          @day_of_month = [
+            @user.profit_centers.first.journeyboard_entries.where(:date => @date.beginning_of_month..@date).count,
+            @user.profit_centers.second.journeyboard_entries.where(:date => @date.beginning_of_month..@date).count,
+            @user.profit_centers.third.journeyboard_entries.where(:date => @date.beginning_of_month..@date).count,
+            @user.profit_centers.fourth.journeyboard_entries.where(:date => @date.beginning_of_month..@date).count
+          ].max
+
+          @entries = [
+            @user.profit_centers.first.journeyboard_entries.where(:date => @date),
+            @user.profit_centers.second.journeyboard_entries.where(:date => @date),
+            @user.profit_centers.third.journeyboard_entries.where(:date => @date),
+            @user.profit_centers.fourth.journeyboard_entries.where(:date => @date)
+          ]
+          @entries_mtd = [
+            @user.profit_centers.first.journeyboard_entries.where(:date => @date.beginning_of_month..@date),
+            @user.profit_centers.second.journeyboard_entries.where(:date => @date.beginning_of_month..@date),
+            @user.profit_centers.third.journeyboard_entries.where(:date => @date.beginning_of_month..@date),
+            @user.profit_centers.fourth.journeyboard_entries.where(:date => @date.beginning_of_month..@date)
+          ]
         end
 
         def update_budget

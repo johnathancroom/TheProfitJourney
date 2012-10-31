@@ -27,7 +27,7 @@ Refinery::Core::Engine.routes.append do
     put 'account/payments' => 'payments#create'
 
     namespace :journeyboard do
-      resources :technicians, :except => [:destroy]
+      resources :employees, :except => [:destroy]
       resources :entries, :except => [:show, :destroy]
       resources :dmr, :path => '', :only => [:index] do
         collection do

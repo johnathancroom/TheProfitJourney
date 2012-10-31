@@ -4,1045 +4,431 @@
 
 <% content_for :body do %>
   <%= link_to 'New Entry', refinery.new_akouo_journeyboard_entry_path %> |
-  <%= link_to 'Employees', refinery.akouo_journeyboard_technicians_path %> |
+  <%= link_to 'Employees', refinery.akouo_journeyboard_employees_path %> |
   <%= link_to 'Edit Budgets', refinery.budget_akouo_journeyboard_dmr_index_path %> |
   <%= link_to 'Entries', refinery.akouo_journeyboard_entries_path %>
 
-  <%= link_to "Edit #{@date.strftime('%B %e, %Y')}", refinery.edit_akouo_journeyboard_dmr_path(@entry), :class => 'button dmr_edit' if !@entry.nil? %>
-
   <hr>
 
-  <%= render 'data_select' %>
+  <%= render 'date_select' %>
 
   <hr>
 
   <h1>Daily Performance</h1>
   <table class="journeyboard">
-    <% if @entry.blank? %>
-      <tr>
-        <td>No Data for <%= @date.strftime('%B %e, %Y') %></td>
-      </tr>
-    <% else %>
-      <% th = '
-          <th>Daily Actual</th>
-          <th>Daily Budget</th>
-          <th>MTD Actual</th>
-          <th>MTD Budget</th>
-          <th>Total Budget</th>
-      ' %>
+    <% th = '
+      <th>Daily Actual</th>
+      <th>Daily Budget</th>
+      <th>MTD Actual</th>
+      <th>MTD Budget</th>
+      <th>Total Budget</th>
+    ' %>
+    <% @user.profit_centers.each_with_index do |profit_center, index| %>
       <thead>
         <tr>
-          <th><strong>Replacement</strong></th>
+          <th><strong><%= profit_center.pcn %></strong></th>
           <%=raw th %>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Replacement Dollars Sold</td>
-          <td><%= number_to_currency @entry.comfort_advisor_entries.sum(:sold) %></td>
-          <td><%= number_to_currency(@budget.replacement_dollars_sold/@budget_days) %></td>
-          <td>
-            <%
-              num = 0
-              @entries.each do |x|
-                num += x.comfort_advisor_entries.sum(:sold)
-              end
-            %>
-            <%= number_to_currency num %>
-          </td>
-          <td><%= number_to_currency((@budget.replacement_dollars_sold/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.replacement_dollars_sold %></td>
+          <td>Revenue</td>
+          <td><%= number_to_currency @entries[index].sum(:revenue) %></td>
+          <td><%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_revenue")/@budget.budget_days) %></td>
+          <td><%= number_to_currency @entries_mtd[index].sum(:revenue) %></td>
+          <td><%= number_to_currency((@budget.send("#{profit_center.pcn.downcase}_revenue")/@budget.budget_days)*@day_of_month) %></td>
+          <td><%= number_to_currency @budget.send("#{profit_center.pcn.downcase}_revenue") %></td>
         </tr>
 
         <tr>
-          <td>Replacement Calls Run</td>
-          <td><%= @entry.comfort_advisor_entries.sum(:calls_run) %></td>
-          <td><%= @budget.replacement_calls_run/@budget_days %></td>
-          <td>
-            <%
-              num = 0
-              @entries.each do |x|
-                num += x.comfort_advisor_entries.sum(:calls_run)
-              end
-            %>
-            <%= num %>
-          </td>
-          <td><%= (@budget.replacement_calls_run/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.replacement_calls_run %></td>
+          <td>Calls Run</td>
+          <td><%= @entries[index].sum(:calls_run) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_calls")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:calls_run) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_calls")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_calls") %></td>
         </tr>
 
         <tr>
-          <td>Replacement Calls Sold</td>
-          <td><%= @entry.comfort_advisor_entries.sum(:calls_sold) %></td>
-          <td><%= @budget.replacement_calls_sold/@budget_days %></td>
-          <td>
-            <%
-              num = 0
-              @entries.each do |x|
-                num += x.comfort_advisor_entries.sum(:calls_sold)
-              end
-            %>
-            <%= num %>
-          </td>
-          <td><%= (@budget.replacement_calls_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.replacement_calls_sold %></td>
+          <td>Warranty Calls Run</td>
+          <td><%= @entries[index].sum(:warranty_calls_run) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_warranty_calls")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:warranty_calls_run) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_warranty_calls")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_warranty_calls") %></td>
+        </tr>
+
+        <tr>
+          <td>Calls Sold</td>
+          <td><%= @entries[index].sum(:leads) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_calls_sold")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:leads) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_calls_sold")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_calls_sold") %></td>
         </tr>
 
         <tr>
           <td>Closing Ratio</td>
           <td>
-            <% if @entry.comfort_advisor_entries.sum(:calls_run) == 0 or @entry.comfort_advisor_entries.sum(:calls_sold) == 0 %>
+            <% if @entries[index].sum(:calls_run) == 0 or @entries[index].sum(:leads) == 0 %>
               &ndash;
             <% else %>
-              <%= "#{((@entry.comfort_advisor_entries.sum(:calls_sold).to_f/@entry.comfort_advisor_entries.sum(:calls_run).to_f)*100).round(2)}%" %>
+              <%= "#{((@entries[index].sum(:leads).to_f/@entries[index].sum(:calls_run).to_f)*100).round(2)}%" %>
             <% end %>
           </td>
           <td>
-            <% if @budget.replacement_calls_run == 0 or @budget.replacement_calls_sold == 0 %>
+            <% if @budget.send("#{profit_center.pcn.downcase}_calls") == 0 or @budget.send("#{profit_center.pcn.downcase}_calls_sold") == 0 %>
               &ndash;
             <% else %>
-              <%= "#{((@budget.replacement_calls_sold.to_f/@budget.replacement_calls_run.to_f)*100).round(2)}%" %>
+              <%= "#{((@budget.send("#{profit_center.pcn.downcase}_calls_sold").to_f/@budget.send("#{profit_center.pcn.downcase}_calls").to_f)*100).round(2)}%" %>
             <% end %>
           </td>
+          <td>
+            <% if @entries_mtd[index].sum(:calls_run) == 0 or @entries_mtd[index].sum(:leads) == 0 %>
+              &ndash;
+            <% else %>
+              <%= "#{((@entries_mtd[index].sum(:leads).to_f/@entries_mtd[index].sum(:calls_run).to_f)*100).round(2)}%" %>
+            <% end %>
+          </td>
+          <% 2.times do %>
+            <td>
+              <% if @budget.send("#{profit_center.pcn.downcase}_calls") == 0 or @budget.send("#{profit_center.pcn.downcase}_calls_sold") == 0 %>
+                &ndash;
+              <% else %>
+                <%= "#{((@budget.send("#{profit_center.pcn.downcase}_calls_sold").to_f/@budget.send("#{profit_center.pcn.downcase}_calls").to_f)*100).round(2)}%" %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+
+        <tr>
+          <td>Average Ticket</td>
+          <td>
+            <% if @entries[index].sum(:revenue) == 0 or @entries[index].sum(:leads) == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entries[index].sum(:revenue)/@entries[index].sum(:leads)) %>
+            <% end %>
+          </td>
+          <td>
+            <% if @budget.send("#{profit_center.pcn.downcase}_revenue") == 0 or @budget.send("#{profit_center.pcn.downcase}_calls_sold") == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_revenue")/@budget.send("#{profit_center.pcn.downcase}_calls_sold")) %>
+            <% end %>
+          </td>
+          <td>
+            <% if @entries_mtd[index].sum(:revenue) == 0 or @entries_mtd[index].sum(:leads) == 0 %>
+              &ndash;
+            <% else %>
+              <%= number_to_currency(@entries_mtd[index].sum(:revenue)/@entries_mtd[index].sum(:leads)) %>
+            <% end %>
+          </td>
+          <% 2.times do %>
+            <td>
+              <% if @budget.send("#{profit_center.pcn.downcase}_revenue") == 0 or @budget.send("#{profit_center.pcn.downcase}_calls_sold") == 0 %>
+                &ndash;
+              <% else %>
+                <%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_revenue")/@budget.send("#{profit_center.pcn.downcase}_calls_sold")) %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+
+        <tr>
+          <td>Accessories Sold</td>
+          <td><%= number_to_currency @entries[index].sum(:accessories) %></td>
+          <td><%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_accessories")/@budget.budget_days) %></td>
+          <td><%= number_to_currency @entries_mtd[index].sum(:accessories) %></td>
+          <td><%= number_to_currency((@budget.send("#{profit_center.pcn.downcase}_accessories")/@budget.budget_days)*@day_of_month) %></td>
+          <td><%= number_to_currency @budget.send("#{profit_center.pcn.downcase}_accessories") %></td>
+        </tr>
+
+        <tr>
+          <td>COG's</td>
           <td>
             <%
-              num1 = 0
-              num2 = 0
-              @entries.each do |x|
-                num1 += x.comfort_advisor_entries.sum(:calls_run)
-                num2 += x.comfort_advisor_entries.sum(:calls_sold)
+              num = 0
+              @entries[index].each do |entry|
+                num += entry.cogs
               end
             %>
-            <% if num1 == 0 or num2 == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((num2.to_f/num1.to_f)*100).round(2)}%" %>
-            <% end %>
+            <%= number_to_currency num %>
           </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.replacement_calls_run == 0 or @budget.replacement_calls_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.replacement_calls_sold.to_f/@budget.replacement_calls_run.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Average Ticket</td>
-          <td>
-            <% if @entry.comfort_advisor_entries.sum(:sold) == 0 or @entry.comfort_advisor_entries.sum(:calls_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.comfort_advisor_entries.sum(:sold)/@entry.comfort_advisor_entries.sum(:calls_sold)) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @budget.replacement_dollars_sold == 0 or @budget.replacement_calls_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@budget.replacement_dollars_sold/@budget.replacement_calls_sold) %>
-            <% end %>
-          </td>
+          <td><%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_cogs")/@budget.budget_days) %></td>
           <td>
             <%
-              num1 = 0
-              num2 = 0
-              @entries.each do |x|
-                num1 += x.comfort_advisor_entries.sum(:sold)
-                num2 += x.comfort_advisor_entries.sum(:calls_sold)
+              num = 0
+              @entries_mtd[index].each do |entry|
+                num += entry.cogs
               end
             %>
-            <% if num1 == 0 or num2 == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(num1/num2) %>
-            <% end %>
+            <%= number_to_currency num %>
           </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.replacement_dollars_sold == 0 or @budget.replacement_calls_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.replacement_dollars_sold/@budget.replacement_calls_sold) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replaced Yesterday</td>
-          <td><%= number_to_currency @entry.replacement_replaced %></td>
-          <td><%= number_to_currency(@budget.replacement_replaced/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:replacement_replaced) %></td>
-          <td><%= number_to_currency((@budget.replacement_replaced/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.replacement_replaced %></td>
-        </tr>
-
-        <tr>
-          <td>Accessories Sold Yesterday</td>
-          <td><%= number_to_currency @entry.replacement_installed %></td>
-          <td><%= number_to_currency(@budget.replacement_installed/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:replacement_installed) %></td>
-          <td><%= number_to_currency((@budget.replacement_installed/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.replacement_installed %></td>
-        </tr>
-
-        <tr>
-          <td>COG's</td>
-          <td><%= number_to_currency @entry.replacement_cogs %></td>
-          <td><%= number_to_currency(@budget.replacement_cogs/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:replacement_cogs) %></td>
-          <td><%= number_to_currency((@budget.replacement_cogs/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.replacement_cogs %></td>
-        </tr>
-
-        <tr>
-          <td>Backlog</td>
-          <td><%= number_to_currency @entry.replacement_backlog %></td>
-          <td>&ndash;</td>
-          <td>&ndash;</td>
-          <td>&ndash;</td>
-          <td>&ndash;</td>
-        </tr>
-      </tbody>
-
-      <thead>
-        <tr>
-          <th><strong>Repair</strong></th>
-          <%=raw th %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Calls Run</td>
-          <td><%= @entry.repair_calls %></td>
-          <td><%= @budget.repair_calls/@budget_days %></td>
-          <td><%= @entries.sum(:repair_calls) %></td>
-          <td><%= (@budget.repair_calls/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_calls %></td>
-        </tr>
-
-        <tr>
-          <td>Warranty Calls Run</td>
-          <td><%= @entry.repair_warranty_calls %></td>
-          <td><%= @budget.repair_warranty_calls/@budget_days %></td>
-          <td><%= @entries.sum(:repair_warranty_calls) %></td>
-          <td><%= (@budget.repair_warranty_calls/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_warranty_calls %></td>
-        </tr>
-
-        <tr>
-          <td>Revenue</td>
-          <td><%= number_to_currency @entry.repair_revenue %></td>
-          <td><%= number_to_currency(@budget.repair_revenue/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:repair_revenue) %></td>
-          <td><%= number_to_currency((@budget.repair_revenue/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.repair_revenue %></td>
-        </tr>
-
-        <tr>
-          <td>COG's</td>
-          <td><%= number_to_currency @entry.repair_cogs %></td>
-          <td><%= number_to_currency(@budget.repair_cogs/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:repair_cogs) %></td>
-          <td><%= number_to_currency((@budget.repair_cogs/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.repair_cogs %></td>
-        </tr>
-
-        <tr>
-          <td>Average Ticket</td>
-          <td>
-            <% if @entry.repair_revenue == 0 or @entry.repair_calls == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.repair_revenue/@entry.repair_calls.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.repair_revenue/@budget_days) == 0 or (@budget.repair_calls/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.repair_revenue/@budget_days).to_f/(@budget.repair_calls/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:repair_revenue) == 0 or @entries.sum(:repair_calls) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:repair_revenue).to_f/@entries.sum(:repair_calls).to_f) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.repair_revenue == 0 or @budget.repair_calls == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.repair_revenue/@budget.repair_calls.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
+          <td><%= number_to_currency((@budget.send("#{profit_center.pcn.downcase}_cogs")/@budget.budget_days)*@day_of_month) %></td>
+          <td><%= number_to_currency @budget.send("#{profit_center.pcn.downcase}_cogs") %></td>
         </tr>
 
         <tr>
           <td>Membership Opportunities Run</td>
-          <td><%= @entry.repair_membership_opportunities %></td>
-          <td><%= @budget.repair_membership_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:repair_membership_opportunities) %></td>
-          <td><%= (@budget.repair_membership_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_membership_opportunities %></td>
+          <td><%= @entries[index].sum(:membership_opportunities) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_membership_opportunities")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:membership_opportunities) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_membership_opportunities")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_membership_opportunities") %></td>
         </tr>
 
         <tr>
           <td>Memberships Sold</td>
-          <td><%= @entry.repair_memberships_sold %></td>
-          <td><%= @budget.repair_memberships_sold/@budget_days %></td>
-          <td><%= @entries.sum(:repair_memberships_sold) %></td>
-          <td><%= (@budget.repair_memberships_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_memberships_sold %></td>
+          <td><%= @entries[index].sum(:agreement_1)+@entries[index].sum(:agreement_2)+@entries[index].sum(:agreement_3)+@entries[index].sum(:agreement_4) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_memberships_sold")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:agreement_1)+@entries_mtd[index].sum(:agreement_2)+@entries_mtd[index].sum(:agreement_3)+@entries_mtd[index].sum(:agreement_4) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_memberships_sold")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_memberships_sold") %></td>
         </tr>
 
         <tr>
           <td>Membership Conversion Rate</td>
           <td>
-            <% if @entry.repair_membership_opportunities == 0 or @entry.repair_memberships_sold == 0 %>
+            <% if @entries[index].sum(:membership_opportunities) == 0 or (@entries[index].sum(:agreement_1)+@entries[index].sum(:agreement_2)+@entries[index].sum(:agreement_3)+@entries[index].sum(:agreement_4)) == 0 %>
               &ndash;
             <% else %>
-              <%= "#{((@entry.repair_memberships_sold.to_f/@entry.repair_membership_opportunities.to_f)*100).round(2)}%" %>
+              <%= "#{(((@entries[index].sum(:agreement_1)+@entries[index].sum(:agreement_2)+@entries[index].sum(:agreement_3)+@entries[index].sum(:agreement_4)).to_f/@entries[index].sum(:membership_opportunities).to_f)*100).round(2)}%" %>
             <% end %>
           </td>
           <td>
-            <% if (@budget.repair_membership_opportunities/@budget_days) == 0 or (@budget.repair_memberships_sold/@budget_days) == 0 %>
+            <% if (@budget.send("#{profit_center.pcn.downcase}_membership_opportunities")/@budget.budget_days) == 0 or (@budget.send("#{profit_center.pcn.downcase}_memberships_sold")/@budget.budget_days) == 0 %>
               &ndash;
             <% else %>
-              <%= "#{(((@budget.repair_memberships_sold/@budget_days).to_f/(@budget.repair_membership_opportunities/@budget_days).to_f)*100).round(2)}%" %>
+              <%= "#{(((@budget.send("#{profit_center.pcn.downcase}_memberships_sold")/@budget.budget_days).to_f/(@budget.send("#{profit_center.pcn.downcase}_membership_opportunities")/@budget.budget_days).to_f)*100).round(2)}%" %>
             <% end %>
           </td>
           <td>
-            <% if @entries.sum(:repair_membership_opportunities) == 0 or @entries.sum(:repair_memberships_sold) == 0 %>
+            <% if @entries_mtd[index].sum(:membership_opportunities) == 0 or (@entries_mtd[index].sum(:agreement_1)+@entries_mtd[index].sum(:agreement_2)+@entries_mtd[index].sum(:agreement_3)+@entries_mtd[index].sum(:agreement_4)) == 0 %>
               &ndash;
             <% else %>
-              <%= "#{((@entries.sum(:repair_memberships_sold).to_f/@entries.sum(:repair_membership_opportunities))*100).round(2)}%" %>
+              <%= "#{(((@entries_mtd[index].sum(:agreement_1)+@entries_mtd[index].sum(:agreement_2)+@entries_mtd[index].sum(:agreement_3)+@entries_mtd[index].sum(:agreement_4)).to_f/@entries_mtd[index].sum(:membership_opportunities).to_f)*100).round(2)}%" %>
             <% end %>
           </td>
           <% 2.times do %>
             <td>
-              <% if @budget.repair_membership_opportunities == 0 or @budget.repair_memberships_sold == 0 %>
+              <% if @budget.send("#{profit_center.pcn.downcase}_membership_opportunities") == 0 or @budget.send("#{profit_center.pcn.downcase}_memberships_sold") == 0 %>
                 &ndash;
               <% else %>
-                <%= "#{((@budget.repair_memberships_sold.to_f/@budget.repair_membership_opportunities.to_f)*100).round(2)}%" %>
+                <%= "#{((@budget.send("#{profit_center.pcn.downcase}_memberships_sold").to_f/@budget.send("#{profit_center.pcn.downcase}_membership_opportunities").to_f)*100).round(2)}%" %>
               <% end %>
             </td>
           <% end %>
         </tr>
 
-        <tr>
-          <td>Replacement Opportunities Run</td>
-          <td><%= @entry.repair_opportunities %></td>
-          <td><%= @budget.repair_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:repair_opportunities) %></td>
-          <td><%= (@budget.repair_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_opportunities %></td>
-        </tr>
-
-        <tr>
-          <td>Replacements Sold</td>
-          <td><%= @entry.repair_sold %></td>
-          <td><%= @budget.repair_sold/@budget_days %></td>
-          <td><%= @entries.sum(:repair_sold) %></td>
-          <td><%= (@budget.repair_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.repair_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Conversion Ratio</td>
-          <td>
-            <% if @entry.repair_opportunities == 0 or @entry.repair_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entry.repair_sold.to_f/@entry.repair_opportunities.to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.repair_opportunities/@budget_days) == 0 or (@budget.repair_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{(((@budget.repair_sold/@budget_days).to_f/(@budget.repair_opportunities/@budget_days).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:repair_opportunities) == 0 or @entries.sum(:repair_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entries.sum(:repair_sold).to_f/@entries.sum(:repair_opportunities).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.repair_opportunities == 0 or @budget.repair_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.repair_sold.to_f/@budget.repair_opportunities.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replacement Dollars Sold</td>
-          <td><%= number_to_currency @entry.repair_dollars_sold %></td>
-          <td><%= number_to_currency(@budget.repair_dollars_sold/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:repair_dollars_sold) %></td>
-          <td><%= number_to_currency((@budget.repair_dollars_sold/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.repair_dollars_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Average Replacement Ticket</td>
-          <td>
-            <% if @entry.repair_sold == 0 or @entry.repair_dollars_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.repair_dollars_sold/@entry.repair_sold.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.repair_sold/@budget_days) == 0 or (@budget.repair_dollars_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.repair_dollars_sold/@budget_days).to_f/(@budget.repair_sold/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:repair_sold) == 0 or @entries.sum(:repair_dollars_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:repair_dollars_sold).to_f/@entries.sum(:repair_sold)) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.repair_sold == 0 or @budget.repair_dollars_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.repair_dollars_sold/@budget.repair_sold.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
-
-      <thead>
-        <tr>
-          <th><strong>Maintenance</strong></th>
-          <%=raw th %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Calls Run</td>
-          <td><%= @entry.maintenance_calls %></td>
-          <td><%= @budget.maintenance_calls/@budget_days %></td>
-          <td><%= @entries.sum(:maintenance_calls) %></td>
-          <td><%= (@budget.maintenance_calls/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.maintenance_calls %></td>
-        </tr>
-
-        <tr>
-          <td>Revenue</td>
-          <td><%= number_to_currency @entry.maintenance_revenue %></td>
-          <td><%= number_to_currency(@budget.maintenance_revenue/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:maintenance_revenue) %></td>
-          <td><%= number_to_currency((@budget.maintenance_revenue/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.maintenance_revenue %></td>
-        </tr>
-
-        <tr>
-          <td>COG's</td>
-          <td><%= number_to_currency @entry.maintenance_cogs %></td>
-          <td><%= number_to_currency(@budget.maintenance_cogs/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:maintenance_cogs) %></td>
-          <td><%= number_to_currency((@budget.maintenance_cogs/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.maintenance_cogs %></td>
-        </tr>
-
-        <tr>
-          <td>Average Ticket</td>
-          <td>
-            <% if @entry.maintenance_revenue == 0 or @entry.maintenance_calls == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.maintenance_revenue/@entry.maintenance_calls.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.maintenance_revenue/@budget_days) == 0 or (@budget.maintenance_calls/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.maintenance_revenue/@budget_days).to_f/(@budget.maintenance_calls/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:maintenance_revenue) == 0 or @entries.sum(:maintenance_calls) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:maintenance_revenue).to_f/@entries.sum(:maintenance_calls).to_f) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.maintenance_revenue == 0 or @budget.maintenance_calls == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.maintenance_revenue/@budget.maintenance_calls.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Membership Opportunities Run</td>
-          <td><%= @entry.maintenance_membership_opportunities %></td>
-          <td><%= @budget.maintenance_membership_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:maintenance_membership_opportunities) %></td>
-          <td><%= (@budget.maintenance_membership_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.maintenance_membership_opportunities %></td>
-        </tr>
-
-        <tr>
-          <td>Memberships Sold</td>
-          <td><%= @entry.maintenance_memberships_sold %></td>
-          <td><%= @budget.maintenance_memberships_sold/@budget_days %></td>
-          <td><%= @entries.sum(:maintenance_memberships_sold) %></td>
-          <td><%= (@budget.maintenance_memberships_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.maintenance_memberships_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Membership Conversion Rate</td>
-          <td>
-            <% if @entry.maintenance_membership_opportunities == 0 or @entry.maintenance_memberships_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entry.maintenance_memberships_sold.to_f/@entry.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.maintenance_membership_opportunities/@budget_days) == 0 or (@budget.maintenance_memberships_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{(((@budget.maintenance_memberships_sold/@budget_days).to_f/(@budget.maintenance_membership_opportunities/@budget_days).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:maintenance_membership_opportunities) == 0 or @entries.sum(:maintenance_memberships_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entries.sum(:maintenance_memberships_sold).to_f/@entries.sum(:maintenance_membership_opportunities).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.maintenance_membership_opportunities == 0 or @budget.maintenance_memberships_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.maintenance_memberships_sold.to_f/@budget.maintenance_membership_opportunities.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replacement Opportunities Run</td>
-          <td><%= @entry.maintenance_opportunities %></td>
-          <td><%= @budget.maintenance_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:maintenance_opportunities) %></td>
-          <td><%= (@budget.maintenance_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.maintenance_opportunities %></td>
-        </tr>
-
-        <tr>
-          <td>Replacements Sold</td>
-          <td><%= @entry.maintenance_sold %></td>
-          <td><%= @budget.maintenance_sold/@budget_days %></td>
-          <td><%= @entries.sum(:maintenance_sold) %></td>
-          <td><%= (@budget.maintenance_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.maintenance_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Conversion Ratio</td>
-          <td>
-            <% if @entry.maintenance_opportunities == 0 or @entry.maintenance_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entry.maintenance_sold.to_f/@entry.maintenance_opportunities.to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.maintenance_opportunities/@budget_days) == 0 or (@budget.maintenance_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{(((@budget.maintenance_sold/@budget_days).to_f/(@budget.maintenance_opportunities/@budget_days).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:maintenance_opportunities) == 0 or @entries.sum(:maintenance_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entries.sum(:maintenance_sold).to_f/@entries.sum(:maintenance_opportunities))*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.maintenance_opportunities == 0 or @budget.maintenance_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.maintenance_sold.to_f/@budget.maintenance_opportunities.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replacement Dollars Sold</td>
-          <td><%= number_to_currency @entry.maintenance_dollars_sold %></td>
-          <td><%= number_to_currency(@budget.maintenance_dollars_sold/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:maintenance_dollars_sold) %></td>
-          <td><%= number_to_currency((@budget.maintenance_dollars_sold/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.maintenance_dollars_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Average Replacement Ticket</td>
-          <td>
-            <% if @entry.maintenance_sold == 0 or @entry.maintenance_dollars_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.maintenance_dollars_sold/@entry.maintenance_sold.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.maintenance_sold/@budget_days) == 0 or (@budget.maintenance_dollars_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.maintenance_dollars_sold/@budget_days).to_f/(@budget.maintenance_sold/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:maintenance_sold) == 0 or @entries.sum(:maintenance_dollars_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:maintenance_dollars_sold).to_f/@entries.sum(:maintenance_sold)) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.maintenance_sold == 0 or @budget.maintenance_dollars_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.maintenance_dollars_sold/@budget.maintenance_sold.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
-
-      <thead>
-        <tr>
-          <th><strong>Specialty</strong></th>
-          <%=raw th %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Calls Run</td>
-          <td><%= @entry.specialty_calls %></td>
-          <td><%= @budget.specialty_calls/@budget_days %></td>
-          <td><%= @entries.sum(:specialty_calls) %></td>
-          <td><%= (@budget.specialty_calls/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.specialty_calls %></td>
-        </tr>
-
-        <tr>
-          <td>Revenue</td>
-          <td><%= number_to_currency @entry.specialty_revenue %></td>
-          <td><%= number_to_currency(@budget.specialty_revenue/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:specialty_revenue) %></td>
-          <td><%= number_to_currency((@budget.specialty_revenue/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.specialty_revenue %></td>
-        </tr>
-
-        <tr>
-          <td>COG's</td>
-          <td><%= number_to_currency @entry.specialty_cogs %></td>
-          <td><%= number_to_currency(@budget.specialty_cogs/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:specialty_cogs) %></td>
-          <td><%= number_to_currency((@budget.specialty_cogs/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.specialty_cogs %></td>
-        </tr>
-
-        <tr>
-          <td>Average Ticket</td>
-          <td>
-            <% if @entry.specialty_revenue == 0 or @entry.specialty_calls == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.specialty_revenue/@entry.specialty_calls.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.specialty_revenue/@budget_days) == 0 or (@budget.specialty_calls/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.specialty_revenue/@budget_days).to_f/(@budget.specialty_calls/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:specialty_revenue) == 0 or @entries.sum(:specialty_calls) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:specialty_revenue).to_f/@entries.sum(:specialty_calls).to_f) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.specialty_revenue == 0 or @budget.specialty_calls == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.specialty_revenue/@budget.specialty_calls.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Membership Opportunities Run</td>
-          <td><%= @entry.specialty_membership_opportunities %></td>
-          <td><%= @budget.specialty_membership_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:specialty_membership_opportunities) %></td>
-          <td><%= (@budget.specialty_membership_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.specialty_membership_opportunities %></td>
-        </tr>
-
-        <tr>
-          <td>Memberships Sold</td>
-          <td><%= @entry.specialty_memberships_sold %></td>
-          <td><%= @budget.specialty_memberships_sold/@budget_days %></td>
-          <td><%= @entries.sum(:specialty_memberships_sold) %></td>
-          <td><%= (@budget.specialty_memberships_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.specialty_memberships_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Membership Conversion Rate</td>
-          <td>
-            <% if @entry.specialty_membership_opportunities == 0 or @entry.specialty_memberships_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entry.specialty_memberships_sold.to_f/@entry.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.specialty_membership_opportunities/@budget_days) == 0 or (@budget.specialty_memberships_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{(((@budget.specialty_memberships_sold/@budget_days).to_f/(@budget.specialty_membership_opportunities).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:specialty_membership_opportunities) == 0 or @entries.sum(:specialty_memberships_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entries.sum(:specialty_memberships_sold).to_f/@entries.sum(:specialty_membership_opportunities).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.specialty_membership_opportunities == 0 or @budget.specialty_memberships_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.specialty_memberships_sold.to_f/@budget.specialty_membership_opportunities.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replacement Opportunities Run</td>
-          <td><%= @entry.specialty_opportunities %></td>
-          <td><%= @budget.specialty_opportunities/@budget_days %></td>
-          <td><%= @entries.sum(:specialty_opportunities) %></td>
-          <td><%= (@budget.specialty_opportunities/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.specialty_opportunities %></td>
-        </tr>
-
-        <tr>
-          <td>Replacements Sold</td>
-          <td><%= @entry.specialty_sold %></td>
-          <td><%= @budget.specialty_sold/@budget_days %></td>
-          <td><%= @entries.sum(:specialty_sold) %></td>
-          <td><%= (@budget.specialty_sold/@budget_days)*@entry.day_of_month %></td>
-          <td><%= @budget.specialty_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Conversion Ratio</td>
-          <td>
-            <% if @entry.specialty_opportunities == 0 or @entry.specialty_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entry.specialty_sold.to_f/@entry.specialty_opportunities.to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.specialty_sold/@budget_days) == 0 or (@budget.specialty_opportunities/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{(((@budget.specialty_sold/@budget_days).to_f/(@budget.specialty_opportunities/@budget_days).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:specialty_sold) == 0 or @entries.sum(:specialty_opportunities) == 0 %>
-              &ndash;
-            <% else %>
-              <%= "#{((@entries.sum(:specialty_sold).to_f/@entries.sum(:specialty_opportunities).to_f)*100).round(2)}%" %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.specialty_opportunities == 0 or @budget.specialty_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= "#{((@budget.specialty_sold.to_f/@budget.specialty_opportunities.to_f)*100).round(2)}%" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-
-        <tr>
-          <td>Replacement Dollars Sold</td>
-          <td><%= number_to_currency @entry.specialty_dollars_sold %></td>
-          <td><%= number_to_currency(@budget.specialty_dollars_sold/@budget_days) %></td>
-          <td><%= number_to_currency @entries.sum(:specialty_dollars_sold) %></td>
-          <td><%= number_to_currency((@budget.specialty_dollars_sold/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency @budget.specialty_dollars_sold %></td>
-        </tr>
-
-        <tr>
-          <td>Average Replacement Ticket</td>
-          <td>
-            <% if @entry.specialty_sold == 0 or @entry.specialty_dollars_sold == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entry.specialty_dollars_sold/@entry.specialty_sold.to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if (@budget.specialty_dollars_sold/@budget_days) == 0 or (@budget.specialty_sold/@budget_days) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.specialty_dollars_sold/@budget_days).to_f/(@budget.specialty_sold/@budget_days).to_f) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @entries.sum(:specialty_dollars_sold) == 0 or @entries.sum(:specialty_sold) == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@entries.sum(:specialty_dollars_sold)/@entries.sum(:specialty_sold)) %>
-            <% end %>
-          </td>
-          <% 2.times do %>
-            <td>
-              <% if @budget.specialty_sold == 0 or @budget.specialty_dollars_sold == 0 %>
-                &ndash;
-              <% else %>
-                <%= number_to_currency(@budget.specialty_dollars_sold/@budget.specialty_sold.to_f) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
-
-      <thead>
-        <tr>
-          <th></th>
-          <%=raw th %>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td><strong>Total Revenue</strong></td>
-          <td><%= number_to_currency(@entry.replacement_replaced+@entry.replacement_installed+@entry.repair_revenue+@entry.maintenance_revenue+@entry.specialty_revenue) %></td>
-          <td><%= number_to_currency((@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget_days) %></td>
-          <td><%= number_to_currency(@entries.sum(:replacement_replaced)+@entries.sum(:replacement_installed)+@entries.sum(:repair_revenue)+@entries.sum(:maintenance_revenue)+@entries.sum(:specialty_revenue)) %></td>
-          <td><%= number_to_currency(((@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency(@budget.replacement_replaced+@budget.replacement_installed+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue) %></td>
-        </tr>
-
-        <tr>
-          <td><strong>Total COG's</strong></td>
-          <td><%= number_to_currency(@entry.replacement_cogs+@entry.repair_cogs+@entry.maintenance_cogs+@entry.specialty_cogs) %></td>
-          <td><%= number_to_currency((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget_days) %></td>
-          <td><%= number_to_currency(@entries.sum(:replacement_cogs)+@entries.sum(:repair_cogs)+@entries.sum(:maintenance_cogs)+@entries.sum(:specialty_cogs)) %></td>
-          <td><%= number_to_currency(((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget_days)*@entry.day_of_month) %></td>
-          <td><%= number_to_currency(@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs) %></td>
+        <% if index == 0 %>
+          <tr>
+            <td>Backlog</td>
+            <td><%= number_to_currency @user.profit_centers.first.journeyboard_entries.order('date DESC').limit(1).first.backlog %></td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+          </tr>
+        <% end %>
       </tbody>
     <% end %>
+
+    <thead>
+      <tr>
+        <th></th>
+        <%=raw th %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><strong>Total Revenue</strong></td>
+        <td><%= number_to_currency(@entries[0].sum(:revenue)+@entries[1].sum(:revenue)+@entries[2].sum(:revenue)+@entries[3].sum(:revenue)) %></td>
+        <td><%= number_to_currency((@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget.budget_days) %></td>
+        <td><%= number_to_currency(@entries_mtd[0].sum(:revenue)+@entries_mtd[1].sum(:revenue)+@entries_mtd[2].sum(:revenue)+@entries_mtd[3].sum(:revenue)) %></td>
+        <td><%= number_to_currency(((@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue)/@budget.budget_days)*@day_of_month) %></td>
+        <td><%= number_to_currency(@budget.replacement_revenue+@budget.repair_revenue+@budget.maintenance_revenue+@budget.specialty_revenue) %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Total COG's</strong></td>
+        <td>
+          <%
+            num = 0
+            @entries.each do |profit_center|
+              profit_center.each do |entry|
+                num += entry.cogs
+              end
+            end
+          %>
+          <%= number_to_currency num %>
+        </td>
+        <td><%= number_to_currency((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget.budget_days) %></td>
+        <td>
+          <%
+            num = 0
+            @entries_mtd.each do |profit_center|
+              profit_center.each do |entry|
+                num += entry.cogs
+              end
+            end
+          %>
+          <%= number_to_currency num %>
+        </td>
+        <td><%= number_to_currency(((@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs)/@budget.budget_days)*@day_of_month) %></td>
+        <td><%= number_to_currency(@budget.replacement_cogs+@budget.repair_cogs+@budget.maintenance_cogs+@budget.specialty_cogs) %></td>
+    </tbody>
   </table>
 
-  <% if !@entry.blank? %>
-    <hr>
+  <hr>
 
-    <h1>Profit Calculations</h1>
+  <h1>Profit Calculations</h1>
+  <table class="journeyboard">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Daily Actual</th>
+        <th>Daily Budget</th>
+        <th>MTD Budget</th>
+        <th>Total Budget</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><strong>Fixed Expense</strong></td>
+        <td>&ndash;</td>
+        <td>
+          <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+            &ndash;
+          <% else %>
+            <%= number_to_currency(@budget.total_expenses/@budget.budget_days) %>
+          <% end %>
+        </td>
+        <td>
+          <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+            &ndash;
+          <% else %>
+            <%= number_to_currency((@budget.total_expenses/@budget.budget_days)*@day_of_month) %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency @budget.total_expenses %></td>
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>Daily Actual</th>
+        <th>Daily Budget</th>
+        <th>MTD Budget</th>
+        <th>Total Budget</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><strong>Est. Daily Profit</strong></td>
+        <td>
+          <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
+            &ndash;
+          <% else %>
+            <%
+              b43 = 0
+              @entries.each do |entry|
+                b43 += entry.sum(:revenue)
+              end
+              b49 = @budget.total_expenses/@budget.budget_days
+              i2 = @budget.ytd_gross_margin
+            %>
+            <%= number_to_currency(b43-(b49+(b43*(1-i2)))) %>
+          <% end %>
+        </td>
+        <td>
+          <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 %>
+            &ndash;
+          <% else %>
+            <%= number_to_currency(@budget.total_operating_profit/@budget.budget_days) %>
+          <% end %>
+        </td>
+        <td>
+          <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 or @day_of_month == 0 %>
+            &ndash;
+          <% else %>
+            <%= number_to_currency((@budget.total_operating_profit/@budget.budget_days)*@day_of_month) %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency @budget.total_operating_profit %></td>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <div class="half">
+    <h1>Memberships</h1>
     <table class="journeyboard">
       <thead>
         <tr>
           <th></th>
-          <th>Daily Actual</th>
-          <th>Daily Budget</th>
-          <th>MTD Budget</th>
-          <th>Total Budget</th>
+          <th>Yesterday</th>
+          <th>MTD</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td><strong>Fixed Expense</strong></td>
-          <td>&ndash;</td>
-          <td>
-            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@budget.total_expenses/@budget.budget_days) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.total_expenses/@budget.budget_days)*@entry.day_of_month) %>
-            <% end %>
-          </td>
-          <td><%= number_to_currency @budget.total_expenses %></td>
+          <td>Memberships Sold by CSR's</td>
+          <td><%#= @entry.memberships_sold_by_csr %></td>
+          <td><%#= @entries.sum(:memberships_sold_by_csr) %></td>
         </tr>
-      </tbody>
 
-      <thead>
         <tr>
-          <th></th>
-          <th>Daily Actual</th>
-          <th>Daily Budget</th>
-          <th>MTD Budget</th>
-          <th>Total Budget</th>
+          <td>Memberships Sold With New Systems</td>
+          <td><%#= @entry.memberships_sold_new_systems %></td>
+          <td><%#= @entries.sum(:memberships_sold_new_systems) %></td>
         </tr>
-      </thead>
 
-      <tbody>
         <tr>
-          <td><strong>Est. Daily Profit</strong></td>
-          <td>
-            <% if @budget.total_expenses == 0 or @budget.budget_days == 0 %>
-              &ndash;
-            <% else %>
-              <%
-                b43 = @entry.replacement_replaced+@entry.replacement_installed+@entry.repair_revenue+@entry.maintenance_revenue+@entry.specialty_revenue
-                b49 = @budget.total_expenses/@budget.budget_days
-                i2 = @budget.ytd_gross_margin
-              %>
-              <%= number_to_currency(b43-(b49+(b43*(1-i2)))) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency(@budget.total_operating_profit/@budget.budget_days) %>
-            <% end %>
-          </td>
-          <td>
-            <% if @budget.total_operating_profit == 0 or @budget.budget_days == 0 or @entry.day_of_month == 0 %>
-              &ndash;
-            <% else %>
-              <%= number_to_currency((@budget.total_operating_profit/@budget.budget_days)*@entry.day_of_month) %>
-            <% end %>
-          </td>
-          <td><%= number_to_currency @budget.total_operating_profit %></td>
+          <td>Total Memberships Added</td>
+          <td><%#= @entry.memberships_sold_by_csr + @entry.memberships_sold_new_systems %></td>
+          <td><%#= @entries.sum(:memberships_sold_by_csr) + @entries.sum(:memberships_sold_new_systems) %></td>
+        </tr>
+
+        <tr>
+          <td>Memberships Lost</td>
+          <td><%#= @entry.memberships_lost %></td>
+          <td><%#= @entries.sum(:memberships_lost) %></td>
+        </tr>
       </tbody>
     </table>
+  </div>
 
-    <hr>
+  <div class="half">
+    <h1>Comfort Advisor Sales Performance</h1>
+    <table class="journeyboard">
+      <thead>
+        <tr>
+          <th>Comfort Advisor</th>
+          <th>Sold</th>
+          <th>Calls Run</th>
+          <th>Calls Sold</th>
+        </tr>
+      </thead>
 
-    <div class="half">
-      <h1>Memberships</h1>
-      <table class="journeyboard">
-        <thead>
+      <tbody>
+        <% @user.employees.each do |employee| %>
+          <% entries = employee.entries.where(:date => @date.beginning_of_month..@date) %>
           <tr>
-            <th></th>
-            <th>Yesterday</th>
-            <th>MTD</th>
+            <td><%= employee.name %></td>
+            <td><%= number_to_currency entries.sum(:revenue) %></td>
+            <td><%= entries.sum(:calls_run) %></td>
+            <td><%= entries.sum(:leads) %></td>
           </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Memberships Sold by CSR's</td>
-            <td><%= @entry.memberships_sold_by_csr %></td>
-            <td><%= @entries.sum(:memberships_sold_by_csr) %></td>
-          </tr>
-
-          <tr>
-            <td>Memberships Sold With New Systems</td>
-            <td><%= @entry.memberships_sold_new_systems %></td>
-            <td><%= @entries.sum(:memberships_sold_new_systems) %></td>
-          </tr>
-
-          <tr>
-            <td>Total Memberships Added</td>
-            <td><%= @entry.memberships_sold_by_csr + @entry.memberships_sold_new_systems %></td>
-            <td><%= @entries.sum(:memberships_sold_by_csr) + @entries.sum(:memberships_sold_new_systems) %></td>
-          </tr>
-
-          <tr>
-            <td>Memberships Lost</td>
-            <td><%= @entry.memberships_lost %></td>
-            <td><%= @entries.sum(:memberships_lost) %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="half">
-      <h1>Comfort Advisor Sales Performance</h1>
-      <table class="journeyboard">
-        <thead>
-          <tr>
-            <th>Comfort Advisor</th>
-            <th>Sold</th>
-            <th>Calls Run</th>
-            <th>Calls Sold</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @entry.comfort_advisor_entries.each do |comfort_advisor_entry| %>
-            <tr>
-              <td><%= comfort_advisor_entry.comfort_advisor.name %></td>
-              <td><%= number_to_currency comfort_advisor_entry.sold %></td>
-              <td><%= comfort_advisor_entry.calls_run %></td>
-              <td><%= comfort_advisor_entry.calls_sold %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>

@@ -1,10 +1,10 @@
 Refinery::User.class_eval do
 
-  has_many :profit_centers, :class_name => "Refinery::Akouo::ProfitCenter"
-  belongs_to :workshop, :class_name => "Refinery::Workshops::Workshop"
-  has_one :customer, :class_name => "Refinery::Akouo::Customer"
+  has_many :profit_centers, :class_name => 'Refinery::Akouo::ProfitCenter'
+  belongs_to :workshop, :class_name => 'Refinery::Workshops::Workshop'
+  has_one :customer, :class_name => 'Refinery::Akouo::Customer'
   has_one :journeyboard_budget, :class_name => 'Refinery::Akouo::JourneyboardBudget'
-  has_many :technicians, :class_name => "Refinery::Akouo::JourneyboardTechnician"
+  has_many :employees, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
 
   attr_accessible(
     :workshop_id, :plan_id,

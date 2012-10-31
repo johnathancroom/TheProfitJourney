@@ -25,22 +25,29 @@ module Refinery
 
       def check_and_build_user_tables
         needed_tables = [
-          "last_year",
-          "profit_center_last_year",
-          "next_year",
-          "profit_center_next_year"
+          'last_year',
+          'profit_center_last_year',
+          'next_year',
+          'profit_center_next_year'
         ]
 
         profit_center_default_names = [
-          "Replacement",
-          "Repair",
-          "Maintenance",
-          "Specialty"
+          'Replacement',
+          'Repair',
+          'Maintenance',
+          'Specialty'
         ]
 
         # Create four profit centers
-        for x in current_refinery_user.profit_centers.count..3
-          current_refinery_user.profit_centers.create(:pcn => profit_center_default_names[x-1])
+        for x in @user.profit_centers.count..3
+          @user.profit_centers.create(:pcn => profit_center_default_names[x-1])
+        end
+
+        # Reset Profit Center Names
+        for x in 0..3
+          profit_center = @user.profit_centers[x]
+          profit_center.pcn = profit_center_default_names[x]
+          profit_center.save
         end
 
         # Create customer

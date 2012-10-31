@@ -1,0 +1,25 @@
+<% content_for :body_content_title do %>
+  <%= "#{page_title} Employees" %>
+<% end %>
+
+<% content_for :body do %>
+  <%= link_to 'Add Employee', refinery.new_akouo_journeyboard_employee_path %>
+
+  <hr>
+
+  <ul>
+    <% if @employees.blank? %>
+      <li>No employees Yet</li>
+    <% else %>
+      <% @employees.each do |employee| %>
+        <li>
+          <%= employee.name %>
+          <%= link_to 'View', refinery.akouo_journeyboard_employee_path(employee) %>
+          <%= link_to 'Edit', refinery.edit_akouo_journeyboard_employee_path(employee) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -15,7 +15,7 @@ module Refinery
 
       def find_things
         @profit_centers = ::Refinery::Akouo::ProfitCenter.where(:user_id => @user.id)
-        @technicians = ::Refinery::Akouo::JourneyboardTechnician.where(:user_id => @user.id)
+        @employees = ::Refinery::Akouo::JourneyboardEmployee.where(:user_id => @user.id)
       end
 
     end

@@ -1,10 +1,10 @@
 <% content_for :body do %>
   <%= link_to 'New Entry', refinery.new_akouo_journeyboard_entry_path %> |
-  <%= link_to 'Employees', refinery.akouo_journeyboard_technicians_path %>
+  <%= link_to 'Employees', refinery.akouo_journeyboard_employees_path %>
 
   <hr>
 
-  <%= render 'data_select' %>
+  <%= render 'date_select' %>
 
   <hr>
 
@@ -25,7 +25,7 @@
             <th>Cost</th>
             <th>Leads sold</th>
             <th title="Lead opportunities">Lead opp.</th>
-            <th>Tickets</th>
+            <th>Calls Run</th>
             <th>Hours</th>
             <th title="Margin per hour">MPH</th>
             <th>Agreements</th>
@@ -35,25 +35,25 @@
         <% entries.each do |entry| %>
           <tbody>
             <tr>
-              <td><%= link_to entry.technician.name, refinery.akouo_journeyboard_technician_path(entry.technician) %></td>
+              <td><%= link_to entry.employee.name, refinery.akouo_journeyboard_employee_path(entry.employee) %></td>
               <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
               <td><%= number_to_currency(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>
               <td><%= entry.leads %></td>
               <td><%= entry.opportunities %></td>
-              <td><%= entry.tickets %></td>
+              <td><%= entry.calls_run %></td>
               <td><%= entry.hours %></td>
               <td><%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
               <td class="agreements">
                 <table>
                   <tr>
-                    <%= content_tag :td, entry.agreement_1, :class => "platinum" %>
-                    <%= content_tag :td, entry.agreement_2, :class => "gold" %>
-                    <%= content_tag :td, entry.agreement_3, :class => "silver" %>
-                    <%= content_tag :td, entry.agreement_4, :class => "bronze" %>
+                    <%= content_tag :td, entry.agreement_1, :class => 'platinum' %>
+                    <%= content_tag :td, entry.agreement_2, :class => 'gold' %>
+                    <%= content_tag :td, entry.agreement_3, :class => 'silver' %>
+                    <%= content_tag :td, entry.agreement_4, :class => 'bronze' %>
                   </tr>
                 </table>
               </td>
-              <td><%= link_to "Edit", refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
+              <td><%= link_to 'Edit', refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
             </tr>
           </tbody>
         <% end %>

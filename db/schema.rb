@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029153617) do
+ActiveRecord::Schema.define(:version => 20121031175053) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -661,8 +661,7 @@ ActiveRecord::Schema.define(:version => 20121029153617) do
   end
 
   create_table "refinery_journeyboard_budgets", :force => true do |t|
-    t.decimal "replacement_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
-    t.integer "replacement_calls_run",                                               :default => 0
+    t.integer "replacement_calls",                                                   :default => 0
     t.integer "replacement_calls_sold",                                              :default => 0
     t.decimal "replacement_replaced",                 :precision => 19, :scale => 2, :default => 0.0
     t.decimal "replacement_installed",                :precision => 19, :scale => 2, :default => 0.0
@@ -673,60 +672,67 @@ ActiveRecord::Schema.define(:version => 20121029153617) do
     t.decimal "repair_cogs",                          :precision => 19, :scale => 2, :default => 0.0
     t.integer "repair_membership_opportunities",                                     :default => 0
     t.integer "repair_memberships_sold",                                             :default => 0
-    t.integer "repair_opportunities",                                                :default => 0
-    t.integer "repair_sold",                                                         :default => 0
-    t.decimal "repair_dollars_sold",                  :precision => 19, :scale => 2, :default => 0.0
     t.integer "maintenance_calls",                                                   :default => 0
     t.decimal "maintenance_revenue",                  :precision => 19, :scale => 2, :default => 0.0
     t.decimal "maintenance_cogs",                     :precision => 19, :scale => 2, :default => 0.0
     t.integer "maintenance_membership_opportunities",                                :default => 0
     t.integer "maintenance_memberships_sold",                                        :default => 0
-    t.integer "maintenance_opportunities",                                           :default => 0
-    t.integer "maintenance_sold",                                                    :default => 0
-    t.decimal "maintenance_dollars_sold",             :precision => 19, :scale => 2, :default => 0.0
     t.integer "specialty_calls",                                                     :default => 0
     t.decimal "specialty_revenue",                    :precision => 19, :scale => 2, :default => 0.0
     t.decimal "specialty_cogs",                       :precision => 19, :scale => 2, :default => 0.0
     t.integer "specialty_membership_opportunities",                                  :default => 0
     t.integer "specialty_memberships_sold",                                          :default => 0
-    t.integer "specialty_opportunities",                                             :default => 0
-    t.integer "specialty_sold",                                                      :default => 0
-    t.decimal "specialty_dollars_sold",               :precision => 19, :scale => 2, :default => 0.0
     t.integer "user_id"
     t.integer "budget_days",                                                         :default => 20
     t.decimal "total_expenses",                       :precision => 19, :scale => 2, :default => 0.0
     t.decimal "total_operating_profit",               :precision => 19, :scale => 2, :default => 0.0
     t.integer "ytd_gross_margin",                                                    :default => 0
+    t.integer "replacement_warranty_calls",                                          :default => 0
+    t.integer "maintenance_warranty_calls",                                          :default => 0
+    t.integer "specialty_warranty_calls",                                            :default => 0
+    t.integer "replacement_membership_opportunities",                                :default => 0
+    t.integer "replacement_memberships_sold",                                        :default => 0
+    t.decimal "replacement_revenue",                  :precision => 19, :scale => 2, :default => 0.0
+    t.integer "repair_calls_sold",                                                   :default => 0
+    t.integer "maintenance_calls_sold",                                              :default => 0
+    t.integer "specialty_calls_sold",                                                :default => 0
+    t.decimal "replacement_accessories",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "repair_accessories",                   :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "maintenance_accessories",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "specialty_accessories",                :precision => 19, :scale => 2, :default => 0.0
   end
 
-  create_table "refinery_journeyboard_entries", :force => true do |t|
-    t.decimal  "fuel_cost",        :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "profit_center_id",                                :default => 0
-    t.date     "date"
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
-    t.decimal  "commission",       :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "todays_pay",       :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "revenue",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "parts",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "accessories",      :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "leads",                                           :default => 0
-    t.integer  "opportunities",                                   :default => 0
-    t.integer  "tickets",                                         :default => 0
-    t.decimal  "hours",            :precision => 19, :scale => 2, :default => 0.0
-    t.integer  "agreement_1",                                     :default => 0
-    t.integer  "agreement_2",                                     :default => 0
-    t.integer  "agreement_3",                                     :default => 0
-    t.integer  "agreement_4",                                     :default => 0
-    t.integer  "technician_id",                                   :default => 0
-    t.decimal  "additional_labor", :precision => 19, :scale => 2, :default => 0.0
-  end
-
-  create_table "refinery_journeyboard_technicians", :force => true do |t|
+  create_table "refinery_journeyboard_employees", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "refinery_journeyboard_entries", :force => true do |t|
+    t.decimal  "fuel_cost",                :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "profit_center_id",                                        :default => 0
+    t.date     "date"
+    t.datetime "created_at",                                                               :null => false
+    t.datetime "updated_at",                                                               :null => false
+    t.decimal  "commission",               :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "todays_pay",               :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "revenue",                  :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "parts",                    :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "accessories",              :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "leads",                                                   :default => 0
+    t.integer  "opportunities",                                           :default => 0
+    t.integer  "calls_run",                                               :default => 0
+    t.decimal  "hours",                    :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "agreement_1",                                             :default => 0
+    t.integer  "agreement_2",                                             :default => 0
+    t.integer  "agreement_3",                                             :default => 0
+    t.integer  "agreement_4",                                             :default => 0
+    t.integer  "employee_id",                                             :default => 0
+    t.decimal  "additional_labor",         :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "warranty_calls_run",                                      :default => 0
+    t.integer  "membership_opportunities",                                :default => 0
+    t.decimal  "backlog",                  :precision => 19, :scale => 2, :default => 0.0
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|

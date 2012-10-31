@@ -41,13 +41,18 @@
     <h1>Replacement</h1>
 
     <div>
-      <%= f.label :replacement_dollars_sold %>
-      <%= f.money_field :replacement_dollars_sold %>
+      <%= f.label :replacement_revenue, 'Revenue' %>
+      <%= f.number_field :replacement_revenue %>
     </div>
 
     <div>
       <%= f.label :replacement_calls_run, 'Calls run' %>
-      <%= f.number_field :replacement_calls_run %>
+      <%= f.number_field :replacement_calls %>
+    </div>
+
+    <div>
+      <%= f.label :replacement_warranty_calls, 'Warranty calls' %>
+      <%= f.number_field :replacement_warranty_calls %>
     </div>
 
     <div>
@@ -56,23 +61,33 @@
     </div>
 
     <div>
-      <%= f.label :replacement_replaced, 'Replaced yesterday' %>
-      <%= f.money_field :replacement_replaced %>
+      <%= f.label :replacement_accessories, 'Accessories' %>
+      <%= f.money_field :replacement_accessories %>
     </div>
 
     <div>
-      <%= f.label :replacement_installed, 'Accessories sold yesterday' %>
-      <%= f.money_field :replacement_installed %>
-    </div>
-
-    <div>
-      <%= f.label :replacement_cogs, 'COG\'s' %>
+      <%= f.label :replacement_cogs, 'COG’s' %>
       <%= f.money_field :replacement_cogs %>
+    </div>
+
+    <div>
+      <%= f.label :replacement_membership_opportunities, 'Membership opportunities' %>
+      <%= f.number_field :replacement_membership_opportunities %>
+    </div>
+
+    <div>
+      <%= f.label :replacement_memberships_sold, 'Memberships sold' %>
+      <%= f.number_field :replacement_memberships_sold %>
     </div>
 
     <hr>
 
     <h1>Repair</h1>
+
+    <div>
+      <%= f.label :repair_revenue, 'Revenue' %>
+      <%= f.number_field :repair_revenue %>
+    </div>
 
     <div>
       <%= f.label :repair_calls, 'Calls run' %>
@@ -85,12 +100,17 @@
     </div>
 
     <div>
-      <%= f.label :repair_revenue, 'Revenue' %>
-      <%= f.money_field :repair_revenue %>
+      <%= f.label :repair_calls_sold, 'Calls sold' %>
+      <%= f.number_field :repair_calls_sold %>
     </div>
 
     <div>
-      <%= f.label :repair_cogs, 'COG\'s' %>
+      <%= f.label :repair_accessories, 'Accessories' %>
+      <%= f.money_field :repair_accessories %>
+    </div>
+
+    <div>
+      <%= f.label :repair_cogs, 'COG’s' %>
       <%= f.money_field :repair_cogs %>
     </div>
 
@@ -104,24 +124,14 @@
       <%= f.number_field :repair_memberships_sold %>
     </div>
 
-    <div>
-      <%= f.label :repair_opportunities, 'Replacement opportunities' %>
-      <%= f.number_field :repair_opportunities %>
-    </div>
-
-    <div>
-      <%= f.label :repair_sold, 'Replacements sold' %>
-      <%= f.number_field :repair_sold %>
-    </div>
-
-    <div>
-      <%= f.label :repair_dollars_sold, 'Replacement dollars sold' %>
-      <%= f.money_field :repair_dollars_sold %>
-    </div>
-
     <hr>
 
     <h1>Maintenance</h1>
+
+    <div>
+      <%= f.label :maintenance_revenue, 'Revenue' %>
+      <%= f.number_field :maintenance_revenue %>
+    </div>
 
     <div>
       <%= f.label :maintenance_calls, 'Calls run' %>
@@ -129,12 +139,22 @@
     </div>
 
     <div>
-      <%= f.label :maintenance_revenue, 'Revenue' %>
-      <%= f.money_field :maintenance_revenue %>
+      <%= f.label :maintenance_warranty_calls, 'Warranty calls' %>
+      <%= f.number_field :maintenance_warranty_calls %>
     </div>
 
     <div>
-      <%= f.label :maintenance_cogs, 'COG\'s' %>
+      <%= f.label :maintenance_calls_sold, 'Calls sold' %>
+      <%= f.number_field :maintenance_calls_sold %>
+    </div>
+
+    <div>
+      <%= f.label :maintenance_accessories, 'Accessories' %>
+      <%= f.money_field :maintenance_accessories %>
+    </div>
+
+    <div>
+      <%= f.label :maintenance_cogs, 'COG’s' %>
       <%= f.money_field :maintenance_cogs %>
     </div>
 
@@ -148,24 +168,14 @@
       <%= f.number_field :maintenance_memberships_sold %>
     </div>
 
-    <div>
-      <%= f.label :maintenance_opporunities, 'Replacement opportunities' %>
-      <%= f.number_field :maintenance_opportunities %>
-    </div>
-
-    <div>
-      <%= f.label :maintenance_sold, 'Replacements sold' %>
-      <%= f.number_field :maintenance_sold %>
-    </div>
-
-    <div>
-      <%= f.label :maintenance_dollars_sold, 'Replacement dollars sold' %>
-      <%= f.money_field :maintenance_dollars_sold %>
-    </div>
-
     <hr>
 
     <h1>Specialty</h1>
+
+    <div>
+      <%= f.label :specialty_revenue, 'Revenue' %>
+      <%= f.number_field :specialty_revenue %>
+    </div>
 
     <div>
       <%= f.label :specialty_calls, 'Calls run' %>
@@ -173,12 +183,22 @@
     </div>
 
     <div>
-      <%= f.label :specialty_revenue, 'Revenue' %>
-      <%= f.money_field :specialty_revenue %>
+      <%= f.label :specialty_warranty_calls, 'Warranty calls' %>
+      <%= f.number_field :specialty_warranty_calls %>
     </div>
 
     <div>
-      <%= f.label :specialty_cogs, 'COG\'s' %>
+      <%= f.label :specialty_calls_sold, 'Calls sold' %>
+      <%= f.number_field :specialty_calls_sold %>
+    </div>
+
+    <div>
+      <%= f.label :specialty_accessories, 'Accessories' %>
+      <%= f.money_field :specialty_accessories %>
+    </div>
+
+    <div>
+      <%= f.label :specialty_cogs, 'COG’s' %>
       <%= f.money_field :specialty_cogs %>
     </div>
 
@@ -190,21 +210,6 @@
     <div>
       <%= f.label :specialty_memberships_sold, 'Memberships sold' %>
       <%= f.number_field :specialty_memberships_sold %>
-    </div>
-
-    <div>
-      <%= f.label :specialty_opporunities, 'Replacement opportunities' %>
-      <%= f.number_field :specialty_opportunities %>
-    </div>
-
-    <div>
-      <%= f.label :specialty_sold, 'Replacements sold' %>
-      <%= f.number_field :specialty_sold %>
-    </div>
-
-    <div>
-      <%= f.label :specialty_dollars_sold, 'Replacement dollars sold' %>
-      <%= f.money_field :specialty_dollars_sold %>
     </div>
 
     <div>
