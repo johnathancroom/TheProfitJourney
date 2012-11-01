@@ -42,20 +42,20 @@
 
         <tr>
           <td>Sales Calls Run</td>
-          <td><%= number_to_currency @entries[index].sum(:sales_calls_run) %></td>
-          <td><%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_sales_calls_run")/@budget.budget_days) %></td>
-          <td><%= number_to_currency @entries_mtd[index].sum(:sales_calls_run) %></td>
-          <td><%= number_to_currency((@budget.send("#{profit_center.pcn.downcase}_sales_calls_run")/@budget.budget_days)*@day_of_month) %></td>
-          <td><%= number_to_currency @budget.send("#{profit_center.pcn.downcase}_sales_calls_run") %></td>
+          <td><%= @entries[index].sum(:sales_calls_run) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_sales_calls_run")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:sales_calls_run) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_sales_calls_run")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_sales_calls_run") %></td>
         </tr>
 
         <tr>
           <td>Sales Calls Sold</td>
-          <td><%= number_to_currency @entries[index].sum(:sales_calls_sold) %></td>
-          <td><%= number_to_currency(@budget.send("#{profit_center.pcn.downcase}_sales_calls_sold")/@budget.budget_days) %></td>
-          <td><%= number_to_currency @entries_mtd[index].sum(:sales_calls_sold) %></td>
-          <td><%= number_to_currency((@budget.send("#{profit_center.pcn.downcase}_sales_calls_sold")/@budget.budget_days)*@day_of_month) %></td>
-          <td><%= number_to_currency @budget.send("#{profit_center.pcn.downcase}_sales_calls_sold") %></td>
+          <td><%= @entries[index].sum(:sales_calls_sold) %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_sales_calls_sold")/@budget.budget_days %></td>
+          <td><%= @entries_mtd[index].sum(:sales_calls_sold) %></td>
+          <td><%= (@budget.send("#{profit_center.pcn.downcase}_sales_calls_sold")/@budget.budget_days)*@day_of_month %></td>
+          <td><%= @budget.send("#{profit_center.pcn.downcase}_sales_calls_sold") %></td>
         </tr>
 
         <tr>
