@@ -4,9 +4,10 @@ module Refinery
 
       SAVED_MESSAGE = "Successfully saved!"
 
-      before_filter :redirect?, :check_and_build_user_tables
+      before_filter { |controller| controller.redirect? :workshop }
 
-      before_filter :find_models
+      before_filter :check_and_build_user_tables, :find_models
+
       before_filter :only => [:start, :start_update] { |c| c.find_page("/akouo/start") }
       before_filter :only => [:vision, :vision_update] { |c| c.find_page("/akouo/vision") }
       before_filter :only => [:last_year, :last_year_update] { |c|

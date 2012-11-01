@@ -2,7 +2,7 @@ module Refinery
   module Akouo
     class HomeController < ::Refinery::Akouo::AkouoController
 
-      before_filter :redirect?
+      before_filter { |controller| controller.redirect? :workshop }
       before_filter :find_page
 
     protected

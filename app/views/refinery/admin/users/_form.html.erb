@@ -103,6 +103,17 @@
     </ul>
   </div>
 
+  <div class="field">
+    <span class="label_with_help">Workshop override</span>
+
+    <ul class="checkboxes">
+      <li>
+        <%= f.check_box :workshop_override %>
+        <%= f.label :workshop_override, 'Allow access to workshop without Platinum plan', :class => 'stripped' %>
+      </li>
+    </ul>
+  </div>
+
   <!--<div class="field workshop">
     <span class="label_with_help">
       <%= f.label :workshop, "Workshop" %>

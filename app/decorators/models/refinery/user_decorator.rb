@@ -8,7 +8,7 @@ Refinery::User.class_eval do
   has_many :journeyboard_csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry'
 
   attr_accessible(
-    :workshop_id, :plan_id, :plan_override,
+    :workshop_id, :plan_id, :plan_override, :workshop_override,
     :first_name, :last_name
   )
 
@@ -44,6 +44,8 @@ Refinery::User.class_eval do
       true if get_plan >= 4
     when :platinum
       true if get_plan >= 6
+    when :workshop
+      true if can_attend_workshop?
     else
       false
     end
@@ -64,7 +66,7 @@ Refinery::User.class_eval do
   end
 
   def can_attend_workshop?
-    [6, 7].include?(get_plan)
+    has_plan?(:platinum) or workshop_override
   end
 
   def get_workshop
