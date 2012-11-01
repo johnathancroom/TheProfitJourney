@@ -48,7 +48,7 @@
     <% end %>
     <ul class="account_workshops">
       <li>
-        <%= f.radio_button :workshop_id, -1, :checked => (true if @user.workshop == nil) || false %>
+        <%= f.radio_button :workshop_id, -1, :checked => (true if @user.workshop == nil) %>
         <%= f.label :workshop_id, 'No Workshop', :value => -1 %>
       </li>
 

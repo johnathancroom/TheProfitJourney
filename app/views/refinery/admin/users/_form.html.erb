@@ -114,25 +114,25 @@
     </ul>
   </div>
 
-  <!--<div class="field workshop">
+  <div class="field workshop">
     <span class="label_with_help">
-      <%= f.label :workshop, "Workshop" %>
+      <%= f.label :workshop %>
     </span>
     <ul class="checkboxes">
       <li>
-        <%= f.radio_button :workshop_id, "-1", :checked => (true if @user.workshop == nil) || false %>
-        <%= f.label :workshop_id, "No Workshop", :value => "-1", :class => "stripped" %>
+        <%= f.radio_button :workshop_id, -1, :checked => (true if @user.workshop == nil) %>
+        <%= f.label :workshop_id, 'No Workshop', :value => -1, :class => 'stripped' %>
       </li>
 
       <% @workshops = ::Refinery::Workshops::Workshop.all %>
       <% @workshops.each do |workshop| %>
         <li>
-          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) || false, :disabled => (true if !@user.can_attend_workshop?) %>
-          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date}", :value => workshop.id, :class => "stripped" %>
+          <%= f.radio_button :workshop_id, workshop.id, :checked => (true if @user.workshop == workshop) %>
+          <%= f.label :workshop_id, "#{workshop.title} – #{workshop.date}", :value => workshop.id, :class => 'stripped' %>
         </li>
       <% end %>
     </ul>
-  </div>-->
+  </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
