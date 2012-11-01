@@ -8,7 +8,7 @@
              :dom_id => 'menu',
              :css => 'menu'
            }) %>
-<% if refinery_user? && current_refinery_user.has_role?(:member) %>
+<% if refinery_user? %>
   <div class="member_menu_space"></div>
 
   <ul class="member_menu">
@@ -16,12 +16,16 @@
       <span>Akouo</span> Business Plan
     </a></li>
 
-    <li><a href="/journeyboard">
-      <span>Journey</span>Board
-    </a></li>
+    <% if @user.has_plan?(:silver) %>
+      <li><a href="/journeyboard">
+        <span>Journey</span>Board
+      </a></li>
+    <% end %>
 
-    <li><a href="/journeypartners">
-      <span>Journey</span> Partners
-    </a></li>
+    <% if @user.has_plan?(:silver) %>
+      <li><a href="/journeypartners">
+        <span>Journey</span> Partners
+      </a></li>
+    <% end %>
   </ul>
 <% end %>

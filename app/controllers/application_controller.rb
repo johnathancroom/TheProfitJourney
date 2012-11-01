@@ -1,31 +1,29 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :get_sidebar_workshops, :get_plans
+  before_filter :get_sidebar_workshops, :get_user
 
 protected
+
+  def get_user
+    @user = current_refinery_user
+  end
 
   def get_sidebar_workshops
     @sidebar_workshops = ::Refinery::Workshops::Workshop.current.limit(3)
   end
 
-  def redirect?
-    if !refinery_user?
-      redirect_to refinery.akouo_login_path, :notice => "You must be logged in to access that page."
+  def redirect?(plan = nil)
+    if plan.nil?
+      # Redirect if not user
+      if !refinery_user?
+        redirect_to refinery.akouo_login_path, :alert => 'You must be logged in to access that page.'
+      end
+    else
+      # Redirect if not high enough plan
+      if !@user.has_plan?(plan)
+        redirect_to refinery.akouo_account_path, :alert => 'You do not have access to that page.'
+      end
     end
-  end
-
-  def get_plans
-    @plans = [
-      # Name, amount, frequency (by month)
-      ["Bronze (Free)", 0, 0],
-      ["", 0, 0],
-      ["Silver ($39.99/month)", 39.99, 1],
-      ["Silver ($450/year)", 450, 12],
-      ["Gold ($149.99/month)", 149.99, 1],
-      ["Gold ($1600/year)", 1600, 12],
-      ["Platinum ($249.99/month)", 249.99, 1],
-      ["Platinum ($2700/year)", 2700, 12]
-    ]
   end
 end

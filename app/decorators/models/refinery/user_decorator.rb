@@ -32,6 +32,37 @@ Refinery::User.class_eval do
     end
   end
 
+  def has_plan?(plan)
+    @plans = plans
+
+    case plan
+    when :bronze
+      true if get_plan >= 0
+    when :silver
+      true if get_plan >= 2
+    when :gold
+      true if get_plan >= 4
+    when :platinum
+      true if get_plan >= 6
+    else
+      false
+    end
+  end
+
+  def plans
+    [
+      # Name, amount, frequency (by month)
+      ["Bronze (Free)", 0, 0],
+      ["", 0, 0],
+      ["Silver ($39.99/month)", 39.99, 1],
+      ["Silver ($450/year)", 450, 12],
+      ["Gold ($149.99/month)", 149.99, 1],
+      ["Gold ($1600/year)", 1600, 12],
+      ["Platinum ($249.99/month)", 249.99, 1],
+      ["Platinum ($2700/year)", 2700, 12]
+    ]
+  end
+
   def can_attend_workshop?
     [6, 7].include?(get_plan)
   end

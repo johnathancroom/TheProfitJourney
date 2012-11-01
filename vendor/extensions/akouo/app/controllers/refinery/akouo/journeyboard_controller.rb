@@ -2,12 +2,9 @@ module Refinery
   module Akouo
     class JourneyboardController < ::Refinery::Akouo::AkouoController
 
-      before_filter :redirect?, :check_and_build_user_tables
+      before_filter :check_and_build_user_tables, :find_page, :find_things, :employee_types
 
-      before_filter :find_page
-      before_filter :find_things
-
-      before_filter :employee_types
+      before_filter { |controller| controller.redirect? :silver }
 
     protected
 

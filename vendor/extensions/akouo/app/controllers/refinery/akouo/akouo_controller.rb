@@ -1,13 +1,10 @@
 module Refinery
   module Akouo
     class AkouoController < ::ApplicationController
-      before_filter :get_user
+
+      before_filter :get_plans
 
     protected
-
-      def get_user
-        @user = current_refinery_user
-      end
 
       def check_and_build_user_tables
         needed_tables = [
@@ -65,6 +62,10 @@ module Refinery
         @user.subscription_id = nil
         @user.plan_id = 0
         @user.save
+      end
+
+      def get_plans
+        @plans = @user.plans
       end
 
     end
