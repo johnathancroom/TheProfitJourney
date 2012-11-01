@@ -1,0 +1,4 @@
+<div>
+  <%= f.label :employee_id, 'Employee' %>
+  <%= f.select :employee_id, @employees.collect { |x| ["#{x.name} (#{@employee_types[x.type][0] if !x.type.nil?})", x.id] } %>
+</div>

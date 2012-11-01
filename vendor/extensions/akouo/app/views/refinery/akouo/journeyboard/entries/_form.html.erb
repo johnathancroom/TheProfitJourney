@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :employee_id, 'Employee' %>
-    <%= f.select :employee_id, @employees.collect { |x| [x.name, x.id] } %>
-  </div>
+  <%= render :partial => 'employee_select', :locals => { :f => f } %>
 
   <div>
     <%= f.label :profit_center_id, 'Profit center' %>

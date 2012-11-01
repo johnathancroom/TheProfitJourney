@@ -5,8 +5,6 @@ module Refinery
 
         def new
           @entry = @user.journeyboard_csr_entries.build
-
-          session[:journeyboard_edit_return_to] = request.referer
         end
 
         def create
@@ -21,8 +19,6 @@ module Refinery
 
         def edit
           @entry = @user.journeyboard_csr_entries.find(params[:id])
-
-          session[:journeyboard_edit_return_to] = request.referer
         end
 
         def update

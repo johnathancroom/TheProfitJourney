@@ -1,4 +1,6 @@
 <%= form_for @entry, :url => path, :html => { :class => 'styled_form wide' } do |f| %>
+  <%= render :partial => 'employee_select', :locals => { :f => f } %>
+
   <div>
     <%= f.label :date %>
     <%= f.date_select :date, :order => [:month, :day, :year] %>

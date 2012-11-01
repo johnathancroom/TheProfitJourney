@@ -3,7 +3,9 @@ module Refinery
     class JourneyboardCsrEntry < ActiveRecord::Base
       self.table_name = 'refinery_journeyboard_csr_entries'
 
-      attr_accessible :date, :lost, :sold, :sold_new_systems, :user_id
+      belongs_to :employee, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
+
+      attr_accessible :date, :lost, :sold, :sold_new_systems, :user_id, :employee_id
     end
   end
 end

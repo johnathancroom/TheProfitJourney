@@ -3,8 +3,6 @@ module Refinery
     module Journeyboard
       class EmployeesController < JourneyboardController
 
-        before_filter :employee_types
-
         def show
           @employee = Refinery::Akouo::JourneyboardEmployee.find(params[:id])
 
@@ -41,16 +39,6 @@ module Refinery
           else
             render :edit
           end
-        end
-
-      protected
-
-        def employee_types
-          @employee_types = [
-            ['CSR', 0],
-            ['Technician', 1],
-            ['Comfort Advisor', 2]
-          ]
         end
 
       end
