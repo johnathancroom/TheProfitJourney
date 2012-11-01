@@ -77,6 +77,32 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <span class="label_with_help">
+      Plan override
+    </span>
+
+    <ul class="checkboxes">
+      <li>
+        <%= f.check_box :plan_override %>
+        <%= f.label :plan_override, 'Force plan regardless of Authorize.net subscription status.', :class => 'stripped' %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="field">
+    <span class="label_with_help">Your Plan</span>
+
+    <ul class="checkboxes">
+      <% @plans.each_with_index do |plan, index| %>
+        <li>
+          <%= f.radio_button :plan_id, index, :checked => ((true if index == @user.get_plan) || false) if plan[0] != "" %>
+          <%= label_tag :"user_plan_id_#{index}", plan[0], :class => 'stripped' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <!--<div class="field workshop">
     <span class="label_with_help">
       <%= f.label :workshop, "Workshop" %>

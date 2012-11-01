@@ -8,7 +8,7 @@ Refinery::User.class_eval do
   has_many :journeyboard_csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry'
 
   attr_accessible(
-    :workshop_id, :plan_id,
+    :workshop_id, :plan_id, :plan_override,
     :first_name, :last_name
   )
 
@@ -16,14 +16,16 @@ Refinery::User.class_eval do
   #validate :workshop_requires_platinum_plan
 
   def get_plan
-    if self.subscription_id.nil?
+    if plan_override
+      plan_id
+    elsif subscription_id.nil?
       0
     else
       transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => ((ENV['ANET_SANDBOX'].nil?) ? :production : :sandbox))
       response = transaction.get_status(self.subscription_id)
       # Lookup successful and subscription active
       if response.message_code == 'I00001' and response.subscription_status == 'active'
-        self.plan_id
+        plan_id
       else
         0
       end
