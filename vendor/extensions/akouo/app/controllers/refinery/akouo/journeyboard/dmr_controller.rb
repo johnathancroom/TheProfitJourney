@@ -4,11 +4,9 @@ module Refinery
       class DmrController < JourneyboardController
 
         before_filter :find_budgets
+        before_filter :date_select
 
         def index
-          # Selected date or today
-          @date = !params[:date].nil? ? Date.strptime(params[:date], '%m-%d-%Y') : Date.today
-
           # Day of month is whichever profit center has the most entries
           @day_of_month = [
             @user.profit_centers.first.journeyboard_entries.where(:date => @date.beginning_of_month..@date).count,

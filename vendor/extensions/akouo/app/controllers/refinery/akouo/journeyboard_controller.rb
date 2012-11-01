@@ -28,6 +28,21 @@ module Refinery
         ]
       end
 
+      def date_select
+        # Default date to today
+        if params[:date].nil?
+          @date = Date.today
+          @mtd = true
+        else
+          # Catch invalid date error
+          if (DateTime.strptime(params[:date], '%m-%d-%Y') rescue ArgumentError) == ArgumentError
+            @invalid_date = true
+            @date = Date.today
+          else
+            @date = Date.strptime(params[:date], '%m-%d-%Y')
+          end
+        end
+      end
     end
   end
 end

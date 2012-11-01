@@ -1,6 +1,10 @@
 <form method="GET" class="js_date_select">
   <%= hidden_field_tag :date %>
 
+  <% if @invalid_date %>
+    <div class="flash_error">The date you selected is invalid.</div>
+  <% end %>
+
   <% if @mtd %>
     Viewing <strong>Month to Date</strong>. View <%= select_date @date, :order => [:month, :day, :year] %>
   <% else %>

@@ -44,6 +44,9 @@ gem 'thin'
 # Authorize.net payments
 gem 'authorize-net'
 
+# Datetime validator
+gem 'validates_timeliness'
+
 # Refinery
 gem 'refinerycms', '~> 2.0.0'
 gem 'refinerycms-core', '~> 2.0.0', :path => 'vendor/engines'

@@ -6,6 +6,8 @@ module Refinery
       belongs_to :employee, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
 
       attr_accessible :date, :lost, :sold, :sold_new_systems, :user_id, :employee_id
+
+      validates_date :date
     end
   end
 end

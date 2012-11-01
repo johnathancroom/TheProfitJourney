@@ -4,15 +4,7 @@ module Refinery
       class EntriesController < JourneyboardController
 
         before_filter :find_entry, :only => [:edit, :update]
-
-        def index
-          if params[:date].nil?
-            @date = Date.today
-            @mtd = true
-          else
-            @date = Date.strptime(params[:date], "%m-%d-%Y")
-          end
-        end
+        before_filter :date_select
 
         def new
           @entry = JourneyboardEntry.new
