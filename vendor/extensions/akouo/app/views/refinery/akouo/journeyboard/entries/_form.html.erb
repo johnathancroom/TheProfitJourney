@@ -28,7 +28,7 @@
           window.location = '/journeyboard/csr_entries/new'
         }
 
-        if($('option[value='+$(this).val()+']', this).text() == 'Replacement')
+        if($(this).find('option:selected').text() == 'Replacement')
         {
           $('#journeyboard_entry_backlog').parent().show()
         }
