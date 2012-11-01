@@ -18,8 +18,21 @@
 
   <div>
     <%= f.label :profit_center_id, 'Profit center' %>
-    <%= f.select :profit_center_id, @profit_centers.collect { |x| [x.pcn, x.id] } %>
+    <% profit_center_array = @profit_centers.collect { |x| [x.pcn, x.id] } %>
+    <% profit_center_array.push ['Membership & Comfort Advisor', -1] %>
+    <%= f.select :profit_center_id, profit_center_array %>
   </div>
+
+  <% content_for :javascripts do %>
+    <script type="text/javascript">
+      $('#journeyboard_entry_profit_center_id').on('change', function() {
+        if($(this).val() == '-1')
+        {
+          window.location = '/journeyboard/csr_entries/new'
+        }
+      })
+    </script>
+  <% end %>
 
   <div>
     <%= f.label :date %>
