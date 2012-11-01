@@ -103,7 +103,7 @@ textarea {
   width: 950px;
 }
 .top_bar {
-  @include background(linear-gradient(#004a1e, #02632c));
+  @include background-with-css2-fallback(linear-gradient(#004a1e, #02632c), #02632c);
   color: #fff;
   font-family: Arial, sans-serif;
   font-size: 11px;
