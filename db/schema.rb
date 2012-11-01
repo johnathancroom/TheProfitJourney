@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101014705) do
+ActiveRecord::Schema.define(:version => 20121101045514) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -698,6 +698,18 @@ ActiveRecord::Schema.define(:version => 20121101014705) do
     t.decimal "repair_accessories",                   :precision => 19, :scale => 2, :default => 0.0
     t.decimal "maintenance_accessories",              :precision => 19, :scale => 2, :default => 0.0
     t.decimal "specialty_accessories",                :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "replacement_sold",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer "replacement_sales_calls_run",                                         :default => 0
+    t.integer "replacement_sales_calls_sold",                                        :default => 0
+    t.decimal "repair_sold",                          :precision => 19, :scale => 2, :default => 0.0
+    t.integer "repair_sales_calls_run",                                              :default => 0
+    t.integer "repair_sales_calls_sold",                                             :default => 0
+    t.decimal "maintenance_sold",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer "maintenance_sales_calls_run",                                         :default => 0
+    t.integer "maintenance_sales_calls_sold",                                        :default => 0
+    t.decimal "specialty_sold",                       :precision => 19, :scale => 2, :default => 0.0
+    t.integer "specialty_sales_calls_run",                                           :default => 0
+    t.integer "specialty_sales_calls_sold",                                          :default => 0
   end
 
   create_table "refinery_journeyboard_csr_entries", :force => true do |t|
@@ -742,6 +754,9 @@ ActiveRecord::Schema.define(:version => 20121101014705) do
     t.integer  "warranty_calls_run",                                      :default => 0
     t.integer  "membership_opportunities",                                :default => 0
     t.decimal  "backlog",                  :precision => 19, :scale => 2, :default => 0.0
+    t.decimal  "sold",                     :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "sales_calls_run",                                         :default => 0
+    t.integer  "sales_calls_sold",                                        :default => 0
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|
