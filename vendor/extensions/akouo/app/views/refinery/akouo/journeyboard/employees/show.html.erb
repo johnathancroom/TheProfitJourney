@@ -30,45 +30,77 @@
             <th>Agreements</th>
           </tr>
         </thead>
-        <% entries.each do |entry| %>
           <tbody>
-            <tr>
-              <td><%= link_to entry.date.strftime('%b %e, %Y'), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
-              <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
-              <td><%= number_to_currency entry.commission %></td>
-              <td><%= number_to_currency entry.todays_pay %></td>
-              <td><%= number_to_currency entry.fuel_cost %></td>
-              <td><%= number_to_currency entry.parts %></td>
-              <td><%= number_to_currency entry.additional_labor %></td>
-              <td><%= entry.leads %></td>
-              <td><%= entry.opportunities %></td>
-              <td><%= entry.calls_run %></td>
-              <td><%= entry.hours %></td>
-              <td>
-                <% if entry.hours == 0 %>
-                  &ndash;
-                <% else %>
-                  <%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %>
-                <% end %>
-              </td>
-              <td class="agreements">
-                <table>
-                  <tr>
-                    <%= content_tag :td, entry.agreement_1, :class => 'platinum' %>
-                    <%= content_tag :td, entry.agreement_2, :class => 'gold' %>
-                    <%= content_tag :td, entry.agreement_3, :class => 'silver' %>
-                    <%= content_tag :td, entry.agreement_4, :class => 'bronze' %>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+            <% entries.each do |entry| %>
+              <tr>
+                <td><%= link_to entry.date.strftime('%b %e, %Y'), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
+                <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
+                <td><%= number_to_currency entry.commission %></td>
+                <td><%= number_to_currency entry.todays_pay %></td>
+                <td><%= number_to_currency entry.fuel_cost %></td>
+                <td><%= number_to_currency entry.parts %></td>
+                <td><%= number_to_currency entry.additional_labor %></td>
+                <td><%= entry.leads %></td>
+                <td><%= entry.opportunities %></td>
+                <td><%= entry.calls_run %></td>
+                <td><%= entry.hours %></td>
+                <td>
+                  <% if entry.hours == 0 %>
+                    &ndash;
+                  <% else %>
+                    <%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %>
+                  <% end %>
+                </td>
+                <td class="agreements">
+                  <table>
+                    <tr>
+                      <%= content_tag :td, entry.agreement_1, :class => 'platinum' %>
+                      <%= content_tag :td, entry.agreement_2, :class => 'gold' %>
+                      <%= content_tag :td, entry.agreement_3, :class => 'silver' %>
+                      <%= content_tag :td, entry.agreement_4, :class => 'bronze' %>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
-        <% end %>
       <% end %>
     </table>
 
-    <%= tag :hr if profit_center != @profit_centers.last %>
+    <hr>
   <% end %>
+
+  <h1>Memberships</h1>
+  <% entries = @user.journeyboard_csr_entries.where(:employee_id => @employee.id).order('date DESC') %>
+  <table class="journeyboard">
+    <% if entries.blank? %>
+      <tr>
+        <td>No Entries Yet</td>
+      </tr>
+    <% else %>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Memberships Sold</th>
+          <th>Sold With New Systems</th>
+          <th>Memberships Lost</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% entries.each do |entry| %>
+          <tr>
+            <td><%= entry.date.strftime('%b %e, %Y') %></td>
+            <td><%= entry.sold %></td>
+            <td><%= entry.sold_new_systems %></td>
+            <td><%= entry.lost %></td>
+            <td><%= link_to 'Edit', refinery.edit_akouo_journeyboard_csr_entry_path(entry) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
