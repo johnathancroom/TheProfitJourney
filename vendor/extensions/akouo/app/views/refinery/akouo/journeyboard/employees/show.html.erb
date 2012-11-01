@@ -44,7 +44,13 @@
               <td><%= entry.opportunities %></td>
               <td><%= entry.calls_run %></td>
               <td><%= entry.hours %></td>
-              <td><%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
+              <td>
+                <% if entry.hours == 0 %>
+                  &ndash;
+                <% else %>
+                  <%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %>
+                <% end %>
+              </td>
               <td class="agreements">
                 <table>
                   <tr>

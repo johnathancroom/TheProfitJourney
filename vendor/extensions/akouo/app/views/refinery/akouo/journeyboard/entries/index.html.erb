@@ -11,16 +11,16 @@
   <% @profit_centers.each do |profit_center| %>
     <h1><%= profit_center.pcn %></h1>
 
-    <% entries = profit_center.journeyboard_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
     <table class="journeyboard">
-      <% if entries.blank? %>
+      <% all_entries = profit_center.journeyboard_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
+      <% if all_entries.blank? and !@mtd %>
         <tr>
           <td>No Entries Yet</td>
         </tr>
       <% else %>
         <thead>
           <tr>
-            <th>Date</th>
+            <%=raw '<th>Date</th>' if !@mtd %>
             <th>Employee</th>
             <th>Revenue</th>
             <th>Cost</th>
@@ -30,34 +30,45 @@
             <th>Hours</th>
             <th title="Margin per hour">MPH</th>
             <th>Agreements</th>
-            <th></th>
+            <%=raw '<th></th>' if !@mtd %>
           </tr>
         </thead>
-        <% entries.each do |entry| %>
-          <tbody>
-            <tr>
-              <td><%= entry.date.strftime('%b %e, %Y') %></td>
-              <td><%= link_to entry.employee.name, refinery.akouo_journeyboard_employee_path(entry.employee) %></td>
-              <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
-              <td><%= number_to_currency(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor) %></td>
-              <td><%= entry.leads %></td>
-              <td><%= entry.opportunities %></td>
-              <td><%= entry.calls_run %></td>
-              <td><%= entry.hours %></td>
-              <td><%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %></td>
-              <td class="agreements">
-                <table>
-                  <tr>
-                    <%= content_tag :td, entry.agreement_1, :class => 'platinum' %>
-                    <%= content_tag :td, entry.agreement_2, :class => 'gold' %>
-                    <%= content_tag :td, entry.agreement_3, :class => 'silver' %>
-                    <%= content_tag :td, entry.agreement_4, :class => 'bronze' %>
-                  </tr>
-                </table>
-              </td>
-              <td><%= link_to 'Edit', refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
-            </tr>
-          </tbody>
+
+        <% @user.employees.each do |employee| %>
+          <% entries = all_entries.where(:employee_id => employee.id) %>
+
+          <% if !entries.blank? and !@mtd or @mtd %>
+            <tbody>
+              <tr>
+                <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
+                <td><%= link_to employee.name, refinery.akouo_journeyboard_employee_path(employee) %></td>
+                <td><%= number_to_currency(entries.sum(:revenue)+entries.sum(:accessories)) %></td>
+                <td><%= number_to_currency(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)) %></td>
+                <td><%= entries.sum(:leads) %></td>
+                <td><%= entries.sum(:opportunities) %></td>
+                <td><%= entries.sum(:calls_run) %></td>
+                <td><%= entries.sum(:hours) %></td>
+                <td>
+                  <% if entries.sum(:hours) == 0 %>
+                    &ndash;
+                  <% else %>
+                    <%= "#{number_to_currency(((entries.sum(:revenue)+entries.sum(:accessories))-(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)))/entries.sum(:hours))}/hr" %>
+                  <% end %>
+                </td>
+                <td class="agreements">
+                  <table>
+                    <tr>
+                      <%= content_tag :td, entries.sum(:agreement_1), :class => 'platinum' %>
+                      <%= content_tag :td, entries.sum(:agreement_2), :class => 'gold' %>
+                      <%= content_tag :td, entries.sum(:agreement_3), :class => 'silver' %>
+                      <%= content_tag :td, entries.sum(:agreement_4), :class => 'bronze' %>
+                    </tr>
+                  </table>
+                </td>
+                <%=raw "<td>#{link_to 'Edit', refinery.edit_akouo_journeyboard_entry_path(entries.first) if !entries.first.nil?}</td>" if !@mtd %>
+              </tr>
+            </tbody>
+          <% end %>
         <% end %>
       <% end %>
     </table>
@@ -67,35 +78,39 @@
 
   <h1>Memberships</h1>
   <table class="journeyboard">
-    <% entries = @user.journeyboard_csr_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
-    <% if entries.blank? %>
+    <% all_entries = @user.journeyboard_csr_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
+    <% if all_entries.blank? and !@mtd %>
       <tr>
         <td>No Entries Yet</td>
       </tr>
     <% else %>
       <thead>
         <tr>
-          <th>Date</th>
+          <%=raw '<th>Date</th>' if !@mtd %>
           <th>Employee</th>
           <th>Memberships Sold</th>
           <th>Sold With New Systems</th>
           <th>Memberships Lost</th>
-          <th></th>
+          <%=raw '<th></th>' if !@mtd %>
         </tr>
       </thead>
 
-      <tbody>
-        <% entries.each do |entry| %>
-          <tr>
-            <td><%= entry.date.strftime('%b %e, %Y') %></td>
-            <td><%= entry.employee.name if !entry.employee.nil? %></td>
-            <td><%= entry.sold %></td>
-            <td><%= entry.sold_new_systems %></td>
-            <td><%= entry.lost %></td>
-            <td><%= link_to 'Edit', refinery.edit_akouo_journeyboard_csr_entry_path(entry) %></td>
-          </tr>
+      <% @user.employees.each do |employee| %>
+        <% entries = all_entries.where(:employee_id => employee.id) %>
+
+        <% if !entries.blank? and !@mtd or @mtd %>
+          <tbody>
+              <tr>
+                <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
+                <td><%= employee.name if !employee.nil? %></td>
+                <td><%= entries.sum(:sold) %></td>
+                <td><%= entries.sum(:sold_new_systems) %></td>
+                <td><%= entries.sum(:lost) %></td>
+                <%=raw "<td>#{link_to 'Edit', refinery.edit_akouo_journeyboard_csr_entry_path(entries.first) if !entries.first.nil?}</td>" if !@mtd %>
+              </tr>
+          </tbody>
         <% end %>
-      </tbody>
+      <% end %>
     <% end %>
   </table>
 <% end %>
