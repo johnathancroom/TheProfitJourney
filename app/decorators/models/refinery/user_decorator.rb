@@ -19,9 +19,10 @@ Refinery::User.class_eval do
     if self.subscription_id.nil?
       0
     else
-      transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => :sandbox)
+      transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => ((ENV['ANET_SANDBOX'].nil?) ? :production : :sandbox))
       response = transaction.get_status(self.subscription_id)
-      if response.subscription_status == 'active'
+      # Lookup successful and subscription active
+      if response.message_code == 'I00001' and response.subscription_status == 'active'
         self.plan_id
       else
         0
