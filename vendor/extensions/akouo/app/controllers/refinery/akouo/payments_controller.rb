@@ -20,7 +20,7 @@ module Refinery
           # Cancel current plan if it exists
           cancel_plan
 
-          credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}")
+          credit_card = AuthorizeNet::CreditCard.new(params[:card_number], "#{params[:card_expiry_month]}#{params[:card_expiry_year]}", :card_code => params[:cvv])
           billing_address = AuthorizeNet::Address.new(
             :first_name => params[:first_name],
             :last_name => params[:last_name],
