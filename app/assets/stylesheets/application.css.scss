@@ -219,14 +219,17 @@ textarea {
   bottom: -40px;
   position: absolute;
   right: 0;
+  width: 502px;
 
   li {
     background-color: #fff;
     @include box-shadow(-2px -2px 5px 0 rgba(0,0,0,0.2));
     color: #000;
-    display: inline-block;
+    float: left;
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
+    list-style: none;
+    margin-left: 5px;
 
     span {
       color: #02642d;
