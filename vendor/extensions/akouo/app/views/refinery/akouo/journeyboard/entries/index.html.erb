@@ -13,7 +13,7 @@
 
     <table class="journeyboard">
       <% all_entries = profit_center.journeyboard_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
-      <% if all_entries.blank? and !@mtd %>
+      <% if all_entries.blank? %>
         <tr>
           <td>No Entries Yet</td>
         </tr>
@@ -37,37 +37,39 @@
         <% @user.employees.each do |employee| %>
           <% entries = all_entries.where(:employee_id => employee.id) %>
 
-          <% if !entries.blank? and !@mtd or @mtd %>
-            <tbody>
-              <tr>
-                <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
-                <td><%= link_to employee.name, refinery.akouo_journeyboard_employee_path(employee) %></td>
-                <td><%= number_to_currency(entries.sum(:revenue)+entries.sum(:accessories)) %></td>
-                <td><%= number_to_currency(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)) %></td>
-                <td><%= entries.sum(:leads) %></td>
-                <td><%= entries.sum(:opportunities) %></td>
-                <td><%= entries.sum(:calls_run) %></td>
-                <td><%= entries.sum(:hours) %></td>
-                <td>
-                  <% if entries.sum(:hours) == 0 %>
-                    &ndash;
-                  <% else %>
-                    <%= "#{number_to_currency(((entries.sum(:revenue)+entries.sum(:accessories))-(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)))/entries.sum(:hours))}/hr" %>
-                  <% end %>
-                </td>
-                <td class="agreements">
-                  <table>
-                    <tr>
-                      <%= content_tag :td, entries.sum(:agreement_1), :class => 'platinum' %>
-                      <%= content_tag :td, entries.sum(:agreement_2), :class => 'gold' %>
-                      <%= content_tag :td, entries.sum(:agreement_3), :class => 'silver' %>
-                      <%= content_tag :td, entries.sum(:agreement_4), :class => 'bronze' %>
-                    </tr>
-                  </table>
-                </td>
-                <%=raw "<td>#{link_to 'Edit', refinery.edit_akouo_journeyboard_entry_path(entries.first) if !entries.first.nil?}</td>" if !@mtd %>
-              </tr>
-            </tbody>
+          <% if !entries.blank? %>
+            <% if !entries.blank? and !@mtd or @mtd %>
+              <tbody>
+                <tr>
+                  <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
+                  <td><%= link_to employee.name, refinery.akouo_journeyboard_employee_path(employee) %></td>
+                  <td><%= number_to_currency(entries.sum(:revenue)+entries.sum(:accessories)) %></td>
+                  <td><%= number_to_currency(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)) %></td>
+                  <td><%= entries.sum(:leads) %></td>
+                  <td><%= entries.sum(:opportunities) %></td>
+                  <td><%= entries.sum(:calls_run) %></td>
+                  <td><%= entries.sum(:hours) %></td>
+                  <td>
+                    <% if entries.sum(:hours) == 0 %>
+                      &ndash;
+                    <% else %>
+                      <%= "#{number_to_currency(((entries.sum(:revenue)+entries.sum(:accessories))-(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)))/entries.sum(:hours))}/hr" %>
+                    <% end %>
+                  </td>
+                  <td class="agreements">
+                    <table>
+                      <tr>
+                        <%= content_tag :td, entries.sum(:agreement_1), :class => 'platinum' %>
+                        <%= content_tag :td, entries.sum(:agreement_2), :class => 'gold' %>
+                        <%= content_tag :td, entries.sum(:agreement_3), :class => 'silver' %>
+                        <%= content_tag :td, entries.sum(:agreement_4), :class => 'bronze' %>
+                      </tr>
+                    </table>
+                  </td>
+                  <%=raw "<td>#{link_to 'Edit', refinery.edit_akouo_journeyboard_entry_path(entries.first) if !entries.first.nil?}</td>" if !@mtd %>
+                </tr>
+              </tbody>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
@@ -79,7 +81,7 @@
   <h1>Memberships</h1>
   <table class="journeyboard">
     <% all_entries = @user.journeyboard_csr_entries.where(:date => (@mtd) ? @date.beginning_of_month..@date : @date).order('date DESC') %>
-    <% if all_entries.blank? and !@mtd %>
+    <% if all_entries.blank? %>
       <tr>
         <td>No Entries Yet</td>
       </tr>
@@ -98,7 +100,7 @@
       <% @user.employees.each do |employee| %>
         <% entries = all_entries.where(:employee_id => employee.id) %>
 
-        <% if !entries.blank? and !@mtd or @mtd %>
+        <% if !entries.blank? %>
           <tbody>
               <tr>
                 <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
