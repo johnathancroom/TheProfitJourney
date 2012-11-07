@@ -447,7 +447,7 @@
       </thead>
 
       <tbody>
-        <% @user.employees.each do |employee| %>
+        <% @user.employees.where(:type => 2).each do |employee| %>
           <% entries = employee.entries.where(:date => @date.beginning_of_month..@date) %>
           <tr>
             <td><%= employee.name %></td>
