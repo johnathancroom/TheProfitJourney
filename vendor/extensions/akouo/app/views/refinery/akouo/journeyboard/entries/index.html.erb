@@ -44,7 +44,7 @@
                   <%=raw "<td>#{entries.first.date.strftime('%b %e, %Y')}</td>" if !@mtd %>
                   <td><%= link_to employee.name, refinery.akouo_journeyboard_employee_path(employee) %></td>
                   <td><%= number_to_currency(entries.sum(:revenue)+entries.sum(:accessories)) %></td>
-                  <td><%= number_to_currency(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)) %></td>
+                  <td><%= number_to_currency(entries.sum(:commission)+(employee.hourly_rate*entries.sum(:hours))+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)) %></td>
                   <td><%= entries.sum(:leads) %></td>
                   <td><%= entries.sum(:opportunities) %></td>
                   <td><%= entries.sum(:calls_run) %></td>
@@ -53,7 +53,7 @@
                     <% if entries.sum(:hours) == 0 %>
                       &ndash;
                     <% else %>
-                      <%= "#{number_to_currency(((entries.sum(:revenue)+entries.sum(:accessories))-(entries.sum(:commission)+entries.sum(:todays_pay)+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)))/entries.sum(:hours))}/hr" %>
+                      <%= "#{number_to_currency(((entries.sum(:revenue)+entries.sum(:accessories))-(entries.sum(:commission)+(employee.hourly_rate*entries.sum(:hours))+entries.sum(:fuel_cost)+entries.sum(:parts)+entries.sum(:additional_labor)))/entries.sum(:hours))}/hr" %>
                     <% end %>
                   </td>
                   <td class="agreements">

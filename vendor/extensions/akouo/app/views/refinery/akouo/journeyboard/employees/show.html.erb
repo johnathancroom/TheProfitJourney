@@ -36,7 +36,7 @@
                 <td><%= link_to entry.date.strftime('%b %e, %Y'), refinery.edit_akouo_journeyboard_entry_path(entry) %></td>
                 <td><%= number_to_currency(entry.revenue+entry.accessories) %></td>
                 <td><%= number_to_currency entry.commission %></td>
-                <td><%= number_to_currency entry.todays_pay %></td>
+                <td><%= number_to_currency @employee.hourly_rate*entry.hours %></td>
                 <td><%= number_to_currency entry.fuel_cost %></td>
                 <td><%= number_to_currency entry.parts %></td>
                 <td><%= number_to_currency entry.additional_labor %></td>
@@ -48,7 +48,7 @@
                   <% if entry.hours == 0 %>
                     &ndash;
                   <% else %>
-                    <%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+entry.todays_pay+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %>
+                    <%= "#{number_to_currency(((entry.revenue+entry.accessories)-(entry.commission+(@employee.hourly_rate*entry.hours)+entry.fuel_cost+entry.parts+entry.additional_labor))/entry.hours)}/hr" %>
                   <% end %>
                 </td>
                 <td class="agreements">

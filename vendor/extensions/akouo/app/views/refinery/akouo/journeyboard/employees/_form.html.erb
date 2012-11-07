@@ -9,5 +9,10 @@
     <%= f.select :type, @employee_types %>
   </div>
 
+  <div>
+    <%= f.label :hourly_rate %>
+    <%= f.money_field :hourly_rate %>
+  </div>
+
   <%= f.submit 'Submit', :class => 'button' %>
 <% end %>

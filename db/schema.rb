@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101231139) do
+ActiveRecord::Schema.define(:version => 20121107032300) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -726,9 +726,10 @@ ActiveRecord::Schema.define(:version => 20121101231139) do
   create_table "refinery_journeyboard_employees", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.integer  "type"
+    t.decimal  "hourly_rate", :precision => 19, :scale => 2, :default => 0.0
   end
 
   create_table "refinery_journeyboard_entries", :force => true do |t|
@@ -738,7 +739,6 @@ ActiveRecord::Schema.define(:version => 20121101231139) do
     t.datetime "created_at",                                                               :null => false
     t.datetime "updated_at",                                                               :null => false
     t.decimal  "commission",               :precision => 19, :scale => 2, :default => 0.0
-    t.decimal  "todays_pay",               :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "revenue",                  :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "parts",                    :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "accessories",              :precision => 19, :scale => 2, :default => 0.0
