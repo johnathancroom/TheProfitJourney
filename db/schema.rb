@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107032300) do
+ActiveRecord::Schema.define(:version => 20121109184029) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -754,7 +754,6 @@ ActiveRecord::Schema.define(:version => 20121107032300) do
     t.decimal  "additional_labor",         :precision => 19, :scale => 2, :default => 0.0
     t.integer  "warranty_calls_run",                                      :default => 0
     t.integer  "membership_opportunities",                                :default => 0
-    t.decimal  "backlog",                  :precision => 19, :scale => 2, :default => 0.0
     t.decimal  "sold",                     :precision => 19, :scale => 2, :default => 0.0
     t.integer  "sales_calls_run",                                         :default => 0
     t.integer  "sales_calls_sold",                                        :default => 0
