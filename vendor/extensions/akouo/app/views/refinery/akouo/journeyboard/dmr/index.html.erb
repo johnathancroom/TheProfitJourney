@@ -394,6 +394,28 @@
 
       <tbody>
         <tr>
+          <td>Total Memberships Active</td>
+          <td>
+            <%
+              sold = 0
+              @entries.each do |entries|
+                sold += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
+              end
+            %>
+            <%= sold+@csr_entries.sum(:sold)+@csr_entries.sum(:sold_new_systems) %>
+          </td>
+          <td>
+            <%
+              sold = 0
+              @entries_mtd.each do |entries|
+                sold += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
+              end
+            %>
+            <%= sold+@csr_entries_mtd.sum(:sold)+@csr_entries_mtd.sum(:sold_new_systems) %>
+          </td>
+        </tr>
+
+        <tr>
           <td>Memberships Sold by CSR's</td>
           <td><%= @csr_entries.sum(:sold) %></td>
           <td><%= @csr_entries_mtd.sum(:sold) %></td>
