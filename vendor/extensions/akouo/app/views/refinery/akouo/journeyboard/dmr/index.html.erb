@@ -382,7 +382,7 @@
   <hr>
 
   <div class="half">
-    <h1>Memberships</h1>
+    <h1>CSR’s</h1>
     <table class="journeyboard">
       <thead>
         <tr>
@@ -394,29 +394,7 @@
 
       <tbody>
         <tr>
-          <td>Total Memberships Active</td>
-          <td>
-            <%
-              sold = 0
-              @entries.each do |entries|
-                sold += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
-              end
-            %>
-            <%= sold+@csr_entries.sum(:sold)+@csr_entries.sum(:sold_new_systems) %>
-          </td>
-          <td>
-            <%
-              sold = 0
-              @entries_mtd.each do |entries|
-                sold += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
-              end
-            %>
-            <%= sold+@csr_entries_mtd.sum(:sold)+@csr_entries_mtd.sum(:sold_new_systems) %>
-          </td>
-        </tr>
-
-        <tr>
-          <td>Memberships Sold by CSR's</td>
+          <td>Memberships Sold</td>
           <td><%= @csr_entries.sum(:sold) %></td>
           <td><%= @csr_entries_mtd.sum(:sold) %></td>
         </tr>
@@ -431,6 +409,43 @@
           <td>Total Memberships Added</td>
           <td><%= @csr_entries.sum(:sold)+@csr_entries.sum(:sold_new_systems) %></td>
           <td><%= @csr_entries_mtd.sum(:sold)+@csr_entries_mtd.sum(:sold_new_systems) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h1>Total Company Memberships</h1>
+    <table class="journeyboard">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Actual</th>
+          <th>MTD</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Active Memberships</td>
+          <td>
+            <%
+              sold = 0
+              @entries.each do |entries|
+                sold += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
+              end
+            %>
+            <%= sold+@csr_entries.sum(:sold)+@csr_entries.sum(:sold_new_systems) %>
+          </td>
+          <td>
+            <%
+              sold_mtd = 0
+              @entries_mtd.each do |entries|
+                sold_mtd += entries.sum(:agreement_1)+entries.sum(:agreement_2)+entries.sum(:agreement_3)+entries.sum(:agreement_4)
+              end
+            %>
+            <%= sold_mtd+@csr_entries_mtd.sum(:sold)+@csr_entries_mtd.sum(:sold_new_systems) %>
+          </td>
         </tr>
 
         <tr>
