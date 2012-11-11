@@ -471,10 +471,10 @@
 
       <tbody>
         <% @user.employees.where(:type => 2).each do |employee| %>
-          <% entries = employee.entries.where(:date => @date.beginning_of_month..@date) %>
+          <% entries = employee.csr_entries.where(:date => @date.beginning_of_month..@date) %>
           <tr>
             <td><%= employee.name %></td>
-            <td><%= number_to_currency(entries.sum(:sold)) %></td>
+            <td><%= number_to_currency(entries.sum(:dollars_sold)) %></td>
             <td><%= entries.sum(:sales_calls_run) %></td>
             <td><%= entries.sum(:sales_calls_sold) %></td>
           </tr>

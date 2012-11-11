@@ -7,6 +7,21 @@
   </div>
 
   <div>
+    <%= f.label :dollars_sold, '$ Sold' %>
+    <%= f.money_field :dollars_sold %>
+  </div>
+
+  <div>
+    <%= f.label :sales_calls_run %>
+    <%= f.number_field :sales_calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :sales_calls_sold %>
+    <%= f.number_field :sales_calls_sold %>
+  </div>
+
+  <div>
     <%= f.label :sold, 'Memberships Sold' %>
     <%= f.number_field :sold %>
   </div>

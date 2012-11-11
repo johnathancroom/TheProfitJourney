@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <%= render :partial => 'employee_select', :locals => { :f => f } %>
-
   <div>
     <%= f.label :profit_center_id, 'Profit center' %>
     <% profit_center_array = @profit_centers.collect { |x| [x.pcn, x.id] } %>
-    <% profit_center_array.push ['Membership & Comfort Advisor', -1] %>
+    <% profit_center_array.push ['CSR’s & Comfort Advisors', -1] %>
     <%= f.select :profit_center_id, profit_center_array %>
   </div>
+
+  <%= render :partial => 'employee_select', :locals => { :f => f } %>
 
   <% content_for :javascripts do %>
     <script type="text/javascript">

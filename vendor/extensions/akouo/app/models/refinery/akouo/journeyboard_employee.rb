@@ -8,6 +8,7 @@ module Refinery
 
       belongs_to :user, :class_name => 'Refinery::User'
       has_many :entries, :class_name => 'Refinery::Akouo::JourneyboardEntry', :foreign_key => 'employee_id'
+      has_many :csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry', :foreign_key => 'employee_id'
 
       validates_presence_of :name, :type, :hourly_rate
     end

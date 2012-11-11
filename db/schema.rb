@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109184029) do
+ActiveRecord::Schema.define(:version => 20121111221957) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -714,13 +714,16 @@ ActiveRecord::Schema.define(:version => 20121109184029) do
 
   create_table "refinery_journeyboard_csr_entries", :force => true do |t|
     t.date     "date"
-    t.integer  "sold",             :default => 0
-    t.integer  "sold_new_systems", :default => 0
-    t.integer  "lost",             :default => 0
+    t.integer  "sold",                                            :default => 0
+    t.integer  "sold_new_systems",                                :default => 0
+    t.integer  "lost",                                            :default => 0
     t.integer  "user_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.integer  "employee_id"
+    t.decimal  "dollars_sold",     :precision => 19, :scale => 2, :default => 0.0
+    t.integer  "sales_calls_run",                                 :default => 0
+    t.integer  "sales_calls_sold",                                :default => 0
   end
 
   create_table "refinery_journeyboard_employees", :force => true do |t|
