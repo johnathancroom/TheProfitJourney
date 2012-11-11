@@ -9,7 +9,7 @@
 
   <ul>
     <% @budgets.each do |budget| %>
-      <li><%= link_to budget.date.strftime('%B %Y'), refinery.edit_akouo_journeyboard_budget_path(budget) %></li>
+      <li><%= link_to (!budget.date.nil?) ? budget.date.strftime('%B %Y') : '{Click to add month to this budget}', refinery.edit_akouo_journeyboard_budget_path(budget) %></li>
     <% end %>
   </ul>
 <% end %>
