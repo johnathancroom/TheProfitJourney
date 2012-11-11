@@ -1,0 +1,278 @@
+<%= form_for @budget, :url => path, :html => { :class => 'styled_form wide' } do |f| %>
+  <% if @budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@budget.errors.count, "error") %> need to be corrected before continuing:</h2>
+
+      <ul>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date, :order => [:month, :year] %>
+  </div>
+
+  <div>
+    <%= f.label :budget_days %>
+    <%= f.money_field :budget_days %>
+  </div>
+
+  <div>
+    <%= f.label :total_expenses %>
+    <%= f.money_field :total_expenses %>
+  </div>
+
+  <div>
+    <%= f.label :total_operating_profit %>
+    <%= f.money_field :total_operating_profit %>
+  </div>
+
+  <div>
+    <%= f.label :ytd_gross_margin, 'YTD gross margin' %>
+    <%= f.number_field :ytd_gross_margin %>
+  </div>
+
+  <hr>
+
+  <h1>Replacement</h1>
+
+  <div>
+    <%= f.label :replacement_sold, '$ Sold' %>
+    <%= f.money_field :replacement_sold %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_sales_calls_run, 'Sales calls run' %>
+    <%= f.number_field :replacement_sales_calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_sales_calls_sold, 'Sales calls sold' %>
+    <%= f.number_field :replacement_sales_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_revenue, 'Revenue' %>
+    <%= f.number_field :replacement_revenue %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_calls_run, 'Calls run' %>
+    <%= f.number_field :replacement_calls %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_warranty_calls, 'Warranty calls' %>
+    <%= f.number_field :replacement_warranty_calls %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_calls_sold, 'Calls sold' %>
+    <%= f.number_field :replacement_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_accessories, 'Accessories' %>
+    <%= f.money_field :replacement_accessories %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_cogs, 'COG’s' %>
+    <%= f.money_field :replacement_cogs %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_membership_opportunities, 'Membership opportunities' %>
+    <%= f.number_field :replacement_membership_opportunities %>
+  </div>
+
+  <div>
+    <%= f.label :replacement_memberships_sold, 'Memberships sold' %>
+    <%= f.number_field :replacement_memberships_sold %>
+  </div>
+
+  <hr>
+
+  <h1>Repair</h1>
+
+  <div>
+    <%= f.label :repair_sold, '$ Sold' %>
+    <%= f.money_field :repair_sold %>
+  </div>
+
+  <div>
+    <%= f.label :repair_sales_calls_run, 'Sales calls run' %>
+    <%= f.number_field :repair_sales_calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :repair_sales_calls_sold, 'Sales calls sold' %>
+    <%= f.number_field :repair_sales_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :repair_revenue, 'Revenue' %>
+    <%= f.number_field :repair_revenue %>
+  </div>
+
+  <div>
+    <%= f.label :repair_calls, 'Calls run' %>
+    <%= f.number_field :repair_calls %>
+  </div>
+
+  <div>
+    <%= f.label :repair_warranty_calls, 'Warranty calls' %>
+    <%= f.number_field :repair_warranty_calls %>
+  </div>
+
+  <div>
+    <%= f.label :repair_calls_sold, 'Calls sold' %>
+    <%= f.number_field :repair_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :repair_accessories, 'Accessories' %>
+    <%= f.money_field :repair_accessories %>
+  </div>
+
+  <div>
+    <%= f.label :repair_cogs, 'COG’s' %>
+    <%= f.money_field :repair_cogs %>
+  </div>
+
+  <div>
+    <%= f.label :repair_membership_opportunities, 'Membership opportunities' %>
+    <%= f.number_field :repair_membership_opportunities %>
+  </div>
+
+  <div>
+    <%= f.label :repair_memberships_sold, 'Memberships sold' %>
+    <%= f.number_field :repair_memberships_sold %>
+  </div>
+
+  <hr>
+
+  <h1>Maintenance</h1>
+
+  <div>
+    <%= f.label :maintenance_sold, '$ Sold' %>
+    <%= f.money_field :maintenance_sold %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_sales_calls_run, 'Sales calls run' %>
+    <%= f.number_field :maintenance_sales_calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_sales_calls_sold, 'Sales calls sold' %>
+    <%= f.number_field :maintenance_sales_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_revenue, 'Revenue' %>
+    <%= f.number_field :maintenance_revenue %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_calls, 'Calls run' %>
+    <%= f.number_field :maintenance_calls %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_warranty_calls, 'Warranty calls' %>
+    <%= f.number_field :maintenance_warranty_calls %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_calls_sold, 'Calls sold' %>
+    <%= f.number_field :maintenance_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_accessories, 'Accessories' %>
+    <%= f.money_field :maintenance_accessories %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_cogs, 'COG’s' %>
+    <%= f.money_field :maintenance_cogs %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_membership_opportunities, 'Membership opportunities' %>
+    <%= f.number_field :maintenance_membership_opportunities %>
+  </div>
+
+  <div>
+    <%= f.label :maintenance_memberships_sold, 'Memberships sold' %>
+    <%= f.number_field :maintenance_memberships_sold %>
+  </div>
+
+  <hr>
+
+  <h1>Specialty</h1>
+
+  <div>
+    <%= f.label :specialty_sold, '$ Sold' %>
+    <%= f.money_field :specialty_sold %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_sales_calls_run, 'Sales calls run' %>
+    <%= f.number_field :specialty_sales_calls_run %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_sales_calls_sold, 'Sales calls sold' %>
+    <%= f.number_field :specialty_sales_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_revenue, 'Revenue' %>
+    <%= f.number_field :specialty_revenue %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_calls, 'Calls run' %>
+    <%= f.number_field :specialty_calls %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_warranty_calls, 'Warranty calls' %>
+    <%= f.number_field :specialty_warranty_calls %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_calls_sold, 'Calls sold' %>
+    <%= f.number_field :specialty_calls_sold %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_accessories, 'Accessories' %>
+    <%= f.money_field :specialty_accessories %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_cogs, 'COG’s' %>
+    <%= f.money_field :specialty_cogs %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_membership_opportunities, 'Membership opportunities' %>
+    <%= f.number_field :specialty_membership_opportunities %>
+  </div>
+
+  <div>
+    <%= f.label :specialty_memberships_sold, 'Memberships sold' %>
+    <%= f.number_field :specialty_memberships_sold %>
+  </div>
+
+  <div>
+    <%= f.submit 'Submit', :class => 'button' %>
+  </div>
+<% end %>

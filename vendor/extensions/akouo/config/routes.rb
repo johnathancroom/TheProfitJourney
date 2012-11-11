@@ -30,12 +30,8 @@ Refinery::Core::Engine.routes.append do
       resources :employees, :except => [:destroy]
       resources :entries, :except => [:show, :destroy]
       resources :csr_entries, :except => [:index, :show, :destroy]
-      resources :dmr, :path => '', :only => [:index] do
-        collection do
-          get 'budget'
-          put 'budget' => 'dmr#update_budget'
-        end
-      end
+      resources :dmr, :path => '', :only => [:index]
+      resources :budgets, :except => [:show, :destroy]
     end
   end
 

@@ -3,8 +3,8 @@ module Refinery
     module Journeyboard
       class DmrController < JourneyboardController
 
-        before_filter :find_budgets
         before_filter :date_select
+        before_filter :find_budgets
 
         def index
           # Day of month is whichever profit center has the most entries
@@ -31,18 +31,10 @@ module Refinery
           @csr_entries_mtd = @user.journeyboard_csr_entries.where(:date => @date.beginning_of_month..@date)
         end
 
-        def update_budget
-          if @budget.update_attributes(params[:journeyboard_budget])
-            redirect_to refinery.akouo_journeyboard_dmr_index_path, :notice => 'DMR Budgets Saved.'
-          else
-            render :budget
-          end
-        end
-
       protected
 
         def find_budgets
-          @budget = @user.journeyboard_budget || @user.build_journeyboard_budget
+          @budget = @user.journeyboard_budgets.where(:date => @date.beginning_of_month).first || @user.journeyboard_budgets.build
         end
 
         def new_day_of_month

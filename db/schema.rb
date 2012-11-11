@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111221957) do
+ActiveRecord::Schema.define(:version => 20121111224252) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -710,6 +710,7 @@ ActiveRecord::Schema.define(:version => 20121111221957) do
     t.decimal "specialty_sold",                       :precision => 19, :scale => 2, :default => 0.0
     t.integer "specialty_sales_calls_run",                                           :default => 0
     t.integer "specialty_sales_calls_sold",                                          :default => 0
+    t.date    "date"
   end
 
   create_table "refinery_journeyboard_csr_entries", :force => true do |t|

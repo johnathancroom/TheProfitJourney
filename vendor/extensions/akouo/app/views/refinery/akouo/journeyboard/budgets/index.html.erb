@@ -1,0 +1,17 @@
+<% content_for :body_content_title do %>
+  <%= "#{page_title}: Budgets" %>
+<% end %>
+
+<% content_for :body do %>
+  <%= link_to 'Add New Month', refinery.new_akouo_journeyboard_budget_path %>
+
+  <hr>
+
+  <ul>
+    <% @budgets.each do |budget| %>
+      <li><%= link_to budget.date.strftime('%B %Y'), refinery.edit_akouo_journeyboard_budget_path(budget) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

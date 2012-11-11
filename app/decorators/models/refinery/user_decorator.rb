@@ -3,7 +3,7 @@ Refinery::User.class_eval do
   has_many :profit_centers, :class_name => 'Refinery::Akouo::ProfitCenter'
   belongs_to :workshop, :class_name => 'Refinery::Workshops::Workshop'
   has_one :customer, :class_name => 'Refinery::Akouo::Customer'
-  has_one :journeyboard_budget, :class_name => 'Refinery::Akouo::JourneyboardBudget'
+  has_many :journeyboard_budgets, :class_name => 'Refinery::Akouo::JourneyboardBudget'
   has_many :employees, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
   has_many :journeyboard_csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry'
 
