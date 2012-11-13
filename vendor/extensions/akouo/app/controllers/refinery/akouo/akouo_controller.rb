@@ -65,7 +65,9 @@ module Refinery
       end
 
       def get_plans
-        @plans = @user.plans
+        if !@user.nil?
+          @plans = @user.plans
+        end
       end
 
     end
