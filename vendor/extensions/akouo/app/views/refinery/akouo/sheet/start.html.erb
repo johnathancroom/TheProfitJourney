@@ -1,30 +1,46 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  <%= form_for @customer, :url => refinery.akouo_start_path, :html => { :method => "PUT", :class => "form" } do |f| %>
-    <%= f.label :cdba, "Doing Business As" %>
-    <%= f.text_field :cdba %>
+  <%= form_for @customer, :url => refinery.akouo_start_path, :html => { :method => 'PUT', :class => 'styled_form horiz' } do |f| %>
+    <div>
+      <%= f.label :cdba, 'Doing Business As' %>
+      <%= f.text_field :cdba %>
+    </div>
 
-    <%= f.label :cfn, "Owner First Name" %>
-    <%= f.text_field :cfn %>
+    <div>
+      <%= f.label :cfn, 'Owner First Name' %>
+      <%= f.text_field :cfn %>
+    </div>
 
-    <%= f.label :cln, "Last Name (Used as a reference)" %>
-    <%= f.text_field :cln %>
+    <div>
+      <%= f.label :cln, 'Owner Last Name' %>
+      <%= f.text_field :cln %>
+    </div>
 
-    <%= f.label :cidate, "Date Assembled" %>
-    <%= f.date_select :cidate, :start_year => 1980 %>
+    <div>
+      <%= f.label :cidate, 'Date Assembled' %>
+      <%= f.date_select :cidate, :start_year => 1980, :order => [:month, :day, :year] %>
+    </div>
 
-    <%= f.label :ccsd, "History Financial Comparison Start Date" %>
-    <%= f.date_select :ccsd, :start_year => 1980 %>
+    <div>
+      <%= f.label :ccsd, 'History Financial Comparison Start Date' %>
+      <%= f.date_select :ccsd, :start_year => 1980, :order => [:month, :day, :year] %>
+    </div>
 
-    <%= f.label :cced, "History Financial Comparison End Date" %>
-    <%= f.date_select :cced, :start_year => 1980 %>
+    <div>
+      <%= f.label :cced, 'History Financial Comparison End Date' %>
+      <%= f.date_select :cced, :start_year => 1980, :order => [:month, :day, :year] %>
+    </div>
 
-    <%= f.label :ccpd, "Projection Start Date" %>
-    <%= f.date_select :ccpd, :start_year => 1980 %>
+    <div>
+      <%= f.label :ccpd, 'Projection Start Date' %>
+      <%= f.date_select :ccpd, :start_year => 1980, :order => [:month, :day, :year] %>
+    </div>
 
-    <%= f.label :cah, "Average Number of Holidays & Vacations Yearly – Field Personnel" %>
-    <%= f.number_field :cah %>
+    <div>
+      <%= f.label :cah, 'Average Number of Holidays & Vacations Yearly – Field Personnel' %>
+      <%= f.number_field :cah %>
+    </div>
 
     <!--<hr>-->
 
@@ -34,7 +50,7 @@
     <%#= f.text_field :profit_center_name_3 %>
     <%#= f.text_field :profit_center_name_4 %>
 
-    <%= f.submit "Save changes", :class => "button" %>
+    <%= f.submit 'Save changes', :class => 'button' %>
   <% end %>
 <% end %>
 

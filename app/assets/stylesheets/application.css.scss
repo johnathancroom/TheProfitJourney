@@ -525,6 +525,17 @@ textarea {
     top: 9px;
   }
 }
+.horiz {
+  label {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+  input,
+  select {
+    margin-left: 0;
+  }
+}
 .wide label {
   width: 200px;
 }
