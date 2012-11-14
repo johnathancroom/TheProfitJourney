@@ -131,10 +131,10 @@
         <tr>
           <td>Average Ticket</td>
           <td>
-            <% if @entries[index].sum(:revenue) == 0 or @entries[index].sum(:leads) == 0 %>
+            <% if @entries[index].sum(:revenue) == 0 or @entries[index].sum(:calls_run) == 0 %>
               &ndash;
             <% else %>
-              <%= number_to_currency(@entries[index].sum(:revenue)/@entries[index].sum(:leads)) %>
+              <%= number_to_currency(@entries[index].sum(:revenue)/@entries[index].sum(:calls_run)) %>
             <% end %>
           </td>
           <td>
@@ -145,10 +145,10 @@
             <% end %>
           </td>
           <td>
-            <% if @entries_mtd[index].sum(:revenue) == 0 or @entries_mtd[index].sum(:leads) == 0 %>
+            <% if @entries_mtd[index].sum(:revenue) == 0 or @entries_mtd[index].sum(:calls_run) == 0 %>
               &ndash;
             <% else %>
-              <%= number_to_currency(@entries_mtd[index].sum(:revenue)/@entries_mtd[index].sum(:leads)) %>
+              <%= number_to_currency(@entries_mtd[index].sum(:revenue)/@entries_mtd[index].sum(:calls_run)) %>
             <% end %>
           </td>
           <% 2.times do %>
