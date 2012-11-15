@@ -9,8 +9,11 @@ Refinery::User.class_eval do
 
   attr_accessible(
     :workshop_id, :plan_id, :plan_override, :workshop_override,
-    :first_name, :last_name
+    :first_name, :last_name,
+    :profit_centers_attributes
   )
+
+  accepts_nested_attributes_for :profit_centers
 
   validates_presence_of :first_name, :last_name
   #validate :workshop_requires_platinum_plan
@@ -21,7 +24,7 @@ Refinery::User.class_eval do
     elsif subscription_id.nil?
       0
     else
-      transaction = AuthorizeNet::ARB::Transaction.new(ENV["ANET_ID"], ENV["ANET_KEY"], :gateway => ((ENV['ANET_SANDBOX'].nil?) ? :production : :sandbox))
+      transaction = AuthorizeNet::ARB::Transaction.new(ENV['ANET_ID'], ENV['ANET_KEY'], :gateway => ((ENV['ANET_SANDBOX'].nil?) ? :production : :sandbox))
       response = transaction.get_status(self.subscription_id)
       # Lookup successful and subscription active
       if response.message_code == 'I00001' and response.subscription_status == 'active'
@@ -54,14 +57,14 @@ Refinery::User.class_eval do
   def plans
     [
       # Name, amount, frequency (by month)
-      ["Bronze (Free)", 0, 0],
-      ["", 0, 0],
-      ["Silver ($39.99/month)", 39.99, 1],
-      ["Silver ($450/year)", 450, 12],
-      ["Gold ($149.99/month)", 149.99, 1],
-      ["Gold ($1600/year)", 1600, 12],
-      ["Platinum ($249.99/month)", 249.99, 1],
-      ["Platinum ($2700/year)", 2700, 12]
+      ['Bronze (Free)', 0, 0],
+      ['', 0, 0],
+      ['Silver ($39.99/month)', 39.99, 1],
+      ['Silver ($450/year)', 450, 12],
+      ['Gold ($149.99/month)', 149.99, 1],
+      ['Gold ($1600/year)', 1600, 12],
+      ['Platinum ($249.99/month)', 249.99, 1],
+      ['Platinum ($2700/year)', 2700, 12]
     ]
   end
 

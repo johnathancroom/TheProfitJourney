@@ -1,7 +1,7 @@
 <% content_for :body do %>
   <%=raw @page.content_for(:body) %>
 
-  <%= render :partial => "form", :locals => { :prefix => "ny", :model => "next_year", :action => refinery.akouo_next_year_path } %>
+  <%= render :partial => 'form', :locals => { :prefix => 'ny', :model => 'next_year', :action => refinery.akouo_next_year_path } %>
 <% end %>
 
-<%= render '/refinery/content_page' %>
+<%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>

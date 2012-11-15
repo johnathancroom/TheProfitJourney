@@ -8,11 +8,12 @@ module ActionView
         # Force cents
         options = options.merge({:step => 0.01})
 
-        # Show label if field is disabled
         if options[:disabled] == true
-          @template.label(@object_name, method, ActionController::Base.helpers.number_to_currency(options[:value]), objectify_options(options))
+          options[:class] = (options[:class] || '') + ' disabled'
+
+          @template.label @object_name, method, ActionController::Base.helpers.number_to_currency(options[:value]), objectify_options(options)
         else
-          @template.number_field(@object_name, method, objectify_options(options))
+          @template.number_field @object_name, method, objectify_options(options)
         end
       end
     end

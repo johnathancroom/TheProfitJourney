@@ -482,13 +482,13 @@ textarea {
   text-decoration: none;
   top: 10px;
 }
-.form {
+form.form {
   label,
   input {
     display: block;
   }
 }
-.styled_form {
+form.styled_form {
   label {
     display: inline-block;
     margin: 8px 0;
@@ -525,7 +525,7 @@ textarea {
     top: 9px;
   }
 }
-.horiz {
+form.horiz {
   label {
     display: block;
     margin: 0;
@@ -536,7 +536,45 @@ textarea {
     margin-left: 0;
   }
 }
-.wide label {
+.bp_columns {
+  ul {
+    list-style: none;
+    margin-left: 0;
+
+    ul {
+      margin-left: 15px;
+    }
+  }
+  li {
+    border-top: 1px dotted #ddd;
+  }
+  .col {
+    float: left;
+    width: 174px;
+  }
+  input[type=number],
+  input[type=text] {
+    width: 100%;
+  }
+  .head li {
+    padding: 8px 4px 8px 0;
+
+    ul {
+      margin-top: 8px;
+      margin-bottom: -8px;
+    }
+  }
+  label.disabled {
+    display: block;
+    padding: 8px 4px;
+  }
+  .expense_statement {
+    margin-top: 20px;
+    text-align: center;
+    width: 870px;
+  }
+}
+form.wide label {
   width: 200px;
 }
 .account_workshops {
