@@ -1,6 +1,6 @@
 <%= form_for @user, :url => action, :html => { :method => 'PUT', :class => 'bp_columns clearfix' } do |user| %>
   <div class="col head">
-    <strong><%= @customer.cced.strftime('%b %e, %Y') if !@customer.nil? %></strong>
+    <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
 
     <hr>
 
@@ -182,7 +182,7 @@
 
     <hr>
 
-    <strong><%= @customer.cced.strftime('%b %e, %Y') if !@customer.nil? %></strong>
+    <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
 
     <hr>
 
