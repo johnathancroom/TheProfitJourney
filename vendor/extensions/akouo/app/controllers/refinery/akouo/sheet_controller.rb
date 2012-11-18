@@ -18,6 +18,7 @@ module Refinery
         c.find_page('/akouo/next_year')
         c.do_formulas('ny')
       }
+      before_filter :only => [:demand_trend, :demand_trend_update] { |c| c.find_page('/akouo/demand_trend') }
 
       def start_update
         update(@customer, params[:customer], :start)
@@ -29,6 +30,10 @@ module Refinery
 
       def next_year_update
         update(@user, params[:user], :next_year)
+      end
+
+      def demand_trend_update
+
       end
 
     protected

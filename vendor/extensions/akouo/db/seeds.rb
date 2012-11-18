@@ -16,8 +16,9 @@
     ["/akouo/vision", "Vision"],
     ["/akouo/last_year", "Last Year"],
     ["/akouo/next_year", "Next Year Projection"],
+    ['/akouo/demand_trend', 'Demand Trend'],
 
-    ["/journeyboard", "Journey Board"],
+    ["/journeyboard", "JourneyBoard"],
 
     ["/register", "Register"],
     ["/login", "Login"],

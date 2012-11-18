@@ -15,6 +15,9 @@ Refinery::Core::Engine.routes.append do
 
     get 'next_year' => 'sheet#next_year'
     put 'next_year' => 'sheet#next_year_update'
+
+    get 'demand_trend' => 'sheet#demand_trend'
+    put 'demand_trend' => 'sheet#demand_trend_update'
   end
 
   namespace :akouo, :path => '' do
