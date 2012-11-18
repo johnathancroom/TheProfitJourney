@@ -11,7 +11,8 @@ module Refinery
           'last_year',
           'profit_center_last_year',
           'next_year',
-          'profit_center_next_year'
+          'profit_center_next_year',
+          'demand_trend'
         ]
 
         profit_center_default_names = [

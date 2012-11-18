@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121111224252) do
+ActiveRecord::Schema.define(:version => 20121118184156) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -492,8 +492,6 @@ ActiveRecord::Schema.define(:version => 20121111224252) do
     t.decimal "nyfewci",          :precision => 19, :scale => 2, :default => 0.0
   end
 
-  add_index "ny", ["id"], :name => "NYID"
-
   create_table "oc", :primary_key => "OCID", :force => true do |t|
     t.integer "CID",  :null => false
     t.integer "PCID"
@@ -515,24 +513,24 @@ ActiveRecord::Schema.define(:version => 20121111224252) do
   add_index "pc", ["id"], :name => "PCID"
   add_index "pc", ["user_id"], :name => "CID"
 
-  create_table "pcdt", :primary_key => "DTID", :force => true do |t|
-    t.integer "PCID"
-    t.decimal "DTJ",  :precision => 19, :scale => 4
-    t.decimal "DTF",  :precision => 19, :scale => 4
-    t.decimal "DTM",  :precision => 19, :scale => 4
-    t.decimal "DTA",  :precision => 19, :scale => 4
-    t.decimal "DTMY", :precision => 19, :scale => 4
-    t.decimal "DTJN", :precision => 19, :scale => 4
-    t.decimal "DTJL", :precision => 19, :scale => 4
-    t.decimal "DTAG", :precision => 19, :scale => 4
-    t.decimal "DTS",  :precision => 19, :scale => 4
-    t.decimal "DTO",  :precision => 19, :scale => 4
-    t.decimal "DTN",  :precision => 19, :scale => 4
-    t.decimal "DTD",  :precision => 19, :scale => 4
+  create_table "pcdt", :force => true do |t|
+    t.integer "profit_center_id"
+    t.decimal "dtj",              :precision => 19, :scale => 4
+    t.decimal "dtf",              :precision => 19, :scale => 4
+    t.decimal "dtm",              :precision => 19, :scale => 4
+    t.decimal "dta",              :precision => 19, :scale => 4
+    t.decimal "dtmy",             :precision => 19, :scale => 4
+    t.decimal "dtjn",             :precision => 19, :scale => 4
+    t.decimal "dtjl",             :precision => 19, :scale => 4
+    t.decimal "dtag",             :precision => 19, :scale => 4
+    t.decimal "dts",              :precision => 19, :scale => 4
+    t.decimal "dto",              :precision => 19, :scale => 4
+    t.decimal "dtn",              :precision => 19, :scale => 4
+    t.decimal "dtd",              :precision => 19, :scale => 4
   end
 
-  add_index "pcdt", ["DTID"], :name => "DTID"
-  add_index "pcdt", ["PCID"], :name => "PCID"
+  add_index "pcdt", ["id"], :name => "DTID"
+  add_index "pcdt", ["profit_center_id"], :name => "PCID"
 
   create_table "pcly", :force => true do |t|
     t.decimal "pclyrs",           :precision => 19, :scale => 2, :default => 0.0
@@ -593,8 +591,6 @@ ActiveRecord::Schema.define(:version => 20121111224252) do
     t.decimal "pcnylptf",         :precision => 19, :scale => 2, :default => 0.0
     t.decimal "pcnylwci",         :precision => 19, :scale => 2, :default => 0.0
   end
-
-  add_index "pcny", ["id"], :name => "PCNYID"
 
   create_table "refinery_blog_categories", :force => true do |t|
     t.string   "title"

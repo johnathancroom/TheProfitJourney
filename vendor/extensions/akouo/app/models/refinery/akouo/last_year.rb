@@ -23,7 +23,7 @@ module Refinery
         :lyfenone, :lyfentwo
       )
 
-      belongs_to :profit_center, :class_name => "Refinery::Akouo::ProfitCenter"
+      belongs_to :profit_center, :class_name => 'Refinery::Akouo::ProfitCenter'
     end
   end
 end
