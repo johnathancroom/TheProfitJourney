@@ -8,6 +8,7 @@ module Refinery
       has_one :profit_center_last_year, :class_name => 'Refinery::Akouo::ProfitCenterLastYear'
       has_one :next_year, :class_name => 'Refinery::Akouo::NextYear'
       has_one :profit_center_next_year, :class_name => 'Refinery::Akouo::ProfitCenterNextYear'
+      has_one :demand_trend, :class_name => 'Refinery::Akouo::DemandTrend'
 
       has_many :journeyboard_entries, :class_name => 'Refinery::Akouo::JourneyboardEntry'
 
