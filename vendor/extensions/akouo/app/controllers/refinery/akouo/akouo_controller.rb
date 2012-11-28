@@ -12,7 +12,6 @@ module Refinery
           'profit_center_last_year',
           'next_year',
           'profit_center_next_year',
-          'demand_trend'
         ]
 
         profit_center_default_names = [
@@ -46,6 +45,13 @@ module Refinery
             if profit_center.send(table).nil?
               # profit_center.build_last_year
               profit_center.send("build_#{table}")
+            end
+          end
+
+          # Build out demand trends
+          if profit_center.demand_trends.count != 12
+            for x in ((Date.new(2011, 1)..Date.new(2011, 12)).select { |d| d.day == 1 }) do
+              profit_center.demand_trends.create(:month => x)
             end
           end
         end

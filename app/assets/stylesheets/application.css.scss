@@ -587,7 +587,8 @@ form.wide label {
   }
 }
 // <table class="journeyboard">
-.journeyboard {
+.journeyboard,
+.demand_trend {
   th,
   td {
     padding: 5px;
@@ -631,6 +632,34 @@ td.agreements {
   .bronze {
     background-color: #ceb17e;
   }
+}
+.demand_trend {
+  th,
+  td {
+    padding: 5px 2px;
+  }
+  td {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  input {
+    font-size: 10px;
+    padding: 2px;
+    width: 56px;
+  }
+  label {
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.float-right {
+  float: right;
 }
 #siteseal {
   position: absolute;

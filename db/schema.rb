@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118184156) do
+ActiveRecord::Schema.define(:version => 20121128163019) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -515,18 +515,8 @@ ActiveRecord::Schema.define(:version => 20121118184156) do
 
   create_table "pcdt", :force => true do |t|
     t.integer "profit_center_id"
-    t.decimal "dtj",              :precision => 19, :scale => 4
-    t.decimal "dtf",              :precision => 19, :scale => 4
-    t.decimal "dtm",              :precision => 19, :scale => 4
-    t.decimal "dta",              :precision => 19, :scale => 4
-    t.decimal "dtmy",             :precision => 19, :scale => 4
-    t.decimal "dtjn",             :precision => 19, :scale => 4
-    t.decimal "dtjl",             :precision => 19, :scale => 4
-    t.decimal "dtag",             :precision => 19, :scale => 4
-    t.decimal "dts",              :precision => 19, :scale => 4
-    t.decimal "dto",              :precision => 19, :scale => 4
-    t.decimal "dtn",              :precision => 19, :scale => 4
-    t.decimal "dtd",              :precision => 19, :scale => 4
+    t.decimal "value",            :precision => 19, :scale => 2, :default => 0.0, :null => false
+    t.date    "month"
   end
 
   add_index "pcdt", ["id"], :name => "DTID"

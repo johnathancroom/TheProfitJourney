@@ -33,7 +33,7 @@ module Refinery
       end
 
       def demand_trend_update
-
+        update(@user, params[:user], :demand_trend)
       end
 
     protected

@@ -1,5 +1,44 @@
 <% content_for :body do %>
-  h1
-<% end %>
+  <%= form_for @user, :url => refinery.akouo_demand_trend_path do |user| %>
+    <table class="demand_trend">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Jan-11</th>
+          <th>Feb-11</th>
+          <th>Mar-11</th>
+          <th>Apr-11</th>
+          <th>May-11</th>
+          <th>Jun-11</th>
+          <th>Jul-11</th>
+          <th>Aug-11</th>
+          <th>Sep-11</th>
+          <th>Oct-11</th>
+          <th>Nov-11</th>
+          <th>Dec-11</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @profit_centers.each do |profit_center| %>
+          <tr>
+            <td><%= profit_center.pcn %></td>
+
+            <%= user.fields_for :profit_centers, profit_center do |pc| %>
+              <%= pc.fields_for :demand_trends do |f| %>
+                <td><%= f.money_field :value %></td>
+              <% end # pc.fields_for :demand_trend %>
+            <% end # user.fields_for :profit_centers %>
+
+            <td><%= user.money_field :formula, :value => profit_center.demand_trends.sum(:value), :disabled => true %></td>
+          </tr>
+        <% end # @profit_centers.each %>
+      </tbody>
+    </table>
+
+    <%= user.submit 'Save changes', :class => 'button float-right' %>
+  <% end # form_for %>
+<% end # content_for %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
