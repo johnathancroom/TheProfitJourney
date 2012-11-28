@@ -12,9 +12,9 @@
   <div class="member_menu_space"></div>
 
   <ul class="member_menu">
-    <% if @user.has_plan?(:workshop) %>
-      <li><a href="/akouo">
-        <span>Akouo</span> Business Plan
+    <% if @user.has_plan?(:bronze) %>
+      <li><a href="/journeypartners">
+        <span>Journey</span> Partners
       </a></li>
     <% end %>
 
@@ -24,9 +24,9 @@
       </a></li>
     <% end %>
 
-    <% if @user.has_plan?(:bronze) %>
-      <li><a href="/journeypartners">
-        <span>Journey</span> Partners
+    <% if @user.has_plan?(:workshop) %>
+      <li><a href="/akouo">
+        <span>Akouo</span> Business Plan
       </a></li>
     <% end %>
   </ul>
