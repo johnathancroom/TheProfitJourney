@@ -1,7 +1,678 @@
 <% content_for :body do %>
-  <%=raw @page.content_for(:body) %>
+  <%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :class => 'bp_columns clearfix' } do |user| %>
+    <div class="col head">
+      <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
 
-  <%= render :partial => 'form', :locals => { :prefix => 'ly', :model => 'last_year', :action => refinery.akouo_last_year_path } %>
+      <hr>
+
+      <h1>Bank</h1>
+      <ul>
+        <li>Cash on Hand</li>
+        <li>
+          Cash in Banks
+          <ul>
+            <li>Checking Account No. 1</li>
+            <li>Checking Account No. 2</li>
+            <li>Checking Account No. 3</li>
+          </ul>
+        </li>
+        <li><strong>Total Bank</strong></li>
+        <li>Amounts Receivable</li>
+      </ul>
+
+      <hr>
+
+      <h1>Other Current Asset</h1>
+      <ul>
+        <li>Money Market Account</li>
+        <li>Short Term Investments</li>
+        <li>Allowance or Doubtful Accounts</li>
+        <li>Employee Receivables</li>
+        <li>Notes Receivable &ndash; Current</li>
+        <li>Inventory</li>
+        <li>Prepaid Expenses</li>
+        <li>Undeposited Funds</li>
+        <li><strong>Total Other Asset</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Fixed Asset</h1>
+      <ul>
+        <li>Vans &amp; Trucks</li>
+        <li>Accum Depree &ndash; Vans &amp; Trucks</li>
+        <li>Other Vehicles</li>
+        <li>Accum Depree &ndash; Other Vehicles</li>
+        <li>Equipment &ndash; Operations</li>
+        <li>Accum Depree &ndash; Equipment</li>
+        <li>Furniture &amp; Equipment &ndash; Office</li>
+        <li>Accum Depree &ndash; Furniture &amp; Equipment</li>
+        <li>Land</li>
+        <li>Buildings</li>
+        <li>Accum Depree &ndash; Buildings</li>
+        <li>Leasehold Improvements</li>
+        <li>Accum Depree &ndash; Leasehold Improvements</li>
+        <li><strong>Total Fixed Asset</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Other Asset</h1>
+      <ul>
+        <li>Notes Receivable &ndash; Long Term</li>
+        <li>Suspense</li>
+        <li>
+          Franchise Rights
+          <ul>
+            <li>Area No. 1</li>
+            <li>Area No. 2</li>
+            <li>Area No. 3</li>
+          </ul>
+        </li>
+        <li>
+          Accum Amortiz &ndash; Franchise
+          <ul>
+            <li>Area No. 1</li>
+            <li>Area No. 2</li>
+            <li>Area No. 3</li>
+          </ul>
+        </li>
+        <li>Other Intangible Assets</li>
+        <li>Accum Amortiz &ndash; Other Intangible Assets</li>
+        <li>Organization Costs</li>
+        <li>Accum Amortiz &ndash; Organization Costs</li>
+        <li>Deposits</li>
+        <li>Long Term Investments</li>
+        <li>Other Assets</li>
+        <li><strong>Total Other Asset</strong></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li><strong>Total Assets</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Accounts Payable</h1>
+      <ul>
+        <li>Accounts Payable</li>
+        <li><strong>Total Accounts Payable</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Credit Card</h1>
+      <ul>
+        <li>Credit Card No. 1</li>
+        <li>Credit Card No. 2</li>
+        <li>Credit Card No. 3</li>
+        <li><strong>Total Credit Card</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Other Current Liability</h1>
+      <ul>
+        <li>Accr Liabilities &ndash; Payroll</li>
+        <li>Accr Liabilities &ndash; Commissions</li>
+        <li>Accr Liabilities &ndash; Payroll Tax</li>
+        <li>FICA</li>
+        <li>Medicare</li>
+        <li>Withholding</li>
+        <li>Accr Liabilities &ndash; Workers Comp</li>
+        <li>Accr Liabilities &ndash; Sales Tax</li>
+        <li>Accr Liabilities &ndash; Property Tax</li>
+        <li>Accr Liabilities &ndash; Other Taxes</li>
+        <li>Accr Liabilities &ndash; Interest</li>
+        <li>Deferred Revenue</li>
+        <li>Current Portion Long Term</li>
+        <li>Other Liabilities</li>
+        <li><strong>Total Other Current Liability</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Long Term Liability</h1>
+      <ul>
+        <li>
+          Notes Payable Long Term
+          <ul>
+            <li>Note Payable No. 1</li>
+            <li>Note Payable No. 2</li>
+            <li>Note Payable No. 3</li>
+            <li>Note Payable No. 4</li>
+            <li>Note Payable No. 5</li>
+          </ul>
+        </li>
+        <li>Less Current Portion</li>
+        <li>Shareholder Loans</li>
+        <li><strong>Total Long Term Liability</strong></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li><strong>Total Liabilities</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Equity</h1>
+      <ul>
+        <li>Common Stock</li>
+        <li>Owners Equity</li>
+        <li>Paid in Capital</li>
+        <li>Dividends Paid</li>
+        <li>Owners Withdrawals</li>
+        <li>Retained Earnings</li>
+        <li>Opening Bal Equity</li>
+        <li><strong>Total Equity</strong></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li><strong>Total Liabilities &amp; Equity</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1 class="expense_statement">Income &amp; Expense Statement</h1>
+
+      <hr>
+
+      <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
+
+      <hr>
+
+      <h1>Income</h1>
+      <ul>
+        <li>
+          Total Sales &ndash; Residential
+          <ul>
+            <li>Sales</li>
+            <li>Add-on</li>
+            <li>Service Agreements</li>
+            <li>Repair</li>
+            <li>Refunds and Allowances</li>
+          </ul>
+        </li>
+        <li>
+          Total Sales &ndash; Commercial
+          <ul>
+            <li>Sales</li>
+            <li>Add-on</li>
+            <li>Service Agreements</li>
+            <li>Repair</li>
+            <li>Refunds and Allowances</li>
+          </ul>
+        </li>
+        <li><strong>Total Sales</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Variable Expenses</h1>
+      <ul>
+        <li>Materials</li>
+        <li>
+          Labor
+          <ul>
+            <li>Technician Labor</li>
+            <li>Technician Commissions</li>
+            <li>Payroll Taxes &ndash; Field</li>
+            <li>Workers Compensation Insurance</li>
+            <li>Technician Benefits</li>
+          </ul>
+        </li>
+        <li>Sales Commissions</li>
+        <li>Permits</li>
+        <li>Warranty</li>
+        <li>Subcontractors</li>
+        <li>
+          Other
+          <ul>
+            <li>Vehicle Fuel</li>
+            <li>Vehicle Maintenance &amp; Repair</li>
+            <li>Tools</li>
+          </ul>
+        </li>
+        <li>Franchise Service Fees</li>
+        <li>Franchise National Ad Fees</li>
+        <li>Promotions &ndash; Discounts</li>
+        <li><strong>Total Cost of Service</strong></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li><strong>Gross Margin</strong></li>
+      </ul>
+
+      <hr>
+
+      <h1>Fixed Expenses</h1>
+      <ul>
+        <li>
+          Salaries
+          <ul>
+            <li>Officers</li>
+            <li>Management</li>
+            <li>Administrative</li>
+            <li>Operations</li>
+            <li>Sales</li>
+            <li>Training</li>
+          </ul>
+        </li>
+        <li>Bonuses</li>
+        <li>Payroll Taxes</li>
+        <li>Workers Compensation Insurance</li>
+        <li>Employee Benefits</li>
+        <li>Holiday &amp; Vacation Pay</li>
+        <li>Training</li>
+        <li>Temporary Help</li>
+        <li>Rent</li>
+        <li>Utilities</li>
+        <li>Building Repair &amp; Maintenance</li>
+        <li>Taxes and Licenses</li>
+        <li>Telephone &amp; Office</li>
+        <li>Cell Phones</li>
+        <li>Liability Insurance</li>
+        <li>Credit Card Service Fees</li>
+        <li>
+          Advertising
+          <ul>
+            <li>Branding</li>
+            <li>Public Relations (PR)</li>
+            <li>Commercial Visits</li>
+            <li>Decaled Vehicle</li>
+            <li>Direct Mail</li>
+            <li>Neightborhood Marketing</li>
+            <li>Existing Customer (Retention)</li>
+            <li>Home/Mall Shows</li>
+            <li>Other</li>
+            <li>Internet (SEO/SEM)</li>
+            <li>Showroom Visits</li>
+            <li>Yard Signs</li>
+            <li>Yellow Pages Print &amp; Online</li>
+          </ul>
+        </li>
+        <li>Recruiting &amp; Relocation</li>
+        <li>Office Supplies</li>
+        <li>Printing</li>
+        <li>Postage</li>
+        <li>Office Equipment Leases</li>
+        <li>Field Equipment Leases</li>
+        <li>Office Equipment Repair &amp; Maintenance</li>
+        <li>Shipping &amp; Delivery</li>
+        <li>Uniform Laundry &amp; Rental</li>
+        <li>
+          Vehicle
+          <ul>
+            <li>Leases</li>
+            <li>Repair &amp; Maintenance</li>
+            <li>Insurance</li>
+            <li>Fuel (Non-revenue Generating)</li>
+            <li>Licensing</li>
+          </ul>
+        </li>
+        <li>Accounting Fees</li>
+        <li>Legal Fees</li>
+        <li>Employee Education &amp; Relations</li>
+        <li>Outside Services</li>
+        <li>Computer Expenses</li>
+        <li>Bank Service Charges</li>
+        <li>Dues &amp; Subscriptions</li>
+        <li>Contributions</li>
+        <li>Bad Debts</li>
+        <li>Conferences &amp; Travel</li>
+        <li>Meals &amp; Entertainment</li>
+        <li>Miscellaneous</li>
+        <li>Interest Income</li>
+        <li>Discounts Taken &ndash; Vendor</li>
+        <li>Interest Expense</li>
+        <li>Depreciation</li>
+        <li>Amoritization</li>
+        <li>Other Expenses</li>
+        <li>Income Taxes</li>
+        <li><strong>Total Expenses</strong></li>
+        <li><strong>Net Profit Before Taxes</strong></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li>Note 1</li>
+        <li>Note 2</li>
+        <li><strong>Net After Note Payments</strong></li>
+      </ul>
+    </div>
+
+    <% @profit_centers.each_with_index do |profit_center, index| %>
+      <%= user.fields_for :profit_centers, profit_center do |pc| %>
+        <div class="col">
+          &nbsp;
+
+          <hr>
+
+          <%# Only show fields for first profit center %>
+          <% if index == 0 %>
+            <%= pc.fields_for :last_year do |f| %>
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lycoh %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['cb'], :disabled => true %></li>
+                <li><%= f.money_field :lyckone %></li>
+                <li><%= f.money_field :lycktwo %></li>
+                <li><%= f.money_field :lyckthree %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tb'], :disabled => true %></li>
+                <li><%= f.money_field :lyar %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lymma %></li>
+                <li><%= f.money_field :lysti %></li>
+                <li><%= f.money_field :lyada %>&nbsp;</li>
+                <li><%= f.money_field :lyer %></li>
+                <li><%= f.money_field :lynrc %></li>
+                <li><%= f.money_field :lyi %></li>
+                <li><%= f.money_field :lyppe %></li>
+                <li><%= f.money_field :lyuf %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['toa'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lyfavt %></li>
+                <li><%= f.money_field :lyfadvt %>&nbsp;</li>
+                <li><%= f.money_field :lyfaov %></li>
+                <li><%= f.money_field :lyfadov %>&nbsp;</li>
+                <li><%= f.money_field :lyfaeo %></li>
+                <li><%= f.money_field :lyfadeo %></li>
+                <li><%= f.money_field :lyfafe %></li>
+                <li><%= f.money_field :lyfadfe %>&nbsp;</li>
+                <li><%= f.money_field :lyfal %></li>
+                <li><%= f.money_field :lyfab %></li>
+                <li><%= f.money_field :lyfadb %></li>
+                <li><%= f.money_field :lyfali %></li>
+                <li><%= f.money_field :lyfadli %>&nbsp;</li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tfa'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lynrlt %></li>
+                <li><%= f.money_field :lys %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['fr'], :disabled => true %></li>
+                <li><%= f.money_field :lyfraone %></li>
+                <li><%= f.money_field :lyfratwo %></li>
+                <li><%= f.money_field :lyfrathree %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['aaf'], :disabled => true %></li>
+                <li><%= f.money_field :lyaaaone %></li>
+                <li><%= f.money_field :lyaaatwo %></li>
+                <li><%= f.money_field :lyaaathree %></li>
+                <li><%= f.money_field :lyoia %></li>
+                <li><%= f.money_field :lyaaoi %>&nbsp;</li>
+                <li><%= f.money_field :lyoc %></li>
+                <li><%= f.money_field :lyaaoc %>&nbsp;</li>
+                <li><%= f.money_field :lyd %></li>
+                <li><%= f.money_field :lylti %></li>
+                <li><%= f.money_field :lyoa %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['toa2'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= f.money_field :formula, :value => @formula[index]['ta'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lyap %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tap'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lyccone %></li>
+                <li><%= f.money_field :lycctwo %></li>
+                <li><%= f.money_field :lyccthree %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tcc'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;<br>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lyalp %></li>
+                <li><%= f.money_field :lyalc %></li>
+                <li><%= f.money_field :lyalpt %></li>
+                <li><%= f.money_field :lyfica %></li>
+                <li><%= f.money_field :lym %></li>
+                <li><%= f.money_field :lyw %></li>
+                <li><%= f.money_field :lyalwc %>&nbsp;</li>
+                <li><%= f.money_field :lyalst %></li>
+                <li><%= f.money_field :lyalprt %></li>
+                <li><%= f.money_field :lyalot %></li>
+                <li><%= f.money_field :lyali %></li>
+                <li><%= f.money_field :lyaldr %></li>
+                <li><%= f.money_field :lycplt %></li>
+                <li><%= f.money_field :lyol %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tocl'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :formula, :value => @formula[index]['nplt'], :disabled => true %></li>
+                <li><%= f.money_field :lyltlone %></li>
+                <li><%= f.money_field :lyltltwo %></li>
+                <li><%= f.money_field :lyltlthree %></li>
+                <li><%= f.money_field :lyltlfour %></li>
+                <li><%= f.money_field :lyltlfive %></li>
+                <li><%= f.money_field :lylcp %></li>
+                <li><%= f.money_field :lyshl %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['tltl'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= f.money_field :formula, :value => @formula[index]['tl'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.money_field :lyecs %></li>
+                <li><%= f.money_field :lyeoe %></li>
+                <li><%= f.money_field :lyepc %></li>
+                <li><%= f.money_field :lyedp %></li>
+                <li><%= f.money_field :lyeow %></li>
+                <li><%= f.money_field :lyere %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['npbt'], :disabled => true %></li>
+                <li><%= f.money_field :formula, :value => @formula[index]['te'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= f.money_field :formula, :value => @formula[index]['tle'], :disabled => true %></li>
+              </ul>
+
+              <hr>
+            <% end # fields_for :#{model} %>
+          <% else # if index == 0 %>
+            <div style="height: 3850px;"></div>
+          <% end # if index == 0 %>
+
+          <%= pc.fields_for :profit_center_last_year do |f| %>
+            <h1 class="expense_statement">&nbsp;</h1>
+
+            <hr>
+
+            <strong><%= profit_center.pcn %></strong>
+
+            <hr>
+
+            <h1>&nbsp;</h1>
+            <ul>
+              <li><%= f.money_field :formula, :value => @formula[index]['tsr'], :disabled => true %></li>
+              <li><%= f.money_field :pclyrs %></li>
+              <li><%= f.money_field :pclyrao %></li>
+              <li><%= f.money_field :pclyrsa %></li>
+              <li><%= f.money_field :pclyrr %></li>
+              <li><%= f.money_field :pclyrra %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['tsc'], :disabled => true %></li>
+              <li><%= f.money_field :pclycs %></li>
+              <li><%= f.money_field :pclycao %></li>
+              <li><%= f.money_field :pclycsa %></li>
+              <li><%= f.money_field :pclycr %></li>
+              <li><%= f.money_field :pclycra %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['ts'], :disabled => true %></li>
+            </ul>
+
+            <hr>
+
+            <h1>&nbsp;</h1>
+            <ul>
+              <li><%= f.money_field :pclym %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['l'], :disabled => true %></li>
+              <li><%= f.money_field :pclyltl %></li>
+              <li><%= f.money_field :pclyltc %></li>
+              <li><%= f.money_field :pclylptf %></li>
+              <li><%= f.money_field :pclylwci %>&nbsp;</li>
+              <li><%= f.money_field :pclyltb %></li>
+              <li><%= f.money_field :pclysc %></li>
+              <li><%= f.money_field :pclyp %></li>
+              <li><%= f.money_field :pclyw %></li>
+              <li><%= f.money_field :pclysct %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['o'], :disabled => true %></li>
+              <li><%= f.money_field :pclyvf %></li>
+              <li><%= f.money_field :pclyvmr %>&nbsp;</li>
+              <li><%= f.money_field :pclyt %></li>
+              <li><%= f.money_field :pclyfsf %></li>
+              <li><%= f.money_field :pclyfnad %></li>
+              <li><%= f.money_field :pclypd %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['tcs'], :disabled => true %></li>
+            </ul>
+
+            <hr>
+
+            <ul>
+              <li><%= f.money_field :formula, :value => @formula[index]['gm'], :disabled => true %></li>
+            </ul>
+
+            <hr>
+          <% end # fields_for :"profit_center_#{model}" %>
+
+          <%= pc.fields_for :last_year do |f| %>
+            <h1>&nbsp;</h1>
+            <ul>
+              <li><%= f.money_field :formula, :value => @formula[index]['s'], :disabled => true %></li>
+              <li><%= f.money_field :lyfeso %></li>
+              <li><%= f.money_field :lyfesm %></li>
+              <li><%= f.money_field :lyfesa %></li>
+              <li><%= f.money_field :lyfesop %></li>
+              <li><%= f.money_field :lyfess %></li>
+              <li><%= f.money_field :lyfest %></li>
+              <li><%= f.money_field :lyfeb %></li>
+              <li><%= f.money_field :lyfept %></li>
+              <li><%= f.money_field :lyfewci %>&nbsp;</li>
+              <li><%= f.money_field :lyfeeb %></li>
+              <li><%= f.money_field :lyfehvp %></li>
+              <li><%= f.money_field :lyfet %></li>
+              <li><%= f.money_field :lyfeth %></li>
+              <li><%= f.money_field :lyfer %></li>
+              <li><%= f.money_field :lyfeu %></li>
+              <li><%= f.money_field :lyfebrm %></li>
+              <li><%= f.money_field :lyfetl %></li>
+              <li><%= f.money_field :lyfeto %></li>
+              <li><%= f.money_field :lyfecp %></li>
+              <li><%= f.money_field :lyfeli %></li>
+              <li><%= f.money_field :lyfeccsf %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['a'], :disabled => true %></li>
+              <li><%= f.money_field :lyfeab %></li>
+              <li><%= f.money_field :lyfepr %></li>
+              <li><%= f.money_field :lyfecv %></li>
+              <li><%= f.money_field :lyfedv %></li>
+              <li><%= f.money_field :lyfedm %></li>
+              <li><%= f.money_field :lyfenm %></li>
+              <li><%= f.money_field :lyfeec %>&nbsp;</li>
+              <li><%= f.money_field :lyfehms %></li>
+              <li><%= f.money_field :lyfeo %></li>
+              <li><%= f.money_field :lyfeiss %></li>
+              <li><%= f.money_field :lyfesrv %></li>
+              <li><%= f.money_field :lyfeys %></li>
+              <li><%= f.money_field :lyfeyppo %>&nbsp;</li>
+              <li><%= f.money_field :lyferr %></li>
+              <li><%= f.money_field :lyfeos %></li>
+              <li><%= f.money_field :lyfep %></li>
+              <li><%= f.money_field :lyfepos %></li>
+              <li><%= f.money_field :lyfeoel %></li>
+              <li><%= f.money_field :lyfefel %></li>
+              <li><%= f.money_field :lyfeoerm %>&nbsp;</li>
+              <li><%= f.money_field :lyfesd %></li>
+              <li><%= f.money_field :lyfeulr %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['v'], :disabled => true %></li>
+              <li><%= f.money_field :lyfevl %></li>
+              <li><%= f.money_field :lyfevrm %></li>
+              <li><%= f.money_field :lyfevi %></li>
+              <li><%= f.money_field :lyfevf %>&nbsp;</li>
+              <li><%= f.money_field :lyfel %></li>
+              <li><%= f.money_field :lyfeaf %></li>
+              <li><%= f.money_field :lyfelf %></li>
+              <li><%= f.money_field :lyfeeer %>&nbsp;</li>
+              <li><%= f.money_field :lyfeoser %></li>
+              <li><%= f.money_field :lyfece %></li>
+              <li><%= f.money_field :lyfebsc %></li>
+              <li><%= f.money_field :lyfeds %></li>
+              <li><%= f.money_field :lyfec %></li>
+              <li><%= f.money_field :lyfebd %></li>
+              <li><%= f.money_field :lyfect %></li>
+              <li><%= f.money_field :lyfeme %></li>
+              <li><%= f.money_field :lyfem %></li>
+              <li><%= f.money_field :lyfeii %></li>
+              <li><%= f.money_field :lyfedtv %></li>
+              <li><%= f.money_field :lyfeie %></li>
+              <li><%= f.money_field :lyfed %></li>
+              <li><%= f.money_field :lyfea %></li>
+              <li><%= f.money_field :lyfeoe %></li>
+              <li><%= f.money_field :lyfeit %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['te2'], :disabled => true %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['npbt'], :disabled => true %></li>
+            </ul>
+
+            <hr>
+
+            <ul>
+              <li><%= f.money_field :lyfenone %></li>
+              <li><%= f.money_field :lyfentwo %></li>
+              <li><%= f.money_field :formula, :value => @formula[index]['nanp'], :disabled => true %></li>
+            </ul>
+          <% end # fields_for :"#{model}" %>
+        </div>
+      <% end # fields_for :profit_center %>
+    <% end # @profit_centers.each %>
+
+    <%= user.submit 'Save changes', :class => 'button' %>
+  <% end # form_for @user %>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
