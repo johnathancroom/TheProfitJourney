@@ -19,6 +19,7 @@ module Refinery
         c.do_formulas('ny')
       }
       before_filter :only => [:demand_trend, :demand_trend_update] { |c| c.find_page('/akouo/demand_trend') }
+      before_filter :only => [:demand_trend_chart] { |c| c.find_page('/akouo/demand_trend_chart') }
 
       def start_update
         update(@customer, params[:customer], :start)

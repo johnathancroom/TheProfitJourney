@@ -18,6 +18,8 @@ Refinery::Core::Engine.routes.append do
 
     get 'demand_trend' => 'sheet#demand_trend'
     put 'demand_trend' => 'sheet#demand_trend_update'
+
+    get 'demand_trend_chart' => 'sheet#demand_trend_chart'
   end
 
   namespace :akouo, :path => '' do

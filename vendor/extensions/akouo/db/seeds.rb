@@ -11,19 +11,20 @@
   end
 
   pages = [
-    ["/akouo", "Akouo"],
-    ["/akouo/start", "Start"],
-    ["/akouo/vision", "Vision"],
-    ["/akouo/last_year", "Last Year"],
-    ["/akouo/next_year", "Next Year Projection"],
+    ['/akouo', 'Akouo'],
+    ['/akouo/start', 'Start'],
+    ['/akouo/vision', 'Vision'],
+    ['/akouo/last_year', 'Last Year'],
+    ['/akouo/next_year', 'Next Year Projection'],
     ['/akouo/demand_trend', 'Demand Trend'],
+    ['/akouo/demand_trend_chart', 'Demand Trend Chart'],
 
-    ["/journeyboard", "JourneyBoard"],
+    ['/journeyboard', 'JourneyBoard'],
 
-    ["/register", "Register"],
-    ["/login", "Login"],
-    ["/account", "My Account"],
-    ["/user/password/new", "Reset Password"]
+    ['/register', 'Register'],
+    ['/login', 'Login'],
+    ['/account', 'My Account'],
+    ['/user/password/new', 'Reset Password']
   ]
 
   pages.each do |this|
@@ -32,7 +33,7 @@
         :title => this[1],
         :link_url => this[0],
         :deletable => false,
-        :parent_id => (page.id if (page = ::Refinery::Page.where(:link_url => "/akouo").first)) || nil,
+        :parent_id => (page.id if (page = ::Refinery::Page.where(:link_url => '/akouo').first)) || nil,
         :show_in_menu => false,
         :menu_match => "^#{this[0]}(\/|\/.+?|)$"
       )
