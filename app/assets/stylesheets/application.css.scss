@@ -552,6 +552,9 @@ form.horiz {
     float: left;
     width: 174px;
   }
+  .pc {
+    width: 969px;
+  }
   input[type=number],
   input[type=text] {
     width: 100%;
@@ -569,7 +572,7 @@ form.horiz {
     padding: 8px 4px;
   }
   .expense_statement {
-    margin-top: 20px;
+    padding-top: 10px;
     text-align: center;
     width: 870px;
   }

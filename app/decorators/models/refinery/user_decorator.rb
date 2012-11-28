@@ -1,8 +1,13 @@
 Refinery::User.class_eval do
 
   has_many :profit_centers, :class_name => 'Refinery::Akouo::ProfitCenter'
+
   belongs_to :workshop, :class_name => 'Refinery::Workshops::Workshop'
+
   has_one :customer, :class_name => 'Refinery::Akouo::Customer'
+  has_one :last_year, :class_name => 'Refinery::Akouo::LastYear'
+  has_one :next_year, :class_name => 'Refinery::Akouo::NextYear'
+
   has_many :journeyboard_budgets, :class_name => 'Refinery::Akouo::JourneyboardBudget'
   has_many :employees, :class_name => 'Refinery::Akouo::JourneyboardEmployee'
   has_many :journeyboard_csr_entries, :class_name => 'Refinery::Akouo::JourneyboardCsrEntry'
@@ -10,10 +15,12 @@ Refinery::User.class_eval do
   attr_accessible(
     :workshop_id, :plan_id, :plan_override, :workshop_override,
     :first_name, :last_name,
-    :profit_centers_attributes
+    :profit_centers_attributes,
+    :last_year_attributes,
+    :next_year_attributes
   )
 
-  accepts_nested_attributes_for :profit_centers
+  accepts_nested_attributes_for :profit_centers, :last_year, :next_year
 
   validates_presence_of :first_name, :last_name
   #validate :workshop_requires_platinum_plan

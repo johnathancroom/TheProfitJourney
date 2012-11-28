@@ -4,10 +4,9 @@ module Refinery
 
       self.table_name = 'pc'
 
-      has_one :last_year, :class_name => 'Refinery::Akouo::LastYear'
       has_one :profit_center_last_year, :class_name => 'Refinery::Akouo::ProfitCenterLastYear'
-      has_one :next_year, :class_name => 'Refinery::Akouo::NextYear'
       has_one :profit_center_next_year, :class_name => 'Refinery::Akouo::ProfitCenterNextYear'
+
       has_many :demand_trends, :class_name => 'Refinery::Akouo::DemandTrend'
 
       has_many :journeyboard_entries, :class_name => 'Refinery::Akouo::JourneyboardEntry'
@@ -16,12 +15,12 @@ module Refinery
 
       attr_accessible(
         :pcn,
-        :last_year_attributes, :profit_center_last_year_attributes,
-        :next_year_attributes, :profit_center_next_year_attributes,
+        :profit_center_last_year_attributes,
+        :profit_center_next_year_attributes,
         :demand_trends_attributes
       )
 
-      accepts_nested_attributes_for :last_year, :profit_center_last_year, :next_year, :profit_center_next_year, :demand_trends
+      accepts_nested_attributes_for :profit_center_last_year, :profit_center_next_year, :demand_trends
 
     end
   end

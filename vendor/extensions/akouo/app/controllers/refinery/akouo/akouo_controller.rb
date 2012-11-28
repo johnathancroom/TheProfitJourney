@@ -8,10 +8,8 @@ module Refinery
 
       def check_and_build_user_tables
         needed_tables = [
-          'last_year',
           'profit_center_last_year',
-          'next_year',
-          'profit_center_next_year',
+          'profit_center_next_year'
         ]
 
         profit_center_default_names = [
@@ -33,9 +31,17 @@ module Refinery
           profit_center.save
         end
 
-        # Create customer
+        # Create user dependencies
         if @user.customer.nil?
           @user.build_customer
+        end
+
+        if @user.last_year.nil?
+          @user.build_last_year
+        end
+
+        if @user.next_year.nil?
+          @user.build_next_year
         end
 
         # Create profit center dependencies
