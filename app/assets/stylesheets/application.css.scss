@@ -567,7 +567,8 @@ form.horiz {
       margin-bottom: -8px;
     }
   }
-  label.disabled {
+  label.disabled,
+  label[id^=formula] {
     display: block;
     padding: 8px 4px;
   }
