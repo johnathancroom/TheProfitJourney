@@ -345,6 +345,9 @@ textarea {
       margin-top: 10px;
     }
   }
+  .full_width & #summary {
+    margin-right: 0;
+  }
   #body {
     padding: 10px 14px 14px;
   }
