@@ -261,7 +261,7 @@ $(document).ready(function() {
     for(var i=0; i<arguments.length; ++i)
     {
       // If argument isn't nil
-      if(arguments[i] != '')
+      if(arguments[i] != '' && arguments[i] != undefined)
       {
         // Strip off dollar sign
         arguments[i] = arguments[i].replace("$", "")
