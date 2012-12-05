@@ -163,7 +163,63 @@ $(document).ready(function() {
       $("#formula_te").html()
     ))
 
-    //
+    // Profit centers
+    var indexes = new Array(0,1,2,3)
+    $.each(indexes, function(index) {
+      $("#formula_tsr_"+index).html(makeTotal(
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyrs").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyrao").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyrsa").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyrr").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyrra").val()
+      ))
+
+      $("#formula_tsc_"+index).html(makeTotal(
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclycs").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclycao").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclycsa").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclycr").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclycra").val()
+      ))
+
+      $("#formula_ts_"+index).html(makeTotal(
+        $("#formula_tsr_"+index).html(),
+        $("#formula_tsc_"+index).html()
+      ))
+
+      $("#formula_l_"+index).html(makeTotal(
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyltl").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyltc").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclylptf").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclylwci").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyltb").val()
+      ))
+
+      $("#formula_o_"+index).html(makeTotal(
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyvf").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyvmr").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyt").val()
+      ))
+
+      $("#formula_tcs_"+index).html(makeTotal(
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclym").val(),
+        $("#formula_l_"+index).html(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclysc").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyp").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyw").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclysct").val(),
+        $("#formula_o_"+index).html(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyfsf").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclyfnad").val(),
+        $("#user_profit_centers_attributes_"+index+"_profit_center_last_year_attributes_pclypd").val()
+      ))
+
+      $("#formula_gm_"+index).html(makeTotal(
+        $("#formula_ts_"+index).html(),
+        "-" + $("#formula_tcs_"+index).html()
+      ))
+    })
+    // End profit centers
 
     $("#formula_s").html(makeTotal(
       $("#user_last_year_attributes_lyfeso").val(),
