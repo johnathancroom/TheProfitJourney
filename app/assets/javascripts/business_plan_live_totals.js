@@ -140,29 +140,6 @@ $(document).ready(function() {
       $("#formula_tltl").html()
     ))
 
-    $("#formula_npbt").html(makeTotal(
-      // Needed
-    ))
-
-    $("#formula_obe").html(makeTotal(
-      $("#formula_npbt").val()
-    ))
-
-    $("#formula_te").html(makeTotal(
-      $("#user_last_year_attributes_lyecs").val(),
-      $("#user_last_year_attributes_lyeoe").val(),
-      $("#user_last_year_attributes_lyepc").val(),
-      $("#user_last_year_attributes_lyedp").val(),
-      $("#user_last_year_attributes_lyeow").val(),
-      $("#user_last_year_attributes_lyere").val(),
-      $("#formula_npbt").html()
-    ))
-
-    $("#formula_tle").html(makeTotal(
-      $("#formula_tl").html(),
-      $("#formula_te").html()
-    ))
-
     // Profit centers
     var indexes = new Array(0,1,2,3)
     $.each(indexes, function(index) {
@@ -301,6 +278,30 @@ $(document).ready(function() {
       $("#user_last_year_attributes_lyfea").val(),
       $("#user_last_year_attributes_lyfea").val(),
       $("#user_last_year_attributes_lyfeit").val()
+    ))
+
+    $("#formula_npbt").html(makeTotal(
+      $(".formula_gm_total").html(),
+      "-" + $("#formula_te2").html()
+    ))
+
+    $("#formula_obe").html(makeTotal(
+      $("#formula_npbt").html()
+    ))
+
+    $("#formula_te").html(makeTotal(
+      $("#user_last_year_attributes_lyecs").val(),
+      $("#user_last_year_attributes_lyeoe").val(),
+      $("#user_last_year_attributes_lyepc").val(),
+      $("#user_last_year_attributes_lyedp").val(),
+      $("#user_last_year_attributes_lyeow").val(),
+      $("#user_last_year_attributes_lyere").val(),
+      $("#formula_npbt").html()
+    ))
+
+    $("#formula_tle").html(makeTotal(
+      $("#formula_tl").html(),
+      $("#formula_te").html()
     ))
 
     $("#formula_nanp").html(makeTotal(
