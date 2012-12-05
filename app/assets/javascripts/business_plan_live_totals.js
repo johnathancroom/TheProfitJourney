@@ -308,6 +308,22 @@ $(document).ready(function() {
       '-' + $("#user_last_year_attributes_lyfenone").val(),
       '-' + $("#user_last_year_attributes_lyfentwo").val()
     ))
+
+    //Totals
+    $("[for=formula_total]").each(function(index, x) {
+      $(this).html(makeTotal(
+        $("#" + $(this).attr("id").replace("{index}", "0")).val(),
+        $("#" + $(this).attr("id").replace("{index}", "1")).val(),
+        $("#" + $(this).attr("id").replace("{index}", "2")).val(),
+        $("#" + $(this).attr("id").replace("{index}", "3")).val(),
+
+        $("#" + $(this).attr("id").replace("{index}", "0")).html(),
+        $("#" + $(this).attr("id").replace("{index}", "1")).html(),
+        $("#" + $(this).attr("id").replace("{index}", "2")).html(),
+        $("#" + $(this).attr("id").replace("{index}", "3")).html()
+      ))
+    })
+    //End Totals
   }
   updateTotals()
 

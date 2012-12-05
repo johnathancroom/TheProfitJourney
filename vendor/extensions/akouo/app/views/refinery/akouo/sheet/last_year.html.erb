@@ -582,6 +582,66 @@
               <% end # fields_for :"profit_center_#{model}" %>
             <% end # fields_for :profit_centers %>
           <% end # @profit_centers.each_with_index %>
+
+          <div class="col">
+            <h1 class="expense_statement">&nbsp;</h1>
+
+            <hr>
+
+            <strong>Total</strong>
+
+            <hr>
+
+            <h1>&nbsp;</h1>
+            <ul>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_tsr_{index}' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrs' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrao' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrsa' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrr' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrra' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_tsc_{index}' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycs' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycao' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycsa' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycr' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycra' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_ts_{index}' %></li>
+            </ul>
+
+            <hr>
+
+            <h1>&nbsp;</h1>
+            <ul>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclym' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_l_{index}' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltl' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltc' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclylptf' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclylwci' %>&nbsp;</li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltb' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclysc' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyp' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyw' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclysct' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_o_{index}' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyvf' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyvmr' %>&nbsp;</li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyt' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyfsf' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyfnad' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclypd' %></li>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_tcs_{index}' %></li>
+            </ul>
+
+            <hr>
+
+            <ul>
+              <li><%= label_tag :formula_total, nil, :id => 'formula_gm_{index}' %></li>
+            </ul>
+
+            <hr>
+          </div>
         </div>
 
         <%= user.fields_for :last_year do |f| %>

@@ -553,14 +553,19 @@ form.horiz {
   }
   .col {
     float: left;
-    width: 174px;
+    width: 139px;
   }
   .pc {
     width: 969px;
   }
   input[type=number],
   input[type=text] {
-    width: 100%;
+    margin: 3px 1%;
+    padding: 5px;
+    width: 98%;
+  }
+  .col.head {
+    width: 174px;
   }
   .head li {
     padding: 8px 4px 8px 0;
@@ -571,7 +576,8 @@ form.horiz {
     }
   }
   label.disabled,
-  label[id^=formula] {
+  label[id^=formula],
+  label[for=formula_total] {
     display: block;
     padding: 8px 4px;
   }
