@@ -292,7 +292,7 @@ $(document).ready(function() {
     ))
 
     $("#formula_npbt").html(makeTotal(
-      $(".formula_gm_total").html(),
+      $(".formula_gm_\\{index\\}").html(),
       "-" + $("#formula_te2").html()
     ))
 
@@ -328,9 +328,9 @@ $(document).ready(function() {
       $("#user_profit_centers_attributes_7_profit_center_last_year_attributes_expense_allocation").val()
     ))
 
-    var indexes = new Array(0,1,2,3);
-    $.each(indexes, function(index) {
-      var percentage = parseFloat($("#user_profit_centers_attributes_"+(index+4)+"_profit_center_last_year_attributes_expense_allocation").val() / 100)
+    var indexes = new Array(4,5,6,7);
+    $.each(indexes, function(index, element) {
+      var percentage = parseFloat($("#user_profit_centers_attributes_"+element+"_profit_center_last_year_attributes_expense_allocation").val() / 100)
 
       var formulas = new Array(
         "s",
@@ -440,6 +440,169 @@ $(document).ready(function() {
       ))
     })
     //End Totals
+
+    // Percentages
+    var indexes = new Array(0,1,2,3,"\\{index\\}");
+    $.each(indexes, function(index, element) {
+      var totals = {
+        ts: {
+          formulas: new Array(
+            "tsr",
+            "tsc",
+            "ts",
+            "l",
+            "o",
+            "tcs",
+            "gm",
+
+            "s",
+            "feso",
+            "fesm",
+            "fesa",
+            "fesop",
+            "fess",
+            "fest",
+            "feb",
+            "fept",
+            "fewci",
+            "feeb",
+            "fehvp",
+            "fet",
+            "feth",
+            "fer",
+            "feu",
+            "febrm",
+            "fetl",
+            "feto",
+            "fecp",
+            "feli",
+            "feccsf",
+            "a",
+            "feab",
+            "fepr",
+            "fecv",
+            "fedv",
+            "fedm",
+            "fenm",
+            "feec",
+            "fehms",
+            "feo",
+            "feiss",
+            "fesrv",
+            "feys",
+            "feyppo",
+            "ferr",
+            "feos",
+            "fep",
+            "fepos",
+            "feoel",
+            "fefel",
+            "feoerm",
+            "fesd",
+            "feulr",
+            "v",
+            "fevl",
+            "fevrm",
+            "fevi",
+            "fevf",
+            "fel",
+            "feaf",
+            "felf",
+            "feeer",
+            "feoser",
+            "fece",
+            "febsc",
+            "feds",
+            "fec",
+            "febd",
+            "fect",
+            "feme",
+            "fem",
+            "feii",
+            "fedtv",
+            "feie",
+            "fed",
+            "fea",
+            "feoe",
+            "feit",
+            "te2",
+            "npbt",
+            "fenone",
+            "fentwo",
+            "nanp"
+          ),
+          elements: new Array(
+            "rs",
+            "rao",
+            "rsa",
+            "rr",
+            "rra",
+            "cs",
+            "cao",
+            "csa",
+            "cr",
+            "cra",
+            "m",
+            "ltl",
+            "ltc",
+            "lptf",
+            "lwci",
+            "ltb",
+            "sc",
+            "p",
+            "w",
+            "sct",
+            "vf",
+            "vmr",
+            "t",
+            "fsf",
+            "fnad",
+            "pd"
+          )
+        },
+
+      }
+
+      $.each(totals, function(tindex, telement) {
+        var total = parseFloat($("#formula_"+tindex+"_"+element).html().formattedMoneyStrip())
+
+        $.each(telement.formulas, function(tfindex, tfelement) {
+          if($("#formula_"+tfelement+"_"+element).length != 0)
+          {
+            var e = $("#formula_"+tfelement+"_"+element)
+          }
+          else if($("#formula_"+tfelement).length != 0)
+          {
+            var e = $("#formula_"+tfelement)
+          }
+          else if($("#user_last_year_attributes_ly"+tfelement).length != 0)
+          {
+            var e = $("#user_last_year_attributes_ly"+tfelement)
+          }
+
+          var q = parseFloat(e.val()) / total * 100
+          if(isNaN(q))
+          {
+            q = parseFloat(e.html().formattedMoneyStrip()) / total * 100
+          }
+          $("#percentage_"+tfelement+"_"+index).html(makeTotal("percentage",
+            q
+          ))
+        })
+
+        $.each(telement.elements, function(teindex, teelement) {
+          var num = parseFloat($("#user_profit_centers_attributes_"+element+"_profit_center_last_year_attributes_pcly"+teelement).val()) / total * 100;
+          if(isNaN(num))
+          {
+            num = parseFloat($("#user_profit_centers_attributes_"+element+"_profit_center_last_year_attributes_pcly"+teelement).html().formattedMoneyStrip()) / total * 100
+          }
+
+          $("#percentage_"+teelement+"_"+index).html(makeTotal("percentage",
+            num
+          ))
+        })
+      })
+    })
   }
   updateTotals()
 
@@ -458,7 +621,14 @@ $(document).ready(function() {
 
     if(arguments[0] == "percentage")
     {
-      return total.formatMoney(2, ",", ".", "") + "%";
+      if(total == Infinity || total == -Infinity)
+      {
+        return "0.0%"
+      }
+      else
+      {
+        return total.formatMoney(1, ",", ".", "") + "%";
+      }
     }
     else
     {
