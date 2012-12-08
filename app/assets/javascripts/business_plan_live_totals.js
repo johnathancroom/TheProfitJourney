@@ -11,6 +11,17 @@ Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator, 
   return sign + currencySymbol + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
 };
 
+String.prototype.formattedMoneyStrip = function() {
+  var n = this;
+
+  // Strip off dollar sign
+  n = n.replace("$", "");
+  // Strip off commas
+  n = n.replace(/,/g, "");
+
+  return n;
+};
+
 $(document).ready(function() {
   $("input").on("keyup", function() {
     updateTotals()
@@ -310,6 +321,110 @@ $(document).ready(function() {
       '-' + $("#user_last_year_attributes_lyfentwo").val()
     ))
 
+    $("#formula_ea").html(makeTotal("percentage",
+      $("#user_profit_centers_attributes_4_profit_center_last_year_attributes_expense_allocation").val(),
+      $("#user_profit_centers_attributes_5_profit_center_last_year_attributes_expense_allocation").val(),
+      $("#user_profit_centers_attributes_6_profit_center_last_year_attributes_expense_allocation").val(),
+      $("#user_profit_centers_attributes_7_profit_center_last_year_attributes_expense_allocation").val()
+    ))
+
+    var indexes = new Array(0,1,2,3);
+    $.each(indexes, function(index) {
+      var percentage = parseFloat($("#user_profit_centers_attributes_"+(index+4)+"_profit_center_last_year_attributes_expense_allocation").val() / 100)
+
+      var formulas = new Array(
+        "s",
+        "a",
+        "v",
+        "te2",
+        "npbt",
+        "nanp"
+      )
+      var elements = new Array(
+        "feso",
+        "fesm",
+        "fesa",
+        "fesop",
+        "fess",
+        "fest",
+        "feb",
+        "fept",
+        "fewci",
+        "feeb",
+        "fehvp",
+        "fet",
+        "feth",
+        "fer",
+        "feu",
+        "febrm",
+        "fetl",
+        "feto",
+        "fecp",
+        "feli",
+        "feccsf",
+        "feab",
+        "fepr",
+        "fecv",
+        "fedv",
+        "fedm",
+        "fenm",
+        "feec",
+        "fehms",
+        "feo",
+        "feiss",
+        "fesrv",
+        "feys",
+        "feyppo",
+        "ferr",
+        "feos",
+        "fep",
+        "fepos",
+        "feoel",
+        "fefel",
+        "feoerm",
+        "fesd",
+        "feulr",
+        "fevl",
+        "fevrm",
+        "fevi",
+        "fevf",
+        "fel",
+        "feaf",
+        "felf",
+        "feeer",
+        "feoser",
+        "fece",
+        "febsc",
+        "feds",
+        "fec",
+        "febd",
+        "fect",
+        "feme",
+        "fem",
+        "feii",
+        "fedtv",
+        "feie",
+        "fed",
+        "fea",
+        "feoe",
+        "feit",
+        "fenone",
+        "fentwo"
+      )
+
+      $.each(formulas, function(i, formula) {
+        $("#formula_"+formula+"_"+index).html(makeTotal(
+          parseFloat($("#formula_"+formula).html().formattedMoneyStrip()) * percentage
+        ))
+      })
+
+      $.each(elements, function(i, element) {
+        $("#formula_"+element+"_"+index).html(makeTotal(
+          parseFloat($("#user_last_year_attributes_ly"+element).val()) * percentage
+        ))
+      })
+    })
+
     //Totals
     $("[for=formula_total]").each(function(index, x) {
       $(this).html(makeTotal(
@@ -334,18 +449,20 @@ $(document).ready(function() {
     for(var i=0; i<arguments.length; ++i)
     {
       // If argument isn't nil
-      if(arguments[i] != '' && arguments[i] != undefined)
+      if(arguments[i] != '' && arguments[i] != undefined && arguments[i] != "percentage")
       {
-        // Strip off dollar sign
-        arguments[i] = arguments[i].replace("$", "")
-        // Strip off commas
-        arguments[i] = arguments[i].replace(/,/g, "")
-
         // Add to total
-        total += parseFloat(arguments[i]);
+        total += parseFloat(arguments[i].toString().formattedMoneyStrip());
       }
     }
 
-    return total.formatMoney();
+    if(arguments[0] == "percentage")
+    {
+      return total.formatMoney(2, ",", ".", "") + "%";
+    }
+    else
+    {
+      return total.formatMoney();
+    }
   }
 })

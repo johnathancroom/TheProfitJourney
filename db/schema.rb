@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128215328) do
+ActiveRecord::Schema.define(:version => 20121207200319) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -523,33 +523,34 @@ ActiveRecord::Schema.define(:version => 20121128215328) do
   add_index "pcdt", ["profit_center_id"], :name => "PCID"
 
   create_table "pcly", :force => true do |t|
-    t.decimal "pclyrs",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyrao",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyrsa",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyrr",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyrra",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclycs",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclycao",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclycsa",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclycr",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclycra",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclym",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyltl",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyltc",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclylptf",         :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclylwci",         :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyltb",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclysc",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyp",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyw",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclysct",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyvf",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyvmr",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyt",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyfsf",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclyfnad",         :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pclypd",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyrs",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyrao",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyrsa",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyrr",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyrra",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclycs",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclycao",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclycsa",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclycr",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclycra",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclym",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyltl",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyltc",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclylptf",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclylwci",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyltb",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclysc",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyp",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyw",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclysct",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyvf",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyvmr",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyt",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyfsf",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclyfnad",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pclypd",             :precision => 19, :scale => 2, :default => 0.0
     t.integer "profit_center_id"
+    t.decimal "expense_allocation", :precision => 19, :scale => 2, :default => 0.0
   end
 
   create_table "pcny", :force => true do |t|

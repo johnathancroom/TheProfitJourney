@@ -180,7 +180,7 @@
 
         <hr>
 
-        <h1 class="expense_statement">Income &amp; Expense Statement</h1>
+        <h1 class="expense_statement" style="width: 820px;">Income &amp; Expense Statement</h1>
 
         <hr>
 
@@ -212,6 +212,10 @@
           </li>
           <li><strong>Total Sales</strong></li>
         </ul>
+
+        <hr>
+
+        <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
 
         <hr>
 
@@ -251,6 +255,10 @@
         <ul>
           <li><strong>Gross Margin</strong></li>
         </ul>
+
+        <hr>
+
+        <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
 
         <hr>
 
@@ -348,6 +356,12 @@
           <li>Note 1</li>
           <li>Note 2</li>
           <li><strong>Net After Note Payments</strong></li>
+        </ul>
+
+        <hr>
+
+        <ul>
+          <li>Allocation of Expenses</li>
         </ul>
       </div>
 
@@ -548,6 +562,10 @@
 
                   <hr>
 
+                  <strong><%= pc.object.pcn %></strong>
+
+                  <hr>
+
                   <h1>&nbsp;</h1>
                   <ul>
                     <li><%= f.money_field :pclym %></li>
@@ -611,6 +629,10 @@
 
             <hr>
 
+            <strong>Total</strong>
+
+            <hr>
+
             <h1>&nbsp;</h1>
             <ul>
               <li><%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclym' %></li>
@@ -644,91 +666,207 @@
           </div>
         </div>
 
-        <%= user.fields_for :last_year do |f| %>
-          <h1>&nbsp;</h1>
-          <ul>
-            <li><%= f.label :formula, nil, :id => 'formula_s' %></li>
-            <li><%= f.money_field :lyfeso %></li>
-            <li><%= f.money_field :lyfesm %></li>
-            <li><%= f.money_field :lyfesa %></li>
-            <li><%= f.money_field :lyfesop %></li>
-            <li><%= f.money_field :lyfess %></li>
-            <li><%= f.money_field :lyfest %></li>
-            <li><%= f.money_field :lyfeb %></li>
-            <li><%= f.money_field :lyfept %></li>
-            <li><%= f.money_field :lyfewci %>&nbsp;</li>
-            <li><%= f.money_field :lyfeeb %></li>
-            <li><%= f.money_field :lyfehvp %></li>
-            <li><%= f.money_field :lyfet %></li>
-            <li><%= f.money_field :lyfeth %></li>
-            <li><%= f.money_field :lyfer %></li>
-            <li><%= f.money_field :lyfeu %></li>
-            <li><%= f.money_field :lyfebrm %></li>
-            <li><%= f.money_field :lyfetl %></li>
-            <li><%= f.money_field :lyfeto %></li>
-            <li><%= f.money_field :lyfecp %></li>
-            <li><%= f.money_field :lyfeli %></li>
-            <li><%= f.money_field :lyfeccsf %></li>
-            <li><%= f.label :formula, nil, :id => 'formula_a' %></li>
-            <li><%= f.money_field :lyfeab %></li>
-            <li><%= f.money_field :lyfepr %></li>
-            <li><%= f.money_field :lyfecv %></li>
-            <li><%= f.money_field :lyfedv %></li>
-            <li><%= f.money_field :lyfedm %></li>
-            <li><%= f.money_field :lyfenm %></li>
-            <li><%= f.money_field :lyfeec %>&nbsp;</li>
-            <li><%= f.money_field :lyfehms %></li>
-            <li><%= f.money_field :lyfeo %></li>
-            <li><%= f.money_field :lyfeiss %></li>
-            <li><%= f.money_field :lyfesrv %></li>
-            <li><%= f.money_field :lyfeys %></li>
-            <li><%= f.money_field :lyfeyppo %>&nbsp;</li>
-            <li><%= f.money_field :lyferr %></li>
-            <li><%= f.money_field :lyfeos %></li>
-            <li><%= f.money_field :lyfep %></li>
-            <li><%= f.money_field :lyfepos %></li>
-            <li><%= f.money_field :lyfeoel %></li>
-            <li><%= f.money_field :lyfefel %></li>
-            <li><%= f.money_field :lyfeoerm %>&nbsp;</li>
-            <li><%= f.money_field :lyfesd %></li>
-            <li><%= f.money_field :lyfeulr %></li>
-            <li><%= f.label :formula, nil, :id => 'formula_v' %></li>
-            <li><%= f.money_field :lyfevl %></li>
-            <li><%= f.money_field :lyfevrm %></li>
-            <li><%= f.money_field :lyfevi %></li>
-            <li><%= f.money_field :lyfevf %>&nbsp;</li>
-            <li><%= f.money_field :lyfel %></li>
-            <li><%= f.money_field :lyfeaf %></li>
-            <li><%= f.money_field :lyfelf %></li>
-            <li><%= f.money_field :lyfeeer %>&nbsp;</li>
-            <li><%= f.money_field :lyfeoser %></li>
-            <li><%= f.money_field :lyfece %></li>
-            <li><%= f.money_field :lyfebsc %></li>
-            <li><%= f.money_field :lyfeds %></li>
-            <li><%= f.money_field :lyfec %></li>
-            <li><%= f.money_field :lyfebd %></li>
-            <li><%= f.money_field :lyfect %></li>
-            <li><%= f.money_field :lyfeme %></li>
-            <li><%= f.money_field :lyfem %></li>
-            <li><%= f.money_field :lyfeii %></li>
-            <li><%= f.money_field :lyfedtv %></li>
-            <li><%= f.money_field :lyfeie %></li>
-            <li><%= f.money_field :lyfed %></li>
-            <li><%= f.money_field :lyfea %></li>
-            <li><%= f.money_field :lyfeoe %></li>
-            <li><%= f.money_field :lyfeit %></li>
-            <li><%= f.label :formula, nil, :id => 'formula_te2' %></li>
-            <li><%= f.label :formula, nil, :id => 'formula_npbt' %></li>
-          </ul>
+        <div class="pc clearfix">
+          <% @profit_centers.each_with_index do |profit_center, index| %>
+            <div class="col">
+              <strong><%= profit_center.pcn %></strong>
 
-          <hr>
+              <hr>
 
-          <ul>
-            <li><%= f.money_field :lyfenone %></li>
-            <li><%= f.money_field :lyfentwo %></li>
-            <li><%= f.label :formula, nil, :id => 'formula_nanp' %></li>
-          </ul>
-        <% end # fields_for :"#{model}" %>
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= label_tag :formula, nil, :id => "formula_s_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feso_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fesm_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fesa_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fesop_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fess_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fest_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feb_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fept_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fewci_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_feeb_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fehvp_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fet_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feth_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fer_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feu_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_febrm_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fetl_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feto_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fecp_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feli_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feccsf_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_a_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feab_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fepr_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fecv_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fedv_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fedm_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fenm_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feec_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_fehms_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feo_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feiss_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fesrv_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feys_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feyppo_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_ferr_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feos_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fep_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fepos_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feoel_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fefel_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feoerm_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_fesd_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feulr_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_v_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fevl_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fevrm_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fevi_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fevf_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_fel_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feaf_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_felf_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feeer_#{index}" %>&nbsp;</li>
+                <li><%= label_tag :formula, nil, :id => "formula_feoser_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fece_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_febsc_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feds_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fec_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_febd_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fect_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feme_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fem_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feii_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fedtv_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feie_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fed_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fea_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feoe_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_feit_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_te2_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_npbt_#{index}" %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= label_tag :formula, nil, :id => "formula_fenone_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_fentwo_#{index}" %></li>
+                <li><%= label_tag :formula, nil, :id => "formula_nanp_#{index}" %></li>
+              </ul>
+
+              <hr>
+
+              <%= user.fields_for :profit_centers, profit_center do |pc| %>
+                <%= pc.fields_for :profit_center_last_year do |f| %>
+                  <ul>
+                    <li><%= f.money_field :expense_allocation %></li>
+                  </ul>
+                <% end # pc.fields_for :profit_center_last_year %>
+              <% end # user.fields_for :profit_centers %>
+            </div>
+          <% end # @profit_centers.each_with_index %>
+
+          <%= user.fields_for :last_year do |f| %>
+            <div class="col">
+              <strong>Total</strong>
+
+              <hr>
+
+              <h1>&nbsp;</h1>
+              <ul>
+                <li><%= f.label :formula, nil, :id => 'formula_s' %></li>
+                <li><%= f.money_field :lyfeso %></li>
+                <li><%= f.money_field :lyfesm %></li>
+                <li><%= f.money_field :lyfesa %></li>
+                <li><%= f.money_field :lyfesop %></li>
+                <li><%= f.money_field :lyfess %></li>
+                <li><%= f.money_field :lyfest %></li>
+                <li><%= f.money_field :lyfeb %></li>
+                <li><%= f.money_field :lyfept %></li>
+                <li><%= f.money_field :lyfewci %>&nbsp;</li>
+                <li><%= f.money_field :lyfeeb %></li>
+                <li><%= f.money_field :lyfehvp %></li>
+                <li><%= f.money_field :lyfet %></li>
+                <li><%= f.money_field :lyfeth %></li>
+                <li><%= f.money_field :lyfer %></li>
+                <li><%= f.money_field :lyfeu %></li>
+                <li><%= f.money_field :lyfebrm %></li>
+                <li><%= f.money_field :lyfetl %></li>
+                <li><%= f.money_field :lyfeto %></li>
+                <li><%= f.money_field :lyfecp %></li>
+                <li><%= f.money_field :lyfeli %></li>
+                <li><%= f.money_field :lyfeccsf %></li>
+                <li><%= f.label :formula, nil, :id => 'formula_a' %></li>
+                <li><%= f.money_field :lyfeab %></li>
+                <li><%= f.money_field :lyfepr %></li>
+                <li><%= f.money_field :lyfecv %></li>
+                <li><%= f.money_field :lyfedv %></li>
+                <li><%= f.money_field :lyfedm %></li>
+                <li><%= f.money_field :lyfenm %></li>
+                <li><%= f.money_field :lyfeec %>&nbsp;</li>
+                <li><%= f.money_field :lyfehms %></li>
+                <li><%= f.money_field :lyfeo %></li>
+                <li><%= f.money_field :lyfeiss %></li>
+                <li><%= f.money_field :lyfesrv %></li>
+                <li><%= f.money_field :lyfeys %></li>
+                <li><%= f.money_field :lyfeyppo %>&nbsp;</li>
+                <li><%= f.money_field :lyferr %></li>
+                <li><%= f.money_field :lyfeos %></li>
+                <li><%= f.money_field :lyfep %></li>
+                <li><%= f.money_field :lyfepos %></li>
+                <li><%= f.money_field :lyfeoel %></li>
+                <li><%= f.money_field :lyfefel %></li>
+                <li><%= f.money_field :lyfeoerm %>&nbsp;</li>
+                <li><%= f.money_field :lyfesd %></li>
+                <li><%= f.money_field :lyfeulr %></li>
+                <li><%= f.label :formula, nil, :id => 'formula_v' %></li>
+                <li><%= f.money_field :lyfevl %></li>
+                <li><%= f.money_field :lyfevrm %></li>
+                <li><%= f.money_field :lyfevi %></li>
+                <li><%= f.money_field :lyfevf %>&nbsp;</li>
+                <li><%= f.money_field :lyfel %></li>
+                <li><%= f.money_field :lyfeaf %></li>
+                <li><%= f.money_field :lyfelf %></li>
+                <li><%= f.money_field :lyfeeer %>&nbsp;</li>
+                <li><%= f.money_field :lyfeoser %></li>
+                <li><%= f.money_field :lyfece %></li>
+                <li><%= f.money_field :lyfebsc %></li>
+                <li><%= f.money_field :lyfeds %></li>
+                <li><%= f.money_field :lyfec %></li>
+                <li><%= f.money_field :lyfebd %></li>
+                <li><%= f.money_field :lyfect %></li>
+                <li><%= f.money_field :lyfeme %></li>
+                <li><%= f.money_field :lyfem %></li>
+                <li><%= f.money_field :lyfeii %></li>
+                <li><%= f.money_field :lyfedtv %></li>
+                <li><%= f.money_field :lyfeie %></li>
+                <li><%= f.money_field :lyfed %></li>
+                <li><%= f.money_field :lyfea %></li>
+                <li><%= f.money_field :lyfeoe %></li>
+                <li><%= f.money_field :lyfeit %></li>
+                <li><%= f.label :formula, nil, :id => 'formula_te2' %></li>
+                <li><%= f.label :formula, nil, :id => 'formula_npbt' %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= f.money_field :lyfenone %></li>
+                <li><%= f.money_field :lyfentwo %></li>
+                <li><%= f.label :formula, nil, :id => 'formula_nanp' %></li>
+              </ul>
+
+              <hr>
+
+              <ul>
+                <li><%= label_tag :formula, nil, :id => 'formula_ea' %></li>
+              </ul>
+            </div>
+          <% end # fields_for :"#{model}" %>
+        </div>
       </div>
     </div>
 
