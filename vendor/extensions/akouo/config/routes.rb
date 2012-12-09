@@ -10,16 +10,43 @@ Refinery::Core::Engine.routes.append do
     get 'vision' => 'sheet#vision'
     put 'vision' => 'sheet#start_update'
 
+    get 'to_implement' => 'sheet#to_implement'
+    put 'to_implement' => 'sheet#to_implement_update'
+
+    get 'organization_chart' => 'sheet#organization_chart'
+    put 'organization_chart' => 'sheet#organization_chart_update'
+
     get 'last_year' => 'sheet#last_year'
     put 'last_year' => 'sheet#last_year_update'
-
-    get 'next_year' => 'sheet#next_year'
-    put 'next_year' => 'sheet#next_year_update'
 
     get 'demand_trend' => 'sheet#demand_trend'
     put 'demand_trend' => 'sheet#demand_trend_update'
 
     get 'demand_trend_chart' => 'sheet#demand_trend_chart'
+
+    get 'next_year' => 'sheet#next_year'
+    put 'next_year' => 'sheet#next_year_update'
+
+    get 'projection_chart' => 'sheet#projection_chart'
+
+    get 'advertising_plan' => 'sheet#advertising_plan'
+    put 'advertising_plan' => 'sheet#advertising_plan_update'
+
+    get 'what_if_analysis' => 'sheet#what_if_analysis'
+    put 'what_if_analysis' => 'sheet#what_if_analysis_update'
+
+    get 'what_if_projection' => 'sheet#what_if_projection'
+
+    get 'call_requirements' => 'sheet#call_requirements'
+
+    get 'tech_requirements' => 'sheet#tech_requirements'
+
+    get 'profit_comparison' => 'sheet#profit_comparison'
+
+    get 'budget_snapshot' => 'sheet#budget_snapshot'
+
+    get 'month' => 'sheet#month'
+    put 'month' => 'sheet#month_update'
   end
 
   namespace :akouo, :path => '' do
