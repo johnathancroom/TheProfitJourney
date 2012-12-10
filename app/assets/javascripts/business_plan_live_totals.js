@@ -438,6 +438,108 @@ $(document).ready(function() {
       })
     })
 
+    // NY reverse percentages
+    var indexes = new Array(0,1,2,3);
+    for(index in indexes)
+    {
+      var total = $("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_ts").val()
+      var elements = new Array(
+        "rs",
+        "rao",
+        "rsa",
+        "rr",
+        "rra",
+        "cs",
+        "cao",
+        "csa",
+        "cr",
+        "cra",
+        "m",
+        "ltl",
+        "ltc",
+        "lptf",
+        "lwci",
+        "ltb",
+        "sc",
+        "p",
+        "w",
+        "sct",
+        "vf",
+        "vmr",
+        "t",
+        "fsf",
+        "fnad",
+        "pd"
+      )
+
+      for(element in elements)
+      {
+        $("#nytotal_"+elements[element]+"_"+index).html(makeTotal(
+          total * ($("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_pcny"+elements[element]).val()/100)
+        ))
+      }
+    }
+    // End NY reverse percentages
+
+    // NY Totals
+    if(page == "next_year")
+    {
+      var indexes = new Array(0,1,2,3);
+      for(index in indexes)
+      {
+        var total_sales = parseFloat($("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_ts").val())
+
+        $("#formula_tsr_"+index).html(makeTotal(
+          $("#nytotal_rs_"+index).html(),
+          $("#nytotal_rao_"+index).html(),
+          $("#nytotal_rsa_"+index).html(),
+          $("#nytotal_rr_"+index).html(),
+          $("#nytotal_rra_"+index).html()
+        ))
+
+        $("#formula_tsc_"+index).html(makeTotal(
+          $("#nytotal_cs_"+index).html(),
+          $("#nytotal_cao_"+index).html(),
+          $("#nytotal_csa_"+index).html(),
+          $("#nytotal_cr_"+index).html(),
+          $("#nytotal_cra_"+index).html()
+        ))
+
+        $("#formula_l_"+index).html(makeTotal(
+          $("#nytotal_ltl_"+index).html(),
+          $("#nytotal_ltc_"+index).html(),
+          $("#nytotal_lptf_"+index).html(),
+          $("#nytotal_lwci_"+index).html(),
+          $("#nytotal_ltb_"+index).html()
+        ))
+
+        $("#formula_o_"+index).html(makeTotal(
+          $("#nytotal_vf_"+index).html(),
+          $("#nytotal_vmr_"+index).html(),
+          $("#nytotal_t_"+index).html()
+        ))
+
+        $("#formula_tcs_"+index).html(makeTotal(
+          $("#nytotal_m_"+index).html(),
+          $("#formula_l_"+index).html(),
+          $("#nytotal_sc_"+index).html(),
+          $("#nytotal_p_"+index).html(),
+          $("#nytotal_w_"+index).html(),
+          $("#nytotal_sct_"+index).html(),
+          $("#formula_o_"+index).html(),
+          $("#nytotal_fsf_"+index).html(),
+          $("#nytotal_fnad_"+index).html(),
+          $("#nytotal_pd_"+index).html()
+        ))
+
+        $("#formula_gm_"+index).html(makeTotal(
+          $("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_ts").val(),
+          "-" + $("#formula_tcs_"+index).html()
+        ))
+      }
+    }
+    // End NY Totals
+
     //Totals
     $("[for=formula_total]").each(function(index, x) {
       $(this).html(makeTotal(
@@ -582,6 +684,19 @@ $(document).ready(function() {
         {
           total = parseFloat(total.formattedMoneyStrip())
         }
+        else
+        {
+          total = $("#user_profit_centers_attributes_"+element+"_profit_center_next_year_attributes_"+tindex).val()
+
+          if(!total)
+          {
+            total = $("#user_profit_centers_attributes_"+element+"_profit_center_next_year_attributes_"+tindex).html()
+            if(total)
+            {
+              total = parseFloat(total.formattedMoneyStrip())
+            }
+          }
+        }
 
         $.each(telement.formulas, function(tfindex, tfelement) {
           if($("#formula_"+tfelement+"_"+element).length != 0)
@@ -596,6 +711,10 @@ $(document).ready(function() {
           {
             var e = $("#user_"+page+"_attributes_"+page_prefix+"y"+tfelement)
           }
+          else if($("#formula_"+tfelement+"_"+index).length != 0)
+          {
+            var e = $("#formula_"+tfelement+"_"+index)
+          }
 
           if(e)
           {
@@ -604,6 +723,7 @@ $(document).ready(function() {
             {
               q = parseFloat(e.html().formattedMoneyStrip()) / total * 100
             }
+
             $("#percentage_"+tfelement+"_"+index).html(makeTotal("percentage",
               q
             ))
@@ -621,6 +741,16 @@ $(document).ready(function() {
               num = parseFloat(val.formattedMoneyStrip()) / total * 100
             }
           }
+          if(isNaN(num))
+          {
+            var val = $("#nytotal_"+teelement+"_\\{index\\}").html()
+
+
+            if(val)
+            {
+              num = parseFloat(val.formattedMoneyStrip()) / total * 100
+            }
+          }
 
           $("#percentage_"+teelement+"_"+index).html(makeTotal("percentage",
             num
@@ -629,53 +759,6 @@ $(document).ready(function() {
       })
     })
     // End percentages
-
-    // NY reverse percentages
-    var indexes = new Array(0,1,2,3);
-    for(index in indexes)
-    {
-      var total = $("#formula_ts_"+index).html()
-      if(total)
-      {
-        total = parseFloat(total.formattedMoneyStrip())
-      }
-      var elements = new Array(
-        "rs",
-        "rao",
-        "rsa",
-        "rr",
-        "rra",
-        "cs",
-        "cao",
-        "csa",
-        "cr",
-        "cra",
-        "m",
-        "ltl",
-        "ltc",
-        "lptf",
-        "lwci",
-        "ltb",
-        "sc",
-        "p",
-        "w",
-        "sct",
-        "vf",
-        "vmr",
-        "t",
-        "fsf",
-        "fnad",
-        "pd"
-      )
-
-      for(element in elements)
-      {
-        $("#nytotal_"+elements[element]+"_"+index).html(makeTotal(
-          total * ($("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_pcny"+elements[element]).val()/100)
-        ))
-      }
-    }
-    // End NY reverse percentages
   }
   updateTotals()
 

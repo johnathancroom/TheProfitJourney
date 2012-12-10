@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210000659) do
+ActiveRecord::Schema.define(:version => 20121210164124) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -582,6 +582,7 @@ ActiveRecord::Schema.define(:version => 20121210000659) do
     t.decimal "pcnylptf",           :precision => 19, :scale => 2, :default => 0.0
     t.decimal "pcnylwci",           :precision => 19, :scale => 2, :default => 0.0
     t.decimal "expense_allocation", :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "ts",                 :precision => 19, :scale => 2, :default => 0.0
   end
 
   create_table "refinery_blog_categories", :force => true do |t|

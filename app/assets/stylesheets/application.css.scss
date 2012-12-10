@@ -564,10 +564,13 @@ form.horiz {
     label[for=formula_total],
     input[type=number],
     input[type=text] {
-      display: inline-block;
-      margin-left: 1%;
-      margin-right: 1%;
-      width: 68%;
+      &,
+      &.no-reverse {
+        display: inline-block;
+        margin-left: 1%;
+        margin-right: 1%;
+        width: 68%;
+      }
     }
   }
   input[type=number],
