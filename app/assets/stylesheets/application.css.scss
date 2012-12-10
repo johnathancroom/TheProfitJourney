@@ -594,7 +594,8 @@ form.horiz {
     display: block;
     padding: 8px 4px;
   }
-  label[id^=percentage] {
+  label[id^=percentage],
+  .reverse label[id^=percentage] {
     color: #999;
     display: inline-block;
     font-size: 11px;
@@ -605,6 +606,20 @@ form.horiz {
   .expense_statement {
     padding-top: 10px;
     text-align: center;
+  }
+  .reverse {
+    label {
+      display: inline-block;
+      width: 60%;
+    }
+    label[id^=nytotal] {
+      display: inline-block;
+      padding: 0 4px;
+    }
+    input[type=number],
+    input[type=text] {
+      width: 35%;
+    }
   }
 }
 form.wide label {

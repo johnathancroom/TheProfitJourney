@@ -423,9 +423,12 @@ $(document).ready(function() {
       )
 
       $.each(formulas, function(i, formula) {
-        $("#formula_"+formula+"_"+index).html(makeTotal(
-          parseFloat($("#formula_"+formula).html().formattedMoneyStrip()) * percentage
-        ))
+        if($("#formula_"+formula).html())
+        {
+          $("#formula_"+formula+"_"+index).html(makeTotal(
+            parseFloat($("#formula_"+formula).html().formattedMoneyStrip()) * percentage
+          ))
+        }
       })
 
       $.each(elements, function(i, element) {
@@ -574,7 +577,11 @@ $(document).ready(function() {
       }
 
       $.each(totals, function(tindex, telement) {
-        var total = parseFloat($("#formula_"+tindex+"_"+element).html().formattedMoneyStrip())
+        var total = $("#formula_"+tindex+"_"+element).html()
+        if(total)
+        {
+          total = parseFloat(total.formattedMoneyStrip())
+        }
 
         $.each(telement.formulas, function(tfindex, tfelement) {
           if($("#formula_"+tfelement+"_"+element).length != 0)
@@ -607,8 +614,12 @@ $(document).ready(function() {
           var num = parseFloat($("#user_profit_centers_attributes_"+element+"_profit_center_"+page+"_attributes_pc"+page_prefix+"y"+teelement).val()) / total * 100;
           if(isNaN(num))
           {
-            console.log("#user_profit_centers_attributes_"+element+"_profit_center_"+page+"_attributes_pc"+page_prefix+"y"+teelement)
-            num = parseFloat($("#user_profit_centers_attributes_"+element+"_profit_center_"+page+"_attributes_pc"+page_prefix+"y"+teelement).html().formattedMoneyStrip()) / total * 100
+            var val = $("#user_profit_centers_attributes_"+element+"_profit_center_"+page+"_attributes_pc"+page_prefix+"y"+teelement).html()
+
+            if(val)
+            {
+              num = parseFloat(val.formattedMoneyStrip()) / total * 100
+            }
           }
 
           $("#percentage_"+teelement+"_"+index).html(makeTotal("percentage",
@@ -617,6 +628,54 @@ $(document).ready(function() {
         })
       })
     })
+    // End percentages
+
+    // NY reverse percentages
+    var indexes = new Array(0,1,2,3);
+    for(index in indexes)
+    {
+      var total = $("#formula_ts_"+index).html()
+      if(total)
+      {
+        total = parseFloat(total.formattedMoneyStrip())
+      }
+      var elements = new Array(
+        "rs",
+        "rao",
+        "rsa",
+        "rr",
+        "rra",
+        "cs",
+        "cao",
+        "csa",
+        "cr",
+        "cra",
+        "m",
+        "ltl",
+        "ltc",
+        "lptf",
+        "lwci",
+        "ltb",
+        "sc",
+        "p",
+        "w",
+        "sct",
+        "vf",
+        "vmr",
+        "t",
+        "fsf",
+        "fnad",
+        "pd"
+      )
+
+      for(element in elements)
+      {
+        $("#nytotal_"+elements[element]+"_"+index).html(makeTotal(
+          total * ($("#user_profit_centers_attributes_"+index+"_profit_center_next_year_attributes_pcny"+elements[element]).val()/100)
+        ))
+      }
+    }
+    // End NY reverse percentages
   }
   updateTotals()
 
