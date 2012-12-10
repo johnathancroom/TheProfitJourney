@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :class => 'bp_columns clearfix' } do |user| %>
+  <%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :class => 'bp_columns clearfix', :'data-page' => 'last_year' } do |user| %>
     <div class="clearfix">
       <div class="col head">
         <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>

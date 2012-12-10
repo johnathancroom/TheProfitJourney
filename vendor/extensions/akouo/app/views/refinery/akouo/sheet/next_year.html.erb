@@ -1,5 +1,5 @@
 <% content_for :body do %>
-  <%= form_for @user, :url => refinery.akouo_last_year_path, :html => { :class => 'bp_columns clearfix' } do |user| %>
+  <%= form_for @user, :url => refinery.akouo_next_year_path, :html => { :class => 'bp_columns clearfix', :'data-page' => 'next_year' } do |user| %>
     <div class="clearfix">
       <div class="col head">
         <strong><%= !@customer.cced.nil? ? @customer.cced.strftime('%b %e, %Y') : raw('&nbsp;') %></strong>
@@ -370,30 +370,30 @@
 
         <hr>
 
-        <%= user.fields_for :last_year do |f| %>
+        <%= user.fields_for :next_year do |f| %>
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lycoh %></li>
+            <li><%= f.money_field :nycoh %></li>
             <li><%= f.label :formula, nil, :id => 'formula_cb' %></li>
-            <li><%= f.money_field :lyckone %></li>
-            <li><%= f.money_field :lycktwo %></li>
-            <li><%= f.money_field :lyckthree %></li>
+            <li><%= f.money_field :nyckone %></li>
+            <li><%= f.money_field :nycktwo %></li>
+            <li><%= f.money_field :nyckthree %></li>
             <li><%= f.label :formula, nil, :id => 'formula_tb' %></li>
-            <li><%= f.money_field :lyar %></li>
+            <li><%= f.money_field :nyar %></li>
           </ul>
 
           <hr>
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lymma %></li>
-            <li><%= f.money_field :lysti %></li>
-            <li><%= f.money_field :lyada %>&nbsp;</li>
-            <li><%= f.money_field :lyer %></li>
-            <li><%= f.money_field :lynrc %></li>
-            <li><%= f.money_field :lyi %></li>
-            <li><%= f.money_field :lyppe %></li>
-            <li><%= f.money_field :lyuf %></li>
+            <li><%= f.money_field :nymma %></li>
+            <li><%= f.money_field :nysti %></li>
+            <li><%= f.money_field :nyada %>&nbsp;</li>
+            <li><%= f.money_field :nyer %></li>
+            <li><%= f.money_field :nynrc %></li>
+            <li><%= f.money_field :nyi %></li>
+            <li><%= f.money_field :nyppe %></li>
+            <li><%= f.money_field :nyuf %></li>
             <li><%= f.label :formula, nil, :id => 'formula_toa' %></li>
           </ul>
 
@@ -401,19 +401,19 @@
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lyfavt %></li>
-            <li><%= f.money_field :lyfadvt %>&nbsp;</li>
-            <li><%= f.money_field :lyfaov %></li>
-            <li><%= f.money_field :lyfadov %>&nbsp;</li>
-            <li><%= f.money_field :lyfaeo %></li>
-            <li><%= f.money_field :lyfadeo %></li>
-            <li><%= f.money_field :lyfafe %></li>
-            <li><%= f.money_field :lyfadfe %>&nbsp;</li>
-            <li><%= f.money_field :lyfal %></li>
-            <li><%= f.money_field :lyfab %></li>
-            <li><%= f.money_field :lyfadb %></li>
-            <li><%= f.money_field :lyfali %></li>
-            <li><%= f.money_field :lyfadli %>&nbsp;</li>
+            <li><%= f.money_field :nyfavt %></li>
+            <li><%= f.money_field :nyfadvt %>&nbsp;</li>
+            <li><%= f.money_field :nyfaov %></li>
+            <li><%= f.money_field :nyfadov %>&nbsp;</li>
+            <li><%= f.money_field :nyfaeo %></li>
+            <li><%= f.money_field :nyfadeo %></li>
+            <li><%= f.money_field :nyfafe %></li>
+            <li><%= f.money_field :nyfadfe %>&nbsp;</li>
+            <li><%= f.money_field :nyfal %></li>
+            <li><%= f.money_field :nyfab %></li>
+            <li><%= f.money_field :nyfadb %></li>
+            <li><%= f.money_field :nyfali %></li>
+            <li><%= f.money_field :nyfadli %>&nbsp;</li>
             <li><%= f.label :formula, nil, :id => 'formula_tfa' %></li>
           </ul>
 
@@ -421,23 +421,23 @@
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lynrlt %></li>
-            <li><%= f.money_field :lys %></li>
+            <li><%= f.money_field :nynrlt %></li>
+            <li><%= f.money_field :nys %></li>
             <li><%= f.label :formula, nil, :id => 'formula_fr' %></li>
-            <li><%= f.money_field :lyfraone %></li>
-            <li><%= f.money_field :lyfratwo %></li>
-            <li><%= f.money_field :lyfrathree %></li>
+            <li><%= f.money_field :nyfraone %></li>
+            <li><%= f.money_field :nyfratwo %></li>
+            <li><%= f.money_field :nyfrathree %></li>
             <li><%= f.label :formula, nil, :id => 'formula_aaf' %></li>
-            <li><%= f.money_field :lyaaaone %></li>
-            <li><%= f.money_field :lyaaatwo %></li>
-            <li><%= f.money_field :lyaaathree %></li>
-            <li><%= f.money_field :lyoia %></li>
-            <li><%= f.money_field :lyaaoi %>&nbsp;</li>
-            <li><%= f.money_field :lyoc %></li>
-            <li><%= f.money_field :lyaaoc %>&nbsp;</li>
-            <li><%= f.money_field :lyd %></li>
-            <li><%= f.money_field :lylti %></li>
-            <li><%= f.money_field :lyoa %></li>
+            <li><%= f.money_field :nyaaaone %></li>
+            <li><%= f.money_field :nyaaatwo %></li>
+            <li><%= f.money_field :nyaaathree %></li>
+            <li><%= f.money_field :nyoia %></li>
+            <li><%= f.money_field :nyaaoi %>&nbsp;</li>
+            <li><%= f.money_field :nyoc %></li>
+            <li><%= f.money_field :nyaaoc %>&nbsp;</li>
+            <li><%= f.money_field :nyd %></li>
+            <li><%= f.money_field :nylti %></li>
+            <li><%= f.money_field :nyoa %></li>
             <li><%= f.label :formula, nil, :id => 'formula_toa2' %></li>
           </ul>
 
@@ -451,7 +451,7 @@
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lyap %></li>
+            <li><%= f.money_field :nyap %></li>
             <li><%= f.label :formula, nil, :id => 'formula_tap' %></li>
           </ul>
 
@@ -459,9 +459,9 @@
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lyccone %></li>
-            <li><%= f.money_field :lycctwo %></li>
-            <li><%= f.money_field :lyccthree %></li>
+            <li><%= f.money_field :nyccone %></li>
+            <li><%= f.money_field :nycctwo %></li>
+            <li><%= f.money_field :nyccthree %></li>
             <li><%= f.label :formula, nil, :id => 'formula_tcc' %></li>
           </ul>
 
@@ -469,20 +469,20 @@
 
           <h1>&nbsp;<br>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lyalp %></li>
-            <li><%= f.money_field :lyalc %></li>
-            <li><%= f.money_field :lyalpt %></li>
-            <li><%= f.money_field :lyfica %></li>
-            <li><%= f.money_field :lym %></li>
-            <li><%= f.money_field :lyw %></li>
-            <li><%= f.money_field :lyalwc %>&nbsp;</li>
-            <li><%= f.money_field :lyalst %></li>
-            <li><%= f.money_field :lyalprt %></li>
-            <li><%= f.money_field :lyalot %></li>
-            <li><%= f.money_field :lyali %></li>
-            <li><%= f.money_field :lyaldr %></li>
-            <li><%= f.money_field :lycplt %></li>
-            <li><%= f.money_field :lyol %></li>
+            <li><%= f.money_field :nyalp %></li>
+            <li><%= f.money_field :nyalc %></li>
+            <li><%= f.money_field :nyalpt %></li>
+            <li><%= f.money_field :nyfica %></li>
+            <li><%= f.money_field :nym %></li>
+            <li><%= f.money_field :nyw %></li>
+            <li><%= f.money_field :nyalwc %>&nbsp;</li>
+            <li><%= f.money_field :nyalst %></li>
+            <li><%= f.money_field :nyalprt %></li>
+            <li><%= f.money_field :nyalot %></li>
+            <li><%= f.money_field :nyali %></li>
+            <li><%= f.money_field :nyaldr %></li>
+            <li><%= f.money_field :nycplt %></li>
+            <li><%= f.money_field :nyol %></li>
             <li><%= f.label :formula, nil, :id => 'formula_tocl' %></li>
           </ul>
 
@@ -491,13 +491,13 @@
           <h1>&nbsp;</h1>
           <ul>
             <li><%= f.label :formula, nil, :id => 'formula_nplt' %></li>
-            <li><%= f.money_field :lyltlone %></li>
-            <li><%= f.money_field :lyltltwo %></li>
-            <li><%= f.money_field :lyltlthree %></li>
-            <li><%= f.money_field :lyltlfour %></li>
-            <li><%= f.money_field :lyltlfive %></li>
-            <li><%= f.money_field :lylcp %></li>
-            <li><%= f.money_field :lyshl %></li>
+            <li><%= f.money_field :nyltlone %></li>
+            <li><%= f.money_field :nyltltwo %></li>
+            <li><%= f.money_field :nyltlthree %></li>
+            <li><%= f.money_field :nyltlfour %></li>
+            <li><%= f.money_field :nyltlfive %></li>
+            <li><%= f.money_field :nylcp %></li>
+            <li><%= f.money_field :nyshl %></li>
             <li><%= f.label :formula, nil, :id => 'formula_tltl' %></li>
           </ul>
 
@@ -511,12 +511,12 @@
 
           <h1>&nbsp;</h1>
           <ul>
-            <li><%= f.money_field :lyecs %></li>
-            <li><%= f.money_field :lyeoe %></li>
-            <li><%= f.money_field :lyepc %></li>
-            <li><%= f.money_field :lyedp %></li>
-            <li><%= f.money_field :lyeow %></li>
-            <li><%= f.money_field :lyere %></li>
+            <li><%= f.money_field :nyecs %></li>
+            <li><%= f.money_field :nyeoe %></li>
+            <li><%= f.money_field :nyepc %></li>
+            <li><%= f.money_field :nyedp %></li>
+            <li><%= f.money_field :nyeow %></li>
+            <li><%= f.money_field :nyere %></li>
             <li><%= f.label :formula, nil, :id => 'formula_obe' %></li>
             <li><%= f.label :formula, nil, :id => 'formula_te' %></li>
           </ul>
@@ -533,7 +533,7 @@
         <div class="pc clearfix">
           <% @profit_centers.each_with_index do |profit_center, index| %>
             <%= user.fields_for :profit_centers, profit_center do |pc| %>
-              <%= pc.fields_for :profit_center_last_year do |f| %>
+              <%= pc.fields_for :profit_center_next_year do |f| %>
                 <div class="col">
                   <h1 class="expense_statement">&nbsp;</h1>
 
@@ -550,23 +550,23 @@
                       <%= f.label :percentage, nil, :id => "percentage_tsr_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyrs %>
+                      <%= f.money_field :pcnyrs %>
                       <%= f.label :percentage, nil, :id => "percentage_rs_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyrao %>
+                      <%= f.money_field :pcnyrao %>
                       <%= f.label :percentage, nil, :id => "percentage_rao_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyrsa %>
+                      <%= f.money_field :pcnyrsa %>
                       <%= f.label :percentage, nil, :id => "percentage_rsa_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyrr %>
+                      <%= f.money_field :pcnyrr %>
                       <%= f.label :percentage, nil, :id => "percentage_rr_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyrra %>
+                      <%= f.money_field :pcnyrra %>
                       <%= f.label :percentage, nil, :id => "percentage_rra_#{index}" %>
                     </li>
                     <li>
@@ -574,23 +574,23 @@
                       <%= f.label :percentage, nil, :id => "percentage_tsc_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclycs %>
+                      <%= f.money_field :pcnycs %>
                       <%= f.label :percentage, nil, :id => "percentage_cs_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclycao %>
+                      <%= f.money_field :pcnycao %>
                       <%= f.label :percentage, nil, :id => "percentage_cao_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclycsa %>
+                      <%= f.money_field :pcnycsa %>
                       <%= f.label :percentage, nil, :id => "percentage_csa_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclycr %>
+                      <%= f.money_field :pcnycr %>
                       <%= f.label :percentage, nil, :id => "percentage_cr_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclycra %>
+                      <%= f.money_field :pcnycra %>
                       <%= f.label :percentage, nil, :id => "percentage_cra_#{index}" %>
                     </li>
                     <li>
@@ -608,7 +608,7 @@
                   <h1>&nbsp;</h1>
                   <ul>
                     <li>
-                      <%= f.money_field :pclym %>
+                      <%= f.money_field :pcnym %>
                       <%= f.label :percentage, nil, :id => "percentage_m_#{index}" %>
                     </li>
                     <li>
@@ -616,40 +616,40 @@
                       <%= f.label :percentage, nil, :id => "percentage_l_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyltl %>
+                      <%= f.money_field :pcnyltl %>
                       <%= f.label :percentage, nil, :id => "percentage_ltl_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyltc %>
+                      <%= f.money_field :pcnyltc %>
                       <%= f.label :percentage, nil, :id => "percentage_ltc_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclylptf %>
+                      <%= f.money_field :pcnylptf %>
                       <%= f.label :percentage, nil, :id => "percentage_lptf_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclylwci %>
+                      <%= f.money_field :pcnylwci %>
                       <%= f.label :percentage, nil, :id => "percentage_lwci_#{index}" %>
                       &nbsp;
                     </li>
                     <li>
-                      <%= f.money_field :pclyltb %>
+                      <%= f.money_field :pcnyltb %>
                       <%= f.label :percentage, nil, :id => "percentage_ltb_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclysc %>
+                      <%= f.money_field :pcnysc %>
                       <%= f.label :percentage, nil, :id => "percentage_sc_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyp %>
+                      <%= f.money_field :pcnyp %>
                       <%= f.label :percentage, nil, :id => "percentage_p_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyw %>
+                      <%= f.money_field :pcnyw %>
                       <%= f.label :percentage, nil, :id => "percentage_w_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclysct %>
+                      <%= f.money_field :pcnysct %>
                       <%= f.label :percentage, nil, :id => "percentage_sct_#{index}" %>
                     </li>
                     <li>
@@ -657,28 +657,28 @@
                       <%= f.label :percentage, nil, :id => "percentage_o_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyvf %>
+                      <%= f.money_field :pcnyvf %>
                       <%= f.label :percentage, nil, :id => "percentage_vf_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyvmr %>
+                      <%= f.money_field :pcnyvmr %>
                       <%= f.label :percentage, nil, :id => "percentage_vmr_#{index}" %>
                       &nbsp;
                     </li>
                     <li>
-                      <%= f.money_field :pclyt %>
+                      <%= f.money_field :pcnyt %>
                       <%= f.label :percentage, nil, :id => "percentage_t_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyfsf %>
+                      <%= f.money_field :pcnyfsf %>
                       <%= f.label :percentage, nil, :id => "percentage_fsf_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclyfnad %>
+                      <%= f.money_field :pcnyfnad %>
                       <%= f.label :percentage, nil, :id => "percentage_fnad_#{index}" %>
                     </li>
                     <li>
-                      <%= f.money_field :pclypd %>
+                      <%= f.money_field :pcnypd %>
                       <%= f.label :percentage, nil, :id => "percentage_pd_#{index}" %>
                     </li>
                     <li>
@@ -718,23 +718,23 @@
                 <%= label_tag :percentage, nil, :id => 'percentage_tsr_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrs' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyrs' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_rs_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrao' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyrao' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_rao_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrsa' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyrsa' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_rsa_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrr' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyrr' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_rr_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyrra' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyrra' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_rra_4' %>
               </li>
               <li>
@@ -742,23 +742,23 @@
                 <%= label_tag :percentage, nil, :id => 'percentage_tsc_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycs' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnycs' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_cs_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycao' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnycao' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_cao_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycsa' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnycsa' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_csa_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycr' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnycr' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_cr_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclycra' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnycra' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_cra_4' %>
               </li>
               <li>
@@ -776,7 +776,7 @@
             <h1>&nbsp;</h1>
             <ul>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclym' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnym' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_m_4' %>
               </li>
               <li>
@@ -784,40 +784,40 @@
                 <%= label_tag :percentage, nil, :id => 'percentage_l_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltl' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyltl' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_ltl_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltc' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyltc' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_ltc_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclylptf' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnylptf' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_lptf_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclylwci' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnylwci' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_lwci_4' %>
                 &nbsp;
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyltb' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyltb' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_ltb_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclysc' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnysc' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_sc_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyp' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyp' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_p_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyw' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyw' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_w_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclysct' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnysct' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_sct_4' %>
               </li>
               <li>
@@ -825,28 +825,28 @@
                 <%= label_tag :percentage, nil, :id => 'percentage_o_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyvf' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyvf' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_vf_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyvmr' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyvmr' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_vmr_4' %>
                 &nbsp;
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyt' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyt' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_t_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyfsf' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyfsf' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_fsf_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclyfnad' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnyfnad' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_fnad_4' %>
               </li>
               <li>
-                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_last_year_attributes_pclypd' %>
+                <%= label_tag :formula_total, nil, :id => 'user_profit_centers_attributes_{index}_profit_center_next_year_attributes_pcnypd' %>
                 <%= label_tag :percentage, nil, :id => 'percentage_pd_4' %>
               </li>
               <li>
@@ -1193,16 +1193,16 @@
               <hr>
 
               <%= user.fields_for :profit_centers, profit_center do |pc| %>
-                <%= pc.fields_for :profit_center_last_year do |f| %>
+                <%= pc.fields_for :profit_center_next_year do |f| %>
                   <ul>
                     <li><%= f.money_field :expense_allocation %></li>
                   </ul>
-                <% end # pc.fields_for :profit_center_last_year %>
+                <% end # pc.fields_for :profit_center_next_year %>
               <% end # user.fields_for :profit_centers %>
             </div>
           <% end # @profit_centers.each_with_index %>
 
-          <%= user.fields_for :last_year do |f| %>
+          <%= user.fields_for :next_year do |f| %>
             <div class="col">
               <strong>Total</strong>
 
@@ -1215,88 +1215,88 @@
                   <%= label_tag :percentage, nil, :id => 'percentage_s_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeso %>
+                  <%= f.money_field :nyfeso %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feso_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfesm %>
+                  <%= f.money_field :nyfesm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fesm_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfesa %>
+                  <%= f.money_field :nyfesa %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fesa_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfesop %>
+                  <%= f.money_field :nyfesop %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fesop_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfess %>
+                  <%= f.money_field :nyfess %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fess_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfest %>
+                  <%= f.money_field :nyfest %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fest_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeb %>
+                  <%= f.money_field :nyfeb %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feb_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfept %>
+                  <%= f.money_field :nyfept %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fept_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfewci %>
+                  <%= f.money_field :nyfewci %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fewci_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyfeeb %>
+                  <%= f.money_field :nyfeeb %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feeb_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfehvp %>
+                  <%= f.money_field :nyfehvp %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fehvp_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfet %>
+                  <%= f.money_field :nyfet %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fet_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeth %>
+                  <%= f.money_field :nyfeth %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feth_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfer %>
+                  <%= f.money_field :nyfer %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fer_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeu %>
+                  <%= f.money_field :nyfeu %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feu_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfebrm %>
+                  <%= f.money_field :nyfebrm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_febrm_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfetl %>
+                  <%= f.money_field :nyfetl %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fetl_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeto %>
+                  <%= f.money_field :nyfeto %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feto_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfecp %>
+                  <%= f.money_field :nyfecp %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fecp_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeli %>
+                  <%= f.money_field :nyfeli %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feli_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeccsf %>
+                  <%= f.money_field :nyfeccsf %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feccsf_4' %>
                 </li>
                 <li>
@@ -1304,94 +1304,94 @@
                   <%= label_tag :percentage, nil, :id => 'percentage_a_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeab %>
+                  <%= f.money_field :nyfeab %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feab_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfepr %>
+                  <%= f.money_field :nyfepr %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fepr_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfecv %>
+                  <%= f.money_field :nyfecv %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fecv_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfedv %>
+                  <%= f.money_field :nyfedv %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fedv_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfedm %>
+                  <%= f.money_field :nyfedm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fedm_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfenm %>
+                  <%= f.money_field :nyfenm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fenm_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeec %>
+                  <%= f.money_field :nyfeec %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feec_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyfehms %>
+                  <%= f.money_field :nyfehms %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fehms_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeo %>
+                  <%= f.money_field :nyfeo %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feo_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeiss %>
+                  <%= f.money_field :nyfeiss %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feiss_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfesrv %>
+                  <%= f.money_field :nyfesrv %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fesrv_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeys %>
+                  <%= f.money_field :nyfeys %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feys_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeyppo %>
+                  <%= f.money_field :nyfeyppo %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feyppo_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyferr %>
+                  <%= f.money_field :nyferr %>
                   <%= label_tag :percentage, nil, :id => 'percentage_ferr_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeos %>
+                  <%= f.money_field :nyfeos %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feos_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfep %>
+                  <%= f.money_field :nyfep %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fep_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfepos %>
+                  <%= f.money_field :nyfepos %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fepos_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeoel %>
+                  <%= f.money_field :nyfeoel %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feoel_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfefel %>
+                  <%= f.money_field :nyfefel %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fefel_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeoerm %>
+                  <%= f.money_field :nyfeoerm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feoerm_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyfesd %>
+                  <%= f.money_field :nyfesd %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fesd_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeulr %>
+                  <%= f.money_field :nyfeulr %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feulr_4' %>
                 </li>
                 <li>
@@ -1399,101 +1399,101 @@
                   <%= label_tag :percentage, nil, :id => 'percentage_v_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfevl %>
+                  <%= f.money_field :nyfevl %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fevl_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfevrm %>
+                  <%= f.money_field :nyfevrm %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fevrm_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfevi %>
+                  <%= f.money_field :nyfevi %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fevi_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfevf %>
+                  <%= f.money_field :nyfevf %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fevf_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyfel %>
+                  <%= f.money_field :nyfel %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fel_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeaf %>
+                  <%= f.money_field :nyfeaf %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feaf_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfelf %>
+                  <%= f.money_field :nyfelf %>
                   <%= label_tag :percentage, nil, :id => 'percentage_felf_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeeer %>
+                  <%= f.money_field :nyfeeer %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feeer_4' %>
                   &nbsp;
                 </li>
                 <li>
-                  <%= f.money_field :lyfeoser %>
+                  <%= f.money_field :nyfeoser %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feoser_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfece %>
+                  <%= f.money_field :nyfece %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fece_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfebsc %>
+                  <%= f.money_field :nyfebsc %>
                   <%= label_tag :percentage, nil, :id => 'percentage_febsc_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeds %>
+                  <%= f.money_field :nyfeds %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feds_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfec %>
+                  <%= f.money_field :nyfec %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fec_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfebd %>
+                  <%= f.money_field :nyfebd %>
                   <%= label_tag :percentage, nil, :id => 'percentage_febd_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfect %>
+                  <%= f.money_field :nyfect %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fect_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeme %>
+                  <%= f.money_field :nyfeme %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feme_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfem %>
+                  <%= f.money_field :nyfem %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fem_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeii %>
+                  <%= f.money_field :nyfeii %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feii_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfedtv %>
+                  <%= f.money_field :nyfedtv %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fedtv_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeie %>
+                  <%= f.money_field :nyfeie %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feie_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfed %>
+                  <%= f.money_field :nyfed %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fed_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfea %>
+                  <%= f.money_field :nyfea %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fea_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeoe %>
+                  <%= f.money_field :nyfeoe %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feoe_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfeit %>
+                  <%= f.money_field :nyfeit %>
                   <%= label_tag :percentage, nil, :id => 'percentage_feit_4' %>
                 </li>
                 <li>
@@ -1510,11 +1510,11 @@
 
               <ul>
                 <li>
-                  <%= f.money_field :lyfenone %>
+                  <%= f.money_field :nyfenone %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fenone_4' %>
                 </li>
                 <li>
-                  <%= f.money_field :lyfentwo %>
+                  <%= f.money_field :nyfentwo %>
                   <%= label_tag :percentage, nil, :id => 'percentage_fentwo_4' %>
                 </li>
                 <li>

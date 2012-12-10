@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207200319) do
+ActiveRecord::Schema.define(:version => 20121210000659) do
 
   create_table "ap", :primary_key => "APID", :force => true do |t|
     t.integer "PCID"
@@ -554,33 +554,34 @@ ActiveRecord::Schema.define(:version => 20121207200319) do
   end
 
   create_table "pcny", :force => true do |t|
-    t.decimal "pcnyrs",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyrao",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyrsa",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyrr",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyrra",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnycs",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnycao",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnycsa",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnycr",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnycra",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnym",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyltl",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyltc",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyltb",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnysc",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyp",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyw",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnysct",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyvf",           :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyvmr",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyt",            :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyfsf",          :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnyfnad",         :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnypd",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyrs",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyrao",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyrsa",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyrr",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyrra",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnycs",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnycao",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnycsa",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnycr",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnycra",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnym",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyltl",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyltc",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyltb",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnysc",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyp",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyw",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnysct",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyvf",             :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyvmr",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyt",              :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyfsf",            :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnyfnad",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnypd",             :precision => 19, :scale => 2, :default => 0.0
     t.integer "profit_center_id"
-    t.decimal "pcnylptf",         :precision => 19, :scale => 2, :default => 0.0
-    t.decimal "pcnylwci",         :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnylptf",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "pcnylwci",           :precision => 19, :scale => 2, :default => 0.0
+    t.decimal "expense_allocation", :precision => 19, :scale => 2, :default => 0.0
   end
 
   create_table "refinery_blog_categories", :force => true do |t|
