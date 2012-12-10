@@ -363,6 +363,13 @@
         <ul>
           <li>Allocation of Expenses</li>
         </ul>
+
+        <hr>
+
+        <ul>
+          <li>Projected Job Average</li>
+          <li>Job Closing Ratio</li>
+        </ul>
       </div>
 
       <div class="col no-pc">
@@ -1196,6 +1203,13 @@
                 <%= pc.fields_for :profit_center_next_year do |f| %>
                   <ul>
                     <li><%= f.money_field :expense_allocation %></li>
+                  </ul>
+
+                  <hr>
+
+                  <ul>
+                    <li><%= f.number_field :pja %></li>
+                    <li><%= f.percentage_field :jcr %></li>
                   </ul>
                 <% end # pc.fields_for :profit_center_next_year %>
               <% end # user.fields_for :profit_centers %>

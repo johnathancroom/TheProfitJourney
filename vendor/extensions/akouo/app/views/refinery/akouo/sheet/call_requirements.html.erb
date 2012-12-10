@@ -1,5 +1,55 @@
 <% content_for :body do %>
-  Call Requirements
+  <div id="chart_div"></div>
+<% end %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {'packages':['corechart']});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = new google.visualization.arrayToDataTable([
+        ['Month', 'Repair', 'Maintenance', 'Replacement', 'Speciality'],
+        <% for x in ((Date.new(2012, 1)..Date.new(2012, 12)).select { |d| d.day == 1 }) do %>
+          <% array = [x.strftime('%b-%y')] %>
+          <% @profit_centers.each do |pc| %>
+            <% tsr = (pc.profit_center_next_year.pcnyrs.to_f + pc.profit_center_next_year.pcnyrao.to_f + pc.profit_center_next_year.pcnyrsa.to_f + pc.profit_center_next_year.pcnyrr.to_f + pc.profit_center_next_year.pcnyrra.to_f) * pc.profit_center_next_year.ts.to_f / 100 %>
+            <% tsc = (pc.profit_center_next_year.pcnycs.to_f + pc.profit_center_next_year.pcnycao.to_f + pc.profit_center_next_year.pcnycsa.to_f + pc.profit_center_next_year.pcnycr.to_f + pc.profit_center_next_year.pcnycra.to_f) * pc.profit_center_next_year.ts.to_f / 100 %>
+            <% demand_trend = pc.demand_trends.where(:month => Date.new(2011, x.month)).first.value.to_f / pc.demand_trends.sum(:value).to_f %>
+            <% projection_trend = (tsr+tsc) * demand_trend %>
+
+            <% array.push (projection_trend/pc.profit_center_next_year.pja.to_f) / pc.profit_center_next_year.jcr * 100 %>
+          <% end %>
+
+          <%=raw array.to_json + ',' %>
+        <% end %>
+      ]);
+
+      var options = {
+        title: 'Call Requirements',
+        width: 870,
+        height: 300,
+        chartArea: {
+          left: 75
+        },
+        vAxis: {
+          format: '#,###'
+        }
+      };
+
+      var formatter = new google.visualization.NumberFormat({
+        pattern: '#,###'
+      });
+      formatter.format(data, 1);
+      formatter.format(data, 2);
+      formatter.format(data, 3);
+      formatter.format(data, 4);
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
 <% end %>
 
 <%= render :partial => '/refinery/content_page', :locals => { :full_width => true } %>
